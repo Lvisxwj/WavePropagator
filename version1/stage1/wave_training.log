@@ -1,0 +1,292 @@
+python train.py
+训练集路径: dataset/CAVE_1024_npy
+Loading: scene1.npy
+Loading: scene2.npy
+Loading: scene3.npy
+Loading: scene4.npy
+Loading: scene5.npy
+Loading: scene6.npy
+Loading: scene7.npy
+Loading: scene8.npy
+Loading: scene9.npy
+Loading: scene10.npy
+Loading: scene11.npy
+Loading: scene12.npy
+Loading: scene13.npy
+Loading: scene14.npy
+Loading: scene15.npy
+Loading: scene16.npy
+Loading: scene17.npy
+Loading: scene18.npy
+Loading: scene19.npy
+Loading: scene20.npy
+Loading: scene21.npy
+Loading: scene22.npy
+Loading: scene23.npy
+Loading: scene24.npy
+Loading: scene25.npy
+Loading: scene26.npy
+Loading: scene27.npy
+Loading: scene28.npy
+Loading: scene29.npy
+Loading: scene30.npy
+Loading: scene31.npy
+Loading: scene32.npy
+Loading: scene33.npy
+Loading: scene34.npy
+Loading: scene35.npy
+Loading: scene36.npy
+Loading: scene37.npy
+Loading: scene38.npy
+Loading: scene39.npy
+Loading: scene40.npy
+Loading: scene41.npy
+Loading: scene42.npy
+Loading: scene43.npy
+Loading: scene44.npy
+Loading: scene45.npy
+Loading: scene46.npy
+Loading: scene47.npy
+Loading: scene48.npy
+Loading: scene49.npy
+Loading: scene50.npy
+Loading: scene51.npy
+Loading: scene52.npy
+Loading: scene53.npy
+Loading: scene54.npy
+Loading: scene55.npy
+Loading: scene56.npy
+Loading: scene57.npy
+Loading: scene58.npy
+Loading: scene59.npy
+Loading: scene60.npy
+Loading: scene61.npy
+Loading: scene62.npy
+Loading: scene63.npy
+Loading: scene64.npy
+Loading: scene65.npy
+Loading: scene66.npy
+Loading: scene67.npy
+Loading: scene68.npy
+Loading: scene69.npy
+Loading: scene70.npy
+Loading: scene71.npy
+Loading: scene72.npy
+Loading: scene73.npy
+Loading: scene74.npy
+Loading: scene75.npy
+Loading: scene76.npy
+Loading: scene77.npy
+Loading: scene78.npy
+Loading: scene79.npy
+Loading: scene80.npy
+Loading: scene81.npy
+Loading: scene82.npy
+Loading: scene83.npy
+Loading: scene84.npy
+Loading: scene85.npy
+Loading: scene86.npy
+Loading: scene87.npy
+Loading: scene88.npy
+Loading: scene89.npy
+Loading: scene90.npy
+Loading: scene91.npy
+Loading: scene92.npy
+Loading: scene93.npy
+Loading: scene94.npy
+Loading: scene95.npy
+Loading: scene96.npy
+Loading: scene97.npy
+Loading: scene98.npy
+Loading: scene99.npy
+Loading: scene100.npy
+Loading: scene101.npy
+Loading: scene102.npy
+Loading: scene103.npy
+Loading: scene104.npy
+Loading: scene105.npy
+Loading: scene106.npy
+Loading: scene107.npy
+Loading: scene108.npy
+Loading: scene109.npy
+Loading: scene110.npy
+Loading: scene111.npy
+Loading: scene112.npy
+Loading: scene113.npy
+Loading: scene114.npy
+Loading: scene115.npy
+Loading: scene116.npy
+Loading: scene117.npy
+Loading: scene118.npy
+Loading: scene119.npy
+Loading: scene120.npy
+Loading: scene121.npy
+Loading: scene122.npy
+Loading: scene123.npy
+Loading: scene124.npy
+Loading: scene125.npy
+Loading: scene126.npy
+Loading: scene127.npy
+Loading: scene128.npy
+Loading: scene129.npy
+Loading: scene130.npy
+Loading: scene131.npy
+Loading: scene132.npy
+Loading: scene133.npy
+Loading: scene134.npy
+Loading: scene135.npy
+Loading: scene136.npy
+Loading: scene137.npy
+Loading: scene138.npy
+Loading: scene139.npy
+Loading: scene140.npy
+Loading: scene141.npy
+Loading: scene142.npy
+Loading: scene143.npy
+Loading: scene144.npy
+Loading: scene145.npy
+Loading: scene146.npy
+Loading: scene147.npy
+Loading: scene148.npy
+Loading: scene149.npy
+Loading: scene150.npy
+Loading: scene151.npy
+Loading: scene152.npy
+Loading: scene153.npy
+Loading: scene154.npy
+Loading: scene155.npy
+Loading: scene156.npy
+Loading: scene157.npy
+Loading: scene158.npy
+Loading: scene159.npy
+Loading: scene160.npy
+Loading: scene161.npy
+Loading: scene162.npy
+Loading: scene163.npy
+Loading: scene164.npy
+Loading: scene165.npy
+Loading: scene166.npy
+Loading: scene167.npy
+Loading: scene168.npy
+Loading: scene169.npy
+Loading: scene170.npy
+Loading: scene171.npy
+Loading: scene172.npy
+Loading: scene173.npy
+Loading: scene174.npy
+Loading: scene175.npy
+Loading: scene176.npy
+Loading: scene177.npy
+Loading: scene178.npy
+Loading: scene179.npy
+Loading: scene180.npy
+Loading: scene181.npy
+Loading: scene182.npy
+Loading: scene183.npy
+Loading: scene184.npy
+Loading: scene185.npy
+Loading: scene186.npy
+Loading: scene187.npy
+Loading: scene188.npy
+Loading: scene189.npy
+Loading: scene190.npy
+Loading: scene191.npy
+Loading: scene192.npy
+Loading: scene193.npy
+Loading: scene194.npy
+Loading: scene195.npy
+Loading: scene196.npy
+Loading: scene197.npy
+Loading: scene198.npy
+Loading: scene199.npy
+Loading: scene200.npy
+Loading: scene201.npy
+Loading: scene202.npy
+Loading: scene203.npy
+Loading: scene204.npy
+Loading: scene205.npy
+训练集加载完成：205 个场景，路径: dataset/CAVE_1024_npy
+/home/graduate/liulei/anaconda3/envs/lab/lib/python3.7/site-packages/torch/cuda/__init__.py:146: UserWarning: 
+NVIDIA GeForce RTX 3090 with CUDA capability sm_86 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_37 sm_50 sm_60 sm_61 sm_70 sm_75 compute_37.
+If you want to use the NVIDIA GeForce RTX 3090 GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  warnings.warn(incompatible_device_warn.format(device_name, capability, " ".join(arch_list), device_name))
+Traceback (most recent call last):
+  File "train.py", line 208, in <module>
+    main()
+  File "train.py", line 160, in main
+    mask3d = load_mask(str(MASK_PATH)).cuda()          # [28, 256, 256]
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ nvidia-smi --query-gpu=index,memory.used,memory.total,utilization.gpu --format=csv,noheader,nounits
+0, 23978, 24576, 16
+1, 23940, 24576, 100
+2, 23234, 24576, 0
+3, 23236, 24576, 0
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ nvidia-smi
+Thu Apr 23 23:37:17 2026       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 520.61.05    Driver Version: 520.61.05    CUDA Version: 11.8     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  On   | 00000000:3D:00.0 Off |                  N/A |
+| 37%   60C    P2   306W / 350W |  23978MiB / 24576MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA GeForce ...  On   | 00000000:41:00.0 Off |                  N/A |
+| 36%   60C    P2   266W / 350W |  23940MiB / 24576MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA GeForce ...  On   | 00000000:45:00.0 Off |                  N/A |
+| 30%   41C    P2   103W / 350W |  23234MiB / 24576MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA GeForce ...  On   | 00000000:47:00.0 Off |                  N/A |
+| 30%   40C    P2   120W / 350W |  23236MiB / 24576MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2660      G   /usr/lib/xorg/Xorg                  4MiB |
+|    0   N/A  N/A    503869      C   python                          22506MiB |
+|    0   N/A  N/A   1621714      C   python                            732MiB |
+|    0   N/A  N/A   2573897      C   python                            732MiB |
+|    1   N/A  N/A      2660      G   /usr/lib/xorg/Xorg                  4MiB |
+|    1   N/A  N/A    173126      C   python                          23932MiB |
+|    2   N/A  N/A      2660      G   /usr/lib/xorg/Xorg                  4MiB |
+|    2   N/A  N/A   1621714      C   python                          11768MiB |
+|    2   N/A  N/A   2301787      C   python                          11458MiB |
+|    3   N/A  N/A      2660      G   /usr/lib/xorg/Xorg                  4MiB |
+|    3   N/A  N/A   2303397      C   python                          11460MiB |
+|    3   N/A  N/A   2573897      C   python                          11768MiB |
++-----------------------------------------------------------------------------+
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ nvidia-smi -L
+GPU 0: NVIDIA GeForce RTX 3090 (UUID: GPU-c7e305bd-8fae-998b-d167-e0b7020fae9a)
+GPU 1: NVIDIA GeForce RTX 3090 (UUID: GPU-7e3f5d9a-5d80-7748-9a36-5c1f8c3af85a)
+GPU 2: NVIDIA GeForce RTX 3090 (UUID: GPU-9119d024-2aef-da94-bc1e-4a88c8c5b453)
+GPU 3: NVIDIA GeForce RTX 3090 (UUID: GPU-760aafd1-5dc0-3208-50c2-b7c56140afeb)
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ nvidia-smi --query-gpu=name,memory.used,memory.total --format=csv,noheader
+NVIDIA GeForce RTX 3090, 23978 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 23940 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 23234 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 23236 MiB, 24576 MiB
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ pwdx 1621714
+1621714: /data5/SCI/fyc/measurement_to_NPK/Code/train
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ pwdx 2301787
+2301787: /data5/SCI/fyc/measurement_to_NPK/Code/train
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ pwdx 2303397
+2303397: /data5/SCI/fyc/measurement_to_NPK/Code/train
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ pwdx 2573897
+2573897: /data5/SCI/fyc/measurement_to_NPK/Code/train
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ pwdx 503869
+503869: /data5/SCI/zhangwenjie/train_last
+(lab) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ 

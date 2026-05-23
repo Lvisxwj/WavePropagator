@@ -1,0 +1,946 @@
+(base) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ nvidia-smi --query-gpu=name,memory.used,memory.total --format=csv,noheader
+NVIDIA GeForce RTX 3090, 23836 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 8 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 22574 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 14376 MiB, 24576 MiB
+(base) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ python train.py
+Traceback (most recent call last):
+  File "/data5/SCI/xieweijie/CASSI/stage2/stage3/train.py", line 11, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+(base) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ conda activate zwj
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ conda activate zwj[3Ppython train.py
+训练集路径: ../../dataset/CAVE_1024_npy
+starting at: Tue May 19 20:43:16 2026
+[dataset] JSON 已存在，跳过扫描: CAVE_1024_npy_info.json / CAVE_1024_npy_bands.json
+Loading: scene1.npy
+Loading: scene2.npy
+Loading: scene3.npy
+Loading: scene4.npy
+Loading: scene5.npy
+Loading: scene6.npy
+Loading: scene7.npy
+Loading: scene8.npy
+Loading: scene9.npy
+Loading: scene10.npy
+Loading: scene11.npy
+Loading: scene12.npy
+Loading: scene13.npy
+Loading: scene14.npy
+Loading: scene15.npy
+Loading: scene16.npy
+Loading: scene17.npy
+Loading: scene18.npy
+Loading: scene19.npy
+Loading: scene20.npy
+Loading: scene21.npy
+Loading: scene22.npy
+Loading: scene23.npy
+Loading: scene24.npy
+Loading: scene25.npy
+Loading: scene26.npy
+Loading: scene27.npy
+Loading: scene28.npy
+Loading: scene29.npy
+Loading: scene30.npy
+Loading: scene31.npy
+Loading: scene32.npy
+Loading: scene33.npy
+Loading: scene34.npy
+Loading: scene35.npy
+Loading: scene36.npy
+Loading: scene37.npy
+Loading: scene38.npy
+Loading: scene39.npy
+Loading: scene40.npy
+Loading: scene41.npy
+Loading: scene42.npy
+Loading: scene43.npy
+Loading: scene44.npy
+Loading: scene45.npy
+Loading: scene46.npy
+Loading: scene47.npy
+Loading: scene48.npy
+Loading: scene49.npy
+Loading: scene50.npy
+Loading: scene51.npy
+Loading: scene52.npy
+Loading: scene53.npy
+Loading: scene54.npy
+Loading: scene55.npy
+Loading: scene56.npy
+Loading: scene57.npy
+Loading: scene58.npy
+Loading: scene59.npy
+Loading: scene60.npy
+Loading: scene61.npy
+Loading: scene62.npy
+Loading: scene63.npy
+Loading: scene64.npy
+Loading: scene65.npy
+Loading: scene66.npy
+Loading: scene67.npy
+Loading: scene68.npy
+Loading: scene69.npy
+Loading: scene70.npy
+Loading: scene71.npy
+Loading: scene72.npy
+Loading: scene73.npy
+Loading: scene74.npy
+Loading: scene75.npy
+Loading: scene76.npy
+Loading: scene77.npy
+Loading: scene78.npy
+Loading: scene79.npy
+Loading: scene80.npy
+Loading: scene81.npy
+Loading: scene82.npy
+Loading: scene83.npy
+Loading: scene84.npy
+Loading: scene85.npy
+Loading: scene86.npy
+Loading: scene87.npy
+Loading: scene88.npy
+Loading: scene89.npy
+Loading: scene90.npy
+Loading: scene91.npy
+Loading: scene92.npy
+Loading: scene93.npy
+Loading: scene94.npy
+Loading: scene95.npy
+Loading: scene96.npy
+Loading: scene97.npy
+Loading: scene98.npy
+Loading: scene99.npy
+Loading: scene100.npy
+Loading: scene101.npy
+Loading: scene102.npy
+Loading: scene103.npy
+Loading: scene104.npy
+Loading: scene105.npy
+Loading: scene106.npy
+Loading: scene107.npy
+Loading: scene108.npy
+Loading: scene109.npy
+Loading: scene110.npy
+Loading: scene111.npy
+Loading: scene112.npy
+Loading: scene113.npy
+Loading: scene114.npy
+Loading: scene115.npy
+Loading: scene116.npy
+Loading: scene117.npy
+Loading: scene118.npy
+Loading: scene119.npy
+Loading: scene120.npy
+Loading: scene121.npy
+Loading: scene122.npy
+Loading: scene123.npy
+Loading: scene124.npy
+Loading: scene125.npy
+Loading: scene126.npy
+Loading: scene127.npy
+Loading: scene128.npy
+Loading: scene129.npy
+Loading: scene130.npy
+Loading: scene131.npy
+Loading: scene132.npy
+Loading: scene133.npy
+Loading: scene134.npy
+Loading: scene135.npy
+Loading: scene136.npy
+Loading: scene137.npy
+Loading: scene138.npy
+Loading: scene139.npy
+Loading: scene140.npy
+Loading: scene141.npy
+Loading: scene142.npy
+Loading: scene143.npy
+Loading: scene144.npy
+Loading: scene145.npy
+Loading: scene146.npy
+Loading: scene147.npy
+Loading: scene148.npy
+Loading: scene149.npy
+Loading: scene150.npy
+Loading: scene151.npy
+Loading: scene152.npy
+Loading: scene153.npy
+Loading: scene154.npy
+Loading: scene155.npy
+Loading: scene156.npy
+Loading: scene157.npy
+Loading: scene158.npy
+Loading: scene159.npy
+Loading: scene160.npy
+Loading: scene161.npy
+Loading: scene162.npy
+Loading: scene163.npy
+Loading: scene164.npy
+Loading: scene165.npy
+Loading: scene166.npy
+Loading: scene167.npy
+Loading: scene168.npy
+Loading: scene169.npy
+Loading: scene170.npy
+Loading: scene171.npy
+Loading: scene172.npy
+Loading: scene173.npy
+Loading: scene174.npy
+Loading: scene175.npy
+Loading: scene176.npy
+Loading: scene177.npy
+Loading: scene178.npy
+Loading: scene179.npy
+Loading: scene180.npy
+Loading: scene181.npy
+Loading: scene182.npy
+Loading: scene183.npy
+Loading: scene184.npy
+Loading: scene185.npy
+Loading: scene186.npy
+Loading: scene187.npy
+Loading: scene188.npy
+Loading: scene189.npy
+Loading: scene190.npy
+Loading: scene191.npy
+Loading: scene192.npy
+Loading: scene193.npy
+Loading: scene194.npy
+Loading: scene195.npy
+Loading: scene196.npy
+Loading: scene197.npy
+Loading: scene198.npy
+Loading: scene199.npy
+Loading: scene200.npy
+Loading: scene201.npy
+Loading: scene202.npy
+Loading: scene203.npy
+Loading: scene204.npy
+Loading: scene205.npy
+训练集加载完成：205 个场景，路径: ../../dataset/CAVE_1024_npy
+finished after 426.93 s
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[train] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+[train] PhiPhiT 已缓存: shape=[1, 256, 310]
+模型: WaveMST_3D_Unfold  参数量: 3.16M
+  Unfolding: stages=5  share_weights=True  multi_stage_loss=True
+  增强: 源项注入=ON
+训练开始: 5.19.20:50
+[Epoch 001] Loss: 0.249275  Time: 2230.0s  LR: 4.00e-04
+         Test -> PSNR: 22.57  SSIM: 0.5114  SAM: 0.7369
+                FreqAmpErr: 311.86187  LowFreqErr: 32154.77983  HighFreqErr: 62.61084
+[Epoch 002] Loss: 0.154370  Time: 2194.2s  LR: 4.00e-04
+         Test -> PSNR: 26.46  SSIM: 0.6636  SAM: 0.4631
+                FreqAmpErr: 98.12135  LowFreqErr: 6657.43416  HighFreqErr: 46.77821
+[Epoch 003] Loss: 0.110414  Time: 2190.5s  LR: 4.00e-04
+         Test -> PSNR: 28.45  SSIM: 0.7606  SAM: 0.3570
+                FreqAmpErr: 62.30857  LowFreqErr: 3216.55551  HighFreqErr: 37.61864
+  * 新最优: PSNR=28.45  SSIM=0.7606  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 004] Loss: 0.090260  Time: 2191.8s  LR: 4.00e-04
+         Test -> PSNR: 29.95  SSIM: 0.8149  SAM: 0.3224
+                FreqAmpErr: 40.23709  LowFreqErr: 1805.20418  HighFreqErr: 26.42177
+  * 新最优: PSNR=29.95  SSIM=0.8149  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 005] Loss: 0.081623  Time: 2197.1s  LR: 4.00e-04
+         Test -> PSNR: 30.36  SSIM: 0.8280  SAM: 0.3055
+                FreqAmpErr: 37.96174  LowFreqErr: 1687.19960  HighFreqErr: 25.05230
+  * 新最优: PSNR=30.36  SSIM=0.8280  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 006] Loss: 0.073911  Time: 2193.5s  LR: 4.00e-04
+         Test -> PSNR: 30.53  SSIM: 0.8205  SAM: 0.3514
+                FreqAmpErr: 39.59088  LowFreqErr: 2327.46974  HighFreqErr: 21.68247
+  * 新最优: PSNR=30.53  SSIM=0.8205  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 007] Loss: 0.069632  Time: 2200.4s  LR: 4.00e-04
+         Test -> PSNR: 31.71  SSIM: 0.8716  SAM: 0.2614
+                FreqAmpErr: 26.44986  LowFreqErr: 1120.82427  HighFreqErr: 17.88362
+  * 新最优: PSNR=31.71  SSIM=0.8716  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 008] Loss: 0.065308  Time: 2199.9s  LR: 3.99e-04
+         Test -> PSNR: 31.98  SSIM: 0.8682  SAM: 0.2911
+                FreqAmpErr: 27.00583  LowFreqErr: 1194.01382  HighFreqErr: 17.87106
+  * 新最优: PSNR=31.98  SSIM=0.8682  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 009] Loss: 0.061877  Time: 2209.6s  LR: 3.99e-04
+         Test -> PSNR: 32.34  SSIM: 0.8870  SAM: 0.2482
+                FreqAmpErr: 24.92855  LowFreqErr: 1012.04138  HighFreqErr: 17.20190
+  * 新最优: PSNR=32.34  SSIM=0.8870  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 010] Loss: 0.058590  Time: 2201.5s  LR: 3.99e-04
+         Test -> PSNR: 32.60  SSIM: 0.8958  SAM: 0.2425
+                FreqAmpErr: 24.36613  LowFreqErr: 1044.32997  HighFreqErr: 16.38234
+  * 新最优: PSNR=32.60  SSIM=0.8958  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 011] Loss: 0.057437  Time: 2192.8s  LR: 3.99e-04
+         Test -> PSNR: 33.13  SSIM: 0.9096  SAM: 0.1910
+                FreqAmpErr: 20.22652  LowFreqErr: 786.76169  HighFreqErr: 14.22645
+  * 新最优: PSNR=33.13  SSIM=0.9096  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 012] Loss: 0.055233  Time: 2206.6s  LR: 3.99e-04
+         Test -> PSNR: 32.90  SSIM: 0.9050  SAM: 0.2198
+                FreqAmpErr: 21.57430  LowFreqErr: 905.35579  HighFreqErr: 14.65648
+[Epoch 013] Loss: 0.053084  Time: 2216.5s  LR: 3.98e-04
+         Test -> PSNR: 32.77  SSIM: 0.8887  SAM: 0.2613
+                FreqAmpErr: 22.53504  LowFreqErr: 1199.29771  HighFreqErr: 13.32391
+[Epoch 014] Loss: 0.051815  Time: 2220.9s  LR: 3.98e-04
+         Test -> PSNR: 32.73  SSIM: 0.8972  SAM: 0.2538
+                FreqAmpErr: 22.59385  LowFreqErr: 1119.34570  HighFreqErr: 14.00901
+[Epoch 015] Loss: 0.050270  Time: 2218.0s  LR: 3.98e-04
+         Test -> PSNR: 33.75  SSIM: 0.9222  SAM: 0.1811
+                FreqAmpErr: 17.64749  LowFreqErr: 673.64025  HighFreqErr: 12.51269
+  * 新最优: PSNR=33.75  SSIM=0.9222  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 016] Loss: 0.049779  Time: 2201.8s  LR: 3.98e-04
+         Test -> PSNR: 33.77  SSIM: 0.9216  SAM: 0.1935
+                FreqAmpErr: 17.46193  LowFreqErr: 641.63481  HighFreqErr: 12.57621
+  * 新最优: PSNR=33.77  SSIM=0.9216  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 017] Loss: 0.048871  Time: 2209.4s  LR: 3.97e-04
+         Test -> PSNR: 33.97  SSIM: 0.9171  SAM: 0.2278
+                FreqAmpErr: 17.15738  LowFreqErr: 702.00471  HighFreqErr: 11.79673
+  * 新最优: PSNR=33.97  SSIM=0.9171  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 018] Loss: 0.047546  Time: 2205.8s  LR: 3.97e-04
+         Test -> PSNR: 33.97  SSIM: 0.9257  SAM: 0.1795
+                FreqAmpErr: 17.52870  LowFreqErr: 732.45797  HighFreqErr: 11.93258
+  * 新最优: PSNR=33.97  SSIM=0.9257  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 019] Loss: 0.046696  Time: 2202.5s  LR: 3.96e-04
+         Test -> PSNR: 34.11  SSIM: 0.9277  SAM: 0.1784
+                FreqAmpErr: 16.61661  LowFreqErr: 681.98009  HighFreqErr: 11.40847
+  * 新最优: PSNR=34.11  SSIM=0.9277  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 020] Loss: 0.045646  Time: 2206.8s  LR: 3.96e-04
+         Test -> PSNR: 34.43  SSIM: 0.9343  SAM: 0.1557
+                FreqAmpErr: 15.71688  LowFreqErr: 588.08912  HighFreqErr: 11.23663
+  * 新最优: PSNR=34.43  SSIM=0.9343  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 021] Loss: 0.044991  Time: 2204.9s  LR: 3.96e-04
+         Test -> PSNR: 34.48  SSIM: 0.9349  SAM: 0.1568
+                FreqAmpErr: 15.38641  LowFreqErr: 631.04486  HighFreqErr: 10.56733
+  * 新最优: PSNR=34.48  SSIM=0.9349  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 022] Loss: 0.044161  Time: 2213.9s  LR: 3.95e-04
+         Test -> PSNR: 34.60  SSIM: 0.9352  SAM: 0.1738
+                FreqAmpErr: 14.80839  LowFreqErr: 563.08080  HighFreqErr: 10.51678
+  * 新最优: PSNR=34.60  SSIM=0.9352  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 023] Loss: 0.043604  Time: 2197.7s  LR: 3.95e-04
+         Test -> PSNR: 34.66  SSIM: 0.9351  SAM: 0.1717
+                FreqAmpErr: 14.86919  LowFreqErr: 602.69150  HighFreqErr: 10.26800
+  * 新最优: PSNR=34.66  SSIM=0.9351  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 024] Loss: 0.042745  Time: 2188.6s  LR: 3.94e-04
+         Test -> PSNR: 34.23  SSIM: 0.9283  SAM: 0.1790
+                FreqAmpErr: 15.97222  LowFreqErr: 704.17692  HighFreqErr: 10.58529
+[Epoch 025] Loss: 0.042713  Time: 2187.7s  LR: 3.94e-04
+         Test -> PSNR: 34.86  SSIM: 0.9359  SAM: 0.1751
+                FreqAmpErr: 14.00354  LowFreqErr: 514.41066  HighFreqErr: 10.08659
+  * 新最优: PSNR=34.86  SSIM=0.9359  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 026] Loss: 0.042184  Time: 2182.0s  LR: 3.93e-04
+         Test -> PSNR: 34.90  SSIM: 0.9387  SAM: 0.1579
+                FreqAmpErr: 13.93387  LowFreqErr: 545.22402  HighFreqErr: 9.77519
+  * 新最优: PSNR=34.90  SSIM=0.9387  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 027] Loss: 0.042341  Time: 2196.8s  LR: 3.93e-04
+         Test -> PSNR: 34.72  SSIM: 0.9358  SAM: 0.1640
+                FreqAmpErr: 14.83052  LowFreqErr: 605.08618  HighFreqErr: 10.21029
+[Epoch 028] Loss: 0.041104  Time: 2188.1s  LR: 3.92e-04
+         Test -> PSNR: 35.12  SSIM: 0.9419  SAM: 0.1566
+                FreqAmpErr: 13.46566  LowFreqErr: 515.94112  HighFreqErr: 9.53252
+  * 新最优: PSNR=35.12  SSIM=0.9419  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 029] Loss: 0.040834  Time: 2191.2s  LR: 3.91e-04
+         Test -> PSNR: 35.28  SSIM: 0.9447  SAM: 0.1405
+                FreqAmpErr: 13.15331  LowFreqErr: 463.83145  HighFreqErr: 9.62562
+  * 新最优: PSNR=35.28  SSIM=0.9447  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 030] Loss: 0.040485  Time: 2197.1s  LR: 3.91e-04
+         Test -> PSNR: 35.31  SSIM: 0.9458  SAM: 0.1226
+                FreqAmpErr: 13.07509  LowFreqErr: 481.13149  HighFreqErr: 9.41137
+  * 新最优: PSNR=35.31  SSIM=0.9458  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 031] Loss: 0.040070  Time: 2182.8s  LR: 3.90e-04
+         Test -> PSNR: 35.05  SSIM: 0.9417  SAM: 0.1462
+                FreqAmpErr: 13.37824  LowFreqErr: 507.95573  HighFreqErr: 9.50693
+[Epoch 032] Loss: 0.039558  Time: 2165.3s  LR: 3.90e-04
+         Test -> PSNR: 34.92  SSIM: 0.9369  SAM: 0.1539
+                FreqAmpErr: 14.69426  LowFreqErr: 611.79937  HighFreqErr: 10.02041
+[Epoch 033] Loss: 0.039285  Time: 2174.5s  LR: 3.89e-04
+         Test -> PSNR: 35.00  SSIM: 0.9364  SAM: 0.1752
+                FreqAmpErr: 14.57034  LowFreqErr: 667.88980  HighFreqErr: 9.45647
+[Epoch 034] Loss: 0.038772  Time: 2165.0s  LR: 3.88e-04
+         Test -> PSNR: 35.42  SSIM: 0.9459  SAM: 0.1386
+                FreqAmpErr: 12.67859  LowFreqErr: 508.35631  HighFreqErr: 8.79866
+  * 新最优: PSNR=35.42  SSIM=0.9459  -> result/model/2026_05_19_20_50_28_3d_wpo_unfold_stg5_share/best.pth
+[Epoch 035] Loss: 0.038738  Time: 2201.7s  LR: 3.87e-04
+         Test -> PSNR: 34.99  SSIM: 0.9358  SAM: 0.1531
+                FreqAmpErr: 15.10461  LowFreqErr: 722.78788  HighFreqErr: 9.56521
+^CTraceback (most recent call last):
+  File "train.py", line 408, in <module>
+    main()
+  File "train.py", line 383, in main
+    scaler=scaler, PhiPhiT_cached=PhiPhiT_cached)
+  File "train.py", line 204, in train_epoch
+    loss.backward()
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/_tensor.py", line 396, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/autograd/__init__.py", line 175, in backward
+    allow_unreachable=True, accumulate_grad=True)  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+^C
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ scren[Ken [K[K[K[K[K[K[Kco[K[Kscren[Ken -ls
+There are screens on:
+	3783793.XWJ2	(2026年05月19日 20时41分36秒)	(Attached)
+	3716033.veg1	(2026年05月19日 18时56分11秒)	(Detached)
+	485552.fyc6	(2026年05月10日 23时29分55秒)	(Detached)
+	483269.fyc5	(2026年05月10日 23时28分11秒)	(Detached)
+	2822758.fyc4	(2026年05月08日 19时58分36秒)	(Attached)
+	2821739.fyc3	(2026年05月08日 19时57分36秒)	(Detached)
+	2648175.XWJ	(2026年05月08日 15时02分34秒)	(Detached)
+	72309.z4	(2026年04月20日 18时30分48秒)	(Detached)
+	3530078.z3	(2026年04月20日 00时47分56秒)	(Detached)
+	4178346.fyc_P	(2026年04月01日 23时19分45秒)	(Detached)
+	3810649.fyc_k	(2026年04月01日 18时16分54秒)	(Detached)
+	3259422.fyc2	(2026年04月01日 10时07分45秒)	(Detached)
+	2483822.z2	(2026年03月31日 13时03分58秒)	(Detached)
+	1872585.fycPM	(2026年03月30日 21时47分54秒)	(Detached)
+	1812243.fycCNN	(2026年03月30日 20时58分20秒)	(Detached)
+	1383559.fyc1	(2026年03月25日 21时23分44秒)	(Detached)
+	1115149.diffusion	(2026年03月25日 17时45分42秒)	(Detached)
+	1398494.z	(2026年03月20日 11时52分35秒)	(Detached)
+	1489721.fyc	(2026年03月11日 23时01分53秒)	(Detached)
+	1068606.xx	(2026年03月09日 22时59分50秒)	(Detached)
+	3558217.PA	(2026年03月07日 22时04分19秒)	(Detached)
+	3557680.XAPSCA	(2026年03月07日 22时03分45秒)	(Detached)
+	3557188.XA_FCB	(2026年03月07日 22时03分13秒)	(Detached)
+	1491893.flow	(2026年03月02日 22时57分26秒)	(Detached)
+	1358546.XA	(2026年03月01日 23时57分44秒)	(Detached)
+25 Sockets in /run/screen/S-liulei.
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI/stage2/stage3[00m$ c[Kscreen -r veg1
+[!p[?3;4l[4l>[?1049h[22;0;0t[4l[?1h=[0m(B[1;16r[H[2J[H[2JE  22 B 250/2560 loss=0.13791059 charb=0.01357859 l1=0.01344924 ssim=0.11088276 psnr=34.07dB
+E  22 B 300/2560 loss=0.13788269 charb=0.01356206 l1=0.01343256 ssim=0.11088806 psnr=34.07dB
+E  22 B 350/2560 loss=0.13783071 charb=0.01365328 l1=0.01352546 ssim=0.11065197 psnr=34.05dB
+E  22 B 400/2560 loss=0.13799272 charb=0.01363758 l1=0.01350936 ssim=0.11084578 psnr=34.05dB
+E  22 B 450/2560 loss=0.13800640 charb=0.01360492 l1=0.01347627 ssim=0.11092522 psnr=34.07dB
+E  22 B 500/2560 loss=0.13801537 charb=0.01361143 l1=0.01348283 ssim=0.11092111 psnr=34.07dB
+E  22 B 550/2560 loss=0.13843747 charb=0.01367493 l1=0.01354674 ssim=0.11121580 psnr=34.03dB
+E  22 B 600/2560 loss=0.13892158 charb=0.01371048 l1=0.01358212 ssim=0.11162898 psnr=34.00dB
+E  22 B 650/2560 loss=0.13882007 charb=0.01368050 l1=0.01355166 ssim=0.11158791 psnr=34.01dB
+E  22 B 700/2560 loss=0.13880936 charb=0.01366823 l1=0.01353927 ssim=0.11160185 psnr=34.02dB
+E  22 B 750/2560 loss=0.13890034 charb=0.01372085 l1=0.01359293 ssim=0.11158656 psnr=34.00dB
+E  22 B 800/2560 loss=0.13872357 charb=0.01367193 l1=0.01354376 ssim=0.11150788 psnr=34.03dB
+E  22 B 850/2560 loss=0.13865406 charb=0.01366754 l1=0.01353934 ssim=0.11144718 psnr=34.04dB
+E  22 B 900/2560 loss=0.13842239 charb=0.01365194 l1=0.01352399 ssim=0.11124645 psnr=34.06dB
+E  22 B 950/2560 loss=0.13835603 charb=0.01362784 l1=0.01349973 ssim=0.11122845 psnr=34.07dB
+^CTraceback (most recent call last):
+  File "train_unified.py", line 451, in <module>
+    main()
+  File "train_unified.py", line 345, in main
+    scaler.step(optimizer)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/cuda/amp/grad_scaler.py", line 310, in step
+    return optimizer.step(*args, **kwargs)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/optim/lr_scheduler.py", line 65, in wrapper
+    return wrapped(*args, **kwargs)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/optim/optimizer.py", line 113, in wrapper
+    return func(*args, **kwargs)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/optim/adamw.py", line 175, in step
+    capturable=group['capturable'])
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/optim/adamw.py", line 231, in adamw
+    capturable=capturable)
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/torch/optim/adamw.py", line 267, in _single_tensor_adamw
+    exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)
+KeyboardInterrupt
+d ^Z
+[1]+  已停止               python train_unified.py --config config.yaml --model mst_mamba
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ nvidia-smi --query-gpu=name,memory.used,memory.total --format=csv,noheader
+NVIDIA GeForce RTX 3090, 23836 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 14204 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 22574 MiB, 24576 MiB
+NVIDIA GeForce RTX 3090, 23318 MiB, 24576 MiB
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ [?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5lnvidia-smi pmon -i 0,1,2,3,[P3[P3[P3[P3[P3[P3
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     6     6     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^[[A    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     6     6     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^[[A    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^[[B^[[B# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     4     4     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     4     -     -   python         
+    3     527523     C     2     2     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     4     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     6     6     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     5     5     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     1     1     -     -   python         
+    3     527523     C     7     7     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     5     5     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     5     5     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     1     1     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     5     5     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     5     5     -     -   python         
+    3     527523     C     5     5     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     5     5     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     4     4     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     4     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^Z
+[2]+  已停止               nvidia-smi pmon -i 3
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ fg
+nvidia-smi pmon -i 3
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     5     4     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     4     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     4     4     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     2     2     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+# gpu        pid  type    sm   mem   enc   dec   command
+# Idx          #   C/G     %     %     %     %   name
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     3     3     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     -     -     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     0     0     -     -   python         
+    3     527523     C     3     3     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     -     -     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+^C    3       2660     G     -     -     -     -   Xorg           
+    3     526364     C     5     5     -     -   python         
+    3     527523     C     0     0     -     -   python         
+    3    3774195     C     -     -     -     -   python         
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ fgnvidia-smi pmon -i 3--query-gpu=name,memory.used,memory.total --format=csv,noheader[12Ppython train_unified.py --config config.yaml --model mst_mambanvidia-smi --query-gpu=name,memory.used,memory.total --format=csv,noheaderpmon -i 3[Kfg[K[K[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5l[?5h[?5lfg python train_unified.py --config config.yaml --model mst_mamba
+python train_unified.py --config config.yaml --model mst_mamba
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ sudo nvidia-smi --gpu-reset -i 3
+[sudo] liulei 的密码： 
+The following GPUs could not be reset:
+  GPU 00000000:47:00.0: In use by another client
+
+1 device is currently being used by one or more other processes (e.g., Fabric Manager, CUDA application, graphics application such as an X server, or a monitoring application such as another instance of nvidia-smi). Please first kill all processes using this device and all compute applications running in the system.
+(/data5/SCI/zhangwenjie/zwj) [1m[32mliulei@inspur-NF5468M5[0m:[1m[34m/data5/SCI/xieweijie/here/NEW/src[0m$ 

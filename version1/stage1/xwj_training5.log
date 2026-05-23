@@ -1,0 +1,1420 @@
+(base) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ conda activate zwj
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ conda activate zwj[5Ppython viz.py_.pyn.pye.pyw.py
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_00
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_01
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_02
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_03
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_04
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_05
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_06
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_07
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_08
+可视化图像保存到: result/show/viz/3dwpo_kg_maskD_new/scene_09
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_00
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_01
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_02
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_03
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_04
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_05
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_06
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_07
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_08
+可视化图像保存到: result/show/viz/3dwpo_maskA_new/scene_09
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python train_new.py
+训练集路径: dataset/CAVE_1024_npy
+starting at: Mon May  4 04:20:30 2026
+Loading: scene1.npy
+Loading: scene2.npy
+Loading: scene3.npy
+Loading: scene4.npy
+Loading: scene5.npy
+Loading: scene6.npy
+Loading: scene7.npy
+Loading: scene8.npy
+Loading: scene9.npy
+Loading: scene10.npy
+Loading: scene11.npy
+Loading: scene12.npy
+Loading: scene13.npy
+Loading: scene14.npy
+Loading: scene15.npy
+Loading: scene16.npy
+Loading: scene17.npy
+Loading: scene18.npy
+Loading: scene19.npy
+Loading: scene20.npy
+Loading: scene21.npy
+Loading: scene22.npy
+Loading: scene23.npy
+Loading: scene24.npy
+Loading: scene25.npy
+Loading: scene26.npy
+Loading: scene27.npy
+Loading: scene28.npy
+Loading: scene29.npy
+Loading: scene30.npy
+Loading: scene31.npy
+Loading: scene32.npy
+Loading: scene33.npy
+Loading: scene34.npy
+Loading: scene35.npy
+Loading: scene36.npy
+Loading: scene37.npy
+Loading: scene38.npy
+Loading: scene39.npy
+Loading: scene40.npy
+Loading: scene41.npy
+Loading: scene42.npy
+Loading: scene43.npy
+Loading: scene44.npy
+Loading: scene45.npy
+Loading: scene46.npy
+Loading: scene47.npy
+Loading: scene48.npy
+Loading: scene49.npy
+Loading: scene50.npy
+Loading: scene51.npy
+Loading: scene52.npy
+Loading: scene53.npy
+Loading: scene54.npy
+Loading: scene55.npy
+Loading: scene56.npy
+Loading: scene57.npy
+Loading: scene58.npy
+Loading: scene59.npy
+Loading: scene60.npy
+Loading: scene61.npy
+Loading: scene62.npy
+Loading: scene63.npy
+Loading: scene64.npy
+Loading: scene65.npy
+Loading: scene66.npy
+Loading: scene67.npy
+Loading: scene68.npy
+Loading: scene69.npy
+Loading: scene70.npy
+Loading: scene71.npy
+Loading: scene72.npy
+Loading: scene73.npy
+Loading: scene74.npy
+Loading: scene75.npy
+Loading: scene76.npy
+Loading: scene77.npy
+Loading: scene78.npy
+Loading: scene79.npy
+Loading: scene80.npy
+Loading: scene81.npy
+Loading: scene82.npy
+Loading: scene83.npy
+Loading: scene84.npy
+Loading: scene85.npy
+Loading: scene86.npy
+Loading: scene87.npy
+Loading: scene88.npy
+Loading: scene89.npy
+Loading: scene90.npy
+Loading: scene91.npy
+Loading: scene92.npy
+Loading: scene93.npy
+Loading: scene94.npy
+Loading: scene95.npy
+Loading: scene96.npy
+Loading: scene97.npy
+Loading: scene98.npy
+Loading: scene99.npy
+Loading: scene100.npy
+Loading: scene101.npy
+Loading: scene102.npy
+Loading: scene103.npy
+Loading: scene104.npy
+Loading: scene105.npy
+Loading: scene106.npy
+Loading: scene107.npy
+Loading: scene108.npy
+Loading: scene109.npy
+Loading: scene110.npy
+Loading: scene111.npy
+Loading: scene112.npy
+Loading: scene113.npy
+Loading: scene114.npy
+Loading: scene115.npy
+Loading: scene116.npy
+Loading: scene117.npy
+Loading: scene118.npy
+Loading: scene119.npy
+Loading: scene120.npy
+Loading: scene121.npy
+Loading: scene122.npy
+Loading: scene123.npy
+Loading: scene124.npy
+Loading: scene125.npy
+Loading: scene126.npy
+Loading: scene127.npy
+Loading: scene128.npy
+Loading: scene129.npy
+Loading: scene130.npy
+Loading: scene131.npy
+Loading: scene132.npy
+Loading: scene133.npy
+Loading: scene134.npy
+Loading: scene135.npy
+Loading: scene136.npy
+Loading: scene137.npy
+Loading: scene138.npy
+Loading: scene139.npy
+Loading: scene140.npy
+Loading: scene141.npy
+Loading: scene142.npy
+Loading: scene143.npy
+Loading: scene144.npy
+Loading: scene145.npy
+Loading: scene146.npy
+Loading: scene147.npy
+Loading: scene148.npy
+Loading: scene149.npy
+Loading: scene150.npy
+Loading: scene151.npy
+Loading: scene152.npy
+Loading: scene153.npy
+Loading: scene154.npy
+Loading: scene155.npy
+Loading: scene156.npy
+Loading: scene157.npy
+Loading: scene158.npy
+Loading: scene159.npy
+Loading: scene160.npy
+Loading: scene161.npy
+Loading: scene162.npy
+Loading: scene163.npy
+Loading: scene164.npy
+Loading: scene165.npy
+Loading: scene166.npy
+Loading: scene167.npy
+Loading: scene168.npy
+Loading: scene169.npy
+Loading: scene170.npy
+Loading: scene171.npy
+Loading: scene172.npy
+Loading: scene173.npy
+Loading: scene174.npy
+Loading: scene175.npy
+Loading: scene176.npy
+Loading: scene177.npy
+Loading: scene178.npy
+Loading: scene179.npy
+Loading: scene180.npy
+Loading: scene181.npy
+Loading: scene182.npy
+Loading: scene183.npy
+Loading: scene184.npy
+Loading: scene185.npy
+Loading: scene186.npy
+Loading: scene187.npy
+Loading: scene188.npy
+Loading: scene189.npy
+Loading: scene190.npy
+Loading: scene191.npy
+Loading: scene192.npy
+Loading: scene193.npy
+Loading: scene194.npy
+Loading: scene195.npy
+Loading: scene196.npy
+Loading: scene197.npy
+Loading: scene198.npy
+Loading: scene199.npy
+Loading: scene200.npy
+Loading: scene201.npy
+Loading: scene202.npy
+Loading: scene203.npy
+Loading: scene204.npy
+Loading: scene205.npy
+训练集加载完成：205 个场景，路径: dataset/CAVE_1024_npy
+finished after 125.25 s
+[dataset] 已写入 dataset/CAVE_1024_npy/CAVE_1024_npy_info.json
+[dataset] 已写入 dataset/CAVE_1024_npy/CAVE_1024_npy_bands.json
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[train] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_Phys  参数量: 0.79M
+训练开始: 5.4.4:22
+[Epoch 001] Loss: 0.096204  Time: 459.3s  LR: 4.00e-04
+         Test → PSNR: 22.13  SSIM: 0.4865  SAM: 0.5796
+                FreqAmpErr: 279.92651  LowFreqErr: 26642.01484  HighFreqErr: 73.57678
+[Epoch 002] Loss: 0.071363  Time: 453.3s  LR: 4.00e-04
+         Test → PSNR: 24.96  SSIM: 0.6059  SAM: 0.5350
+                FreqAmpErr: 134.98358  LowFreqErr: 9344.10015  HighFreqErr: 62.89905
+[Epoch 003] Loss: 0.054354  Time: 454.7s  LR: 4.00e-04
+         Test → PSNR: 26.44  SSIM: 0.6694  SAM: 0.3682
+                FreqAmpErr: 93.13047  LowFreqErr: 5119.37068  HighFreqErr: 53.78748
+[Epoch 004] Loss: 0.046896  Time: 454.0s  LR: 4.00e-04
+         Test → PSNR: 26.86  SSIM: 0.7073  SAM: 0.4254
+                FreqAmpErr: 86.08376  LowFreqErr: 4785.73877  HighFreqErr: 49.29712
+[Epoch 005] Loss: 0.043581  Time: 455.8s  LR: 4.00e-04
+         Test → PSNR: 27.72  SSIM: 0.7470  SAM: 0.3354
+                FreqAmpErr: 70.02373  LowFreqErr: 3373.72416  HighFreqErr: 44.16395
+[Epoch 006] Loss: 0.041655  Time: 454.4s  LR: 4.00e-04
+         Test → PSNR: 28.17  SSIM: 0.7628  SAM: 0.3647
+                FreqAmpErr: 61.67093  LowFreqErr: 2823.41556  HighFreqErr: 40.05333
+  ★ 新最优: PSNR=28.17  SSIM=0.7628  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 007] Loss: 0.039469  Time: 455.8s  LR: 4.00e-04
+         Test → PSNR: 28.44  SSIM: 0.7711  SAM: 0.3583
+                FreqAmpErr: 58.24253  LowFreqErr: 2635.29698  HighFreqErr: 38.07059
+  ★ 新最优: PSNR=28.44  SSIM=0.7711  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 008] Loss: 0.037741  Time: 454.7s  LR: 3.99e-04
+         Test → PSNR: 28.59  SSIM: 0.7876  SAM: 0.3230
+                FreqAmpErr: 56.15778  LowFreqErr: 2708.15524  HighFreqErr: 35.39922
+  ★ 新最优: PSNR=28.59  SSIM=0.7876  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 009] Loss: 0.036879  Time: 453.9s  LR: 3.99e-04
+         Test → PSNR: 28.90  SSIM: 0.7967  SAM: 0.3090
+                FreqAmpErr: 54.04658  LowFreqErr: 2498.13951  HighFreqErr: 34.91540
+  ★ 新最优: PSNR=28.90  SSIM=0.7967  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 010] Loss: 0.035759  Time: 454.8s  LR: 3.99e-04
+         Test → PSNR: 29.23  SSIM: 0.8083  SAM: 0.3232
+                FreqAmpErr: 49.17230  LowFreqErr: 2146.49686  HighFreqErr: 32.75545
+  ★ 新最优: PSNR=29.23  SSIM=0.8083  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 011] Loss: 0.034467  Time: 455.0s  LR: 3.99e-04
+         Test → PSNR: 29.20  SSIM: 0.7993  SAM: 0.3098
+                FreqAmpErr: 49.76709  LowFreqErr: 2362.52360  HighFreqErr: 31.66395
+[Epoch 012] Loss: 0.033775  Time: 454.7s  LR: 3.99e-04
+         Test → PSNR: 29.50  SSIM: 0.8158  SAM: 0.2873
+                FreqAmpErr: 46.46813  LowFreqErr: 2072.10511  HighFreqErr: 30.61242
+  ★ 新最优: PSNR=29.50  SSIM=0.8158  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 013] Loss: 0.033153  Time: 453.7s  LR: 3.98e-04
+         Test → PSNR: 29.72  SSIM: 0.8213  SAM: 0.3120
+                FreqAmpErr: 44.20681  LowFreqErr: 2017.59149  HighFreqErr: 28.76010
+  ★ 新最优: PSNR=29.72  SSIM=0.8213  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 014] Loss: 0.031940  Time: 452.6s  LR: 3.98e-04
+         Test → PSNR: 29.97  SSIM: 0.8238  SAM: 0.3091
+                FreqAmpErr: 41.88380  LowFreqErr: 1831.91368  HighFreqErr: 27.87230
+  ★ 新最优: PSNR=29.97  SSIM=0.8238  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 015] Loss: 0.031264  Time: 454.2s  LR: 3.98e-04
+         Test → PSNR: 29.80  SSIM: 0.8264  SAM: 0.2963
+                FreqAmpErr: 45.57485  LowFreqErr: 2356.64003  HighFreqErr: 27.48494
+[Epoch 016] Loss: 0.030498  Time: 455.3s  LR: 3.98e-04
+         Test → PSNR: 30.24  SSIM: 0.8413  SAM: 0.2747
+                FreqAmpErr: 39.60659  LowFreqErr: 1753.52389  HighFreqErr: 26.19086
+  ★ 新最优: PSNR=30.24  SSIM=0.8413  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 017] Loss: 0.030218  Time: 454.2s  LR: 3.97e-04
+         Test → PSNR: 30.28  SSIM: 0.8396  SAM: 0.2908
+                FreqAmpErr: 39.17977  LowFreqErr: 1794.08898  HighFreqErr: 25.44319
+  ★ 新最优: PSNR=30.28  SSIM=0.8396  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 018] Loss: 0.029635  Time: 453.8s  LR: 3.97e-04
+         Test → PSNR: 30.60  SSIM: 0.8487  SAM: 0.2857
+                FreqAmpErr: 36.14235  LowFreqErr: 1545.59973  HighFreqErr: 24.32704
+  ★ 新最优: PSNR=30.60  SSIM=0.8487  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 019] Loss: 0.029141  Time: 455.2s  LR: 3.96e-04
+         Test → PSNR: 30.51  SSIM: 0.8329  SAM: 0.3525
+                FreqAmpErr: 35.80828  LowFreqErr: 1604.64761  HighFreqErr: 23.52816
+[Epoch 020] Loss: 0.028906  Time: 455.9s  LR: 3.96e-04
+         Test → PSNR: 30.69  SSIM: 0.8555  SAM: 0.2828
+                FreqAmpErr: 35.04616  LowFreqErr: 1618.20281  HighFreqErr: 22.65398
+  ★ 新最优: PSNR=30.69  SSIM=0.8555  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 021] Loss: 0.028705  Time: 452.7s  LR: 3.96e-04
+         Test → PSNR: 30.61  SSIM: 0.8524  SAM: 0.2909
+                FreqAmpErr: 37.08912  LowFreqErr: 1743.84964  HighFreqErr: 23.72942
+[Epoch 022] Loss: 0.028082  Time: 449.9s  LR: 3.95e-04
+         Test → PSNR: 30.68  SSIM: 0.8489  SAM: 0.2958
+                FreqAmpErr: 35.20480  LowFreqErr: 1683.28029  HighFreqErr: 22.30446
+[Epoch 023] Loss: 0.027788  Time: 449.1s  LR: 3.95e-04
+         Test → PSNR: 30.77  SSIM: 0.8599  SAM: 0.2491
+                FreqAmpErr: 33.79546  LowFreqErr: 1549.29558  HighFreqErr: 21.93285
+  ★ 新最优: PSNR=30.77  SSIM=0.8599  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 024] Loss: 0.027226  Time: 449.3s  LR: 3.94e-04
+         Test → PSNR: 30.92  SSIM: 0.8599  SAM: 0.2712
+                FreqAmpErr: 34.37335  LowFreqErr: 1585.96467  HighFreqErr: 22.22824
+  ★ 新最优: PSNR=30.92  SSIM=0.8599  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 025] Loss: 0.027235  Time: 449.0s  LR: 3.94e-04
+         Test → PSNR: 30.93  SSIM: 0.8590  SAM: 0.2942
+                FreqAmpErr: 34.07406  LowFreqErr: 1688.45455  HighFreqErr: 21.12436
+  ★ 新最优: PSNR=30.93  SSIM=0.8590  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 026] Loss: 0.026922  Time: 449.6s  LR: 3.93e-04
+         Test → PSNR: 31.19  SSIM: 0.8657  SAM: 0.2795
+                FreqAmpErr: 31.51233  LowFreqErr: 1375.31123  HighFreqErr: 20.99372
+  ★ 新最优: PSNR=31.19  SSIM=0.8657  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 027] Loss: 0.026301  Time: 449.6s  LR: 3.93e-04
+         Test → PSNR: 31.22  SSIM: 0.8716  SAM: 0.2513
+                FreqAmpErr: 30.33558  LowFreqErr: 1330.22504  HighFreqErr: 20.16067
+  ★ 新最优: PSNR=31.22  SSIM=0.8716  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 028] Loss: 0.026516  Time: 449.8s  LR: 3.92e-04
+         Test → PSNR: 31.01  SSIM: 0.8708  SAM: 0.2130
+                FreqAmpErr: 33.16116  LowFreqErr: 1572.55043  HighFreqErr: 21.11156
+[Epoch 029] Loss: 0.026029  Time: 449.9s  LR: 3.91e-04
+         Test → PSNR: 31.30  SSIM: 0.8776  SAM: 0.2256
+                FreqAmpErr: 29.95434  LowFreqErr: 1295.45699  HighFreqErr: 20.04859
+  ★ 新最优: PSNR=31.30  SSIM=0.8776  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 030] Loss: 0.025769  Time: 449.4s  LR: 3.91e-04
+         Test → PSNR: 31.39  SSIM: 0.8772  SAM: 0.2236
+                FreqAmpErr: 30.25820  LowFreqErr: 1308.43532  HighFreqErr: 20.25325
+  ★ 新最优: PSNR=31.39  SSIM=0.8772  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 031] Loss: 0.025739  Time: 449.3s  LR: 3.90e-04
+         Test → PSNR: 31.46  SSIM: 0.8770  SAM: 0.2575
+                FreqAmpErr: 28.75867  LowFreqErr: 1290.79512  HighFreqErr: 18.88006
+  ★ 新最优: PSNR=31.46  SSIM=0.8770  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 032] Loss: 0.025455  Time: 448.9s  LR: 3.90e-04
+         Test → PSNR: 31.45  SSIM: 0.8799  SAM: 0.2348
+                FreqAmpErr: 29.56997  LowFreqErr: 1353.32672  HighFreqErr: 19.20824
+[Epoch 033] Loss: 0.025078  Time: 449.0s  LR: 3.89e-04
+         Test → PSNR: 31.59  SSIM: 0.8826  SAM: 0.2422
+                FreqAmpErr: 28.13978  LowFreqErr: 1242.07950  HighFreqErr: 18.63764
+  ★ 新最优: PSNR=31.59  SSIM=0.8826  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 034] Loss: 0.025254  Time: 449.1s  LR: 3.88e-04
+         Test → PSNR: 31.53  SSIM: 0.8743  SAM: 0.2809
+                FreqAmpErr: 29.30463  LowFreqErr: 1330.83828  HighFreqErr: 19.11685
+[Epoch 035] Loss: 0.024603  Time: 449.0s  LR: 3.87e-04
+         Test → PSNR: 31.64  SSIM: 0.8837  SAM: 0.2300
+                FreqAmpErr: 28.43865  LowFreqErr: 1276.56824  HighFreqErr: 18.66889
+  ★ 新最优: PSNR=31.64  SSIM=0.8837  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 036] Loss: 0.024543  Time: 448.4s  LR: 3.87e-04
+         Test → PSNR: 31.55  SSIM: 0.8772  SAM: 0.2193
+                FreqAmpErr: 28.96002  LowFreqErr: 1404.69852  HighFreqErr: 18.19140
+[Epoch 037] Loss: 0.024059  Time: 449.4s  LR: 3.86e-04
+         Test → PSNR: 31.54  SSIM: 0.8851  SAM: 0.2089
+                FreqAmpErr: 28.41770  LowFreqErr: 1348.04869  HighFreqErr: 18.08827
+[Epoch 038] Loss: 0.024536  Time: 449.4s  LR: 3.85e-04
+         Test → PSNR: 31.53  SSIM: 0.8863  SAM: 0.2129
+                FreqAmpErr: 28.57416  LowFreqErr: 1425.72844  HighFreqErr: 17.63791
+[Epoch 039] Loss: 0.024115  Time: 450.1s  LR: 3.84e-04
+         Test → PSNR: 31.58  SSIM: 0.8816  SAM: 0.2549
+                FreqAmpErr: 27.74334  LowFreqErr: 1388.04644  HighFreqErr: 17.09554
+[Epoch 040] Loss: 0.024142  Time: 449.2s  LR: 3.84e-04
+         Test → PSNR: 31.28  SSIM: 0.8400  SAM: 0.3974
+                FreqAmpErr: 32.63407  LowFreqErr: 1970.45997  HighFreqErr: 17.46570
+[Epoch 041] Loss: 0.023800  Time: 448.0s  LR: 3.83e-04
+         Test → PSNR: 31.91  SSIM: 0.8903  SAM: 0.2260
+                FreqAmpErr: 26.10253  LowFreqErr: 1176.50984  HighFreqErr: 17.09770
+  ★ 新最优: PSNR=31.91  SSIM=0.8903  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 042] Loss: 0.023411  Time: 448.9s  LR: 3.82e-04
+         Test → PSNR: 31.94  SSIM: 0.8911  SAM: 0.2269
+                FreqAmpErr: 26.01252  LowFreqErr: 1188.11953  HighFreqErr: 16.91611
+  ★ 新最优: PSNR=31.94  SSIM=0.8911  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 043] Loss: 0.023358  Time: 449.3s  LR: 3.81e-04
+         Test → PSNR: 32.04  SSIM: 0.8895  SAM: 0.2355
+                FreqAmpErr: 25.60209  LowFreqErr: 1132.91268  HighFreqErr: 16.93460
+  ★ 新最优: PSNR=32.04  SSIM=0.8895  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 044] Loss: 0.023765  Time: 449.5s  LR: 3.80e-04
+         Test → PSNR: 32.09  SSIM: 0.8936  SAM: 0.2201
+                FreqAmpErr: 24.55665  LowFreqErr: 1095.97287  HighFreqErr: 16.17012
+  ★ 新最优: PSNR=32.09  SSIM=0.8936  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 045] Loss: 0.023069  Time: 448.5s  LR: 3.79e-04
+         Test → PSNR: 31.98  SSIM: 0.8909  SAM: 0.2339
+                FreqAmpErr: 26.00035  LowFreqErr: 1283.57598  HighFreqErr: 16.15665
+[Epoch 046] Loss: 0.022909  Time: 449.0s  LR: 3.78e-04
+         Test → PSNR: 32.15  SSIM: 0.8901  SAM: 0.2583
+                FreqAmpErr: 24.59407  LowFreqErr: 1137.21235  HighFreqErr: 15.88503
+  ★ 新最优: PSNR=32.15  SSIM=0.8901  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 047] Loss: 0.022957  Time: 450.0s  LR: 3.77e-04
+         Test → PSNR: 32.24  SSIM: 0.8958  SAM: 0.2293
+                FreqAmpErr: 24.11590  LowFreqErr: 1090.25875  HighFreqErr: 15.77065
+  ★ 新最优: PSNR=32.24  SSIM=0.8958  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 048] Loss: 0.022632  Time: 450.4s  LR: 3.76e-04
+         Test → PSNR: 32.08  SSIM: 0.8885  SAM: 0.2684
+                FreqAmpErr: 25.52049  LowFreqErr: 1216.31691  HighFreqErr: 16.19951
+[Epoch 049] Loss: 0.023185  Time: 449.3s  LR: 3.75e-04
+         Test → PSNR: 32.23  SSIM: 0.8956  SAM: 0.2321
+                FreqAmpErr: 24.85325  LowFreqErr: 1163.13297  HighFreqErr: 15.94334
+[Epoch 050] Loss: 0.022373  Time: 449.5s  LR: 3.74e-04
+         Test → PSNR: 32.29  SSIM: 0.8998  SAM: 0.2061
+                FreqAmpErr: 23.52966  LowFreqErr: 1056.90877  HighFreqErr: 15.44087
+  ★ 新最优: PSNR=32.29  SSIM=0.8998  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 050] 当前时间: 5.4.10:39  预计结束: 5.5.18:01
+[Epoch 051] Loss: 0.022374  Time: 449.7s  LR: 3.73e-04
+         Test → PSNR: 32.36  SSIM: 0.9013  SAM: 0.2041
+                FreqAmpErr: 23.97199  LowFreqErr: 1062.23395  HighFreqErr: 15.84497
+  ★ 新最优: PSNR=32.36  SSIM=0.9013  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 052] Loss: 0.022244  Time: 448.9s  LR: 3.72e-04
+         Test → PSNR: 32.10  SSIM: 0.8833  SAM: 0.2723
+                FreqAmpErr: 24.33916  LowFreqErr: 1242.89601  HighFreqErr: 14.80089
+[Epoch 053] Loss: 0.022198  Time: 449.2s  LR: 3.71e-04
+         Test → PSNR: 32.34  SSIM: 0.9005  SAM: 0.2125
+                FreqAmpErr: 24.03046  LowFreqErr: 1193.56390  HighFreqErr: 14.87592
+[Epoch 054] Loss: 0.021866  Time: 448.3s  LR: 3.70e-04
+         Test → PSNR: 32.25  SSIM: 0.8924  SAM: 0.2522
+                FreqAmpErr: 24.19025  LowFreqErr: 1168.87051  HighFreqErr: 15.23024
+[Epoch 055] Loss: 0.021858  Time: 448.9s  LR: 3.69e-04
+         Test → PSNR: 32.41  SSIM: 0.9031  SAM: 0.2040
+                FreqAmpErr: 23.72364  LowFreqErr: 1108.72248  HighFreqErr: 15.23079
+  ★ 新最优: PSNR=32.41  SSIM=0.9031  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 056] Loss: 0.021717  Time: 450.6s  LR: 3.68e-04
+         Test → PSNR: 32.38  SSIM: 0.9028  SAM: 0.2077
+                FreqAmpErr: 24.17865  LowFreqErr: 1177.90865  HighFreqErr: 15.14781
+[Epoch 057] Loss: 0.021621  Time: 448.8s  LR: 3.67e-04
+         Test → PSNR: 32.23  SSIM: 0.9029  SAM: 0.2050
+                FreqAmpErr: 23.65489  LowFreqErr: 1190.83953  HighFreqErr: 14.51873
+[Epoch 058] Loss: 0.021832  Time: 449.4s  LR: 3.66e-04
+         Test → PSNR: 32.36  SSIM: 0.9008  SAM: 0.1905
+                FreqAmpErr: 23.33538  LowFreqErr: 1189.97251  HighFreqErr: 14.20351
+[Epoch 059] Loss: 0.021850  Time: 449.5s  LR: 3.64e-04
+         Test → PSNR: 32.14  SSIM: 0.8762  SAM: 0.3058
+                FreqAmpErr: 24.96230  LowFreqErr: 1387.97652  HighFreqErr: 14.29328
+[Epoch 060] Loss: 0.021336  Time: 449.4s  LR: 3.63e-04
+         Test → PSNR: 32.57  SSIM: 0.9069  SAM: 0.2062
+                FreqAmpErr: 22.92777  LowFreqErr: 1074.52732  HighFreqErr: 14.69635
+  ★ 新最优: PSNR=32.57  SSIM=0.9069  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 061] Loss: 0.021467  Time: 449.2s  LR: 3.62e-04
+         Test → PSNR: 32.46  SSIM: 0.9048  SAM: 0.2157
+                FreqAmpErr: 23.50554  LowFreqErr: 1175.36597  HighFreqErr: 14.48933
+[Epoch 062] Loss: 0.021471  Time: 448.7s  LR: 3.61e-04
+         Test → PSNR: 32.57  SSIM: 0.9018  SAM: 0.2405
+                FreqAmpErr: 22.34663  LowFreqErr: 1081.45079  HighFreqErr: 14.05648
+[Epoch 063] Loss: 0.020899  Time: 448.7s  LR: 3.59e-04
+         Test → PSNR: 32.64  SSIM: 0.9090  SAM: 0.1955
+                FreqAmpErr: 22.67894  LowFreqErr: 1036.37779  HighFreqErr: 14.74419
+  ★ 新最优: PSNR=32.64  SSIM=0.9090  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 064] Loss: 0.021013  Time: 448.7s  LR: 3.58e-04
+         Test → PSNR: 32.55  SSIM: 0.9068  SAM: 0.1869
+                FreqAmpErr: 23.66602  LowFreqErr: 1170.60168  HighFreqErr: 14.68836
+[Epoch 065] Loss: 0.021154  Time: 450.0s  LR: 3.57e-04
+         Test → PSNR: 32.64  SSIM: 0.9077  SAM: 0.2069
+                FreqAmpErr: 22.37856  LowFreqErr: 1087.85999  HighFreqErr: 14.03849
+  ★ 新最优: PSNR=32.64  SSIM=0.9077  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 066] Loss: 0.021025  Time: 449.3s  LR: 3.56e-04
+         Test → PSNR: 32.67  SSIM: 0.9083  SAM: 0.1861
+                FreqAmpErr: 22.49303  LowFreqErr: 1101.82040  HighFreqErr: 14.04458
+  ★ 新最优: PSNR=32.67  SSIM=0.9083  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 067] Loss: 0.020484  Time: 449.3s  LR: 3.54e-04
+         Test → PSNR: 32.35  SSIM: 0.9012  SAM: 0.2301
+                FreqAmpErr: 24.07899  LowFreqErr: 1354.97427  HighFreqErr: 13.66138
+[Epoch 068] Loss: 0.021029  Time: 449.8s  LR: 3.53e-04
+         Test → PSNR: 32.52  SSIM: 0.9034  SAM: 0.1856
+                FreqAmpErr: 22.70118  LowFreqErr: 1209.51102  HighFreqErr: 13.41140
+[Epoch 069] Loss: 0.020709  Time: 449.7s  LR: 3.52e-04
+         Test → PSNR: 32.88  SSIM: 0.9133  SAM: 0.1751
+                FreqAmpErr: 21.49919  LowFreqErr: 991.73736  HighFreqErr: 13.90463
+  ★ 新最优: PSNR=32.88  SSIM=0.9133  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 070] Loss: 0.020809  Time: 448.9s  LR: 3.50e-04
+         Test → PSNR: 32.86  SSIM: 0.9121  SAM: 0.1999
+                FreqAmpErr: 21.05197  LowFreqErr: 991.73482  HighFreqErr: 13.45393
+[Epoch 071] Loss: 0.020383  Time: 449.0s  LR: 3.49e-04
+         Test → PSNR: 32.75  SSIM: 0.9112  SAM: 0.1948
+                FreqAmpErr: 22.30920  LowFreqErr: 1085.05510  HighFreqErr: 13.99053
+[Epoch 072] Loss: 0.020267  Time: 448.8s  LR: 3.47e-04
+         Test → PSNR: 32.85  SSIM: 0.9132  SAM: 0.1919
+                FreqAmpErr: 21.13894  LowFreqErr: 1022.88117  HighFreqErr: 13.29778
+[Epoch 073] Loss: 0.020169  Time: 450.2s  LR: 3.46e-04
+         Test → PSNR: 32.89  SSIM: 0.9142  SAM: 0.1940
+                FreqAmpErr: 21.20464  LowFreqErr: 1012.36344  HighFreqErr: 13.44632
+  ★ 新最优: PSNR=32.89  SSIM=0.9142  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 074] Loss: 0.020121  Time: 449.3s  LR: 3.44e-04
+         Test → PSNR: 32.98  SSIM: 0.9132  SAM: 0.1904
+                FreqAmpErr: 20.67954  LowFreqErr: 958.97279  HighFreqErr: 13.33503
+  ★ 新最优: PSNR=32.98  SSIM=0.9132  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 075] Loss: 0.020253  Time: 448.5s  LR: 3.43e-04
+         Test → PSNR: 32.80  SSIM: 0.9109  SAM: 0.1726
+                FreqAmpErr: 21.65789  LowFreqErr: 1058.65871  HighFreqErr: 13.54075
+[Epoch 076] Loss: 0.019985  Time: 450.1s  LR: 3.42e-04
+         Test → PSNR: 32.80  SSIM: 0.9061  SAM: 0.2268
+                FreqAmpErr: 21.91868  LowFreqErr: 1076.55874  HighFreqErr: 13.66347
+[Epoch 077] Loss: 0.020196  Time: 450.1s  LR: 3.40e-04
+         Test → PSNR: 32.65  SSIM: 0.9072  SAM: 0.2105
+                FreqAmpErr: 22.04145  LowFreqErr: 1177.62192  HighFreqErr: 12.99613
+[Epoch 078] Loss: 0.019844  Time: 449.3s  LR: 3.39e-04
+         Test → PSNR: 32.93  SSIM: 0.9117  SAM: 0.2036
+                FreqAmpErr: 21.43815  LowFreqErr: 1008.72882  HighFreqErr: 13.71011
+[Epoch 079] Loss: 0.020179  Time: 449.3s  LR: 3.37e-04
+         Test → PSNR: 32.94  SSIM: 0.9169  SAM: 0.1896
+                FreqAmpErr: 21.40474  LowFreqErr: 1042.37850  HighFreqErr: 13.41305
+[Epoch 080] Loss: 0.019701  Time: 448.7s  LR: 3.36e-04
+         Test → PSNR: 32.83  SSIM: 0.9130  SAM: 0.1836
+                FreqAmpErr: 22.38553  LowFreqErr: 1202.10276  HighFreqErr: 13.15127
+[Epoch 081] Loss: 0.020009  Time: 448.9s  LR: 3.34e-04
+         Test → PSNR: 33.10  SSIM: 0.9165  SAM: 0.1919
+                FreqAmpErr: 20.56631  LowFreqErr: 965.15987  HighFreqErr: 13.17249
+  ★ 新最优: PSNR=33.10  SSIM=0.9165  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 082] Loss: 0.019592  Time: 449.0s  LR: 3.32e-04
+         Test → PSNR: 33.06  SSIM: 0.9173  SAM: 0.1835
+                FreqAmpErr: 20.50930  LowFreqErr: 964.96248  HighFreqErr: 13.11657
+[Epoch 083] Loss: 0.019768  Time: 449.1s  LR: 3.31e-04
+         Test → PSNR: 32.97  SSIM: 0.9136  SAM: 0.1933
+                FreqAmpErr: 21.12546  LowFreqErr: 1044.44415  HighFreqErr: 13.11541
+[Epoch 084] Loss: 0.019587  Time: 449.8s  LR: 3.29e-04
+         Test → PSNR: 33.19  SSIM: 0.9170  SAM: 0.1667
+                FreqAmpErr: 19.95383  LowFreqErr: 933.39550  HighFreqErr: 12.80385
+  ★ 新最优: PSNR=33.19  SSIM=0.9170  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 085] Loss: 0.019643  Time: 449.0s  LR: 3.28e-04
+         Test → PSNR: 33.00  SSIM: 0.9161  SAM: 0.1976
+                FreqAmpErr: 21.14231  LowFreqErr: 1069.78672  HighFreqErr: 12.93403
+[Epoch 086] Loss: 0.019609  Time: 448.9s  LR: 3.26e-04
+         Test → PSNR: 33.18  SSIM: 0.9159  SAM: 0.1961
+                FreqAmpErr: 20.01248  LowFreqErr: 923.57971  HighFreqErr: 12.93979
+[Epoch 087] Loss: 0.019327  Time: 448.8s  LR: 3.24e-04
+         Test → PSNR: 32.99  SSIM: 0.9160  SAM: 0.1849
+                FreqAmpErr: 21.03271  LowFreqErr: 1070.58504  HighFreqErr: 12.81732
+[Epoch 088] Loss: 0.019606  Time: 448.8s  LR: 3.23e-04
+         Test → PSNR: 33.28  SSIM: 0.9197  SAM: 0.1894
+                FreqAmpErr: 19.25837  LowFreqErr: 901.54101  HighFreqErr: 12.35229
+  ★ 新最优: PSNR=33.28  SSIM=0.9197  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 089] Loss: 0.019240  Time: 449.8s  LR: 3.21e-04
+         Test → PSNR: 33.22  SSIM: 0.9211  SAM: 0.1718
+                FreqAmpErr: 19.87112  LowFreqErr: 972.07936  HighFreqErr: 12.41769
+[Epoch 090] Loss: 0.019436  Time: 449.4s  LR: 3.19e-04
+         Test → PSNR: 33.04  SSIM: 0.9160  SAM: 0.1979
+                FreqAmpErr: 21.34050  LowFreqErr: 1124.12057  HighFreqErr: 12.70847
+[Epoch 091] Loss: 0.019374  Time: 448.5s  LR: 3.18e-04
+         Test → PSNR: 33.15  SSIM: 0.9126  SAM: 0.2164
+                FreqAmpErr: 19.76861  LowFreqErr: 937.72433  HighFreqErr: 12.58329
+[Epoch 092] Loss: 0.019175  Time: 449.3s  LR: 3.16e-04
+         Test → PSNR: 33.24  SSIM: 0.9202  SAM: 0.1906
+                FreqAmpErr: 19.76620  LowFreqErr: 951.68811  HighFreqErr: 12.47156
+[Epoch 093] Loss: 0.019267  Time: 449.2s  LR: 3.14e-04
+         Test → PSNR: 33.24  SSIM: 0.9187  SAM: 0.1774
+                FreqAmpErr: 20.03172  LowFreqErr: 986.72272  HighFreqErr: 12.46493
+[Epoch 094] Loss: 0.019285  Time: 449.9s  LR: 3.13e-04
+         Test → PSNR: 33.24  SSIM: 0.9176  SAM: 0.1822
+                FreqAmpErr: 19.85528  LowFreqErr: 969.21339  HighFreqErr: 12.42416
+[Epoch 095] Loss: 0.019089  Time: 448.7s  LR: 3.11e-04
+         Test → PSNR: 33.27  SSIM: 0.9200  SAM: 0.1708
+                FreqAmpErr: 19.81263  LowFreqErr: 951.16166  HighFreqErr: 12.52248
+[Epoch 096] Loss: 0.018967  Time: 449.4s  LR: 3.09e-04
+         Test → PSNR: 33.34  SSIM: 0.9218  SAM: 0.1765
+                FreqAmpErr: 19.87252  LowFreqErr: 947.78853  HighFreqErr: 12.60924
+  ★ 新最优: PSNR=33.34  SSIM=0.9218  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 097] Loss: 0.019044  Time: 448.9s  LR: 3.07e-04
+         Test → PSNR: 33.29  SSIM: 0.9215  SAM: 0.1763
+                FreqAmpErr: 19.55567  LowFreqErr: 963.88086  HighFreqErr: 12.16395
+[Epoch 098] Loss: 0.018896  Time: 449.1s  LR: 3.06e-04
+         Test → PSNR: 33.11  SSIM: 0.9122  SAM: 0.1805
+                FreqAmpErr: 21.83719  LowFreqErr: 1104.92062  HighFreqErr: 13.35934
+[Epoch 099] Loss: 0.018860  Time: 448.3s  LR: 3.04e-04
+         Test → PSNR: 33.37  SSIM: 0.9232  SAM: 0.1801
+                FreqAmpErr: 19.42455  LowFreqErr: 931.77133  HighFreqErr: 12.28313
+  ★ 新最优: PSNR=33.37  SSIM=0.9232  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 100] Loss: 0.018883  Time: 448.1s  LR: 3.02e-04
+         Test → PSNR: 33.14  SSIM: 0.9149  SAM: 0.2032
+                FreqAmpErr: 20.27969  LowFreqErr: 1074.39600  HighFreqErr: 12.02857
+[Epoch 100] 当前时间: 5.4.16:53  预计结束: 5.5.17:55
+[Epoch 101] Loss: 0.018907  Time: 448.4s  LR: 3.00e-04
+         Test → PSNR: 33.44  SSIM: 0.9244  SAM: 0.1719
+                FreqAmpErr: 18.79790  LowFreqErr: 898.93287  HighFreqErr: 11.90863
+  ★ 新最优: PSNR=33.44  SSIM=0.9244  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 102] Loss: 0.018708  Time: 448.7s  LR: 2.98e-04
+         Test → PSNR: 33.22  SSIM: 0.9194  SAM: 0.1910
+                FreqAmpErr: 20.28563  LowFreqErr: 1056.76260  HighFreqErr: 12.17259
+[Epoch 103] Loss: 0.018479  Time: 448.4s  LR: 2.97e-04
+         Test → PSNR: 33.15  SSIM: 0.9180  SAM: 0.1935
+                FreqAmpErr: 20.01153  LowFreqErr: 1043.57450  HighFreqErr: 11.99957
+[Epoch 104] Loss: 0.018828  Time: 448.7s  LR: 2.95e-04
+         Test → PSNR: 33.24  SSIM: 0.9207  SAM: 0.1867
+                FreqAmpErr: 19.26024  LowFreqErr: 1004.12542  HighFreqErr: 11.55119
+[Epoch 105] Loss: 0.018697  Time: 449.0s  LR: 2.93e-04
+         Test → PSNR: 33.42  SSIM: 0.9233  SAM: 0.1781
+                FreqAmpErr: 19.00101  LowFreqErr: 928.96320  HighFreqErr: 11.87826
+[Epoch 106] Loss: 0.018543  Time: 448.3s  LR: 2.91e-04
+         Test → PSNR: 33.18  SSIM: 0.9178  SAM: 0.2043
+                FreqAmpErr: 20.14462  LowFreqErr: 1136.33193  HighFreqErr: 11.40764
+[Epoch 107] Loss: 0.018742  Time: 450.0s  LR: 2.89e-04
+         Test → PSNR: 33.27  SSIM: 0.9185  SAM: 0.1926
+                FreqAmpErr: 19.34060  LowFreqErr: 977.57218  HighFreqErr: 11.84002
+[Epoch 108] Loss: 0.018599  Time: 451.2s  LR: 2.87e-04
+         Test → PSNR: 33.49  SSIM: 0.9256  SAM: 0.1608
+                FreqAmpErr: 18.76853  LowFreqErr: 901.93719  HighFreqErr: 11.85551
+  ★ 新最优: PSNR=33.49  SSIM=0.9256  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 109] Loss: 0.018341  Time: 449.0s  LR: 2.85e-04
+         Test → PSNR: 33.50  SSIM: 0.9251  SAM: 0.1689
+                FreqAmpErr: 18.71817  LowFreqErr: 932.35403  HighFreqErr: 11.56667
+  ★ 新最优: PSNR=33.50  SSIM=0.9251  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 110] Loss: 0.018791  Time: 451.1s  LR: 2.84e-04
+         Test → PSNR: 33.49  SSIM: 0.9242  SAM: 0.1754
+                FreqAmpErr: 18.73991  LowFreqErr: 874.79760  HighFreqErr: 12.03911
+[Epoch 111] Loss: 0.018280  Time: 448.6s  LR: 2.82e-04
+         Test → PSNR: 33.50  SSIM: 0.9246  SAM: 0.1755
+                FreqAmpErr: 18.71187  LowFreqErr: 934.53023  HighFreqErr: 11.54328
+[Epoch 112] Loss: 0.018194  Time: 451.3s  LR: 2.80e-04
+         Test → PSNR: 33.53  SSIM: 0.9253  SAM: 0.1664
+                FreqAmpErr: 18.26170  LowFreqErr: 861.71875  HighFreqErr: 11.65952
+  ★ 新最优: PSNR=33.53  SSIM=0.9253  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 113] Loss: 0.018429  Time: 451.1s  LR: 2.78e-04
+         Test → PSNR: 33.55  SSIM: 0.9261  SAM: 0.1751
+                FreqAmpErr: 18.69419  LowFreqErr: 935.72475  HighFreqErr: 11.51612
+  ★ 新最优: PSNR=33.55  SSIM=0.9261  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 114] Loss: 0.018192  Time: 453.0s  LR: 2.76e-04
+         Test → PSNR: 33.53  SSIM: 0.9270  SAM: 0.1707
+                FreqAmpErr: 18.59338  LowFreqErr: 895.20544  HighFreqErr: 11.73168
+[Epoch 115] Loss: 0.018085  Time: 449.3s  LR: 2.74e-04
+         Test → PSNR: 33.54  SSIM: 0.9243  SAM: 0.1655
+                FreqAmpErr: 19.25143  LowFreqErr: 913.37420  HighFreqErr: 12.25267
+[Epoch 116] Loss: 0.018449  Time: 449.9s  LR: 2.72e-04
+         Test → PSNR: 33.51  SSIM: 0.9237  SAM: 0.1779
+                FreqAmpErr: 19.21085  LowFreqErr: 947.66278  HighFreqErr: 11.94338
+[Epoch 117] Loss: 0.017903  Time: 450.5s  LR: 2.70e-04
+         Test → PSNR: 33.52  SSIM: 0.9227  SAM: 0.1928
+                FreqAmpErr: 18.17642  LowFreqErr: 929.17399  HighFreqErr: 11.04557
+[Epoch 118] Loss: 0.018055  Time: 451.6s  LR: 2.68e-04
+         Test → PSNR: 33.46  SSIM: 0.9254  SAM: 0.1722
+                FreqAmpErr: 18.99687  LowFreqErr: 973.51176  HighFreqErr: 11.52539
+[Epoch 119] Loss: 0.018225  Time: 449.9s  LR: 2.66e-04
+         Test → PSNR: 33.62  SSIM: 0.9267  SAM: 0.1781
+                FreqAmpErr: 17.76758  LowFreqErr: 863.80785  HighFreqErr: 11.14518
+  ★ 新最优: PSNR=33.62  SSIM=0.9267  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 120] Loss: 0.018160  Time: 451.4s  LR: 2.64e-04
+         Test → PSNR: 33.56  SSIM: 0.9237  SAM: 0.1708
+                FreqAmpErr: 18.79399  LowFreqErr: 912.01785  HighFreqErr: 11.80227
+[Epoch 121] Loss: 0.018202  Time: 449.2s  LR: 2.62e-04
+         Test → PSNR: 33.60  SSIM: 0.9241  SAM: 0.1834
+                FreqAmpErr: 18.68785  LowFreqErr: 910.44605  HighFreqErr: 11.70759
+[Epoch 122] Loss: 0.017995  Time: 449.9s  LR: 2.60e-04
+         Test → PSNR: 33.75  SSIM: 0.9266  SAM: 0.1766
+                FreqAmpErr: 17.68155  LowFreqErr: 832.56302  HighFreqErr: 11.30305
+  ★ 新最优: PSNR=33.75  SSIM=0.9266  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 123] Loss: 0.017981  Time: 451.2s  LR: 2.58e-04
+         Test → PSNR: 33.66  SSIM: 0.9272  SAM: 0.1740
+                FreqAmpErr: 17.93717  LowFreqErr: 890.21687  HighFreqErr: 11.10939
+[Epoch 124] Loss: 0.017827  Time: 450.2s  LR: 2.56e-04
+         Test → PSNR: 33.67  SSIM: 0.9267  SAM: 0.1780
+                FreqAmpErr: 18.43212  LowFreqErr: 857.91764  HighFreqErr: 11.86103
+[Epoch 125] Loss: 0.017915  Time: 451.0s  LR: 2.54e-04
+         Test → PSNR: 33.65  SSIM: 0.9249  SAM: 0.1873
+                FreqAmpErr: 17.78802  LowFreqErr: 880.01179  HighFreqErr: 11.03895
+[Epoch 126] Loss: 0.017862  Time: 451.6s  LR: 2.52e-04
+         Test → PSNR: 33.67  SSIM: 0.9280  SAM: 0.1606
+                FreqAmpErr: 17.75215  LowFreqErr: 865.61207  HighFreqErr: 11.11552
+[Epoch 127] Loss: 0.017964  Time: 450.3s  LR: 2.50e-04
+         Test → PSNR: 33.65  SSIM: 0.9245  SAM: 0.1795
+                FreqAmpErr: 17.99235  LowFreqErr: 881.13484  HighFreqErr: 11.23608
+[Epoch 128] Loss: 0.017867  Time: 450.0s  LR: 2.48e-04
+         Test → PSNR: 33.77  SSIM: 0.9281  SAM: 0.1691
+                FreqAmpErr: 17.67154  LowFreqErr: 854.54032  HighFreqErr: 11.12093
+  ★ 新最优: PSNR=33.77  SSIM=0.9281  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 129] Loss: 0.017774  Time: 449.9s  LR: 2.46e-04
+         Test → PSNR: 33.40  SSIM: 0.9236  SAM: 0.1739
+                FreqAmpErr: 20.53065  LowFreqErr: 1173.62824  HighFreqErr: 11.50476
+[Epoch 130] Loss: 0.017824  Time: 449.2s  LR: 2.44e-04
+         Test → PSNR: 33.64  SSIM: 0.9267  SAM: 0.1738
+                FreqAmpErr: 17.67424  LowFreqErr: 868.22827  HighFreqErr: 11.01651
+[Epoch 131] Loss: 0.017847  Time: 450.9s  LR: 2.42e-04
+         Test → PSNR: 33.74  SSIM: 0.9286  SAM: 0.1719
+                FreqAmpErr: 17.66837  LowFreqErr: 835.83966  HighFreqErr: 11.26412
+[Epoch 132] Loss: 0.017775  Time: 451.0s  LR: 2.40e-04
+         Test → PSNR: 33.54  SSIM: 0.9214  SAM: 0.2036
+                FreqAmpErr: 18.95494  LowFreqErr: 996.31467  HighFreqErr: 11.30464
+[Epoch 133] Loss: 0.017609  Time: 453.4s  LR: 2.38e-04
+         Test → PSNR: 33.70  SSIM: 0.9264  SAM: 0.1769
+                FreqAmpErr: 17.83368  LowFreqErr: 920.12189  HighFreqErr: 10.77100
+[Epoch 134] Loss: 0.017607  Time: 450.6s  LR: 2.36e-04
+         Test → PSNR: 33.72  SSIM: 0.9268  SAM: 0.1814
+                FreqAmpErr: 17.61635  LowFreqErr: 867.05270  HighFreqErr: 10.96738
+[Epoch 135] Loss: 0.017503  Time: 450.9s  LR: 2.34e-04
+         Test → PSNR: 33.75  SSIM: 0.9262  SAM: 0.1655
+                FreqAmpErr: 17.85210  LowFreqErr: 874.14837  HighFreqErr: 11.14942
+[Epoch 136] Loss: 0.017497  Time: 449.0s  LR: 2.32e-04
+         Test → PSNR: 33.69  SSIM: 0.9292  SAM: 0.1616
+                FreqAmpErr: 17.89124  LowFreqErr: 900.65506  HighFreqErr: 10.98139
+[Epoch 137] Loss: 0.017432  Time: 449.4s  LR: 2.30e-04
+         Test → PSNR: 33.80  SSIM: 0.9298  SAM: 0.1610
+                FreqAmpErr: 17.23965  LowFreqErr: 838.42705  HighFreqErr: 10.81179
+  ★ 新最优: PSNR=33.80  SSIM=0.9298  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 138] Loss: 0.017485  Time: 451.1s  LR: 2.28e-04
+         Test → PSNR: 33.76  SSIM: 0.9287  SAM: 0.1739
+                FreqAmpErr: 17.93452  LowFreqErr: 880.75930  HighFreqErr: 11.18074
+[Epoch 139] Loss: 0.017477  Time: 452.1s  LR: 2.26e-04
+         Test → PSNR: 33.84  SSIM: 0.9293  SAM: 0.1633
+                FreqAmpErr: 17.48943  LowFreqErr: 865.13874  HighFreqErr: 10.85444
+  ★ 新最优: PSNR=33.84  SSIM=0.9293  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 140] Loss: 0.017537  Time: 450.9s  LR: 2.23e-04
+         Test → PSNR: 33.85  SSIM: 0.9289  SAM: 0.1751
+                FreqAmpErr: 17.08519  LowFreqErr: 817.82058  HighFreqErr: 10.81742
+  ★ 新最优: PSNR=33.85  SSIM=0.9289  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 141] Loss: 0.017449  Time: 450.4s  LR: 2.21e-04
+         Test → PSNR: 33.77  SSIM: 0.9285  SAM: 0.1636
+                FreqAmpErr: 17.62944  LowFreqErr: 864.90833  HighFreqErr: 10.99735
+[Epoch 142] Loss: 0.017265  Time: 451.2s  LR: 2.19e-04
+         Test → PSNR: 33.81  SSIM: 0.9297  SAM: 0.1635
+                FreqAmpErr: 17.53629  LowFreqErr: 853.76491  HighFreqErr: 10.99069
+[Epoch 143] Loss: 0.017527  Time: 451.3s  LR: 2.17e-04
+         Test → PSNR: 33.81  SSIM: 0.9303  SAM: 0.1627
+                FreqAmpErr: 17.75481  LowFreqErr: 888.43652  HighFreqErr: 10.93954
+[Epoch 144] Loss: 0.017660  Time: 449.3s  LR: 2.15e-04
+         Test → PSNR: 33.76  SSIM: 0.9284  SAM: 0.1461
+                FreqAmpErr: 17.71791  LowFreqErr: 878.79767  HighFreqErr: 10.97779
+[Epoch 145] Loss: 0.017409  Time: 451.7s  LR: 2.13e-04
+         Test → PSNR: 33.80  SSIM: 0.9310  SAM: 0.1650
+                FreqAmpErr: 17.58456  LowFreqErr: 870.47850  HighFreqErr: 10.90852
+[Epoch 146] Loss: 0.017385  Time: 449.9s  LR: 2.11e-04
+         Test → PSNR: 33.90  SSIM: 0.9318  SAM: 0.1539
+                FreqAmpErr: 17.17921  LowFreqErr: 814.47386  HighFreqErr: 10.93837
+  ★ 新最优: PSNR=33.90  SSIM=0.9318  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 147] Loss: 0.017559  Time: 453.0s  LR: 2.09e-04
+         Test → PSNR: 33.77  SSIM: 0.9297  SAM: 0.1704
+                FreqAmpErr: 17.39275  LowFreqErr: 862.29030  HighFreqErr: 10.77929
+[Epoch 148] Loss: 0.017373  Time: 449.1s  LR: 2.07e-04
+         Test → PSNR: 33.84  SSIM: 0.9307  SAM: 0.1637
+                FreqAmpErr: 17.71696  LowFreqErr: 833.11348  HighFreqErr: 11.33442
+[Epoch 149] Loss: 0.017227  Time: 448.5s  LR: 2.05e-04
+         Test → PSNR: 33.82  SSIM: 0.9311  SAM: 0.1596
+                FreqAmpErr: 17.78070  LowFreqErr: 866.27348  HighFreqErr: 11.13911
+[Epoch 150] Loss: 0.017109  Time: 448.3s  LR: 2.03e-04
+         Test → PSNR: 33.86  SSIM: 0.9308  SAM: 0.1689
+                FreqAmpErr: 17.21024  LowFreqErr: 856.68985  HighFreqErr: 10.63919
+[Epoch 150] 当前时间: 5.4.23:09  预计结束: 5.5.17:55
+[Epoch 151] Loss: 0.017332  Time: 448.6s  LR: 2.00e-04
+         Test → PSNR: 33.70  SSIM: 0.9263  SAM: 0.1685
+                FreqAmpErr: 18.49611  LowFreqErr: 990.17692  HighFreqErr: 10.89026
+[Epoch 152] Loss: 0.016961  Time: 447.4s  LR: 1.98e-04
+         Test → PSNR: 33.94  SSIM: 0.9319  SAM: 0.1647
+                FreqAmpErr: 17.20671  LowFreqErr: 830.44832  HighFreqErr: 10.84105
+  ★ 新最优: PSNR=33.94  SSIM=0.9319  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 153] Loss: 0.017413  Time: 448.1s  LR: 1.96e-04
+         Test → PSNR: 33.77  SSIM: 0.9289  SAM: 0.1611
+                FreqAmpErr: 17.43343  LowFreqErr: 875.41431  HighFreqErr: 10.71756
+[Epoch 154] Loss: 0.017009  Time: 448.4s  LR: 1.94e-04
+         Test → PSNR: 33.96  SSIM: 0.9323  SAM: 0.1584
+                FreqAmpErr: 17.00568  LowFreqErr: 818.48229  HighFreqErr: 10.73210
+  ★ 新最优: PSNR=33.96  SSIM=0.9323  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 155] Loss: 0.017348  Time: 448.4s  LR: 1.92e-04
+         Test → PSNR: 33.94  SSIM: 0.9326  SAM: 0.1592
+                FreqAmpErr: 16.84577  LowFreqErr: 831.84186  HighFreqErr: 10.46638
+[Epoch 156] Loss: 0.017111  Time: 448.1s  LR: 1.90e-04
+         Test → PSNR: 33.93  SSIM: 0.9292  SAM: 0.1604
+                FreqAmpErr: 17.29319  LowFreqErr: 837.43224  HighFreqErr: 10.87354
+[Epoch 157] Loss: 0.017203  Time: 448.3s  LR: 1.88e-04
+         Test → PSNR: 33.81  SSIM: 0.9305  SAM: 0.1659
+                FreqAmpErr: 18.56976  LowFreqErr: 936.47500  HighFreqErr: 11.38484
+[Epoch 158] Loss: 0.016887  Time: 448.5s  LR: 1.86e-04
+         Test → PSNR: 33.95  SSIM: 0.9328  SAM: 0.1552
+                FreqAmpErr: 17.16822  LowFreqErr: 839.13241  HighFreqErr: 10.73428
+[Epoch 159] Loss: 0.016983  Time: 448.3s  LR: 1.84e-04
+         Test → PSNR: 33.94  SSIM: 0.9315  SAM: 0.1706
+                FreqAmpErr: 16.91806  LowFreqErr: 823.20217  HighFreqErr: 10.60686
+[Epoch 160] Loss: 0.017091  Time: 448.5s  LR: 1.82e-04
+         Test → PSNR: 33.84  SSIM: 0.9302  SAM: 0.1671
+                FreqAmpErr: 17.66616  LowFreqErr: 906.90588  HighFreqErr: 10.70562
+[Epoch 161] Loss: 0.016960  Time: 448.2s  LR: 1.80e-04
+         Test → PSNR: 33.72  SSIM: 0.9253  SAM: 0.1912
+                FreqAmpErr: 18.08794  LowFreqErr: 982.41026  HighFreqErr: 10.53969
+[Epoch 162] Loss: 0.017040  Time: 448.3s  LR: 1.78e-04
+         Test → PSNR: 33.87  SSIM: 0.9309  SAM: 0.1695
+                FreqAmpErr: 17.49401  LowFreqErr: 907.43897  HighFreqErr: 10.52795
+[Epoch 163] Loss: 0.016872  Time: 448.2s  LR: 1.75e-04
+         Test → PSNR: 33.89  SSIM: 0.9314  SAM: 0.1585
+                FreqAmpErr: 17.32860  LowFreqErr: 884.41188  HighFreqErr: 10.54149
+[Epoch 164] Loss: 0.017028  Time: 448.5s  LR: 1.73e-04
+         Test → PSNR: 34.00  SSIM: 0.9320  SAM: 0.1654
+                FreqAmpErr: 16.75621  LowFreqErr: 803.95553  HighFreqErr: 10.59439
+  ★ 新最优: PSNR=34.00  SSIM=0.9320  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 165] Loss: 0.017144  Time: 448.4s  LR: 1.71e-04
+         Test → PSNR: 34.01  SSIM: 0.9315  SAM: 0.1544
+                FreqAmpErr: 16.74660  LowFreqErr: 790.82383  HighFreqErr: 10.68750
+  ★ 新最优: PSNR=34.01  SSIM=0.9315  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 166] Loss: 0.016719  Time: 447.6s  LR: 1.69e-04
+         Test → PSNR: 33.93  SSIM: 0.9327  SAM: 0.1617
+                FreqAmpErr: 17.54686  LowFreqErr: 895.32528  HighFreqErr: 10.67603
+[Epoch 167] Loss: 0.016979  Time: 448.3s  LR: 1.67e-04
+         Test → PSNR: 33.98  SSIM: 0.9330  SAM: 0.1574
+                FreqAmpErr: 17.00137  LowFreqErr: 832.50005  HighFreqErr: 10.61804
+[Epoch 168] Loss: 0.016799  Time: 448.3s  LR: 1.65e-04
+         Test → PSNR: 33.93  SSIM: 0.9279  SAM: 0.1799
+                FreqAmpErr: 17.70633  LowFreqErr: 856.45240  HighFreqErr: 11.14103
+[Epoch 169] Loss: 0.016731  Time: 448.5s  LR: 1.63e-04
+         Test → PSNR: 34.02  SSIM: 0.9343  SAM: 0.1553
+                FreqAmpErr: 17.08843  LowFreqErr: 853.85556  HighFreqErr: 10.53862
+  ★ 新最优: PSNR=34.02  SSIM=0.9343  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 170] Loss: 0.016883  Time: 448.1s  LR: 1.61e-04
+         Test → PSNR: 34.03  SSIM: 0.9332  SAM: 0.1579
+                FreqAmpErr: 16.76086  LowFreqErr: 841.16861  HighFreqErr: 10.30780
+  ★ 新最优: PSNR=34.03  SSIM=0.9332  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 171] Loss: 0.016936  Time: 448.0s  LR: 1.59e-04
+         Test → PSNR: 33.99  SSIM: 0.9326  SAM: 0.1655
+                FreqAmpErr: 16.84907  LowFreqErr: 813.46831  HighFreqErr: 10.61351
+[Epoch 172] Loss: 0.016977  Time: 448.2s  LR: 1.57e-04
+         Test → PSNR: 34.07  SSIM: 0.9332  SAM: 0.1623
+                FreqAmpErr: 16.63949  LowFreqErr: 795.07318  HighFreqErr: 10.54628
+  ★ 新最优: PSNR=34.07  SSIM=0.9332  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 173] Loss: 0.016799  Time: 448.5s  LR: 1.55e-04
+         Test → PSNR: 33.91  SSIM: 0.9284  SAM: 0.1843
+                FreqAmpErr: 17.51609  LowFreqErr: 892.78171  HighFreqErr: 10.66493
+[Epoch 174] Loss: 0.016671  Time: 448.1s  LR: 1.53e-04
+         Test → PSNR: 34.07  SSIM: 0.9336  SAM: 0.1551
+                FreqAmpErr: 16.88113  LowFreqErr: 829.57368  HighFreqErr: 10.51976
+[Epoch 175] Loss: 0.016653  Time: 448.6s  LR: 1.51e-04
+         Test → PSNR: 34.08  SSIM: 0.9340  SAM: 0.1539
+                FreqAmpErr: 16.65944  LowFreqErr: 800.40077  HighFreqErr: 10.52469
+  ★ 新最优: PSNR=34.08  SSIM=0.9340  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 176] Loss: 0.016671  Time: 448.0s  LR: 1.49e-04
+         Test → PSNR: 34.03  SSIM: 0.9337  SAM: 0.1556
+                FreqAmpErr: 16.59615  LowFreqErr: 802.81303  HighFreqErr: 10.44203
+[Epoch 177] Loss: 0.016607  Time: 448.0s  LR: 1.47e-04
+         Test → PSNR: 34.04  SSIM: 0.9330  SAM: 0.1595
+                FreqAmpErr: 16.16298  LowFreqErr: 787.24426  HighFreqErr: 10.12733
+[Epoch 178] Loss: 0.016736  Time: 448.7s  LR: 1.45e-04
+         Test → PSNR: 34.07  SSIM: 0.9344  SAM: 0.1530
+                FreqAmpErr: 16.71886  LowFreqErr: 791.55614  HighFreqErr: 10.65381
+[Epoch 179] Loss: 0.016757  Time: 448.3s  LR: 1.43e-04
+         Test → PSNR: 34.10  SSIM: 0.9347  SAM: 0.1582
+                FreqAmpErr: 16.87569  LowFreqErr: 829.08206  HighFreqErr: 10.51813
+  ★ 新最优: PSNR=34.10  SSIM=0.9347  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 180] Loss: 0.016725  Time: 448.1s  LR: 1.41e-04
+         Test → PSNR: 34.05  SSIM: 0.9324  SAM: 0.1508
+                FreqAmpErr: 16.46715  LowFreqErr: 802.74061  HighFreqErr: 10.31258
+[Epoch 181] Loss: 0.016570  Time: 448.1s  LR: 1.39e-04
+         Test → PSNR: 34.05  SSIM: 0.9330  SAM: 0.1685
+                FreqAmpErr: 17.01319  LowFreqErr: 841.32080  HighFreqErr: 10.56090
+[Epoch 182] Loss: 0.016630  Time: 448.3s  LR: 1.37e-04
+         Test → PSNR: 33.97  SSIM: 0.9335  SAM: 0.1586
+                FreqAmpErr: 16.94753  LowFreqErr: 843.38959  HighFreqErr: 10.47854
+[Epoch 183] Loss: 0.016723  Time: 447.9s  LR: 1.35e-04
+         Test → PSNR: 34.09  SSIM: 0.9341  SAM: 0.1462
+                FreqAmpErr: 16.48127  LowFreqErr: 801.71039  HighFreqErr: 10.33487
+[Epoch 184] Loss: 0.016647  Time: 448.6s  LR: 1.33e-04
+         Test → PSNR: 34.06  SSIM: 0.9328  SAM: 0.1612
+                FreqAmpErr: 16.49506  LowFreqErr: 806.05612  HighFreqErr: 10.31475
+[Epoch 185] Loss: 0.016733  Time: 448.2s  LR: 1.31e-04
+         Test → PSNR: 34.06  SSIM: 0.9338  SAM: 0.1552
+                FreqAmpErr: 16.46529  LowFreqErr: 795.23979  HighFreqErr: 10.36941
+[Epoch 186] Loss: 0.016496  Time: 447.9s  LR: 1.29e-04
+         Test → PSNR: 34.16  SSIM: 0.9347  SAM: 0.1544
+                FreqAmpErr: 16.38527  LowFreqErr: 772.73618  HighFreqErr: 10.46492
+  ★ 新最优: PSNR=34.16  SSIM=0.9347  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 187] Loss: 0.016731  Time: 448.5s  LR: 1.27e-04
+         Test → PSNR: 34.08  SSIM: 0.9337  SAM: 0.1479
+                FreqAmpErr: 16.71076  LowFreqErr: 809.95015  HighFreqErr: 10.50166
+[Epoch 188] Loss: 0.016569  Time: 448.2s  LR: 1.25e-04
+         Test → PSNR: 34.08  SSIM: 0.9352  SAM: 0.1494
+                FreqAmpErr: 16.81376  LowFreqErr: 814.79651  HighFreqErr: 10.56753
+[Epoch 189] Loss: 0.016718  Time: 448.5s  LR: 1.23e-04
+         Test → PSNR: 34.11  SSIM: 0.9348  SAM: 0.1596
+                FreqAmpErr: 16.63310  LowFreqErr: 799.90229  HighFreqErr: 10.50205
+[Epoch 190] Loss: 0.016788  Time: 447.9s  LR: 1.21e-04
+         Test → PSNR: 34.17  SSIM: 0.9355  SAM: 0.1520
+                FreqAmpErr: 16.06007  LowFreqErr: 762.78761  HighFreqErr: 10.21505
+  ★ 新最优: PSNR=34.17  SSIM=0.9355  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 191] Loss: 0.016535  Time: 447.9s  LR: 1.19e-04
+         Test → PSNR: 34.13  SSIM: 0.9345  SAM: 0.1565
+                FreqAmpErr: 16.22880  LowFreqErr: 794.14262  HighFreqErr: 10.13967
+[Epoch 192] Loss: 0.016432  Time: 447.9s  LR: 1.17e-04
+         Test → PSNR: 34.10  SSIM: 0.9349  SAM: 0.1558
+                FreqAmpErr: 16.57117  LowFreqErr: 817.50016  HighFreqErr: 10.30188
+[Epoch 193] Loss: 0.016387  Time: 448.1s  LR: 1.16e-04
+         Test → PSNR: 33.54  SSIM: 0.9111  SAM: 0.2433
+                FreqAmpErr: 19.47367  LowFreqErr: 1138.03708  HighFreqErr: 10.71810
+[Epoch 194] Loss: 0.016381  Time: 448.3s  LR: 1.14e-04
+         Test → PSNR: 34.21  SSIM: 0.9363  SAM: 0.1547
+                FreqAmpErr: 16.30500  LowFreqErr: 792.35120  HighFreqErr: 10.23048
+  ★ 新最优: PSNR=34.21  SSIM=0.9363  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 195] Loss: 0.016425  Time: 448.2s  LR: 1.12e-04
+         Test → PSNR: 34.14  SSIM: 0.9340  SAM: 0.1487
+                FreqAmpErr: 16.45405  LowFreqErr: 811.38061  HighFreqErr: 10.23175
+[Epoch 196] Loss: 0.016465  Time: 448.2s  LR: 1.10e-04
+         Test → PSNR: 34.13  SSIM: 0.9359  SAM: 0.1499
+                FreqAmpErr: 16.45677  LowFreqErr: 800.37573  HighFreqErr: 10.32063
+[Epoch 197] Loss: 0.016262  Time: 448.1s  LR: 1.08e-04
+         Test → PSNR: 34.18  SSIM: 0.9362  SAM: 0.1462
+                FreqAmpErr: 16.26859  LowFreqErr: 780.25510  HighFreqErr: 10.28847
+[Epoch 198] Loss: 0.016490  Time: 448.1s  LR: 1.06e-04
+         Test → PSNR: 34.18  SSIM: 0.9353  SAM: 0.1533
+                FreqAmpErr: 16.29234  LowFreqErr: 790.07404  HighFreqErr: 10.23555
+[Epoch 199] Loss: 0.016369  Time: 448.2s  LR: 1.04e-04
+         Test → PSNR: 34.17  SSIM: 0.9360  SAM: 0.1531
+                FreqAmpErr: 16.44291  LowFreqErr: 797.02166  HighFreqErr: 10.33291
+[Epoch 200] Loss: 0.016282  Time: 447.9s  LR: 1.03e-04
+         Test → PSNR: 34.23  SSIM: 0.9362  SAM: 0.1453
+                FreqAmpErr: 15.94888  LowFreqErr: 746.35572  HighFreqErr: 10.23161
+  ★ 新最优: PSNR=34.23  SSIM=0.9362  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 200] 当前时间: 5.5.5:22  预计结束: 5.5.17:53
+[Epoch 201] Loss: 0.016373  Time: 448.5s  LR: 1.01e-04
+         Test → PSNR: 34.14  SSIM: 0.9342  SAM: 0.1564
+                FreqAmpErr: 16.42979  LowFreqErr: 811.50302  HighFreqErr: 10.20634
+[Epoch 202] Loss: 0.016237  Time: 448.2s  LR: 9.89e-05
+         Test → PSNR: 34.22  SSIM: 0.9367  SAM: 0.1517
+                FreqAmpErr: 16.33691  LowFreqErr: 789.14248  HighFreqErr: 10.28776
+[Epoch 203] Loss: 0.016322  Time: 448.5s  LR: 9.72e-05
+         Test → PSNR: 34.17  SSIM: 0.9361  SAM: 0.1508
+                FreqAmpErr: 16.38904  LowFreqErr: 810.01062  HighFreqErr: 10.17695
+[Epoch 204] Loss: 0.016312  Time: 447.7s  LR: 9.54e-05
+         Test → PSNR: 34.10  SSIM: 0.9339  SAM: 0.1655
+                FreqAmpErr: 16.63336  LowFreqErr: 815.13368  HighFreqErr: 10.38308
+[Epoch 205] Loss: 0.016253  Time: 448.3s  LR: 9.36e-05
+         Test → PSNR: 34.20  SSIM: 0.9357  SAM: 0.1517
+                FreqAmpErr: 16.09143  LowFreqErr: 757.86880  HighFreqErr: 10.28516
+[Epoch 206] Loss: 0.016448  Time: 448.6s  LR: 9.18e-05
+         Test → PSNR: 34.13  SSIM: 0.9355  SAM: 0.1506
+                FreqAmpErr: 16.48710  LowFreqErr: 816.25795  HighFreqErr: 10.22688
+[Epoch 207] Loss: 0.016123  Time: 448.3s  LR: 9.01e-05
+         Test → PSNR: 34.19  SSIM: 0.9344  SAM: 0.1613
+                FreqAmpErr: 16.02107  LowFreqErr: 764.43253  HighFreqErr: 10.16287
+[Epoch 208] Loss: 0.016038  Time: 448.2s  LR: 8.84e-05
+         Test → PSNR: 34.14  SSIM: 0.9353  SAM: 0.1574
+                FreqAmpErr: 16.35339  LowFreqErr: 795.32936  HighFreqErr: 10.25594
+[Epoch 209] Loss: 0.016169  Time: 448.8s  LR: 8.66e-05
+         Test → PSNR: 34.20  SSIM: 0.9350  SAM: 0.1463
+                FreqAmpErr: 16.30763  LowFreqErr: 783.93304  HighFreqErr: 10.29903
+[Epoch 210] Loss: 0.016069  Time: 448.1s  LR: 8.49e-05
+         Test → PSNR: 34.15  SSIM: 0.9355  SAM: 0.1450
+                FreqAmpErr: 16.41197  LowFreqErr: 809.88608  HighFreqErr: 10.20104
+[Epoch 211] Loss: 0.016209  Time: 448.4s  LR: 8.32e-05
+         Test → PSNR: 34.17  SSIM: 0.9347  SAM: 0.1661
+                FreqAmpErr: 16.54885  LowFreqErr: 807.97767  HighFreqErr: 10.35393
+[Epoch 212] Loss: 0.016190  Time: 448.2s  LR: 8.16e-05
+         Test → PSNR: 34.24  SSIM: 0.9374  SAM: 0.1468
+                FreqAmpErr: 15.91075  LowFreqErr: 757.76055  HighFreqErr: 10.10391
+  ★ 新最优: PSNR=34.24  SSIM=0.9374  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 213] Loss: 0.016165  Time: 448.3s  LR: 7.99e-05
+         Test → PSNR: 34.21  SSIM: 0.9367  SAM: 0.1521
+                FreqAmpErr: 16.30394  LowFreqErr: 783.95653  HighFreqErr: 10.29512
+[Epoch 214] Loss: 0.016220  Time: 447.8s  LR: 7.82e-05
+         Test → PSNR: 34.25  SSIM: 0.9373  SAM: 0.1475
+                FreqAmpErr: 15.86946  LowFreqErr: 754.83967  HighFreqErr: 10.08516
+  ★ 新最优: PSNR=34.25  SSIM=0.9373  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 215] Loss: 0.016206  Time: 447.9s  LR: 7.66e-05
+         Test → PSNR: 34.28  SSIM: 0.9374  SAM: 0.1509
+                FreqAmpErr: 15.95289  LowFreqErr: 753.64340  HighFreqErr: 10.17861
+  ★ 新最优: PSNR=34.28  SSIM=0.9374  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 216] Loss: 0.016082  Time: 448.1s  LR: 7.50e-05
+         Test → PSNR: 34.27  SSIM: 0.9369  SAM: 0.1540
+                FreqAmpErr: 15.93111  LowFreqErr: 761.65128  HighFreqErr: 10.09397
+[Epoch 217] Loss: 0.016123  Time: 447.6s  LR: 7.33e-05
+         Test → PSNR: 34.25  SSIM: 0.9365  SAM: 0.1512
+                FreqAmpErr: 16.06972  LowFreqErr: 766.89902  HighFreqErr: 10.19259
+[Epoch 218] Loss: 0.016129  Time: 448.4s  LR: 7.17e-05
+         Test → PSNR: 34.24  SSIM: 0.9373  SAM: 0.1480
+                FreqAmpErr: 16.14850  LowFreqErr: 781.55173  HighFreqErr: 10.15729
+[Epoch 219] Loss: 0.016346  Time: 447.9s  LR: 7.01e-05
+         Test → PSNR: 34.21  SSIM: 0.9366  SAM: 0.1534
+                FreqAmpErr: 16.38603  LowFreqErr: 805.27068  HighFreqErr: 10.21102
+[Epoch 220] Loss: 0.016068  Time: 448.5s  LR: 6.86e-05
+         Test → PSNR: 34.25  SSIM: 0.9367  SAM: 0.1486
+                FreqAmpErr: 16.13531  LowFreqErr: 768.35112  HighFreqErr: 10.24732
+[Epoch 221] Loss: 0.016179  Time: 448.0s  LR: 6.70e-05
+         Test → PSNR: 34.27  SSIM: 0.9377  SAM: 0.1470
+                FreqAmpErr: 16.01567  LowFreqErr: 776.22513  HighFreqErr: 10.06511
+[Epoch 222] Loss: 0.016195  Time: 447.7s  LR: 6.55e-05
+         Test → PSNR: 34.23  SSIM: 0.9371  SAM: 0.1478
+                FreqAmpErr: 15.97390  LowFreqErr: 769.94648  HighFreqErr: 10.07216
+[Epoch 223] Loss: 0.016215  Time: 447.5s  LR: 6.39e-05
+         Test → PSNR: 34.29  SSIM: 0.9374  SAM: 0.1512
+                FreqAmpErr: 15.88012  LowFreqErr: 758.84844  HighFreqErr: 10.06452
+  ★ 新最优: PSNR=34.29  SSIM=0.9374  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 224] Loss: 0.016077  Time: 447.7s  LR: 6.24e-05
+         Test → PSNR: 34.25  SSIM: 0.9367  SAM: 0.1526
+                FreqAmpErr: 15.88108  LowFreqErr: 769.04175  HighFreqErr: 9.98570
+[Epoch 225] Loss: 0.015866  Time: 448.3s  LR: 6.09e-05
+         Test → PSNR: 34.23  SSIM: 0.9371  SAM: 0.1518
+                FreqAmpErr: 16.17708  LowFreqErr: 786.15887  HighFreqErr: 10.15003
+[Epoch 226] Loss: 0.016015  Time: 447.6s  LR: 5.94e-05
+         Test → PSNR: 34.28  SSIM: 0.9366  SAM: 0.1553
+                FreqAmpErr: 15.93452  LowFreqErr: 764.32358  HighFreqErr: 10.07649
+[Epoch 227] Loss: 0.015930  Time: 447.8s  LR: 5.80e-05
+         Test → PSNR: 34.23  SSIM: 0.9360  SAM: 0.1481
+                FreqAmpErr: 16.18858  LowFreqErr: 788.08877  HighFreqErr: 10.14651
+[Epoch 228] Loss: 0.016202  Time: 448.5s  LR: 5.65e-05
+         Test → PSNR: 34.28  SSIM: 0.9372  SAM: 0.1497
+                FreqAmpErr: 15.92252  LowFreqErr: 765.57035  HighFreqErr: 10.05464
+[Epoch 229] Loss: 0.016128  Time: 447.7s  LR: 5.51e-05
+         Test → PSNR: 34.26  SSIM: 0.9370  SAM: 0.1507
+                FreqAmpErr: 15.89504  LowFreqErr: 759.96467  HighFreqErr: 10.07082
+[Epoch 230] Loss: 0.015943  Time: 447.7s  LR: 5.36e-05
+         Test → PSNR: 34.28  SSIM: 0.9373  SAM: 0.1443
+                FreqAmpErr: 15.93423  LowFreqErr: 752.62719  HighFreqErr: 10.16775
+[Epoch 231] Loss: 0.016222  Time: 447.5s  LR: 5.22e-05
+         Test → PSNR: 34.25  SSIM: 0.9369  SAM: 0.1519
+                FreqAmpErr: 16.02533  LowFreqErr: 748.97322  HighFreqErr: 10.28817
+[Epoch 232] Loss: 0.015949  Time: 448.7s  LR: 5.09e-05
+         Test → PSNR: 34.29  SSIM: 0.9371  SAM: 0.1541
+                FreqAmpErr: 16.01712  LowFreqErr: 769.49198  HighFreqErr: 10.11928
+  ★ 新最优: PSNR=34.29  SSIM=0.9371  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 233] Loss: 0.015993  Time: 448.1s  LR: 4.95e-05
+         Test → PSNR: 34.29  SSIM: 0.9375  SAM: 0.1500
+                FreqAmpErr: 15.98760  LowFreqErr: 766.81891  HighFreqErr: 10.11046
+[Epoch 234] Loss: 0.015891  Time: 448.0s  LR: 4.81e-05
+         Test → PSNR: 34.25  SSIM: 0.9371  SAM: 0.1492
+                FreqAmpErr: 16.11691  LowFreqErr: 786.21544  HighFreqErr: 10.08895
+[Epoch 235] Loss: 0.015958  Time: 448.1s  LR: 4.68e-05
+         Test → PSNR: 34.26  SSIM: 0.9369  SAM: 0.1491
+                FreqAmpErr: 16.28648  LowFreqErr: 783.92256  HighFreqErr: 10.27779
+[Epoch 236] Loss: 0.015936  Time: 447.4s  LR: 4.55e-05
+         Test → PSNR: 34.28  SSIM: 0.9377  SAM: 0.1441
+                FreqAmpErr: 16.02691  LowFreqErr: 770.65995  HighFreqErr: 10.12001
+[Epoch 237] Loss: 0.016109  Time: 447.7s  LR: 4.42e-05
+         Test → PSNR: 34.33  SSIM: 0.9381  SAM: 0.1470
+                FreqAmpErr: 15.72057  LowFreqErr: 745.95470  HighFreqErr: 10.00465
+  ★ 新最优: PSNR=34.33  SSIM=0.9381  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 238] Loss: 0.016001  Time: 447.5s  LR: 4.29e-05
+         Test → PSNR: 34.28  SSIM: 0.9372  SAM: 0.1552
+                FreqAmpErr: 15.98155  LowFreqErr: 774.35435  HighFreqErr: 10.04538
+[Epoch 239] Loss: 0.015841  Time: 447.6s  LR: 4.16e-05
+         Test → PSNR: 34.30  SSIM: 0.9373  SAM: 0.1488
+                FreqAmpErr: 15.76922  LowFreqErr: 747.79747  HighFreqErr: 10.03926
+[Epoch 240] Loss: 0.015783  Time: 447.6s  LR: 4.03e-05
+         Test → PSNR: 34.34  SSIM: 0.9382  SAM: 0.1468
+                FreqAmpErr: 15.70324  LowFreqErr: 746.75072  HighFreqErr: 9.98095
+  ★ 新最优: PSNR=34.34  SSIM=0.9382  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 241] Loss: 0.015915  Time: 447.7s  LR: 3.91e-05
+         Test → PSNR: 34.29  SSIM: 0.9370  SAM: 0.1412
+                FreqAmpErr: 15.95034  LowFreqErr: 759.25433  HighFreqErr: 10.13211
+[Epoch 242] Loss: 0.016019  Time: 447.6s  LR: 3.79e-05
+         Test → PSNR: 34.29  SSIM: 0.9378  SAM: 0.1475
+                FreqAmpErr: 15.86101  LowFreqErr: 751.46766  HighFreqErr: 10.10304
+[Epoch 243] Loss: 0.015935  Time: 447.7s  LR: 3.67e-05
+         Test → PSNR: 34.34  SSIM: 0.9383  SAM: 0.1469
+                FreqAmpErr: 15.72588  LowFreqErr: 747.72499  HighFreqErr: 9.99614
+  ★ 新最优: PSNR=34.34  SSIM=0.9383  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 244] Loss: 0.016034  Time: 448.1s  LR: 3.55e-05
+         Test → PSNR: 34.31  SSIM: 0.9375  SAM: 0.1493
+                FreqAmpErr: 15.85815  LowFreqErr: 766.16214  HighFreqErr: 9.98514
+[Epoch 245] Loss: 0.016017  Time: 447.4s  LR: 3.43e-05
+         Test → PSNR: 34.35  SSIM: 0.9385  SAM: 0.1417
+                FreqAmpErr: 15.77485  LowFreqErr: 740.95173  HighFreqErr: 10.09852
+  ★ 新最优: PSNR=34.35  SSIM=0.9385  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 246] Loss: 0.015899  Time: 447.4s  LR: 3.32e-05
+         Test → PSNR: 34.32  SSIM: 0.9379  SAM: 0.1504
+                FreqAmpErr: 15.94061  LowFreqErr: 766.70535  HighFreqErr: 10.06398
+[Epoch 247] Loss: 0.015851  Time: 447.1s  LR: 3.21e-05
+         Test → PSNR: 34.33  SSIM: 0.9377  SAM: 0.1462
+                FreqAmpErr: 15.62494  LowFreqErr: 746.14480  HighFreqErr: 9.90678
+[Epoch 248] Loss: 0.015909  Time: 447.1s  LR: 3.09e-05
+         Test → PSNR: 34.33  SSIM: 0.9382  SAM: 0.1441
+                FreqAmpErr: 15.74507  LowFreqErr: 743.97514  HighFreqErr: 10.04484
+[Epoch 249] Loss: 0.015823  Time: 447.1s  LR: 2.99e-05
+         Test → PSNR: 34.33  SSIM: 0.9378  SAM: 0.1504
+                FreqAmpErr: 15.79019  LowFreqErr: 748.72739  HighFreqErr: 10.05311
+[Epoch 250] Loss: 0.016112  Time: 447.8s  LR: 2.88e-05
+         Test → PSNR: 34.34  SSIM: 0.9382  SAM: 0.1484
+                FreqAmpErr: 15.68638  LowFreqErr: 749.48685  HighFreqErr: 9.94255
+[Epoch 250] 当前时间: 5.5.11:36  预计结束: 5.5.17:51
+[Epoch 251] Loss: 0.015966  Time: 447.5s  LR: 2.77e-05
+         Test → PSNR: 34.33  SSIM: 0.9381  SAM: 0.1456
+                FreqAmpErr: 15.84853  LowFreqErr: 750.37960  HighFreqErr: 10.09898
+[Epoch 252] Loss: 0.015808  Time: 446.8s  LR: 2.67e-05
+         Test → PSNR: 34.33  SSIM: 0.9380  SAM: 0.1499
+                FreqAmpErr: 15.70222  LowFreqErr: 752.16408  HighFreqErr: 9.93755
+[Epoch 253] Loss: 0.015757  Time: 447.7s  LR: 2.57e-05
+         Test → PSNR: 34.30  SSIM: 0.9377  SAM: 0.1476
+                FreqAmpErr: 15.91470  LowFreqErr: 770.21563  HighFreqErr: 10.01039
+[Epoch 254] Loss: 0.015832  Time: 447.5s  LR: 2.47e-05
+         Test → PSNR: 34.35  SSIM: 0.9385  SAM: 0.1468
+                FreqAmpErr: 15.78870  LowFreqErr: 748.32160  HighFreqErr: 10.05478
+[Epoch 255] Loss: 0.015745  Time: 447.1s  LR: 2.37e-05
+         Test → PSNR: 34.33  SSIM: 0.9384  SAM: 0.1449
+                FreqAmpErr: 15.93786  LowFreqErr: 762.13133  HighFreqErr: 10.09702
+[Epoch 256] Loss: 0.015729  Time: 447.7s  LR: 2.27e-05
+         Test → PSNR: 34.33  SSIM: 0.9377  SAM: 0.1501
+                FreqAmpErr: 15.88132  LowFreqErr: 758.53546  HighFreqErr: 10.06818
+[Epoch 257] Loss: 0.015740  Time: 447.8s  LR: 2.18e-05
+         Test → PSNR: 34.36  SSIM: 0.9382  SAM: 0.1422
+                FreqAmpErr: 15.78954  LowFreqErr: 742.51873  HighFreqErr: 10.10105
+  ★ 新最优: PSNR=34.36  SSIM=0.9382  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 258] Loss: 0.015824  Time: 447.0s  LR: 2.09e-05
+         Test → PSNR: 34.35  SSIM: 0.9386  SAM: 0.1460
+                FreqAmpErr: 15.81032  LowFreqErr: 750.10141  HighFreqErr: 10.06264
+^[[B^[[B^[[B[Epoch 259] Loss: 0.016058  Time: 447.2s  LR: 2.00e-05
+         Test → PSNR: 34.35  SSIM: 0.9386  SAM: 0.1451
+                FreqAmpErr: 15.79703  LowFreqErr: 757.92373  HighFreqErr: 9.98802
+[Epoch 260] Loss: 0.015631  Time: 447.9s  LR: 1.91e-05
+         Test → PSNR: 34.34  SSIM: 0.9382  SAM: 0.1462
+                FreqAmpErr: 15.75546  LowFreqErr: 745.19663  HighFreqErr: 10.04575
+[Epoch 261] Loss: 0.015798  Time: 448.0s  LR: 1.82e-05
+         Test → PSNR: 34.39  SSIM: 0.9387  SAM: 0.1467
+                FreqAmpErr: 15.60473  LowFreqErr: 740.41819  HighFreqErr: 9.93124
+  ★ 新最优: PSNR=34.39  SSIM=0.9387  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 262] Loss: 0.015949  Time: 448.6s  LR: 1.74e-05
+         Test → PSNR: 34.34  SSIM: 0.9384  SAM: 0.1462
+                FreqAmpErr: 15.75609  LowFreqErr: 746.85843  HighFreqErr: 10.03337
+[Epoch 263] Loss: 0.015920  Time: 449.9s  LR: 1.66e-05
+         Test → PSNR: 34.34  SSIM: 0.9384  SAM: 0.1460
+                FreqAmpErr: 15.65105  LowFreqErr: 748.34180  HighFreqErr: 9.91590
+[Epoch 264] Loss: 0.015706  Time: 454.4s  LR: 1.58e-05
+         Test → PSNR: 34.34  SSIM: 0.9385  SAM: 0.1459
+                FreqAmpErr: 15.74992  LowFreqErr: 752.64852  HighFreqErr: 9.98183
+[Epoch 265] Loss: 0.015653  Time: 450.4s  LR: 1.50e-05
+         Test → PSNR: 34.35  SSIM: 0.9385  SAM: 0.1426
+                FreqAmpErr: 15.77069  LowFreqErr: 759.10558  HighFreqErr: 9.95222
+[Epoch 266] Loss: 0.015771  Time: 450.6s  LR: 1.43e-05
+         Test → PSNR: 34.36  SSIM: 0.9385  SAM: 0.1463
+                FreqAmpErr: 15.62204  LowFreqErr: 744.02535  HighFreqErr: 9.92045
+[Epoch 267] Loss: 0.015726  Time: 450.3s  LR: 1.35e-05
+         Test → PSNR: 34.34  SSIM: 0.9384  SAM: 0.1446
+                FreqAmpErr: 15.85098  LowFreqErr: 749.66565  HighFreqErr: 10.10704
+[Epoch 268] Loss: 0.016012  Time: 452.9s  LR: 1.28e-05
+         Test → PSNR: 34.36  SSIM: 0.9386  SAM: 0.1469
+                FreqAmpErr: 15.64656  LowFreqErr: 747.66764  HighFreqErr: 9.91666
+[Epoch 269] Loss: 0.015849  Time: 451.9s  LR: 1.21e-05
+         Test → PSNR: 34.36  SSIM: 0.9387  SAM: 0.1421
+                FreqAmpErr: 15.66448  LowFreqErr: 745.13952  HighFreqErr: 9.95450
+[Epoch 270] Loss: 0.015644  Time: 451.5s  LR: 1.14e-05
+         Test → PSNR: 34.37  SSIM: 0.9387  SAM: 0.1447
+                FreqAmpErr: 15.71863  LowFreqErr: 747.68019  HighFreqErr: 9.98919
+[Epoch 271] Loss: 0.015758  Time: 453.3s  LR: 1.08e-05
+         Test → PSNR: 34.36  SSIM: 0.9387  SAM: 0.1449
+                FreqAmpErr: 15.70783  LowFreqErr: 749.43174  HighFreqErr: 9.96459
+[Epoch 272] Loss: 0.015915  Time: 451.0s  LR: 1.01e-05
+         Test → PSNR: 34.37  SSIM: 0.9387  SAM: 0.1477
+                FreqAmpErr: 15.65087  LowFreqErr: 743.96301  HighFreqErr: 9.95000
+[Epoch 273] Loss: 0.015872  Time: 452.0s  LR: 9.51e-06
+         Test → PSNR: 34.36  SSIM: 0.9387  SAM: 0.1436
+                FreqAmpErr: 15.69385  LowFreqErr: 749.96944  HighFreqErr: 9.94629
+[Epoch 274] Loss: 0.015724  Time: 452.5s  LR: 8.92e-06
+         Test → PSNR: 34.36  SSIM: 0.9385  SAM: 0.1445
+                FreqAmpErr: 15.72303  LowFreqErr: 745.56177  HighFreqErr: 10.01020
+[Epoch 275] Loss: 0.015745  Time: 450.8s  LR: 8.35e-06
+         Test → PSNR: 34.36  SSIM: 0.9387  SAM: 0.1467
+                FreqAmpErr: 15.64581  LowFreqErr: 743.84037  HighFreqErr: 9.94585
+[Epoch 276] Loss: 0.015681  Time: 452.2s  LR: 7.80e-06
+         Test → PSNR: 34.35  SSIM: 0.9384  SAM: 0.1478
+                FreqAmpErr: 15.81264  LowFreqErr: 753.46204  HighFreqErr: 10.03868
+[Epoch 277] Loss: 0.015768  Time: 449.1s  LR: 7.27e-06
+         Test → PSNR: 34.37  SSIM: 0.9389  SAM: 0.1452
+                FreqAmpErr: 15.60856  LowFreqErr: 744.51645  HighFreqErr: 9.90302
+[Epoch 278] Loss: 0.015768  Time: 451.8s  LR: 6.76e-06
+         Test → PSNR: 34.37  SSIM: 0.9387  SAM: 0.1469
+                FreqAmpErr: 15.67232  LowFreqErr: 743.62783  HighFreqErr: 9.97424
+[Epoch 279] Loss: 0.015772  Time: 452.2s  LR: 6.27e-06
+         Test → PSNR: 34.37  SSIM: 0.9387  SAM: 0.1466
+                FreqAmpErr: 15.62807  LowFreqErr: 743.76407  HighFreqErr: 9.92857
+[Epoch 280] Loss: 0.015760  Time: 453.3s  LR: 5.80e-06
+         Test → PSNR: 34.38  SSIM: 0.9388  SAM: 0.1456
+                FreqAmpErr: 15.63990  LowFreqErr: 743.97002  HighFreqErr: 9.93888
+[Epoch 281] Loss: 0.015803  Time: 452.0s  LR: 5.36e-06
+         Test → PSNR: 34.36  SSIM: 0.9387  SAM: 0.1456
+                FreqAmpErr: 15.71514  LowFreqErr: 748.41050  HighFreqErr: 9.97995
+[Epoch 282] Loss: 0.015838  Time: 450.3s  LR: 4.94e-06
+         Test → PSNR: 34.37  SSIM: 0.9388  SAM: 0.1446
+                FreqAmpErr: 15.72291  LowFreqErr: 743.17029  HighFreqErr: 10.02880
+[Epoch 283] Loss: 0.015497  Time: 450.8s  LR: 4.53e-06
+         Test → PSNR: 34.37  SSIM: 0.9388  SAM: 0.1450
+                FreqAmpErr: 15.70573  LowFreqErr: 748.87825  HighFreqErr: 9.96681
+[Epoch 284] Loss: 0.015630  Time: 454.0s  LR: 4.15e-06
+         Test → PSNR: 34.37  SSIM: 0.9386  SAM: 0.1444
+                FreqAmpErr: 15.78222  LowFreqErr: 750.41749  HighFreqErr: 10.03185
+[Epoch 285] Loss: 0.015802  Time: 450.1s  LR: 3.79e-06
+         Test → PSNR: 34.38  SSIM: 0.9388  SAM: 0.1447
+                FreqAmpErr: 15.63648  LowFreqErr: 739.45953  HighFreqErr: 9.97075
+[Epoch 286] Loss: 0.015544  Time: 451.9s  LR: 3.46e-06
+         Test → PSNR: 34.37  SSIM: 0.9387  SAM: 0.1437
+                FreqAmpErr: 15.71154  LowFreqErr: 748.94190  HighFreqErr: 9.97216
+[Epoch 287] Loss: 0.015671  Time: 455.4s  LR: 3.14e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1442
+                FreqAmpErr: 15.63208  LowFreqErr: 740.74056  HighFreqErr: 9.95628
+[Epoch 288] Loss: 0.015745  Time: 454.7s  LR: 2.85e-06
+         Test → PSNR: 34.39  SSIM: 0.9390  SAM: 0.1449
+                FreqAmpErr: 15.59526  LowFreqErr: 738.85914  HighFreqErr: 9.93389
+  ★ 新最优: PSNR=34.39  SSIM=0.9390  → result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+[Epoch 289] Loss: 0.015656  Time: 457.8s  LR: 2.57e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1445
+                FreqAmpErr: 15.65854  LowFreqErr: 741.98349  HighFreqErr: 9.97322
+[Epoch 290] Loss: 0.015823  Time: 457.8s  LR: 2.32e-06
+         Test → PSNR: 34.38  SSIM: 0.9388  SAM: 0.1444
+                FreqAmpErr: 15.60591  LowFreqErr: 737.80937  HighFreqErr: 9.95284
+[Epoch 291] Loss: 0.015789  Time: 458.1s  LR: 2.09e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1439
+                FreqAmpErr: 15.60039  LowFreqErr: 738.82360  HighFreqErr: 9.93935
+[Epoch 292] Loss: 0.015650  Time: 458.5s  LR: 1.89e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1441
+                FreqAmpErr: 15.64007  LowFreqErr: 741.32933  HighFreqErr: 9.95972
+[Epoch 293] Loss: 0.015708  Time: 454.3s  LR: 1.70e-06
+         Test → PSNR: 34.37  SSIM: 0.9389  SAM: 0.1449
+                FreqAmpErr: 15.66439  LowFreqErr: 744.64242  HighFreqErr: 9.95830
+[Epoch 294] Loss: 0.015724  Time: 459.1s  LR: 1.54e-06
+         Test → PSNR: 34.37  SSIM: 0.9388  SAM: 0.1446
+                FreqAmpErr: 15.67968  LowFreqErr: 742.86849  HighFreqErr: 9.98760
+[Epoch 295] Loss: 0.015734  Time: 453.5s  LR: 1.39e-06
+         Test → PSNR: 34.37  SSIM: 0.9389  SAM: 0.1444
+                FreqAmpErr: 15.64702  LowFreqErr: 745.47426  HighFreqErr: 9.93428
+[Epoch 296] Loss: 0.015592  Time: 453.9s  LR: 1.27e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1440
+                FreqAmpErr: 15.63379  LowFreqErr: 738.35327  HighFreqErr: 9.97669
+[Epoch 297] Loss: 0.015659  Time: 453.5s  LR: 1.17e-06
+         Test → PSNR: 34.37  SSIM: 0.9388  SAM: 0.1448
+                FreqAmpErr: 15.66395  LowFreqErr: 744.86499  HighFreqErr: 9.95612
+[Epoch 298] Loss: 0.015787  Time: 455.6s  LR: 1.10e-06
+         Test → PSNR: 34.37  SSIM: 0.9389  SAM: 0.1441
+                FreqAmpErr: 15.67824  LowFreqErr: 745.72762  HighFreqErr: 9.96376
+[Epoch 299] Loss: 0.015707  Time: 454.9s  LR: 1.04e-06
+         Test → PSNR: 34.38  SSIM: 0.9389  SAM: 0.1452
+                FreqAmpErr: 15.62073  LowFreqErr: 741.47821  HighFreqErr: 9.93906
+[Epoch 300] Loss: 0.015796  Time: 456.2s  LR: 1.01e-06
+         Test → PSNR: 34.37  SSIM: 0.9389  SAM: 0.1438
+                FreqAmpErr: 15.66416  LowFreqErr: 746.83408  HighFreqErr: 9.94091
+[Epoch 300] 当前时间: 5.5.17:53  预计结束: 5.5.17:53
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ [K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ [K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_Phys  参数量: 0.79M
+Checkpoint: result/model/2026_05_04_04_22_38_h2_alpha_phys/best.pth
+MASK_MODE: A
+  Scene 01: PSNR=34.45  SSIM=0.9314  SAM=0.1284  FreqAmpErr=12.05761
+  Scene 02: PSNR=34.55  SSIM=0.9278  SAM=0.1700  FreqAmpErr=12.77218
+  Scene 03: PSNR=35.56  SSIM=0.9451  SAM=0.1096  FreqAmpErr=11.16526
+  Scene 04: PSNR=42.16  SSIM=0.9751  SAM=0.1323  FreqAmpErr=3.26577
+  Scene 05: PSNR=31.92  SSIM=0.9345  SAM=0.1183  FreqAmpErr=21.69596
+  Scene 06: PSNR=33.79  SSIM=0.9460  SAM=0.1678  FreqAmpErr=14.17093
+  Scene 07: PSNR=32.92  SSIM=0.9156  SAM=0.1195  FreqAmpErr=17.96074
+  Scene 08: PSNR=32.18  SSIM=0.9429  SAM=0.2055  FreqAmpErr=22.22608
+  Scene 09: PSNR=34.89  SSIM=0.9398  SAM=0.1314  FreqAmpErr=13.95142
+  Scene 10: PSNR=31.47  SSIM=0.9315  SAM=0.1666  FreqAmpErr=26.68661
+
+  平均:    PSNR=34.39  SSIM=0.9390  SAM=0.1449
+           FreqAmpErr=15.59526  LowFreqErr=738.85914  HighFreqErr=9.93389
+
+结果保存到: result/show/2026_05_07_13_06_10_h2_alpha_phys
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: Helmholtzformer  参数量: 0.78M
+Checkpoint: result/model/2026_05_04_17_36_59_h1_gamma_helm_pure/best.pth
+MASK_MODE: A
+  Scene 01: PSNR=34.07  SSIM=0.9244  SAM=0.1355  FreqAmpErr=13.64788
+  Scene 02: PSNR=33.62  SSIM=0.9143  SAM=0.1914  FreqAmpErr=15.47682
+  Scene 03: PSNR=34.80  SSIM=0.9371  SAM=0.1243  FreqAmpErr=12.83371
+  Scene 04: PSNR=40.81  SSIM=0.9689  SAM=0.1520  FreqAmpErr=5.09160
+  Scene 05: PSNR=31.47  SSIM=0.9282  SAM=0.1281  FreqAmpErr=24.68901
+  Scene 06: PSNR=33.25  SSIM=0.9387  SAM=0.1817  FreqAmpErr=15.69928
+  Scene 07: PSNR=32.38  SSIM=0.9059  SAM=0.1245  FreqAmpErr=19.65659
+  Scene 08: PSNR=31.54  SSIM=0.9314  SAM=0.2241  FreqAmpErr=24.57681
+  Scene 09: PSNR=33.98  SSIM=0.9282  SAM=0.1343  FreqAmpErr=15.40456
+  Scene 10: PSNR=30.88  SSIM=0.9169  SAM=0.1863  FreqAmpErr=30.02508
+
+  平均:    PSNR=33.68  SSIM=0.9294  SAM=0.1582
+           FreqAmpErr=17.71013  LowFreqErr=820.94807  HighFreqErr=11.42277
+
+结果保存到: result/show/2026_05_07_13_07_10_h1_gamma_helm_pure
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_Helm  参数量: 0.79M
+Checkpoint: result/model/2026_05_05_13_01_33_h2_gamma_main/best.pth
+MASK_MODE: A
+  Scene 01: PSNR=34.13  SSIM=0.9264  SAM=0.1367  FreqAmpErr=13.03211
+  Scene 02: PSNR=33.82  SSIM=0.9125  SAM=0.1968  FreqAmpErr=15.20400
+  Scene 03: PSNR=34.89  SSIM=0.9339  SAM=0.1290  FreqAmpErr=11.98625
+  Scene 04: PSNR=41.00  SSIM=0.9697  SAM=0.1647  FreqAmpErr=4.71780
+  Scene 05: PSNR=31.29  SSIM=0.9245  SAM=0.1421  FreqAmpErr=25.05884
+  Scene 06: PSNR=33.22  SSIM=0.9382  SAM=0.2037  FreqAmpErr=15.71008
+  Scene 07: PSNR=32.37  SSIM=0.9058  SAM=0.1290  FreqAmpErr=20.01918
+  Scene 08: PSNR=31.59  SSIM=0.9300  SAM=0.2539  FreqAmpErr=24.72383
+  Scene 09: PSNR=34.06  SSIM=0.9269  SAM=0.1431  FreqAmpErr=14.58325
+  Scene 10: PSNR=30.97  SSIM=0.9163  SAM=0.2088  FreqAmpErr=30.10112
+
+  平均:    PSNR=33.73  SSIM=0.9284  SAM=0.1708
+           FreqAmpErr=17.51365  LowFreqErr=810.74090  HighFreqErr=11.30464
+
+结果保存到: result/show/2026_05_07_13_07_56_h2_gamma_main
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_00
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_01
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_02
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_03
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_04
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_05
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_06
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_07
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_08
+可视化图像保存到: result/show/viz/2d_hel_phys/scene_09
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py
+Traceback (most recent call last):
+  File "viz_new.py", line 393, in <module>
+    main()
+  File "viz_new.py", line 387, in main
+    pred = np.load('result/show/'+ f + '/pred.npy')
+  File "/data5/SCI/zhangwenjie/zwj/lib/python3.7/site-packages/numpy/lib/npyio.py", line 417, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: 'result/show/2d_hel_pure/pred.npy'
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_00
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_01
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_02
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_03
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_04
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_05
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_06
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_07
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_08
+可视化图像保存到: result/show/viz/2d_helm_pure/scene_09
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py
+可视化图像保存到: result/show/viz/2d_helm_main/scene_00
+可视化图像保存到: result/show/viz/2d_helm_main/scene_01
+可视化图像保存到: result/show/viz/2d_helm_main/scene_02
+可视化图像保存到: result/show/viz/2d_helm_main/scene_03
+可视化图像保存到: result/show/viz/2d_helm_main/scene_04
+可视化图像保存到: result/show/viz/2d_helm_main/scene_05
+可视化图像保存到: result/show/viz/2d_helm_main/scene_06
+可视化图像保存到: result/show/viz/2d_helm_main/scene_07
+可视化图像保存到: result/show/viz/2d_helm_main/scene_08
+可视化图像保存到: result/show/viz/2d_helm_main/scene_09
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_3D  参数量: 0.79M
+Checkpoint: result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+MASK_MODE: A
+  Scene 01: PSNR=34.75  SSIM=0.9355  SAM=0.1262  FreqAmpErr=11.41777
+  Scene 02: PSNR=34.99  SSIM=0.9345  SAM=0.1571  FreqAmpErr=11.43371
+  Scene 03: PSNR=36.02  SSIM=0.9496  SAM=0.1012  FreqAmpErr=10.10106
+  Scene 04: PSNR=42.75  SSIM=0.9770  SAM=0.1191  FreqAmpErr=2.60895
+  Scene 05: PSNR=32.04  SSIM=0.9386  SAM=0.1133  FreqAmpErr=21.39419
+  Scene 06: PSNR=34.16  SSIM=0.9507  SAM=0.1530  FreqAmpErr=13.14143
+  Scene 07: PSNR=33.21  SSIM=0.9210  SAM=0.1159  FreqAmpErr=17.01350
+  Scene 08: PSNR=32.26  SSIM=0.9472  SAM=0.1889  FreqAmpErr=20.83765
+  Scene 09: PSNR=34.97  SSIM=0.9407  SAM=0.1206  FreqAmpErr=13.39008
+  Scene 10: PSNR=31.91  SSIM=0.9370  SAM=0.1477  FreqAmpErr=24.73465
+
+  平均:    PSNR=34.70  SSIM=0.9432  SAM=0.1343
+           FreqAmpErr=14.60730  LowFreqErr=682.91354  HighFreqErr=9.37612
+
+结果保存到: result/show/2026_05_07_13_24_04_3d_wpo_pure
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_3D  参数量: 0.83M
+Checkpoint: result/model/2026_05_02_15_22_32_3d_wpo_pure/best.pth
+MASK_MODE: B
+  Scene 01: PSNR=34.24  SSIM=0.9285  SAM=0.1331  FreqAmpErr=13.04284
+  Scene 02: PSNR=34.05  SSIM=0.9235  SAM=0.1771  FreqAmpErr=14.18050
+  Scene 03: PSNR=35.17  SSIM=0.9417  SAM=0.1138  FreqAmpErr=11.45819
+  Scene 04: PSNR=41.49  SSIM=0.9736  SAM=0.1382  FreqAmpErr=3.59612
+  Scene 05: PSNR=31.63  SSIM=0.9307  SAM=0.1210  FreqAmpErr=23.60216
+  Scene 06: PSNR=33.53  SSIM=0.9435  SAM=0.1716  FreqAmpErr=14.89385
+  Scene 07: PSNR=32.50  SSIM=0.9099  SAM=0.1253  FreqAmpErr=20.08873
+  Scene 08: PSNR=31.44  SSIM=0.9392  SAM=0.2053  FreqAmpErr=25.59832
+  Scene 09: PSNR=34.52  SSIM=0.9337  SAM=0.1342  FreqAmpErr=13.46226
+  Scene 10: PSNR=31.16  SSIM=0.9238  SAM=0.1704  FreqAmpErr=28.82691
+
+  平均:    PSNR=33.97  SSIM=0.9348  SAM=0.1490
+           FreqAmpErr=16.87499  LowFreqErr=776.79351  HighFreqErr=10.92671
+
+结果保存到: result/show/2026_05_07_13_26_50_3d_wpo_pure
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+[physics] WAVELENGTHS 已从 CAVE_1024_npy_bands.json 加载，共 28 个波段。
+[test] NUM_BANDS=28（来自 CAVE_1024_npy_bands.json）
+模型: WaveMST_KG  参数量: 0.79M
+Checkpoint: result/model/2026_05_02_00_40_50_3d_wpo_kg/best.pth
+MASK_MODE: D
+  Scene 01: PSNR=34.71  SSIM=0.9358  SAM=0.1285  FreqAmpErr=11.75029
+  Scene 02: PSNR=34.95  SSIM=0.9354  SAM=0.1566  FreqAmpErr=11.72723
+  Scene 03: PSNR=36.17  SSIM=0.9505  SAM=0.1013  FreqAmpErr=9.71647
+  Scene 04: PSNR=41.93  SSIM=0.9766  SAM=0.1234  FreqAmpErr=4.86246
+  Scene 05: PSNR=32.17  SSIM=0.9396  SAM=0.1090  FreqAmpErr=20.80161
+  Scene 06: PSNR=34.30  SSIM=0.9522  SAM=0.1493  FreqAmpErr=12.94826
+  Scene 07: PSNR=33.21  SSIM=0.9223  SAM=0.1150  FreqAmpErr=16.96078
+  Scene 08: PSNR=32.50  SSIM=0.9495  SAM=0.1796  FreqAmpErr=20.19082
+  Scene 09: PSNR=34.96  SSIM=0.9431  SAM=0.1191  FreqAmpErr=13.05670
+  Scene 10: PSNR=31.97  SSIM=0.9370  SAM=0.1459  FreqAmpErr=24.96716
+
+  平均:    PSNR=34.69  SSIM=0.9442  SAM=0.1328
+           FreqAmpErr=14.69818  LowFreqErr=708.73853  HighFreqErr=9.26556
+
+结果保存到: result/show/2026_05_07_13_31_05_3d_wpo_kg
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ screen -ls
+There are screens on:
+	3212960.xwj7	(2026年05月05日 12时59分57秒)	(Attached)
+	2529403.xwj6	(2026年05月04日 17时34分31秒)	(Detached)
+	2003821.xwj5	(2026年05月04日 01时34分55秒)	(Attached)
+	72309.z4	(2026年04月20日 18时30分48秒)	(Detached)
+	3530078.z3	(2026年04月20日 00时47分56秒)	(Detached)
+	4178346.fyc_P	(2026年04月01日 23时19分45秒)	(Detached)
+	3810649.fyc_k	(2026年04月01日 18时16分54秒)	(Detached)
+	3259422.fyc2	(2026年04月01日 10时07分45秒)	(Detached)
+	2483822.z2	(2026年03月31日 13时03分58秒)	(Detached)
+	1872585.fycPM	(2026年03月30日 21时47分54秒)	(Detached)
+	1812243.fycCNN	(2026年03月30日 20时58分20秒)	(Detached)
+	1383559.fyc1	(2026年03月25日 21时23分44秒)	(Detached)
+	1115149.diffusion	(2026年03月25日 17时45分42秒)	(Detached)
+	1398494.z	(2026年03月20日 11时52分35秒)	(Detached)
+	1489721.fyc	(2026年03月11日 23时01分53秒)	(Detached)
+	1068606.xx	(2026年03月09日 22时59分50秒)	(Detached)
+	3558217.PA	(2026年03月07日 22时04分19秒)	(Detached)
+	3557680.XAPSCA	(2026年03月07日 22时03分45秒)	(Detached)
+	3557188.XA_FCB	(2026年03月07日 22时03分13秒)	(Detached)
+	1491893.flow	(2026年03月02日 22时57分26秒)	(Detached)
+	1358546.XA	(2026年03月01日 23时57分44秒)	(Detached)
+21 Sockets in /run/screen/S-liulei.
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ screen -lspython test.pyviz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz_new.py[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kscreen -X -S xwj5
+Please specify a command.
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ screen -X -S xwj5 quit

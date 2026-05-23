@@ -1,0 +1,914 @@
+(HSI) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ conda activate zwj
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ conda activate zwj[1Plist -n HSI[2Ppython train.py
+训练集路径: dataset/CAVE_1024_npy
+strating at: Wed Apr 29 23:15:48 2026
+Loading: scene1.npy
+Loading: scene2.npy
+Loading: scene3.npy
+Loading: scene4.npy
+Loading: scene5.npy
+Loading: scene6.npy
+Loading: scene7.npy
+Loading: scene8.npy
+Loading: scene9.npy
+Loading: scene10.npy
+Loading: scene11.npy
+Loading: scene12.npy
+Loading: scene13.npy
+Loading: scene14.npy
+Loading: scene15.npy
+Loading: scene16.npy
+Loading: scene17.npy
+Loading: scene18.npy
+Loading: scene19.npy
+Loading: scene20.npy
+Loading: scene21.npy
+Loading: scene22.npy
+Loading: scene23.npy
+Loading: scene24.npy
+Loading: scene25.npy
+Loading: scene26.npy
+Loading: scene27.npy
+Loading: scene28.npy
+Loading: scene29.npy
+Loading: scene30.npy
+Loading: scene31.npy
+Loading: scene32.npy
+Loading: scene33.npy
+Loading: scene34.npy
+Loading: scene35.npy
+Loading: scene36.npy
+Loading: scene37.npy
+Loading: scene38.npy
+Loading: scene39.npy
+Loading: scene40.npy
+Loading: scene41.npy
+Loading: scene42.npy
+Loading: scene43.npy
+Loading: scene44.npy
+Loading: scene45.npy
+Loading: scene46.npy
+Loading: scene47.npy
+Loading: scene48.npy
+Loading: scene49.npy
+Loading: scene50.npy
+Loading: scene51.npy
+Loading: scene52.npy
+Loading: scene53.npy
+Loading: scene54.npy
+Loading: scene55.npy
+Loading: scene56.npy
+Loading: scene57.npy
+Loading: scene58.npy
+Loading: scene59.npy
+Loading: scene60.npy
+Loading: scene61.npy
+Loading: scene62.npy
+Loading: scene63.npy
+Loading: scene64.npy
+Loading: scene65.npy
+Loading: scene66.npy
+Loading: scene67.npy
+Loading: scene68.npy
+Loading: scene69.npy
+Loading: scene70.npy
+Loading: scene71.npy
+Loading: scene72.npy
+Loading: scene73.npy
+Loading: scene74.npy
+Loading: scene75.npy
+Loading: scene76.npy
+Loading: scene77.npy
+Loading: scene78.npy
+Loading: scene79.npy
+Loading: scene80.npy
+Loading: scene81.npy
+Loading: scene82.npy
+Loading: scene83.npy
+Loading: scene84.npy
+Loading: scene85.npy
+Loading: scene86.npy
+Loading: scene87.npy
+Loading: scene88.npy
+Loading: scene89.npy
+Loading: scene90.npy
+Loading: scene91.npy
+Loading: scene92.npy
+Loading: scene93.npy
+Loading: scene94.npy
+Loading: scene95.npy
+Loading: scene96.npy
+Loading: scene97.npy
+Loading: scene98.npy
+Loading: scene99.npy
+Loading: scene100.npy
+Loading: scene101.npy
+Loading: scene102.npy
+Loading: scene103.npy
+Loading: scene104.npy
+Loading: scene105.npy
+Loading: scene106.npy
+Loading: scene107.npy
+Loading: scene108.npy
+Loading: scene109.npy
+Loading: scene110.npy
+Loading: scene111.npy
+Loading: scene112.npy
+Loading: scene113.npy
+Loading: scene114.npy
+Loading: scene115.npy
+Loading: scene116.npy
+Loading: scene117.npy
+Loading: scene118.npy
+Loading: scene119.npy
+Loading: scene120.npy
+Loading: scene121.npy
+Loading: scene122.npy
+Loading: scene123.npy
+Loading: scene124.npy
+Loading: scene125.npy
+Loading: scene126.npy
+Loading: scene127.npy
+Loading: scene128.npy
+Loading: scene129.npy
+Loading: scene130.npy
+Loading: scene131.npy
+Loading: scene132.npy
+Loading: scene133.npy
+Loading: scene134.npy
+Loading: scene135.npy
+Loading: scene136.npy
+Loading: scene137.npy
+Loading: scene138.npy
+Loading: scene139.npy
+Loading: scene140.npy
+Loading: scene141.npy
+Loading: scene142.npy
+Loading: scene143.npy
+Loading: scene144.npy
+Loading: scene145.npy
+Loading: scene146.npy
+Loading: scene147.npy
+Loading: scene148.npy
+Loading: scene149.npy
+Loading: scene150.npy
+Loading: scene151.npy
+Loading: scene152.npy
+Loading: scene153.npy
+Loading: scene154.npy
+Loading: scene155.npy
+Loading: scene156.npy
+Loading: scene157.npy
+Loading: scene158.npy
+Loading: scene159.npy
+Loading: scene160.npy
+Loading: scene161.npy
+Loading: scene162.npy
+Loading: scene163.npy
+Loading: scene164.npy
+Loading: scene165.npy
+Loading: scene166.npy
+Loading: scene167.npy
+Loading: scene168.npy
+Loading: scene169.npy
+Loading: scene170.npy
+Loading: scene171.npy
+Loading: scene172.npy
+Loading: scene173.npy
+Loading: scene174.npy
+Loading: scene175.npy
+Loading: scene176.npy
+Loading: scene177.npy
+Loading: scene178.npy
+Loading: scene179.npy
+Loading: scene180.npy
+Loading: scene181.npy
+Loading: scene182.npy
+Loading: scene183.npy
+Loading: scene184.npy
+Loading: scene185.npy
+Loading: scene186.npy
+Loading: scene187.npy
+Loading: scene188.npy
+Loading: scene189.npy
+Loading: scene190.npy
+Loading: scene191.npy
+Loading: scene192.npy
+Loading: scene193.npy
+Loading: scene194.npy
+Loading: scene195.npy
+Loading: scene196.npy
+Loading: scene197.npy
+Loading: scene198.npy
+Loading: scene199.npy
+Loading: scene200.npy
+Loading: scene201.npy
+Loading: scene202.npy
+Loading: scene203.npy
+Loading: scene204.npy
+Loading: scene205.npy
+训练集加载完成：205 个场景，路径: dataset/CAVE_1024_npy
+finished after 667.13 s
+模型: WaveMST_3D  参数量: 0.79M
+^[[B^[[B[Epoch 001] Loss: 0.086775  Time: 424.9s  LR: 4.00e-04
+         Test → PSNR: 23.75  SSIM: 0.5889
+^[[B[Epoch 002] Loss: 0.058731  Time: 417.2s  LR: 4.00e-04
+         Test → PSNR: 26.17  SSIM: 0.6783
+[Epoch 003] Loss: 0.046334  Time: 417.5s  LR: 4.00e-04
+         Test → PSNR: 26.95  SSIM: 0.6617
+[Epoch 004] Loss: 0.041766  Time: 416.7s  LR: 4.00e-04
+         Test → PSNR: 28.16  SSIM: 0.7473
+  ★ 新最优: PSNR=28.16  SSIM=0.7473  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 005] Loss: 0.038520  Time: 415.2s  LR: 4.00e-04
+         Test → PSNR: 28.64  SSIM: 0.7876
+  ★ 新最优: PSNR=28.64  SSIM=0.7876  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 006] Loss: 0.037080  Time: 416.3s  LR: 4.00e-04
+         Test → PSNR: 29.13  SSIM: 0.8029
+  ★ 新最优: PSNR=29.13  SSIM=0.8029  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 007] Loss: 0.035487  Time: 416.2s  LR: 4.00e-04
+         Test → PSNR: 29.21  SSIM: 0.8056
+  ★ 新最优: PSNR=29.21  SSIM=0.8056  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 008] Loss: 0.033844  Time: 414.5s  LR: 3.99e-04
+         Test → PSNR: 29.60  SSIM: 0.8176
+  ★ 新最优: PSNR=29.60  SSIM=0.8176  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 009] Loss: 0.032444  Time: 414.1s  LR: 3.99e-04
+         Test → PSNR: 29.67  SSIM: 0.7993
+  ★ 新最优: PSNR=29.67  SSIM=0.7993  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 010] Loss: 0.031435  Time: 414.6s  LR: 3.99e-04
+         Test → PSNR: 30.19  SSIM: 0.8410
+  ★ 新最优: PSNR=30.19  SSIM=0.8410  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 011] Loss: 0.030711  Time: 414.6s  LR: 3.99e-04
+         Test → PSNR: 30.04  SSIM: 0.8317
+[Epoch 012] Loss: 0.029474  Time: 415.2s  LR: 3.99e-04
+         Test → PSNR: 30.53  SSIM: 0.8463
+  ★ 新最优: PSNR=30.53  SSIM=0.8463  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 013] Loss: 0.028950  Time: 414.2s  LR: 3.98e-04
+         Test → PSNR: 30.54  SSIM: 0.8352
+  ★ 新最优: PSNR=30.54  SSIM=0.8352  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 014] Loss: 0.028223  Time: 414.1s  LR: 3.98e-04
+         Test → PSNR: 30.85  SSIM: 0.8611
+  ★ 新最优: PSNR=30.85  SSIM=0.8611  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 015] Loss: 0.028023  Time: 415.0s  LR: 3.98e-04
+         Test → PSNR: 30.92  SSIM: 0.8502
+  ★ 新最优: PSNR=30.92  SSIM=0.8502  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 016] Loss: 0.027488  Time: 416.3s  LR: 3.98e-04
+         Test → PSNR: 30.66  SSIM: 0.8498
+[Epoch 017] Loss: 0.027234  Time: 416.1s  LR: 3.97e-04
+         Test → PSNR: 31.06  SSIM: 0.8758
+  ★ 新最优: PSNR=31.06  SSIM=0.8758  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 018] Loss: 0.026847  Time: 412.8s  LR: 3.97e-04
+         Test → PSNR: 31.29  SSIM: 0.8732
+  ★ 新最优: PSNR=31.29  SSIM=0.8732  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 019] Loss: 0.026627  Time: 415.2s  LR: 3.96e-04
+         Test → PSNR: 31.20  SSIM: 0.8748
+[Epoch 020] Loss: 0.025756  Time: 416.1s  LR: 3.96e-04
+         Test → PSNR: 31.33  SSIM: 0.8714
+  ★ 新最优: PSNR=31.33  SSIM=0.8714  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 021] Loss: 0.025696  Time: 414.8s  LR: 3.96e-04
+         Test → PSNR: 31.44  SSIM: 0.8790
+  ★ 新最优: PSNR=31.44  SSIM=0.8790  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 022] Loss: 0.025480  Time: 415.0s  LR: 3.95e-04
+         Test → PSNR: 31.66  SSIM: 0.8805
+  ★ 新最优: PSNR=31.66  SSIM=0.8805  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 023] Loss: 0.025166  Time: 413.9s  LR: 3.95e-04
+         Test → PSNR: 31.71  SSIM: 0.8876
+  ★ 新最优: PSNR=31.71  SSIM=0.8876  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 024] Loss: 0.024406  Time: 414.7s  LR: 3.94e-04
+         Test → PSNR: 31.75  SSIM: 0.8877
+  ★ 新最优: PSNR=31.75  SSIM=0.8877  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 025] Loss: 0.024521  Time: 414.2s  LR: 3.94e-04
+         Test → PSNR: 31.92  SSIM: 0.8915
+  ★ 新最优: PSNR=31.92  SSIM=0.8915  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 026] Loss: 0.024353  Time: 414.7s  LR: 3.93e-04
+         Test → PSNR: 31.87  SSIM: 0.8806
+[Epoch 027] Loss: 0.023746  Time: 414.2s  LR: 3.93e-04
+         Test → PSNR: 32.05  SSIM: 0.8911
+  ★ 新最优: PSNR=32.05  SSIM=0.8911  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 028] Loss: 0.023935  Time: 414.3s  LR: 3.92e-04
+         Test → PSNR: 31.96  SSIM: 0.8902
+[Epoch 029] Loss: 0.023530  Time: 413.9s  LR: 3.91e-04
+         Test → PSNR: 32.26  SSIM: 0.8955
+  ★ 新最优: PSNR=32.26  SSIM=0.8955  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 030] Loss: 0.023197  Time: 413.4s  LR: 3.91e-04
+         Test → PSNR: 32.20  SSIM: 0.8985
+[Epoch 031] Loss: 0.023026  Time: 414.4s  LR: 3.90e-04
+         Test → PSNR: 32.19  SSIM: 0.8968
+[Epoch 032] Loss: 0.022502  Time: 416.4s  LR: 3.90e-04
+         Test → PSNR: 32.12  SSIM: 0.8952
+[Epoch 033] Loss: 0.022893  Time: 414.5s  LR: 3.89e-04
+         Test → PSNR: 32.11  SSIM: 0.8856
+[Epoch 034] Loss: 0.022539  Time: 415.5s  LR: 3.88e-04
+         Test → PSNR: 32.29  SSIM: 0.9002
+  ★ 新最优: PSNR=32.29  SSIM=0.9002  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 035] Loss: 0.022582  Time: 416.1s  LR: 3.87e-04
+         Test → PSNR: 32.30  SSIM: 0.8868
+  ★ 新最优: PSNR=32.30  SSIM=0.8868  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 036] Loss: 0.022150  Time: 415.6s  LR: 3.87e-04
+         Test → PSNR: 32.47  SSIM: 0.8994
+  ★ 新最优: PSNR=32.47  SSIM=0.8994  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 037] Loss: 0.022275  Time: 414.6s  LR: 3.86e-04
+         Test → PSNR: 32.64  SSIM: 0.9070
+  ★ 新最优: PSNR=32.64  SSIM=0.9070  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 038] Loss: 0.021866  Time: 415.9s  LR: 3.85e-04
+         Test → PSNR: 32.51  SSIM: 0.9021
+[Epoch 039] Loss: 0.021764  Time: 414.5s  LR: 3.84e-04
+         Test → PSNR: 32.39  SSIM: 0.8988
+[Epoch 040] Loss: 0.021439  Time: 414.5s  LR: 3.84e-04
+         Test → PSNR: 32.76  SSIM: 0.9103
+  ★ 新最优: PSNR=32.76  SSIM=0.9103  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 041] Loss: 0.021345  Time: 415.2s  LR: 3.83e-04
+         Test → PSNR: 32.60  SSIM: 0.8984
+[Epoch 042] Loss: 0.021531  Time: 414.3s  LR: 3.82e-04
+         Test → PSNR: 32.60  SSIM: 0.9020
+[Epoch 043] Loss: 0.021303  Time: 413.4s  LR: 3.81e-04
+         Test → PSNR: 32.64  SSIM: 0.9105
+[Epoch 044] Loss: 0.021129  Time: 413.7s  LR: 3.80e-04
+         Test → PSNR: 31.78  SSIM: 0.8950
+[Epoch 045] Loss: 0.021037  Time: 413.1s  LR: 3.79e-04
+         Test → PSNR: 32.67  SSIM: 0.9066
+[Epoch 046] Loss: 0.021106  Time: 415.0s  LR: 3.78e-04
+         Test → PSNR: 32.89  SSIM: 0.9108
+  ★ 新最优: PSNR=32.89  SSIM=0.9108  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 047] Loss: 0.020701  Time: 416.0s  LR: 3.77e-04
+         Test → PSNR: 32.97  SSIM: 0.9140
+  ★ 新最优: PSNR=32.97  SSIM=0.9140  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 048] Loss: 0.020901  Time: 414.4s  LR: 3.76e-04
+         Test → PSNR: 33.02  SSIM: 0.9033
+  ★ 新最优: PSNR=33.02  SSIM=0.9033  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 049] Loss: 0.020622  Time: 414.3s  LR: 3.75e-04
+         Test → PSNR: 32.74  SSIM: 0.9084
+[Epoch 050] Loss: 0.020331  Time: 417.0s  LR: 3.74e-04
+         Test → PSNR: 33.08  SSIM: 0.9175
+  ★ 新最优: PSNR=33.08  SSIM=0.9175  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 051] Loss: 0.020580  Time: 414.2s  LR: 3.73e-04
+         Test → PSNR: 33.12  SSIM: 0.9142
+  ★ 新最优: PSNR=33.12  SSIM=0.9142  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 052] Loss: 0.020550  Time: 415.6s  LR: 3.72e-04
+         Test → PSNR: 32.74  SSIM: 0.9097
+[Epoch 053] Loss: 0.020173  Time: 415.4s  LR: 3.71e-04
+         Test → PSNR: 33.07  SSIM: 0.9165
+[Epoch 054] Loss: 0.020210  Time: 413.5s  LR: 3.70e-04
+         Test → PSNR: 33.04  SSIM: 0.9140
+[Epoch 055] Loss: 0.020163  Time: 415.5s  LR: 3.69e-04
+         Test → PSNR: 32.73  SSIM: 0.9086
+[Epoch 056] Loss: 0.019907  Time: 415.7s  LR: 3.68e-04
+         Test → PSNR: 33.07  SSIM: 0.9164
+[Epoch 057] Loss: 0.019861  Time: 415.8s  LR: 3.67e-04
+         Test → PSNR: 33.12  SSIM: 0.9179
+[Epoch 058] Loss: 0.019693  Time: 417.0s  LR: 3.66e-04
+         Test → PSNR: 33.22  SSIM: 0.9164
+  ★ 新最优: PSNR=33.22  SSIM=0.9164  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 059] Loss: 0.019653  Time: 416.4s  LR: 3.64e-04
+         Test → PSNR: 33.05  SSIM: 0.9141
+[Epoch 060] Loss: 0.019582  Time: 417.7s  LR: 3.63e-04
+         Test → PSNR: 33.08  SSIM: 0.9145
+[Epoch 061] Loss: 0.019610  Time: 416.5s  LR: 3.62e-04
+         Test → PSNR: 33.25  SSIM: 0.9178
+  ★ 新最优: PSNR=33.25  SSIM=0.9178  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 062] Loss: 0.019584  Time: 414.8s  LR: 3.61e-04
+         Test → PSNR: 33.19  SSIM: 0.9131
+[Epoch 063] Loss: 0.019320  Time: 415.2s  LR: 3.59e-04
+         Test → PSNR: 32.88  SSIM: 0.8906
+[Epoch 064] Loss: 0.019069  Time: 417.1s  LR: 3.58e-04
+         Test → PSNR: 33.22  SSIM: 0.9172
+[Epoch 065] Loss: 0.019101  Time: 417.0s  LR: 3.57e-04
+         Test → PSNR: 33.33  SSIM: 0.9195
+  ★ 新最优: PSNR=33.33  SSIM=0.9195  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 066] Loss: 0.018828  Time: 415.6s  LR: 3.56e-04
+         Test → PSNR: 33.43  SSIM: 0.9229
+  ★ 新最优: PSNR=33.43  SSIM=0.9229  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 067] Loss: 0.019179  Time: 418.3s  LR: 3.54e-04
+         Test → PSNR: 33.31  SSIM: 0.9191
+[Epoch 068] Loss: 0.018842  Time: 416.9s  LR: 3.53e-04
+         Test → PSNR: 33.47  SSIM: 0.9223
+  ★ 新最优: PSNR=33.47  SSIM=0.9223  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 069] Loss: 0.018986  Time: 417.8s  LR: 3.52e-04
+         Test → PSNR: 33.32  SSIM: 0.9217
+[Epoch 070] Loss: 0.018879  Time: 416.7s  LR: 3.50e-04
+         Test → PSNR: 33.54  SSIM: 0.9244
+  ★ 新最优: PSNR=33.54  SSIM=0.9244  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 071] Loss: 0.018732  Time: 416.9s  LR: 3.49e-04
+         Test → PSNR: 33.47  SSIM: 0.9230
+[Epoch 072] Loss: 0.019010  Time: 417.3s  LR: 3.47e-04
+         Test → PSNR: 33.31  SSIM: 0.9212
+[Epoch 073] Loss: 0.018601  Time: 416.7s  LR: 3.46e-04
+         Test → PSNR: 33.28  SSIM: 0.9172
+[Epoch 074] Loss: 0.018685  Time: 415.5s  LR: 3.44e-04
+         Test → PSNR: 33.21  SSIM: 0.9204
+[Epoch 075] Loss: 0.018364  Time: 416.5s  LR: 3.43e-04
+         Test → PSNR: 33.45  SSIM: 0.9233
+[Epoch 076] Loss: 0.018721  Time: 416.3s  LR: 3.42e-04
+         Test → PSNR: 33.26  SSIM: 0.9190
+[Epoch 077] Loss: 0.018342  Time: 415.7s  LR: 3.40e-04
+         Test → PSNR: 33.51  SSIM: 0.9220
+[Epoch 078] Loss: 0.018622  Time: 415.1s  LR: 3.39e-04
+         Test → PSNR: 33.54  SSIM: 0.9210
+  ★ 新最优: PSNR=33.54  SSIM=0.9210  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 079] Loss: 0.018565  Time: 416.2s  LR: 3.37e-04
+         Test → PSNR: 33.42  SSIM: 0.9064
+[Epoch 080] Loss: 0.018331  Time: 414.7s  LR: 3.36e-04
+         Test → PSNR: 33.57  SSIM: 0.9237
+  ★ 新最优: PSNR=33.57  SSIM=0.9237  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 081] Loss: 0.018310  Time: 416.1s  LR: 3.34e-04
+         Test → PSNR: 33.60  SSIM: 0.9258
+  ★ 新最优: PSNR=33.60  SSIM=0.9258  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 082] Loss: 0.018154  Time: 414.1s  LR: 3.32e-04
+         Test → PSNR: 33.73  SSIM: 0.9256
+  ★ 新最优: PSNR=33.73  SSIM=0.9256  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 083] Loss: 0.018312  Time: 416.0s  LR: 3.31e-04
+         Test → PSNR: 33.55  SSIM: 0.9227
+[Epoch 084] Loss: 0.018455  Time: 415.3s  LR: 3.29e-04
+         Test → PSNR: 33.69  SSIM: 0.9272
+[Epoch 085] Loss: 0.018249  Time: 413.7s  LR: 3.28e-04
+         Test → PSNR: 33.53  SSIM: 0.9217
+[Epoch 086] Loss: 0.018207  Time: 415.9s  LR: 3.26e-04
+         Test → PSNR: 33.76  SSIM: 0.9265
+  ★ 新最优: PSNR=33.76  SSIM=0.9265  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 087] Loss: 0.018246  Time: 416.3s  LR: 3.24e-04
+         Test → PSNR: 33.62  SSIM: 0.9175
+[Epoch 088] Loss: 0.018058  Time: 414.9s  LR: 3.23e-04
+         Test → PSNR: 33.67  SSIM: 0.9287
+[Epoch 089] Loss: 0.017896  Time: 414.2s  LR: 3.21e-04
+         Test → PSNR: 33.64  SSIM: 0.9239
+[Epoch 090] Loss: 0.017954  Time: 413.7s  LR: 3.19e-04
+         Test → PSNR: 33.74  SSIM: 0.9260
+[Epoch 091] Loss: 0.017844  Time: 415.1s  LR: 3.18e-04
+         Test → PSNR: 33.76  SSIM: 0.9299
+  ★ 新最优: PSNR=33.76  SSIM=0.9299  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 092] Loss: 0.017738  Time: 415.3s  LR: 3.16e-04
+         Test → PSNR: 33.70  SSIM: 0.9274
+[Epoch 093] Loss: 0.017890  Time: 413.9s  LR: 3.14e-04
+         Test → PSNR: 32.76  SSIM: 0.9205
+[Epoch 094] Loss: 0.018067  Time: 413.9s  LR: 3.13e-04
+         Test → PSNR: 33.86  SSIM: 0.9277
+  ★ 新最优: PSNR=33.86  SSIM=0.9277  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 095] Loss: 0.017927  Time: 413.9s  LR: 3.11e-04
+         Test → PSNR: 33.92  SSIM: 0.9299
+  ★ 新最优: PSNR=33.92  SSIM=0.9299  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 096] Loss: 0.017443  Time: 414.8s  LR: 3.09e-04
+         Test → PSNR: 33.83  SSIM: 0.9273
+[Epoch 097] Loss: 0.017734  Time: 415.1s  LR: 3.07e-04
+         Test → PSNR: 33.89  SSIM: 0.9307
+[Epoch 098] Loss: 0.017817  Time: 414.7s  LR: 3.06e-04
+         Test → PSNR: 33.81  SSIM: 0.9285
+[Epoch 099] Loss: 0.017737  Time: 415.7s  LR: 3.04e-04
+         Test → PSNR: 33.74  SSIM: 0.9275
+[Epoch 100] Loss: 0.017512  Time: 413.9s  LR: 3.02e-04
+         Test → PSNR: 33.86  SSIM: 0.9298
+[Epoch 101] Loss: 0.017573  Time: 417.5s  LR: 3.00e-04
+         Test → PSNR: 33.59  SSIM: 0.9253
+[Epoch 102] Loss: 0.017699  Time: 416.2s  LR: 2.98e-04
+         Test → PSNR: 33.76  SSIM: 0.9195
+[Epoch 103] Loss: 0.017676  Time: 414.3s  LR: 2.97e-04
+         Test → PSNR: 33.86  SSIM: 0.9293
+[Epoch 104] Loss: 0.017363  Time: 415.9s  LR: 2.95e-04
+         Test → PSNR: 33.88  SSIM: 0.9304
+[Epoch 105] Loss: 0.017281  Time: 415.0s  LR: 2.93e-04
+         Test → PSNR: 33.93  SSIM: 0.9268
+  ★ 新最优: PSNR=33.93  SSIM=0.9268  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 106] Loss: 0.017332  Time: 414.6s  LR: 2.91e-04
+         Test → PSNR: 33.67  SSIM: 0.9256
+[Epoch 107] Loss: 0.017501  Time: 414.8s  LR: 2.89e-04
+         Test → PSNR: 33.96  SSIM: 0.9316
+  ★ 新最优: PSNR=33.96  SSIM=0.9316  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 108] Loss: 0.017326  Time: 414.5s  LR: 2.87e-04
+         Test → PSNR: 34.00  SSIM: 0.9303
+  ★ 新最优: PSNR=34.00  SSIM=0.9303  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 109] Loss: 0.017258  Time: 415.4s  LR: 2.85e-04
+         Test → PSNR: 33.88  SSIM: 0.9297
+[Epoch 110] Loss: 0.017289  Time: 415.0s  LR: 2.84e-04
+         Test → PSNR: 33.98  SSIM: 0.9318
+[Epoch 111] Loss: 0.017114  Time: 414.7s  LR: 2.82e-04
+         Test → PSNR: 33.79  SSIM: 0.9219
+[Epoch 112] Loss: 0.017190  Time: 415.9s  LR: 2.80e-04
+         Test → PSNR: 33.94  SSIM: 0.9302
+[Epoch 113] Loss: 0.017124  Time: 417.3s  LR: 2.78e-04
+         Test → PSNR: 33.65  SSIM: 0.9279
+[Epoch 114] Loss: 0.017062  Time: 413.5s  LR: 2.76e-04
+         Test → PSNR: 34.07  SSIM: 0.9322
+  ★ 新最优: PSNR=34.07  SSIM=0.9322  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 115] Loss: 0.017152  Time: 414.0s  LR: 2.74e-04
+         Test → PSNR: 33.95  SSIM: 0.9307
+[Epoch 116] Loss: 0.016952  Time: 415.4s  LR: 2.72e-04
+         Test → PSNR: 34.04  SSIM: 0.9318
+[Epoch 117] Loss: 0.017164  Time: 416.8s  LR: 2.70e-04
+         Test → PSNR: 34.06  SSIM: 0.9297
+[Epoch 118] Loss: 0.016927  Time: 414.9s  LR: 2.68e-04
+         Test → PSNR: 33.97  SSIM: 0.9306
+[Epoch 119] Loss: 0.016877  Time: 416.4s  LR: 2.66e-04
+         Test → PSNR: 34.06  SSIM: 0.9328
+[Epoch 120] Loss: 0.016984  Time: 414.2s  LR: 2.64e-04
+         Test → PSNR: 34.17  SSIM: 0.9323
+  ★ 新最优: PSNR=34.17  SSIM=0.9323  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 121] Loss: 0.016734  Time: 417.2s  LR: 2.62e-04
+         Test → PSNR: 33.95  SSIM: 0.9329
+[Epoch 122] Loss: 0.016949  Time: 416.0s  LR: 2.60e-04
+         Test → PSNR: 34.20  SSIM: 0.9308
+  ★ 新最优: PSNR=34.20  SSIM=0.9308  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 123] Loss: 0.016744  Time: 415.5s  LR: 2.58e-04
+         Test → PSNR: 34.11  SSIM: 0.9333
+[Epoch 124] Loss: 0.016484  Time: 415.9s  LR: 2.56e-04
+         Test → PSNR: 34.14  SSIM: 0.9337
+[Epoch 125] Loss: 0.016753  Time: 417.3s  LR: 2.54e-04
+         Test → PSNR: 34.17  SSIM: 0.9338
+[Epoch 126] Loss: 0.016968  Time: 418.1s  LR: 2.52e-04
+         Test → PSNR: 33.95  SSIM: 0.9308
+[Epoch 127] Loss: 0.016764  Time: 416.6s  LR: 2.50e-04
+         Test → PSNR: 33.95  SSIM: 0.9312
+[Epoch 128] Loss: 0.016772  Time: 417.1s  LR: 2.48e-04
+         Test → PSNR: 34.08  SSIM: 0.9289
+[Epoch 129] Loss: 0.016786  Time: 416.9s  LR: 2.46e-04
+         Test → PSNR: 34.09  SSIM: 0.9308
+[Epoch 130] Loss: 0.016515  Time: 415.5s  LR: 2.44e-04
+         Test → PSNR: 34.10  SSIM: 0.9339
+[Epoch 131] Loss: 0.016763  Time: 415.6s  LR: 2.42e-04
+         Test → PSNR: 34.21  SSIM: 0.9352
+  ★ 新最优: PSNR=34.21  SSIM=0.9352  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 132] Loss: 0.016638  Time: 413.8s  LR: 2.40e-04
+         Test → PSNR: 34.18  SSIM: 0.9340
+[Epoch 133] Loss: 0.016955  Time: 416.0s  LR: 2.38e-04
+         Test → PSNR: 34.29  SSIM: 0.9348
+  ★ 新最优: PSNR=34.29  SSIM=0.9348  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 134] Loss: 0.016689  Time: 416.1s  LR: 2.36e-04
+         Test → PSNR: 34.16  SSIM: 0.9336
+[Epoch 135] Loss: 0.016642  Time: 413.8s  LR: 2.34e-04
+         Test → PSNR: 34.21  SSIM: 0.9344
+[Epoch 136] Loss: 0.016432  Time: 413.3s  LR: 2.32e-04
+         Test → PSNR: 34.24  SSIM: 0.9349
+[Epoch 137] Loss: 0.016555  Time: 414.5s  LR: 2.30e-04
+         Test → PSNR: 34.19  SSIM: 0.9341
+[Epoch 138] Loss: 0.016429  Time: 414.8s  LR: 2.28e-04
+         Test → PSNR: 34.18  SSIM: 0.9340
+[Epoch 139] Loss: 0.016553  Time: 416.5s  LR: 2.26e-04
+         Test → PSNR: 34.25  SSIM: 0.9354
+[Epoch 140] Loss: 0.016682  Time: 415.6s  LR: 2.23e-04
+         Test → PSNR: 34.22  SSIM: 0.9354
+[Epoch 141] Loss: 0.016323  Time: 416.9s  LR: 2.21e-04
+         Test → PSNR: 34.30  SSIM: 0.9358
+  ★ 新最优: PSNR=34.30  SSIM=0.9358  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 142] Loss: 0.016135  Time: 416.1s  LR: 2.19e-04
+         Test → PSNR: 34.14  SSIM: 0.9353
+[Epoch 143] Loss: 0.016147  Time: 417.2s  LR: 2.17e-04
+         Test → PSNR: 34.16  SSIM: 0.9356
+[Epoch 144] Loss: 0.016356  Time: 416.2s  LR: 2.15e-04
+         Test → PSNR: 34.36  SSIM: 0.9369
+  ★ 新最优: PSNR=34.36  SSIM=0.9369  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 145] Loss: 0.016367  Time: 416.0s  LR: 2.13e-04
+         Test → PSNR: 34.14  SSIM: 0.9348
+[Epoch 146] Loss: 0.016144  Time: 415.5s  LR: 2.11e-04
+         Test → PSNR: 34.27  SSIM: 0.9359
+[Epoch 147] Loss: 0.016004  Time: 416.6s  LR: 2.09e-04
+         Test → PSNR: 34.25  SSIM: 0.9367
+[Epoch 148] Loss: 0.016303  Time: 414.4s  LR: 2.07e-04
+         Test → PSNR: 34.33  SSIM: 0.9361
+[Epoch 149] Loss: 0.016496  Time: 415.6s  LR: 2.05e-04
+         Test → PSNR: 34.33  SSIM: 0.9346
+[Epoch 150] Loss: 0.016236  Time: 416.4s  LR: 2.03e-04
+         Test → PSNR: 34.29  SSIM: 0.9374
+[Epoch 151] Loss: 0.016231  Time: 415.5s  LR: 2.00e-04
+         Test → PSNR: 34.21  SSIM: 0.9343
+[Epoch 152] Loss: 0.016042  Time: 415.8s  LR: 1.98e-04
+         Test → PSNR: 34.34  SSIM: 0.9360
+[Epoch 153] Loss: 0.016154  Time: 416.2s  LR: 1.96e-04
+         Test → PSNR: 34.35  SSIM: 0.9357
+[Epoch 154] Loss: 0.016230  Time: 416.6s  LR: 1.94e-04
+         Test → PSNR: 34.32  SSIM: 0.9365
+[Epoch 155] Loss: 0.016004  Time: 416.3s  LR: 1.92e-04
+         Test → PSNR: 34.32  SSIM: 0.9378
+[Epoch 156] Loss: 0.016226  Time: 414.2s  LR: 1.90e-04
+         Test → PSNR: 34.31  SSIM: 0.9371
+[Epoch 157] Loss: 0.016025  Time: 415.8s  LR: 1.88e-04
+         Test → PSNR: 34.39  SSIM: 0.9376
+  ★ 新最优: PSNR=34.39  SSIM=0.9376  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 158] Loss: 0.016006  Time: 415.5s  LR: 1.86e-04
+         Test → PSNR: 34.37  SSIM: 0.9370
+[Epoch 159] Loss: 0.016057  Time: 415.7s  LR: 1.84e-04
+         Test → PSNR: 34.38  SSIM: 0.9370
+[Epoch 160] Loss: 0.016170  Time: 415.8s  LR: 1.82e-04
+         Test → PSNR: 34.31  SSIM: 0.9359
+[Epoch 161] Loss: 0.016056  Time: 415.4s  LR: 1.80e-04
+         Test → PSNR: 34.33  SSIM: 0.9369
+[Epoch 162] Loss: 0.016040  Time: 416.4s  LR: 1.78e-04
+         Test → PSNR: 34.32  SSIM: 0.9383
+[Epoch 163] Loss: 0.015958  Time: 415.4s  LR: 1.75e-04
+         Test → PSNR: 34.32  SSIM: 0.9365
+[Epoch 164] Loss: 0.016041  Time: 415.3s  LR: 1.73e-04
+         Test → PSNR: 34.28  SSIM: 0.9356
+[Epoch 165] Loss: 0.015893  Time: 415.0s  LR: 1.71e-04
+         Test → PSNR: 34.42  SSIM: 0.9375
+  ★ 新最优: PSNR=34.42  SSIM=0.9375  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 166] Loss: 0.015943  Time: 415.8s  LR: 1.69e-04
+         Test → PSNR: 34.36  SSIM: 0.9366
+[Epoch 167] Loss: 0.015856  Time: 416.9s  LR: 1.67e-04
+         Test → PSNR: 34.33  SSIM: 0.9365
+[Epoch 168] Loss: 0.015916  Time: 416.2s  LR: 1.65e-04
+         Test → PSNR: 34.40  SSIM: 0.9377
+[Epoch 169] Loss: 0.015805  Time: 416.9s  LR: 1.63e-04
+         Test → PSNR: 34.44  SSIM: 0.9356
+  ★ 新最优: PSNR=34.44  SSIM=0.9356  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 170] Loss: 0.015737  Time: 413.9s  LR: 1.61e-04
+         Test → PSNR: 34.38  SSIM: 0.9373
+[Epoch 171] Loss: 0.015805  Time: 416.3s  LR: 1.59e-04
+         Test → PSNR: 34.41  SSIM: 0.9377
+[Epoch 172] Loss: 0.015794  Time: 415.5s  LR: 1.57e-04
+         Test → PSNR: 34.47  SSIM: 0.9386
+  ★ 新最优: PSNR=34.47  SSIM=0.9386  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 173] Loss: 0.015639  Time: 416.5s  LR: 1.55e-04
+         Test → PSNR: 34.39  SSIM: 0.9380
+[Epoch 174] Loss: 0.015713  Time: 415.6s  LR: 1.53e-04
+         Test → PSNR: 34.33  SSIM: 0.9389
+[Epoch 175] Loss: 0.015781  Time: 416.0s  LR: 1.51e-04
+         Test → PSNR: 34.40  SSIM: 0.9365
+[Epoch 176] Loss: 0.015528  Time: 415.9s  LR: 1.49e-04
+         Test → PSNR: 34.31  SSIM: 0.9376
+[Epoch 177] Loss: 0.015813  Time: 416.2s  LR: 1.47e-04
+         Test → PSNR: 34.38  SSIM: 0.9383
+[Epoch 178] Loss: 0.015640  Time: 414.9s  LR: 1.45e-04
+         Test → PSNR: 34.40  SSIM: 0.9396
+[Epoch 179] Loss: 0.015608  Time: 416.5s  LR: 1.43e-04
+         Test → PSNR: 34.47  SSIM: 0.9394
+[Epoch 180] Loss: 0.015611  Time: 416.1s  LR: 1.41e-04
+         Test → PSNR: 34.44  SSIM: 0.9395
+[Epoch 181] Loss: 0.015418  Time: 414.8s  LR: 1.39e-04
+         Test → PSNR: 34.49  SSIM: 0.9400
+  ★ 新最优: PSNR=34.49  SSIM=0.9400  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 182] Loss: 0.015621  Time: 416.6s  LR: 1.37e-04
+         Test → PSNR: 34.50  SSIM: 0.9395
+  ★ 新最优: PSNR=34.50  SSIM=0.9395  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 183] Loss: 0.015548  Time: 415.7s  LR: 1.35e-04
+         Test → PSNR: 34.28  SSIM: 0.9380
+[Epoch 184] Loss: 0.015718  Time: 418.4s  LR: 1.33e-04
+         Test → PSNR: 34.50  SSIM: 0.9397
+  ★ 新最优: PSNR=34.50  SSIM=0.9397  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 185] Loss: 0.015637  Time: 416.3s  LR: 1.31e-04
+         Test → PSNR: 34.43  SSIM: 0.9385
+[Epoch 186] Loss: 0.015741  Time: 414.0s  LR: 1.29e-04
+         Test → PSNR: 34.39  SSIM: 0.9356
+[Epoch 187] Loss: 0.015494  Time: 413.0s  LR: 1.27e-04
+         Test → PSNR: 34.48  SSIM: 0.9400
+[Epoch 188] Loss: 0.015698  Time: 412.6s  LR: 1.25e-04
+         Test → PSNR: 34.41  SSIM: 0.9382
+[Epoch 189] Loss: 0.015307  Time: 411.7s  LR: 1.23e-04
+         Test → PSNR: 34.48  SSIM: 0.9389
+[Epoch 190] Loss: 0.015622  Time: 412.2s  LR: 1.21e-04
+         Test → PSNR: 34.46  SSIM: 0.9396
+[Epoch 191] Loss: 0.015446  Time: 412.4s  LR: 1.19e-04
+         Test → PSNR: 34.54  SSIM: 0.9402
+  ★ 新最优: PSNR=34.54  SSIM=0.9402  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 192] Loss: 0.015421  Time: 412.0s  LR: 1.17e-04
+         Test → PSNR: 34.49  SSIM: 0.9394
+[Epoch 193] Loss: 0.015325  Time: 412.7s  LR: 1.16e-04
+         Test → PSNR: 34.54  SSIM: 0.9399
+[Epoch 194] Loss: 0.015410  Time: 411.4s  LR: 1.14e-04
+         Test → PSNR: 34.52  SSIM: 0.9402
+[Epoch 195] Loss: 0.015658  Time: 412.3s  LR: 1.12e-04
+         Test → PSNR: 34.55  SSIM: 0.9403
+  ★ 新最优: PSNR=34.55  SSIM=0.9403  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 196] Loss: 0.015306  Time: 413.1s  LR: 1.10e-04
+         Test → PSNR: 34.55  SSIM: 0.9410
+  ★ 新最优: PSNR=34.55  SSIM=0.9410  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 197] Loss: 0.015486  Time: 411.7s  LR: 1.08e-04
+         Test → PSNR: 34.59  SSIM: 0.9394
+  ★ 新最优: PSNR=34.59  SSIM=0.9394  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 198] Loss: 0.015349  Time: 411.8s  LR: 1.06e-04
+         Test → PSNR: 34.55  SSIM: 0.9400
+[Epoch 199] Loss: 0.015176  Time: 410.7s  LR: 1.04e-04
+         Test → PSNR: 34.51  SSIM: 0.9398
+[Epoch 200] Loss: 0.015240  Time: 412.2s  LR: 1.03e-04
+         Test → PSNR: 34.44  SSIM: 0.9385
+[Epoch 201] Loss: 0.015312  Time: 412.4s  LR: 1.01e-04
+         Test → PSNR: 34.29  SSIM: 0.9388
+[Epoch 202] Loss: 0.015370  Time: 411.5s  LR: 9.89e-05
+         Test → PSNR: 34.56  SSIM: 0.9404
+[Epoch 203] Loss: 0.015338  Time: 413.4s  LR: 9.72e-05
+         Test → PSNR: 34.53  SSIM: 0.9405
+[Epoch 204] Loss: 0.015334  Time: 412.2s  LR: 9.54e-05
+         Test → PSNR: 34.52  SSIM: 0.9393
+[Epoch 205] Loss: 0.015185  Time: 415.2s  LR: 9.36e-05
+         Test → PSNR: 34.58  SSIM: 0.9408
+[Epoch 206] Loss: 0.015481  Time: 412.1s  LR: 9.18e-05
+         Test → PSNR: 34.53  SSIM: 0.9403
+[Epoch 207] Loss: 0.015329  Time: 412.4s  LR: 9.01e-05
+         Test → PSNR: 34.54  SSIM: 0.9411
+[Epoch 208] Loss: 0.015289  Time: 411.3s  LR: 8.84e-05
+         Test → PSNR: 34.56  SSIM: 0.9414
+[Epoch 209] Loss: 0.015153  Time: 412.2s  LR: 8.66e-05
+         Test → PSNR: 34.58  SSIM: 0.9410
+[Epoch 210] Loss: 0.015253  Time: 412.4s  LR: 8.49e-05
+         Test → PSNR: 34.57  SSIM: 0.9387
+[Epoch 211] Loss: 0.015240  Time: 412.2s  LR: 8.32e-05
+         Test → PSNR: 34.53  SSIM: 0.9407
+[Epoch 212] Loss: 0.015167  Time: 412.9s  LR: 8.16e-05
+         Test → PSNR: 34.54  SSIM: 0.9410
+[Epoch 213] Loss: 0.015293  Time: 412.3s  LR: 7.99e-05
+         Test → PSNR: 34.60  SSIM: 0.9411
+  ★ 新最优: PSNR=34.60  SSIM=0.9411  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 214] Loss: 0.015209  Time: 411.7s  LR: 7.82e-05
+         Test → PSNR: 34.61  SSIM: 0.9409
+  ★ 新最优: PSNR=34.61  SSIM=0.9409  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 215] Loss: 0.015247  Time: 412.5s  LR: 7.66e-05
+         Test → PSNR: 34.59  SSIM: 0.9407
+[Epoch 216] Loss: 0.015202  Time: 411.7s  LR: 7.50e-05
+         Test → PSNR: 34.61  SSIM: 0.9413
+[Epoch 217] Loss: 0.015252  Time: 410.6s  LR: 7.33e-05
+         Test → PSNR: 34.60  SSIM: 0.9400
+[Epoch 218] Loss: 0.015100  Time: 411.1s  LR: 7.17e-05
+         Test → PSNR: 34.60  SSIM: 0.9419
+[Epoch 219] Loss: 0.015272  Time: 411.3s  LR: 7.01e-05
+         Test → PSNR: 34.52  SSIM: 0.9387
+[Epoch 220] Loss: 0.015249  Time: 412.6s  LR: 6.86e-05
+         Test → PSNR: 34.61  SSIM: 0.9404
+[Epoch 221] Loss: 0.015068  Time: 411.8s  LR: 6.70e-05
+         Test → PSNR: 34.58  SSIM: 0.9412
+[Epoch 222] Loss: 0.015066  Time: 411.4s  LR: 6.55e-05
+         Test → PSNR: 34.65  SSIM: 0.9412
+  ★ 新最优: PSNR=34.65  SSIM=0.9412  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 223] Loss: 0.015061  Time: 412.3s  LR: 6.39e-05
+         Test → PSNR: 34.65  SSIM: 0.9413
+  ★ 新最优: PSNR=34.65  SSIM=0.9413  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 224] Loss: 0.015058  Time: 411.2s  LR: 6.24e-05
+         Test → PSNR: 34.60  SSIM: 0.9413
+[Epoch 225] Loss: 0.015002  Time: 411.6s  LR: 6.09e-05
+         Test → PSNR: 34.60  SSIM: 0.9416
+[Epoch 226] Loss: 0.014976  Time: 411.8s  LR: 5.94e-05
+         Test → PSNR: 34.58  SSIM: 0.9411
+[Epoch 227] Loss: 0.015200  Time: 412.1s  LR: 5.80e-05
+         Test → PSNR: 34.63  SSIM: 0.9411
+[Epoch 228] Loss: 0.015157  Time: 410.9s  LR: 5.65e-05
+         Test → PSNR: 34.63  SSIM: 0.9419
+[Epoch 229] Loss: 0.015092  Time: 411.6s  LR: 5.51e-05
+         Test → PSNR: 34.63  SSIM: 0.9414
+[Epoch 230] Loss: 0.015172  Time: 411.3s  LR: 5.36e-05
+         Test → PSNR: 34.58  SSIM: 0.9412
+[Epoch 231] Loss: 0.015199  Time: 412.7s  LR: 5.22e-05
+         Test → PSNR: 34.64  SSIM: 0.9420
+[Epoch 232] Loss: 0.015089  Time: 410.6s  LR: 5.09e-05
+         Test → PSNR: 34.55  SSIM: 0.9417
+[Epoch 233] Loss: 0.015092  Time: 411.7s  LR: 4.95e-05
+         Test → PSNR: 34.64  SSIM: 0.9420
+[Epoch 234] Loss: 0.015101  Time: 412.4s  LR: 4.81e-05
+         Test → PSNR: 34.65  SSIM: 0.9420
+[Epoch 235] Loss: 0.015181  Time: 411.1s  LR: 4.68e-05
+         Test → PSNR: 34.59  SSIM: 0.9412
+[Epoch 236] Loss: 0.014964  Time: 412.3s  LR: 4.55e-05
+         Test → PSNR: 34.68  SSIM: 0.9422
+  ★ 新最优: PSNR=34.68  SSIM=0.9422  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 237] Loss: 0.015037  Time: 411.4s  LR: 4.42e-05
+         Test → PSNR: 34.66  SSIM: 0.9423
+[Epoch 238] Loss: 0.015097  Time: 411.5s  LR: 4.29e-05
+         Test → PSNR: 34.65  SSIM: 0.9422
+[Epoch 239] Loss: 0.015084  Time: 411.8s  LR: 4.16e-05
+         Test → PSNR: 34.64  SSIM: 0.9417
+[Epoch 240] Loss: 0.014886  Time: 411.0s  LR: 4.03e-05
+         Test → PSNR: 34.66  SSIM: 0.9420
+[Epoch 241] Loss: 0.014953  Time: 411.9s  LR: 3.91e-05
+         Test → PSNR: 34.64  SSIM: 0.9415
+[Epoch 242] Loss: 0.014907  Time: 411.0s  LR: 3.79e-05
+         Test → PSNR: 34.63  SSIM: 0.9412
+[Epoch 243] Loss: 0.015104  Time: 410.4s  LR: 3.67e-05
+         Test → PSNR: 34.67  SSIM: 0.9422
+[Epoch 244] Loss: 0.015024  Time: 412.4s  LR: 3.55e-05
+         Test → PSNR: 34.65  SSIM: 0.9416
+[Epoch 245] Loss: 0.015000  Time: 412.5s  LR: 3.43e-05
+         Test → PSNR: 34.64  SSIM: 0.9419
+[Epoch 246] Loss: 0.014982  Time: 411.3s  LR: 3.32e-05
+         Test → PSNR: 34.64  SSIM: 0.9423
+[Epoch 247] Loss: 0.014891  Time: 412.4s  LR: 3.21e-05
+         Test → PSNR: 34.67  SSIM: 0.9427
+[Epoch 248] Loss: 0.014932  Time: 412.7s  LR: 3.09e-05
+         Test → PSNR: 34.68  SSIM: 0.9424
+[Epoch 249] Loss: 0.014812  Time: 411.5s  LR: 2.99e-05
+         Test → PSNR: 34.66  SSIM: 0.9424
+[Epoch 250] Loss: 0.015088  Time: 411.9s  LR: 2.88e-05
+         Test → PSNR: 34.68  SSIM: 0.9425
+[Epoch 251] Loss: 0.014766  Time: 410.8s  LR: 2.77e-05
+         Test → PSNR: 34.65  SSIM: 0.9426
+[Epoch 252] Loss: 0.014992  Time: 411.3s  LR: 2.67e-05
+         Test → PSNR: 34.65  SSIM: 0.9425
+[Epoch 253] Loss: 0.015102  Time: 411.7s  LR: 2.57e-05
+         Test → PSNR: 34.65  SSIM: 0.9427
+[Epoch 254] Loss: 0.014761  Time: 410.7s  LR: 2.47e-05
+         Test → PSNR: 34.66  SSIM: 0.9426
+[Epoch 255] Loss: 0.014969  Time: 410.8s  LR: 2.37e-05
+         Test → PSNR: 34.69  SSIM: 0.9428
+  ★ 新最优: PSNR=34.69  SSIM=0.9428  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 256] Loss: 0.014886  Time: 412.0s  LR: 2.27e-05
+         Test → PSNR: 34.66  SSIM: 0.9425
+[Epoch 257] Loss: 0.015059  Time: 410.8s  LR: 2.18e-05
+         Test → PSNR: 34.69  SSIM: 0.9428
+[Epoch 258] Loss: 0.014923  Time: 411.0s  LR: 2.09e-05
+         Test → PSNR: 34.67  SSIM: 0.9428
+[Epoch 259] Loss: 0.014918  Time: 411.4s  LR: 2.00e-05
+         Test → PSNR: 34.69  SSIM: 0.9428
+  ★ 新最优: PSNR=34.69  SSIM=0.9428  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 260] Loss: 0.014987  Time: 411.9s  LR: 1.91e-05
+         Test → PSNR: 34.69  SSIM: 0.9428
+  ★ 新最优: PSNR=34.69  SSIM=0.9428  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 261] Loss: 0.015070  Time: 411.3s  LR: 1.82e-05
+         Test → PSNR: 34.68  SSIM: 0.9425
+[Epoch 262] Loss: 0.014897  Time: 411.4s  LR: 1.74e-05
+         Test → PSNR: 34.70  SSIM: 0.9427
+  ★ 新最优: PSNR=34.70  SSIM=0.9427  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 263] Loss: 0.014894  Time: 410.9s  LR: 1.66e-05
+         Test → PSNR: 34.68  SSIM: 0.9428
+[Epoch 264] Loss: 0.014916  Time: 412.1s  LR: 1.58e-05
+         Test → PSNR: 34.69  SSIM: 0.9429
+[Epoch 265] Loss: 0.015174  Time: 411.0s  LR: 1.50e-05
+         Test → PSNR: 34.66  SSIM: 0.9429
+[Epoch 266] Loss: 0.014811  Time: 410.8s  LR: 1.43e-05
+         Test → PSNR: 34.67  SSIM: 0.9428
+[Epoch 267] Loss: 0.014816  Time: 411.9s  LR: 1.35e-05
+         Test → PSNR: 34.70  SSIM: 0.9429
+[Epoch 268] Loss: 0.014988  Time: 410.8s  LR: 1.28e-05
+         Test → PSNR: 34.68  SSIM: 0.9429
+[Epoch 269] Loss: 0.014836  Time: 411.6s  LR: 1.21e-05
+         Test → PSNR: 34.68  SSIM: 0.9428
+[Epoch 270] Loss: 0.014773  Time: 410.8s  LR: 1.14e-05
+         Test → PSNR: 34.69  SSIM: 0.9429
+[Epoch 271] Loss: 0.014869  Time: 410.9s  LR: 1.08e-05
+         Test → PSNR: 34.68  SSIM: 0.9428
+[Epoch 272] Loss: 0.014823  Time: 410.8s  LR: 1.01e-05
+         Test → PSNR: 34.67  SSIM: 0.9427
+[Epoch 273] Loss: 0.014846  Time: 411.4s  LR: 9.51e-06
+         Test → PSNR: 34.69  SSIM: 0.9429
+[Epoch 274] Loss: 0.014685  Time: 412.5s  LR: 8.92e-06
+         Test → PSNR: 34.68  SSIM: 0.9431
+[Epoch 275] Loss: 0.014804  Time: 411.7s  LR: 8.35e-06
+         Test → PSNR: 34.70  SSIM: 0.9430
+[Epoch 276] Loss: 0.014771  Time: 410.8s  LR: 7.80e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+  ★ 新最优: PSNR=34.70  SSIM=0.9431  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 277] Loss: 0.014896  Time: 410.5s  LR: 7.27e-06
+         Test → PSNR: 34.69  SSIM: 0.9430
+[Epoch 278] Loss: 0.014713  Time: 410.5s  LR: 6.76e-06
+         Test → PSNR: 34.69  SSIM: 0.9430
+[Epoch 279] Loss: 0.014870  Time: 410.7s  LR: 6.27e-06
+         Test → PSNR: 34.68  SSIM: 0.9429
+[Epoch 280] Loss: 0.014875  Time: 410.6s  LR: 5.80e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 281] Loss: 0.014799  Time: 411.4s  LR: 5.36e-06
+         Test → PSNR: 34.69  SSIM: 0.9429
+[Epoch 282] Loss: 0.014719  Time: 411.3s  LR: 4.94e-06
+         Test → PSNR: 34.68  SSIM: 0.9429
+[Epoch 283] Loss: 0.014960  Time: 412.2s  LR: 4.53e-06
+         Test → PSNR: 34.68  SSIM: 0.9430
+[Epoch 284] Loss: 0.014810  Time: 410.9s  LR: 4.15e-06
+         Test → PSNR: 34.70  SSIM: 0.9430
+[Epoch 285] Loss: 0.014804  Time: 412.4s  LR: 3.79e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 286] Loss: 0.015014  Time: 411.9s  LR: 3.46e-06
+         Test → PSNR: 34.70  SSIM: 0.9430
+[Epoch 287] Loss: 0.014735  Time: 412.2s  LR: 3.14e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+[Epoch 288] Loss: 0.014761  Time: 411.5s  LR: 2.85e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+[Epoch 289] Loss: 0.014782  Time: 411.3s  LR: 2.57e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 290] Loss: 0.014854  Time: 412.2s  LR: 2.32e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+[Epoch 291] Loss: 0.014804  Time: 412.2s  LR: 2.09e-06
+         Test → PSNR: 34.69  SSIM: 0.9430
+[Epoch 292] Loss: 0.014850  Time: 411.5s  LR: 1.89e-06
+         Test → PSNR: 34.69  SSIM: 0.9430
+[Epoch 293] Loss: 0.014822  Time: 410.4s  LR: 1.70e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 294] Loss: 0.014848  Time: 413.0s  LR: 1.54e-06
+         Test → PSNR: 34.70  SSIM: 0.9432
+  ★ 新最优: PSNR=34.70  SSIM=0.9432  → result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+[Epoch 295] Loss: 0.014936  Time: 411.2s  LR: 1.39e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+[Epoch 296] Loss: 0.014919  Time: 411.7s  LR: 1.27e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 297] Loss: 0.014656  Time: 411.3s  LR: 1.17e-06
+         Test → PSNR: 34.70  SSIM: 0.9431
+[Epoch 298] Loss: 0.014868  Time: 411.6s  LR: 1.10e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+[Epoch 299] Loss: 0.014940  Time: 410.9s  LR: 1.04e-06
+         Test → PSNR: 34.70  SSIM: 0.9432
+[Epoch 300] Loss: 0.014783  Time: 411.7s  LR: 1.01e-06
+         Test → PSNR: 34.69  SSIM: 0.9431
+
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python test.py
+模型: WaveMST_3D  参数量: 0.79M
+Checkpoint: result/model/2026_04_29_23_26_58_3d_wpo_pure/best.pth
+  Scene 01: PSNR=34.75  SSIM=0.9355  SAM=0.1262
+  Scene 02: PSNR=34.99  SSIM=0.9345  SAM=0.1571
+  Scene 03: PSNR=36.02  SSIM=0.9496  SAM=0.1012
+  Scene 04: PSNR=42.75  SSIM=0.9770  SAM=0.1191
+  Scene 05: PSNR=32.04  SSIM=0.9386  SAM=0.1133
+  Scene 06: PSNR=34.16  SSIM=0.9507  SAM=0.1530
+  Scene 07: PSNR=33.21  SSIM=0.9210  SAM=0.1159
+  Scene 08: PSNR=32.26  SSIM=0.9472  SAM=0.1889
+  Scene 09: PSNR=34.97  SSIM=0.9407  SAM=0.1206
+  Scene 10: PSNR=31.91  SSIM=0.9370  SAM=0.1477
+
+  平均:    PSNR=34.70  SSIM=0.9432  SAM=0.1343
+
+结果保存到: result/show/2026_05_02_00_10_48_3d_wpo_pure
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz.py
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz.py
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz.py
+可视化图像保存到: result/show/viz/scene_00
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ python viz.py
+可视化图像保存到: result/show/viz/scene_01
+(/data5/SCI/zhangwenjie/zwj) [01;32mliulei@inspur-NF5468M5[00m:[01;34m/data5/SCI/xieweijie/CASSI[00m$ 
