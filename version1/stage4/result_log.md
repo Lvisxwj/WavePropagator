@@ -712,350 +712,350 @@
   参数量:   3.67M
 ============================================================
 训练开始: 5.23.0:07
-[Epoch 001] Loss: 0.084237  Time: 524.2s  LR: 4.00e-04
-         Test -> PSNR: 23.88  SSIM: 0.5467  SAM: 0.5674
-                FreqAmpErr: 194.08850  LowFreqErr: 16637.41201  HighFreqErr: 65.37808
-[Epoch 002] Loss: 0.053249  Time: 516.8s  LR: 4.00e-04
-         Test -> PSNR: 26.31  SSIM: 0.6948  SAM: 0.4497
-                FreqAmpErr: 103.72618  LowFreqErr: 7188.24485  HighFreqErr: 48.27197
-[Epoch 003] Loss: 0.043120  Time: 516.4s  LR: 4.00e-04
-         Test -> PSNR: 27.40  SSIM: 0.7273  SAM: 0.3896
-                FreqAmpErr: 71.92640  LowFreqErr: 4005.48834  HighFreqErr: 41.13637
-[Epoch 004] Loss: 0.038949  Time: 516.6s  LR: 4.00e-04
-         Test -> PSNR: 28.40  SSIM: 0.7652  SAM: 0.3691
-                FreqAmpErr: 60.11695  LowFreqErr: 3081.03745  HighFreqErr: 36.47064
-  * 新最优: PSNR=28.40  SSIM=0.7652  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-^[[A^[[A^[[B^[[A^[[A^[[A^[[A[Epoch 005] Loss: 0.035812  Time: 514.1s  LR: 4.00e-04
-         Test -> PSNR: 29.02  SSIM: 0.7989  SAM: 0.3002
-                FreqAmpErr: 51.44724  LowFreqErr: 2539.52850  HighFreqErr: 31.97174
-  * 新最优: PSNR=29.02  SSIM=0.7989  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 006] Loss: 0.033448  Time: 516.1s  LR: 4.00e-04
-         Test -> PSNR: 29.74  SSIM: 0.8284  SAM: 0.2829
-                FreqAmpErr: 43.81331  LowFreqErr: 1851.71088  HighFreqErr: 29.66196
-  * 新最优: PSNR=29.74  SSIM=0.8284  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 007] Loss: 0.032007  Time: 516.3s  LR: 4.00e-04
-         Test -> PSNR: 29.97  SSIM: 0.8328  SAM: 0.2527
-                FreqAmpErr: 40.47091  LowFreqErr: 1741.43406  HighFreqErr: 27.15659
-  * 新最优: PSNR=29.97  SSIM=0.8328  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 008] Loss: 0.030182  Time: 519.1s  LR: 3.99e-04
-         Test -> PSNR: 29.99  SSIM: 0.8290  SAM: 0.2851
-                FreqAmpErr: 40.54307  LowFreqErr: 2068.41981  HighFreqErr: 24.66983
-  * 新最优: PSNR=29.99  SSIM=0.8290  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 009] Loss: 0.028888  Time: 520.3s  LR: 3.99e-04
-         Test -> PSNR: 30.45  SSIM: 0.8500  SAM: 0.2738
-                FreqAmpErr: 37.94670  LowFreqErr: 1755.79426  HighFreqErr: 24.50021
-  * 新最优: PSNR=30.45  SSIM=0.8500  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 010] Loss: 0.028137  Time: 519.9s  LR: 3.99e-04
-         Test -> PSNR: 30.57  SSIM: 0.8515  SAM: 0.2602
-                FreqAmpErr: 36.50141  LowFreqErr: 1627.80921  HighFreqErr: 24.04542
-  * 新最优: PSNR=30.57  SSIM=0.8515  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 011] Loss: 0.026994  Time: 516.1s  LR: 3.99e-04
-         Test -> PSNR: 31.11  SSIM: 0.8617  SAM: 0.2591
-                FreqAmpErr: 30.47939  LowFreqErr: 1232.00289  HighFreqErr: 21.07444
-  * 新最优: PSNR=31.11  SSIM=0.8617  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 012] Loss: 0.026347  Time: 515.0s  LR: 3.99e-04
-         Test -> PSNR: 31.26  SSIM: 0.8716  SAM: 0.2558
-                FreqAmpErr: 30.95760  LowFreqErr: 1336.40900  HighFreqErr: 20.73915
-  * 新最优: PSNR=31.26  SSIM=0.8716  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 013] Loss: 0.025969  Time: 515.9s  LR: 3.98e-04
-         Test -> PSNR: 31.39  SSIM: 0.8649  SAM: 0.2966
-                FreqAmpErr: 28.73370  LowFreqErr: 1278.21204  HighFreqErr: 18.95339
-  * 新最优: PSNR=31.39  SSIM=0.8649  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 014] Loss: 0.025149  Time: 516.4s  LR: 3.98e-04
-         Test -> PSNR: 31.60  SSIM: 0.8752  SAM: 0.2425
-                FreqAmpErr: 28.34163  LowFreqErr: 1192.13553  HighFreqErr: 19.23201
-  * 新最优: PSNR=31.60  SSIM=0.8752  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 015] Loss: 0.024979  Time: 516.5s  LR: 3.98e-04
-         Test -> PSNR: 31.73  SSIM: 0.8839  SAM: 0.2317
-                FreqAmpErr: 27.62676  LowFreqErr: 1161.85627  HighFreqErr: 18.74856
-  * 新最优: PSNR=31.73  SSIM=0.8839  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 016] Loss: 0.023709  Time: 518.8s  LR: 3.98e-04
-         Test -> PSNR: 31.88  SSIM: 0.8828  SAM: 0.2540
-                FreqAmpErr: 25.66002  LowFreqErr: 1090.34117  HighFreqErr: 17.32621
-  * 新最优: PSNR=31.88  SSIM=0.8828  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 017] Loss: 0.023704  Time: 521.1s  LR: 3.97e-04
-         Test -> PSNR: 31.45  SSIM: 0.8856  SAM: 0.2537
-                FreqAmpErr: 31.16072  LowFreqErr: 1823.91763  HighFreqErr: 17.12789
-[Epoch 018] Loss: 0.023309  Time: 520.7s  LR: 3.97e-04
-         Test -> PSNR: 32.09  SSIM: 0.8959  SAM: 0.2122
-                FreqAmpErr: 24.98398  LowFreqErr: 1108.63587  HighFreqErr: 16.50168
-  * 新最优: PSNR=32.09  SSIM=0.8959  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 019] Loss: 0.022846  Time: 514.2s  LR: 3.96e-04
-         Test -> PSNR: 31.99  SSIM: 0.8890  SAM: 0.2395
-                FreqAmpErr: 26.84808  LowFreqErr: 1233.51550  HighFreqErr: 17.40286
-[Epoch 020] Loss: 0.022520  Time: 517.8s  LR: 3.96e-04
-         Test -> PSNR: 32.22  SSIM: 0.8920  SAM: 0.2249
-                FreqAmpErr: 24.17256  LowFreqErr: 1048.09654  HighFreqErr: 16.15778
-  * 新最优: PSNR=32.22  SSIM=0.8920  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 021] Loss: 0.022411  Time: 519.8s  LR: 3.96e-04
-         Test -> PSNR: 32.23  SSIM: 0.8897  SAM: 0.2368
-                FreqAmpErr: 25.33157  LowFreqErr: 1217.95989  HighFreqErr: 15.99625
-  * 新最优: PSNR=32.23  SSIM=0.8897  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 022] Loss: 0.021662  Time: 517.2s  LR: 3.95e-04
-         Test -> PSNR: 32.17  SSIM: 0.8919  SAM: 0.2526
-                FreqAmpErr: 26.88864  LowFreqErr: 1425.52860  HighFreqErr: 15.94076
-[Epoch 023] Loss: 0.021818  Time: 517.7s  LR: 3.95e-04
-         Test -> PSNR: 32.37  SSIM: 0.8936  SAM: 0.1987
-                FreqAmpErr: 23.27728  LowFreqErr: 1081.37413  HighFreqErr: 14.99500
-  * 新最优: PSNR=32.37  SSIM=0.8936  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 024] Loss: 0.021306  Time: 518.9s  LR: 3.94e-04
-         Test -> PSNR: 32.54  SSIM: 0.9052  SAM: 0.2016
-                FreqAmpErr: 22.89269  LowFreqErr: 1110.74929  HighFreqErr: 14.37748
-  * 新最优: PSNR=32.54  SSIM=0.9052  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 025] Loss: 0.020977  Time: 518.4s  LR: 3.94e-04
-         Test -> PSNR: 32.11  SSIM: 0.8804  SAM: 0.3113
-                FreqAmpErr: 27.34955  LowFreqErr: 1603.07988  HighFreqErr: 15.01549
-[Epoch 026] Loss: 0.020873  Time: 517.5s  LR: 3.93e-04
-         Test -> PSNR: 32.49  SSIM: 0.8995  SAM: 0.2394
-                FreqAmpErr: 24.27579  LowFreqErr: 1177.96805  HighFreqErr: 15.24524
-[Epoch 027] Loss: 0.020802  Time: 520.3s  LR: 3.93e-04
-         Test -> PSNR: 32.75  SSIM: 0.9058  SAM: 0.2036
-                FreqAmpErr: 23.03595  LowFreqErr: 1044.32204  HighFreqErr: 15.04181
-  * 新最优: PSNR=32.75  SSIM=0.9058  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 028] Loss: 0.020350  Time: 518.4s  LR: 3.92e-04
-         Test -> PSNR: 32.77  SSIM: 0.9066  SAM: 0.2049
-                FreqAmpErr: 22.09131  LowFreqErr: 1080.11758  HighFreqErr: 13.80959
-  * 新最优: PSNR=32.77  SSIM=0.9066  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 029] Loss: 0.020080  Time: 518.2s  LR: 3.91e-04
-         Test -> PSNR: 32.86  SSIM: 0.9116  SAM: 0.1770
-                FreqAmpErr: 21.08968  LowFreqErr: 1002.53024  HighFreqErr: 13.40744
-  * 新最优: PSNR=32.86  SSIM=0.9116  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 030] Loss: 0.019871  Time: 517.0s  LR: 3.91e-04
-         Test -> PSNR: 33.06  SSIM: 0.9146  SAM: 0.1990
-                FreqAmpErr: 20.34403  LowFreqErr: 886.18653  HighFreqErr: 13.56663
-  * 新最优: PSNR=33.06  SSIM=0.9146  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 031] Loss: 0.020060  Time: 517.7s  LR: 3.90e-04
-         Test -> PSNR: 33.02  SSIM: 0.9141  SAM: 0.2061
-                FreqAmpErr: 20.74502  LowFreqErr: 1008.40393  HighFreqErr: 13.01410
-[Epoch 032] Loss: 0.019846  Time: 517.1s  LR: 3.90e-04
-         Test -> PSNR: 32.82  SSIM: 0.9080  SAM: 0.2132
-                FreqAmpErr: 22.50473  LowFreqErr: 1175.49350  HighFreqErr: 13.47968
-[Epoch 033] Loss: 0.019535  Time: 520.1s  LR: 3.89e-04
-         Test -> PSNR: 32.45  SSIM: 0.8591  SAM: 0.3553
-                FreqAmpErr: 23.90716  LowFreqErr: 1362.10657  HighFreqErr: 13.43238
-[Epoch 034] Loss: 0.019502  Time: 520.4s  LR: 3.88e-04
-         Test -> PSNR: 33.32  SSIM: 0.9167  SAM: 0.2017
-                FreqAmpErr: 20.08881  LowFreqErr: 893.70922  HighFreqErr: 13.25053
-  * 新最优: PSNR=33.32  SSIM=0.9167  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 035] Loss: 0.019077  Time: 518.4s  LR: 3.87e-04
-         Test -> PSNR: 33.34  SSIM: 0.9201  SAM: 0.1798
-                FreqAmpErr: 19.12910  LowFreqErr: 834.40915  HighFreqErr: 12.74748
-  * 新最优: PSNR=33.34  SSIM=0.9201  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 036] Loss: 0.018933  Time: 516.6s  LR: 3.87e-04
-         Test -> PSNR: 32.94  SSIM: 0.9137  SAM: 0.2126
-                FreqAmpErr: 22.49761  LowFreqErr: 1191.20812  HighFreqErr: 13.34951
-[Epoch 037] Loss: 0.018774  Time: 517.2s  LR: 3.86e-04
-         Test -> PSNR: 32.88  SSIM: 0.9145  SAM: 0.2025
-                FreqAmpErr: 22.07570  LowFreqErr: 1073.62282  HighFreqErr: 13.84470
-[Epoch 038] Loss: 0.018640  Time: 518.4s  LR: 3.85e-04
-         Test -> PSNR: 33.42  SSIM: 0.9163  SAM: 0.2093
-                FreqAmpErr: 19.13805  LowFreqErr: 895.75679  HighFreqErr: 12.27630
-  * 新最优: PSNR=33.42  SSIM=0.9163  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 039] Loss: 0.018543  Time: 519.1s  LR: 3.84e-04
-         Test -> PSNR: 33.29  SSIM: 0.9184  SAM: 0.2078
-                FreqAmpErr: 19.43616  LowFreqErr: 1021.37924  HighFreqErr: 11.59344
-[Epoch 040] Loss: 0.018389  Time: 518.3s  LR: 3.84e-04
-         Test -> PSNR: 33.42  SSIM: 0.9212  SAM: 0.1721
-                FreqAmpErr: 18.88885  LowFreqErr: 893.49110  HighFreqErr: 12.04289
-  * 新最优: PSNR=33.42  SSIM=0.9212  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 041] Loss: 0.018531  Time: 518.5s  LR: 3.83e-04
-         Test -> PSNR: 33.40  SSIM: 0.9226  SAM: 0.1866
-                FreqAmpErr: 19.13815  LowFreqErr: 910.04074  HighFreqErr: 12.16459
-[Epoch 042] Loss: 0.018108  Time: 519.8s  LR: 3.82e-04
-         Test -> PSNR: 33.64  SSIM: 0.9259  SAM: 0.1713
-                FreqAmpErr: 18.34864  LowFreqErr: 844.26526  HighFreqErr: 11.88377
-  * 新最优: PSNR=33.64  SSIM=0.9259  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 043] Loss: 0.018309  Time: 520.6s  LR: 3.81e-04
-         Test -> PSNR: 33.31  SSIM: 0.9137  SAM: 0.2269
-                FreqAmpErr: 19.71355  LowFreqErr: 983.91722  HighFreqErr: 12.16623
-[Epoch 044] Loss: 0.017751  Time: 519.1s  LR: 3.80e-04
-         Test -> PSNR: 33.17  SSIM: 0.9208  SAM: 0.1793
-                FreqAmpErr: 19.64153  LowFreqErr: 1047.06615  HighFreqErr: 11.59935
-[Epoch 045] Loss: 0.018243  Time: 518.9s  LR: 3.79e-04
-         Test -> PSNR: 33.62  SSIM: 0.9247  SAM: 0.1777
-                FreqAmpErr: 18.26301  LowFreqErr: 863.57772  HighFreqErr: 11.64629
-[Epoch 046] Loss: 0.017471  Time: 520.5s  LR: 3.78e-04
-         Test -> PSNR: 33.83  SSIM: 0.9280  SAM: 0.1722
-                FreqAmpErr: 16.96061  LowFreqErr: 755.95268  HighFreqErr: 11.17613
-  * 新最优: PSNR=33.83  SSIM=0.9280  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 047] Loss: 0.017803  Time: 516.3s  LR: 3.77e-04
-         Test -> PSNR: 33.36  SSIM: 0.9192  SAM: 0.1881
-                FreqAmpErr: 19.25672  LowFreqErr: 1026.81039  HighFreqErr: 11.37008
-[Epoch 048] Loss: 0.017573  Time: 519.9s  LR: 3.76e-04
-         Test -> PSNR: 33.80  SSIM: 0.9288  SAM: 0.1547
-                FreqAmpErr: 17.71964  LowFreqErr: 869.46027  HighFreqErr: 11.05262
-[Epoch 049] Loss: 0.017718  Time: 517.6s  LR: 3.75e-04
-         Test -> PSNR: 33.99  SSIM: 0.9320  SAM: 0.1577
-                FreqAmpErr: 16.73529  LowFreqErr: 753.42615  HighFreqErr: 10.96883
-  * 新最优: PSNR=33.99  SSIM=0.9320  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 050] Loss: 0.017672  Time: 517.2s  LR: 3.74e-04
-         Test -> PSNR: 33.68  SSIM: 0.9236  SAM: 0.1837
-                FreqAmpErr: 17.95111  LowFreqErr: 831.01436  HighFreqErr: 11.58684
-[Epoch 050] 当前时间: 5.23.7:19  预计结束: 5.24.19:20
-[Epoch 051] Loss: 0.017197  Time: 517.2s  LR: 3.73e-04
-         Test -> PSNR: 33.87  SSIM: 0.9295  SAM: 0.1669
-                FreqAmpErr: 17.18216  LowFreqErr: 790.41301  HighFreqErr: 11.12969
-[Epoch 052] Loss: 0.017236  Time: 517.5s  LR: 3.72e-04
-         Test -> PSNR: 33.93  SSIM: 0.9302  SAM: 0.1674
-                FreqAmpErr: 17.28818  LowFreqErr: 816.81465  HighFreqErr: 11.02987
-[Epoch 053] Loss: 0.017229  Time: 516.5s  LR: 3.71e-04
-         Test -> PSNR: 33.96  SSIM: 0.9279  SAM: 0.1773
-                FreqAmpErr: 16.82349  LowFreqErr: 781.39890  HighFreqErr: 10.83876
-[Epoch 054] Loss: 0.016992  Time: 518.0s  LR: 3.70e-04
-         Test -> PSNR: 33.69  SSIM: 0.9134  SAM: 0.2442
-                FreqAmpErr: 17.45852  LowFreqErr: 863.72431  HighFreqErr: 10.83436
-[Epoch 055] Loss: 0.016926  Time: 518.8s  LR: 3.69e-04
-         Test -> PSNR: 33.88  SSIM: 0.9302  SAM: 0.1644
-                FreqAmpErr: 17.85173  LowFreqErr: 824.61686  HighFreqErr: 11.53676
-[Epoch 056] Loss: 0.016925  Time: 518.1s  LR: 3.68e-04
-         Test -> PSNR: 34.04  SSIM: 0.9283  SAM: 0.1828
-                FreqAmpErr: 16.98714  LowFreqErr: 755.78325  HighFreqErr: 11.20419
-  * 新最优: PSNR=34.04  SSIM=0.9283  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 057] Loss: 0.017012  Time: 520.1s  LR: 3.67e-04
-         Test -> PSNR: 33.96  SSIM: 0.9295  SAM: 0.1838
-                FreqAmpErr: 16.98264  LowFreqErr: 812.22517  HighFreqErr: 10.75787
-[Epoch 058] Loss: 0.016957  Time: 519.7s  LR: 3.66e-04
-         Test -> PSNR: 33.97  SSIM: 0.9311  SAM: 0.1672
-                FreqAmpErr: 17.12707  LowFreqErr: 833.85590  HighFreqErr: 10.73411
-[Epoch 059] Loss: 0.016672  Time: 519.6s  LR: 3.64e-04
-         Test -> PSNR: 33.98  SSIM: 0.9286  SAM: 0.1909
-                FreqAmpErr: 17.58525  LowFreqErr: 850.66736  HighFreqErr: 11.06428
-[Epoch 060] Loss: 0.016795  Time: 517.7s  LR: 3.63e-04
-         Test -> PSNR: 34.04  SSIM: 0.9296  SAM: 0.1582
-                FreqAmpErr: 16.76809  LowFreqErr: 825.80029  HighFreqErr: 10.43538
-[Epoch 061] Loss: 0.016764  Time: 518.1s  LR: 3.62e-04
-         Test -> PSNR: 34.15  SSIM: 0.9315  SAM: 0.1695
-                FreqAmpErr: 16.17232  LowFreqErr: 751.45689  HighFreqErr: 10.41686
-  * 新最优: PSNR=34.15  SSIM=0.9315  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 062] Loss: 0.016491  Time: 517.7s  LR: 3.61e-04
-         Test -> PSNR: 34.23  SSIM: 0.9348  SAM: 0.1616
-                FreqAmpErr: 16.43180  LowFreqErr: 737.89630  HighFreqErr: 10.78452
-  * 新最优: PSNR=34.23  SSIM=0.9348  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 063] Loss: 0.016572  Time: 515.8s  LR: 3.59e-04
-         Test -> PSNR: 34.17  SSIM: 0.9340  SAM: 0.1556
-                FreqAmpErr: 16.34915  LowFreqErr: 785.02469  HighFreqErr: 10.33233
-[Epoch 064] Loss: 0.016542  Time: 516.8s  LR: 3.58e-04
-         Test -> PSNR: 33.75  SSIM: 0.9259  SAM: 0.1933
-                FreqAmpErr: 18.28536  LowFreqErr: 984.86015  HighFreqErr: 10.71948
-[Epoch 065] Loss: 0.016323  Time: 517.0s  LR: 3.57e-04
-         Test -> PSNR: 34.14  SSIM: 0.9311  SAM: 0.1804
-                FreqAmpErr: 16.77774  LowFreqErr: 819.99730  HighFreqErr: 10.49052
-[Epoch 066] Loss: 0.016308  Time: 519.1s  LR: 3.56e-04
-         Test -> PSNR: 34.13  SSIM: 0.9337  SAM: 0.1590
-                FreqAmpErr: 16.48553  LowFreqErr: 765.58084  HighFreqErr: 10.62197
-[Epoch 067] Loss: 0.016569  Time: 517.4s  LR: 3.54e-04
-         Test -> PSNR: 34.32  SSIM: 0.9378  SAM: 0.1504
-                FreqAmpErr: 15.96403  LowFreqErr: 763.65709  HighFreqErr: 10.11144
-  * 新最优: PSNR=34.32  SSIM=0.9378  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 068] Loss: 0.016041  Time: 519.5s  LR: 3.53e-04
-         Test -> PSNR: 34.20  SSIM: 0.9314  SAM: 0.1542
-                FreqAmpErr: 16.64187  LowFreqErr: 763.00779  HighFreqErr: 10.79967
-[Epoch 069] Loss: 0.016385  Time: 525.7s  LR: 3.52e-04
-         Test -> PSNR: 34.38  SSIM: 0.9364  SAM: 0.1679
-                FreqAmpErr: 15.43345  LowFreqErr: 698.82621  HighFreqErr: 10.08418
-  * 新最优: PSNR=34.38  SSIM=0.9364  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 070] Loss: 0.016106  Time: 518.4s  LR: 3.50e-04
-         Test -> PSNR: 34.15  SSIM: 0.9331  SAM: 0.1770
-                FreqAmpErr: 16.98032  LowFreqErr: 857.83974  HighFreqErr: 10.39848
-[Epoch 071] Loss: 0.016189  Time: 510.9s  LR: 3.49e-04
-         Test -> PSNR: 34.38  SSIM: 0.9345  SAM: 0.1700
-                FreqAmpErr: 15.76615  LowFreqErr: 744.72851  HighFreqErr: 10.06018
-[Epoch 072] Loss: 0.016067  Time: 512.3s  LR: 3.47e-04
-         Test -> PSNR: 34.33  SSIM: 0.9332  SAM: 0.1744
-                FreqAmpErr: 15.77372  LowFreqErr: 728.25846  HighFreqErr: 10.19673
-[Epoch 073] Loss: 0.015971  Time: 512.0s  LR: 3.46e-04
-         Test -> PSNR: 34.24  SSIM: 0.9355  SAM: 0.1660
-                FreqAmpErr: 16.77325  LowFreqErr: 828.78319  HighFreqErr: 10.41723
-[Epoch 074] Loss: 0.016101  Time: 511.1s  LR: 3.44e-04
-         Test -> PSNR: 34.35  SSIM: 0.9352  SAM: 0.1769
-                FreqAmpErr: 15.54072  LowFreqErr: 727.71922  HighFreqErr: 9.96613
-[Epoch 075] Loss: 0.015790  Time: 513.9s  LR: 3.43e-04
-         Test -> PSNR: 34.54  SSIM: 0.9374  SAM: 0.1548
-                FreqAmpErr: 15.18297  LowFreqErr: 698.84562  HighFreqErr: 9.83159
-  * 新最优: PSNR=34.54  SSIM=0.9374  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 076] Loss: 0.015866  Time: 514.5s  LR: 3.42e-04
-         Test -> PSNR: 34.27  SSIM: 0.9354  SAM: 0.1491
-                FreqAmpErr: 16.26786  LowFreqErr: 808.87485  HighFreqErr: 10.06371
-[Epoch 077] Loss: 0.015702  Time: 512.2s  LR: 3.40e-04
-         Test -> PSNR: 34.30  SSIM: 0.9349  SAM: 0.1492
-                FreqAmpErr: 15.83949  LowFreqErr: 748.55101  HighFreqErr: 10.10418
-[Epoch 078] Loss: 0.015726  Time: 511.8s  LR: 3.39e-04
-         Test -> PSNR: 34.39  SSIM: 0.9388  SAM: 0.1466
-                FreqAmpErr: 15.32386  LowFreqErr: 751.27790  HighFreqErr: 9.56317
-[Epoch 079] Loss: 0.015667  Time: 510.8s  LR: 3.37e-04
-         Test -> PSNR: 34.37  SSIM: 0.9376  SAM: 0.1612
-                FreqAmpErr: 16.17812  LowFreqErr: 832.42323  HighFreqErr: 9.78895
-[Epoch 080] Loss: 0.015532  Time: 513.5s  LR: 3.36e-04
-         Test -> PSNR: 34.32  SSIM: 0.9351  SAM: 0.1633
-                FreqAmpErr: 15.99904  LowFreqErr: 796.91968  HighFreqErr: 9.88637
-[Epoch 081] Loss: 0.015582  Time: 512.3s  LR: 3.34e-04
-         Test -> PSNR: 34.11  SSIM: 0.9330  SAM: 0.1676
-                FreqAmpErr: 16.61952  LowFreqErr: 841.55494  HighFreqErr: 10.16233
-[Epoch 082] Loss: 0.015684  Time: 514.7s  LR: 3.32e-04
-         Test -> PSNR: 34.26  SSIM: 0.9350  SAM: 0.1501
-                FreqAmpErr: 16.92631  LowFreqErr: 903.13418  HighFreqErr: 9.98950
-[Epoch 083] Loss: 0.015538  Time: 513.0s  LR: 3.31e-04
-         Test -> PSNR: 34.49  SSIM: 0.9377  SAM: 0.1593
-                FreqAmpErr: 15.63763  LowFreqErr: 767.10211  HighFreqErr: 9.75553
-[Epoch 084] Loss: 0.015600  Time: 510.6s  LR: 3.29e-04
-         Test -> PSNR: 34.54  SSIM: 0.9400  SAM: 0.1452
-                FreqAmpErr: 14.98896  LowFreqErr: 717.43744  HighFreqErr: 9.49054
-  * 新最优: PSNR=34.54  SSIM=0.9400  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 085] Loss: 0.015486  Time: 511.2s  LR: 3.28e-04
-         Test -> PSNR: 34.56  SSIM: 0.9388  SAM: 0.1485
-                FreqAmpErr: 14.90595  LowFreqErr: 729.58744  HighFreqErr: 9.31177
-  * 新最优: PSNR=34.56  SSIM=0.9388  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 086] Loss: 0.015250  Time: 512.4s  LR: 3.26e-04
-         Test -> PSNR: 34.22  SSIM: 0.9324  SAM: 0.1826
-                FreqAmpErr: 16.98901  LowFreqErr: 981.20216  HighFreqErr: 9.44161
-[Epoch 087] Loss: 0.015041  Time: 513.5s  LR: 3.24e-04
-         Test -> PSNR: 34.49  SSIM: 0.9378  SAM: 0.1474
-                FreqAmpErr: 16.38834  LowFreqErr: 754.96743  HighFreqErr: 10.60710
-[Epoch 088] Loss: 0.015416  Time: 510.0s  LR: 3.23e-04
-         Test -> PSNR: 34.59  SSIM: 0.9383  SAM: 0.1580
-                FreqAmpErr: 15.11992  LowFreqErr: 709.60251  HighFreqErr: 9.68385
-  * 新最优: PSNR=34.59  SSIM=0.9383  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 089] Loss: 0.015454  Time: 512.0s  LR: 3.21e-04
-         Test -> PSNR: 34.54  SSIM: 0.9396  SAM: 0.1474
-                FreqAmpErr: 15.16418  LowFreqErr: 726.57263  HighFreqErr: 9.59562
-[Epoch 090] Loss: 0.015209  Time: 510.9s  LR: 3.19e-04
-         Test -> PSNR: 34.48  SSIM: 0.9364  SAM: 0.1644
-                FreqAmpErr: 15.18902  LowFreqErr: 740.57544  HighFreqErr: 9.51104
-[Epoch 091] Loss: 0.015214  Time: 513.8s  LR: 3.18e-04
-         Test -> PSNR: 34.75  SSIM: 0.9419  SAM: 0.1444
-                FreqAmpErr: 14.44239  LowFreqErr: 652.56528  HighFreqErr: 9.44747
-  * 新最优: PSNR=34.75  SSIM=0.9419  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 092] Loss: 0.015145  Time: 512.7s  LR: 3.16e-04
-         Test -> PSNR: 34.61  SSIM: 0.9400  SAM: 0.1589
-                FreqAmpErr: 14.55790  LowFreqErr: 692.69085  HighFreqErr: 9.24981
-[Epoch 093] Loss: 0.015301  Time: 511.8s  LR: 3.14e-04
-         Test -> PSNR: 34.71  SSIM: 0.9412  SAM: 0.1515
-                FreqAmpErr: 14.64115  LowFreqErr: 691.11024  HighFreqErr: 9.34607
-[Epoch 094] Loss: 0.014976  Time: 510.2s  LR: 3.13e-04
-         Test -> PSNR: 34.50  SSIM: 0.9365  SAM: 0.1678
-                FreqAmpErr: 15.13206  LowFreqErr: 763.31827  HighFreqErr: 9.27562
-[Epoch 095] Loss: 0.015169  Time: 507.7s  LR: 3.11e-04
-         Test -> PSNR: 34.77  SSIM: 0.9398  SAM: 0.1379
-                FreqAmpErr: 14.55726  LowFreqErr: 692.04270  HighFreqErr: 9.25423
-  * 新最优: PSNR=34.77  SSIM=0.9398  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
-[Epoch 096] Loss: 0.015134  Time: 508.8s  LR: 3.09e-04
-         Test -> PSNR: 34.65  SSIM: 0.9403  SAM: 0.1419
-                FreqAmpErr: 14.92935  LowFreqErr: 744.71878  HighFreqErr: 9.21691
-[Epoch 097] Loss: 0.015091  Time: 507.2s  LR: 3.07e-04
-         Test -> PSNR: 34.68  SSIM: 0.9396  SAM: 0.1415
-                FreqAmpErr: 14.43495  LowFreqErr: 674.35866  HighFreqErr: 9.26938
-[Epoch 098] Loss: 0.015089  Time: 508.5s  LR: 3.06e-04
-         Test -> PSNR: 34.50  SSIM: 0.9405  SAM: 0.1404
-                FreqAmpErr: 14.80386  LowFreqErr: 741.26076  HighFreqErr: 9.11750
-[Epoch 099] Loss: 0.014800  Time: 519.0s  LR: 3.04e-04
-         Test -> PSNR: 34.63  SSIM: 0.9395  SAM: 0.1670
-                FreqAmpErr: 14.90097  LowFreqErr: 745.87913  HighFreqErr: 9.17923
-[Epoch 100] Loss: 0.015011  Time: 511.1s  LR: 3.02e-04
-         Test -> PSNR: 34.63  SSIM: 0.9400  SAM: 0.1629
-                FreqAmpErr: 14.98246  LowFreqErr: 744.91595  HighFreqErr: 9.26889
-[Epoch 100] 当前时间: 5.23.14:28  预计结束: 5.24.19:10
-[Epoch 101] Loss: 0.014791  Time: 507.2s  LR: 3.00e-04
-         Test -> PSNR: 34.62  SSIM: 0.9425  SAM: 0.1356
-                FreqAmpErr: 14.74109  LowFreqErr: 723.63465  HighFreqErr: 9.19222
+       [Epoch 001] Loss: 0.084237  Time: 524.2s  LR: 4.00e-04
+              Test -> PSNR: 23.88  SSIM: 0.5467  SAM: 0.5674
+                     FreqAmpErr: 194.08850  LowFreqErr: 16637.41201  HighFreqErr: 65.37808
+       [Epoch 002] Loss: 0.053249  Time: 516.8s  LR: 4.00e-04
+              Test -> PSNR: 26.31  SSIM: 0.6948  SAM: 0.4497
+                     FreqAmpErr: 103.72618  LowFreqErr: 7188.24485  HighFreqErr: 48.27197
+       [Epoch 003] Loss: 0.043120  Time: 516.4s  LR: 4.00e-04
+              Test -> PSNR: 27.40  SSIM: 0.7273  SAM: 0.3896
+                     FreqAmpErr: 71.92640  LowFreqErr: 4005.48834  HighFreqErr: 41.13637
+       [Epoch 004] Loss: 0.038949  Time: 516.6s  LR: 4.00e-04
+              Test -> PSNR: 28.40  SSIM: 0.7652  SAM: 0.3691
+                     FreqAmpErr: 60.11695  LowFreqErr: 3081.03745  HighFreqErr: 36.47064
+       * 新最优: PSNR=28.40  SSIM=0.7652  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       ^[[A^[[A^[[B^[[A^[[A^[[A^[[A[Epoch 005] Loss: 0.035812  Time: 514.1s  LR: 4.00e-04
+              Test -> PSNR: 29.02  SSIM: 0.7989  SAM: 0.3002
+                     FreqAmpErr: 51.44724  LowFreqErr: 2539.52850  HighFreqErr: 31.97174
+       * 新最优: PSNR=29.02  SSIM=0.7989  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 006] Loss: 0.033448  Time: 516.1s  LR: 4.00e-04
+              Test -> PSNR: 29.74  SSIM: 0.8284  SAM: 0.2829
+                     FreqAmpErr: 43.81331  LowFreqErr: 1851.71088  HighFreqErr: 29.66196
+       * 新最优: PSNR=29.74  SSIM=0.8284  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 007] Loss: 0.032007  Time: 516.3s  LR: 4.00e-04
+              Test -> PSNR: 29.97  SSIM: 0.8328  SAM: 0.2527
+                     FreqAmpErr: 40.47091  LowFreqErr: 1741.43406  HighFreqErr: 27.15659
+       * 新最优: PSNR=29.97  SSIM=0.8328  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 008] Loss: 0.030182  Time: 519.1s  LR: 3.99e-04
+              Test -> PSNR: 29.99  SSIM: 0.8290  SAM: 0.2851
+                     FreqAmpErr: 40.54307  LowFreqErr: 2068.41981  HighFreqErr: 24.66983
+       * 新最优: PSNR=29.99  SSIM=0.8290  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 009] Loss: 0.028888  Time: 520.3s  LR: 3.99e-04
+              Test -> PSNR: 30.45  SSIM: 0.8500  SAM: 0.2738
+                     FreqAmpErr: 37.94670  LowFreqErr: 1755.79426  HighFreqErr: 24.50021
+       * 新最优: PSNR=30.45  SSIM=0.8500  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 010] Loss: 0.028137  Time: 519.9s  LR: 3.99e-04
+              Test -> PSNR: 30.57  SSIM: 0.8515  SAM: 0.2602
+                     FreqAmpErr: 36.50141  LowFreqErr: 1627.80921  HighFreqErr: 24.04542
+       * 新最优: PSNR=30.57  SSIM=0.8515  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 011] Loss: 0.026994  Time: 516.1s  LR: 3.99e-04
+              Test -> PSNR: 31.11  SSIM: 0.8617  SAM: 0.2591
+                     FreqAmpErr: 30.47939  LowFreqErr: 1232.00289  HighFreqErr: 21.07444
+       * 新最优: PSNR=31.11  SSIM=0.8617  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 012] Loss: 0.026347  Time: 515.0s  LR: 3.99e-04
+              Test -> PSNR: 31.26  SSIM: 0.8716  SAM: 0.2558
+                     FreqAmpErr: 30.95760  LowFreqErr: 1336.40900  HighFreqErr: 20.73915
+       * 新最优: PSNR=31.26  SSIM=0.8716  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 013] Loss: 0.025969  Time: 515.9s  LR: 3.98e-04
+              Test -> PSNR: 31.39  SSIM: 0.8649  SAM: 0.2966
+                     FreqAmpErr: 28.73370  LowFreqErr: 1278.21204  HighFreqErr: 18.95339
+       * 新最优: PSNR=31.39  SSIM=0.8649  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 014] Loss: 0.025149  Time: 516.4s  LR: 3.98e-04
+              Test -> PSNR: 31.60  SSIM: 0.8752  SAM: 0.2425
+                     FreqAmpErr: 28.34163  LowFreqErr: 1192.13553  HighFreqErr: 19.23201
+       * 新最优: PSNR=31.60  SSIM=0.8752  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 015] Loss: 0.024979  Time: 516.5s  LR: 3.98e-04
+              Test -> PSNR: 31.73  SSIM: 0.8839  SAM: 0.2317
+                     FreqAmpErr: 27.62676  LowFreqErr: 1161.85627  HighFreqErr: 18.74856
+       * 新最优: PSNR=31.73  SSIM=0.8839  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 016] Loss: 0.023709  Time: 518.8s  LR: 3.98e-04
+              Test -> PSNR: 31.88  SSIM: 0.8828  SAM: 0.2540
+                     FreqAmpErr: 25.66002  LowFreqErr: 1090.34117  HighFreqErr: 17.32621
+       * 新最优: PSNR=31.88  SSIM=0.8828  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 017] Loss: 0.023704  Time: 521.1s  LR: 3.97e-04
+              Test -> PSNR: 31.45  SSIM: 0.8856  SAM: 0.2537
+                     FreqAmpErr: 31.16072  LowFreqErr: 1823.91763  HighFreqErr: 17.12789
+       [Epoch 018] Loss: 0.023309  Time: 520.7s  LR: 3.97e-04
+              Test -> PSNR: 32.09  SSIM: 0.8959  SAM: 0.2122
+                     FreqAmpErr: 24.98398  LowFreqErr: 1108.63587  HighFreqErr: 16.50168
+       * 新最优: PSNR=32.09  SSIM=0.8959  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 019] Loss: 0.022846  Time: 514.2s  LR: 3.96e-04
+              Test -> PSNR: 31.99  SSIM: 0.8890  SAM: 0.2395
+                     FreqAmpErr: 26.84808  LowFreqErr: 1233.51550  HighFreqErr: 17.40286
+       [Epoch 020] Loss: 0.022520  Time: 517.8s  LR: 3.96e-04
+              Test -> PSNR: 32.22  SSIM: 0.8920  SAM: 0.2249
+                     FreqAmpErr: 24.17256  LowFreqErr: 1048.09654  HighFreqErr: 16.15778
+       * 新最优: PSNR=32.22  SSIM=0.8920  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 021] Loss: 0.022411  Time: 519.8s  LR: 3.96e-04
+              Test -> PSNR: 32.23  SSIM: 0.8897  SAM: 0.2368
+                     FreqAmpErr: 25.33157  LowFreqErr: 1217.95989  HighFreqErr: 15.99625
+       * 新最优: PSNR=32.23  SSIM=0.8897  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 022] Loss: 0.021662  Time: 517.2s  LR: 3.95e-04
+              Test -> PSNR: 32.17  SSIM: 0.8919  SAM: 0.2526
+                     FreqAmpErr: 26.88864  LowFreqErr: 1425.52860  HighFreqErr: 15.94076
+       [Epoch 023] Loss: 0.021818  Time: 517.7s  LR: 3.95e-04
+              Test -> PSNR: 32.37  SSIM: 0.8936  SAM: 0.1987
+                     FreqAmpErr: 23.27728  LowFreqErr: 1081.37413  HighFreqErr: 14.99500
+       * 新最优: PSNR=32.37  SSIM=0.8936  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 024] Loss: 0.021306  Time: 518.9s  LR: 3.94e-04
+              Test -> PSNR: 32.54  SSIM: 0.9052  SAM: 0.2016
+                     FreqAmpErr: 22.89269  LowFreqErr: 1110.74929  HighFreqErr: 14.37748
+       * 新最优: PSNR=32.54  SSIM=0.9052  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 025] Loss: 0.020977  Time: 518.4s  LR: 3.94e-04
+              Test -> PSNR: 32.11  SSIM: 0.8804  SAM: 0.3113
+                     FreqAmpErr: 27.34955  LowFreqErr: 1603.07988  HighFreqErr: 15.01549
+       [Epoch 026] Loss: 0.020873  Time: 517.5s  LR: 3.93e-04
+              Test -> PSNR: 32.49  SSIM: 0.8995  SAM: 0.2394
+                     FreqAmpErr: 24.27579  LowFreqErr: 1177.96805  HighFreqErr: 15.24524
+       [Epoch 027] Loss: 0.020802  Time: 520.3s  LR: 3.93e-04
+              Test -> PSNR: 32.75  SSIM: 0.9058  SAM: 0.2036
+                     FreqAmpErr: 23.03595  LowFreqErr: 1044.32204  HighFreqErr: 15.04181
+       * 新最优: PSNR=32.75  SSIM=0.9058  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 028] Loss: 0.020350  Time: 518.4s  LR: 3.92e-04
+              Test -> PSNR: 32.77  SSIM: 0.9066  SAM: 0.2049
+                     FreqAmpErr: 22.09131  LowFreqErr: 1080.11758  HighFreqErr: 13.80959
+       * 新最优: PSNR=32.77  SSIM=0.9066  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 029] Loss: 0.020080  Time: 518.2s  LR: 3.91e-04
+              Test -> PSNR: 32.86  SSIM: 0.9116  SAM: 0.1770
+                     FreqAmpErr: 21.08968  LowFreqErr: 1002.53024  HighFreqErr: 13.40744
+       * 新最优: PSNR=32.86  SSIM=0.9116  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 030] Loss: 0.019871  Time: 517.0s  LR: 3.91e-04
+              Test -> PSNR: 33.06  SSIM: 0.9146  SAM: 0.1990
+                     FreqAmpErr: 20.34403  LowFreqErr: 886.18653  HighFreqErr: 13.56663
+       * 新最优: PSNR=33.06  SSIM=0.9146  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 031] Loss: 0.020060  Time: 517.7s  LR: 3.90e-04
+              Test -> PSNR: 33.02  SSIM: 0.9141  SAM: 0.2061
+                     FreqAmpErr: 20.74502  LowFreqErr: 1008.40393  HighFreqErr: 13.01410
+       [Epoch 032] Loss: 0.019846  Time: 517.1s  LR: 3.90e-04
+              Test -> PSNR: 32.82  SSIM: 0.9080  SAM: 0.2132
+                     FreqAmpErr: 22.50473  LowFreqErr: 1175.49350  HighFreqErr: 13.47968
+       [Epoch 033] Loss: 0.019535  Time: 520.1s  LR: 3.89e-04
+              Test -> PSNR: 32.45  SSIM: 0.8591  SAM: 0.3553
+                     FreqAmpErr: 23.90716  LowFreqErr: 1362.10657  HighFreqErr: 13.43238
+       [Epoch 034] Loss: 0.019502  Time: 520.4s  LR: 3.88e-04
+              Test -> PSNR: 33.32  SSIM: 0.9167  SAM: 0.2017
+                     FreqAmpErr: 20.08881  LowFreqErr: 893.70922  HighFreqErr: 13.25053
+       * 新最优: PSNR=33.32  SSIM=0.9167  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 035] Loss: 0.019077  Time: 518.4s  LR: 3.87e-04
+              Test -> PSNR: 33.34  SSIM: 0.9201  SAM: 0.1798
+                     FreqAmpErr: 19.12910  LowFreqErr: 834.40915  HighFreqErr: 12.74748
+       * 新最优: PSNR=33.34  SSIM=0.9201  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 036] Loss: 0.018933  Time: 516.6s  LR: 3.87e-04
+              Test -> PSNR: 32.94  SSIM: 0.9137  SAM: 0.2126
+                     FreqAmpErr: 22.49761  LowFreqErr: 1191.20812  HighFreqErr: 13.34951
+       [Epoch 037] Loss: 0.018774  Time: 517.2s  LR: 3.86e-04
+              Test -> PSNR: 32.88  SSIM: 0.9145  SAM: 0.2025
+                     FreqAmpErr: 22.07570  LowFreqErr: 1073.62282  HighFreqErr: 13.84470
+       [Epoch 038] Loss: 0.018640  Time: 518.4s  LR: 3.85e-04
+              Test -> PSNR: 33.42  SSIM: 0.9163  SAM: 0.2093
+                     FreqAmpErr: 19.13805  LowFreqErr: 895.75679  HighFreqErr: 12.27630
+       * 新最优: PSNR=33.42  SSIM=0.9163  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 039] Loss: 0.018543  Time: 519.1s  LR: 3.84e-04
+              Test -> PSNR: 33.29  SSIM: 0.9184  SAM: 0.2078
+                     FreqAmpErr: 19.43616  LowFreqErr: 1021.37924  HighFreqErr: 11.59344
+       [Epoch 040] Loss: 0.018389  Time: 518.3s  LR: 3.84e-04
+              Test -> PSNR: 33.42  SSIM: 0.9212  SAM: 0.1721
+                     FreqAmpErr: 18.88885  LowFreqErr: 893.49110  HighFreqErr: 12.04289
+       * 新最优: PSNR=33.42  SSIM=0.9212  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 041] Loss: 0.018531  Time: 518.5s  LR: 3.83e-04
+              Test -> PSNR: 33.40  SSIM: 0.9226  SAM: 0.1866
+                     FreqAmpErr: 19.13815  LowFreqErr: 910.04074  HighFreqErr: 12.16459
+       [Epoch 042] Loss: 0.018108  Time: 519.8s  LR: 3.82e-04
+              Test -> PSNR: 33.64  SSIM: 0.9259  SAM: 0.1713
+                     FreqAmpErr: 18.34864  LowFreqErr: 844.26526  HighFreqErr: 11.88377
+       * 新最优: PSNR=33.64  SSIM=0.9259  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 043] Loss: 0.018309  Time: 520.6s  LR: 3.81e-04
+              Test -> PSNR: 33.31  SSIM: 0.9137  SAM: 0.2269
+                     FreqAmpErr: 19.71355  LowFreqErr: 983.91722  HighFreqErr: 12.16623
+       [Epoch 044] Loss: 0.017751  Time: 519.1s  LR: 3.80e-04
+              Test -> PSNR: 33.17  SSIM: 0.9208  SAM: 0.1793
+                     FreqAmpErr: 19.64153  LowFreqErr: 1047.06615  HighFreqErr: 11.59935
+       [Epoch 045] Loss: 0.018243  Time: 518.9s  LR: 3.79e-04
+              Test -> PSNR: 33.62  SSIM: 0.9247  SAM: 0.1777
+                     FreqAmpErr: 18.26301  LowFreqErr: 863.57772  HighFreqErr: 11.64629
+       [Epoch 046] Loss: 0.017471  Time: 520.5s  LR: 3.78e-04
+              Test -> PSNR: 33.83  SSIM: 0.9280  SAM: 0.1722
+                     FreqAmpErr: 16.96061  LowFreqErr: 755.95268  HighFreqErr: 11.17613
+       * 新最优: PSNR=33.83  SSIM=0.9280  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 047] Loss: 0.017803  Time: 516.3s  LR: 3.77e-04
+              Test -> PSNR: 33.36  SSIM: 0.9192  SAM: 0.1881
+                     FreqAmpErr: 19.25672  LowFreqErr: 1026.81039  HighFreqErr: 11.37008
+       [Epoch 048] Loss: 0.017573  Time: 519.9s  LR: 3.76e-04
+              Test -> PSNR: 33.80  SSIM: 0.9288  SAM: 0.1547
+                     FreqAmpErr: 17.71964  LowFreqErr: 869.46027  HighFreqErr: 11.05262
+       [Epoch 049] Loss: 0.017718  Time: 517.6s  LR: 3.75e-04
+              Test -> PSNR: 33.99  SSIM: 0.9320  SAM: 0.1577
+                     FreqAmpErr: 16.73529  LowFreqErr: 753.42615  HighFreqErr: 10.96883
+       * 新最优: PSNR=33.99  SSIM=0.9320  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 050] Loss: 0.017672  Time: 517.2s  LR: 3.74e-04
+              Test -> PSNR: 33.68  SSIM: 0.9236  SAM: 0.1837
+                     FreqAmpErr: 17.95111  LowFreqErr: 831.01436  HighFreqErr: 11.58684
+       [Epoch 050] 当前时间: 5.23.7:19  预计结束: 5.24.19:20
+       [Epoch 051] Loss: 0.017197  Time: 517.2s  LR: 3.73e-04
+              Test -> PSNR: 33.87  SSIM: 0.9295  SAM: 0.1669
+                     FreqAmpErr: 17.18216  LowFreqErr: 790.41301  HighFreqErr: 11.12969
+       [Epoch 052] Loss: 0.017236  Time: 517.5s  LR: 3.72e-04
+              Test -> PSNR: 33.93  SSIM: 0.9302  SAM: 0.1674
+                     FreqAmpErr: 17.28818  LowFreqErr: 816.81465  HighFreqErr: 11.02987
+       [Epoch 053] Loss: 0.017229  Time: 516.5s  LR: 3.71e-04
+              Test -> PSNR: 33.96  SSIM: 0.9279  SAM: 0.1773
+                     FreqAmpErr: 16.82349  LowFreqErr: 781.39890  HighFreqErr: 10.83876
+       [Epoch 054] Loss: 0.016992  Time: 518.0s  LR: 3.70e-04
+              Test -> PSNR: 33.69  SSIM: 0.9134  SAM: 0.2442
+                     FreqAmpErr: 17.45852  LowFreqErr: 863.72431  HighFreqErr: 10.83436
+       [Epoch 055] Loss: 0.016926  Time: 518.8s  LR: 3.69e-04
+              Test -> PSNR: 33.88  SSIM: 0.9302  SAM: 0.1644
+                     FreqAmpErr: 17.85173  LowFreqErr: 824.61686  HighFreqErr: 11.53676
+       [Epoch 056] Loss: 0.016925  Time: 518.1s  LR: 3.68e-04
+              Test -> PSNR: 34.04  SSIM: 0.9283  SAM: 0.1828
+                     FreqAmpErr: 16.98714  LowFreqErr: 755.78325  HighFreqErr: 11.20419
+       * 新最优: PSNR=34.04  SSIM=0.9283  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 057] Loss: 0.017012  Time: 520.1s  LR: 3.67e-04
+              Test -> PSNR: 33.96  SSIM: 0.9295  SAM: 0.1838
+                     FreqAmpErr: 16.98264  LowFreqErr: 812.22517  HighFreqErr: 10.75787
+       [Epoch 058] Loss: 0.016957  Time: 519.7s  LR: 3.66e-04
+              Test -> PSNR: 33.97  SSIM: 0.9311  SAM: 0.1672
+                     FreqAmpErr: 17.12707  LowFreqErr: 833.85590  HighFreqErr: 10.73411
+       [Epoch 059] Loss: 0.016672  Time: 519.6s  LR: 3.64e-04
+              Test -> PSNR: 33.98  SSIM: 0.9286  SAM: 0.1909
+                     FreqAmpErr: 17.58525  LowFreqErr: 850.66736  HighFreqErr: 11.06428
+       [Epoch 060] Loss: 0.016795  Time: 517.7s  LR: 3.63e-04
+              Test -> PSNR: 34.04  SSIM: 0.9296  SAM: 0.1582
+                     FreqAmpErr: 16.76809  LowFreqErr: 825.80029  HighFreqErr: 10.43538
+       [Epoch 061] Loss: 0.016764  Time: 518.1s  LR: 3.62e-04
+              Test -> PSNR: 34.15  SSIM: 0.9315  SAM: 0.1695
+                     FreqAmpErr: 16.17232  LowFreqErr: 751.45689  HighFreqErr: 10.41686
+       * 新最优: PSNR=34.15  SSIM=0.9315  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 062] Loss: 0.016491  Time: 517.7s  LR: 3.61e-04
+              Test -> PSNR: 34.23  SSIM: 0.9348  SAM: 0.1616
+                     FreqAmpErr: 16.43180  LowFreqErr: 737.89630  HighFreqErr: 10.78452
+       * 新最优: PSNR=34.23  SSIM=0.9348  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 063] Loss: 0.016572  Time: 515.8s  LR: 3.59e-04
+              Test -> PSNR: 34.17  SSIM: 0.9340  SAM: 0.1556
+                     FreqAmpErr: 16.34915  LowFreqErr: 785.02469  HighFreqErr: 10.33233
+       [Epoch 064] Loss: 0.016542  Time: 516.8s  LR: 3.58e-04
+              Test -> PSNR: 33.75  SSIM: 0.9259  SAM: 0.1933
+                     FreqAmpErr: 18.28536  LowFreqErr: 984.86015  HighFreqErr: 10.71948
+       [Epoch 065] Loss: 0.016323  Time: 517.0s  LR: 3.57e-04
+              Test -> PSNR: 34.14  SSIM: 0.9311  SAM: 0.1804
+                     FreqAmpErr: 16.77774  LowFreqErr: 819.99730  HighFreqErr: 10.49052
+       [Epoch 066] Loss: 0.016308  Time: 519.1s  LR: 3.56e-04
+              Test -> PSNR: 34.13  SSIM: 0.9337  SAM: 0.1590
+                     FreqAmpErr: 16.48553  LowFreqErr: 765.58084  HighFreqErr: 10.62197
+       [Epoch 067] Loss: 0.016569  Time: 517.4s  LR: 3.54e-04
+              Test -> PSNR: 34.32  SSIM: 0.9378  SAM: 0.1504
+                     FreqAmpErr: 15.96403  LowFreqErr: 763.65709  HighFreqErr: 10.11144
+       * 新最优: PSNR=34.32  SSIM=0.9378  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 068] Loss: 0.016041  Time: 519.5s  LR: 3.53e-04
+              Test -> PSNR: 34.20  SSIM: 0.9314  SAM: 0.1542
+                     FreqAmpErr: 16.64187  LowFreqErr: 763.00779  HighFreqErr: 10.79967
+       [Epoch 069] Loss: 0.016385  Time: 525.7s  LR: 3.52e-04
+              Test -> PSNR: 34.38  SSIM: 0.9364  SAM: 0.1679
+                     FreqAmpErr: 15.43345  LowFreqErr: 698.82621  HighFreqErr: 10.08418
+       * 新最优: PSNR=34.38  SSIM=0.9364  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 070] Loss: 0.016106  Time: 518.4s  LR: 3.50e-04
+              Test -> PSNR: 34.15  SSIM: 0.9331  SAM: 0.1770
+                     FreqAmpErr: 16.98032  LowFreqErr: 857.83974  HighFreqErr: 10.39848
+       [Epoch 071] Loss: 0.016189  Time: 510.9s  LR: 3.49e-04
+              Test -> PSNR: 34.38  SSIM: 0.9345  SAM: 0.1700
+                     FreqAmpErr: 15.76615  LowFreqErr: 744.72851  HighFreqErr: 10.06018
+       [Epoch 072] Loss: 0.016067  Time: 512.3s  LR: 3.47e-04
+              Test -> PSNR: 34.33  SSIM: 0.9332  SAM: 0.1744
+                     FreqAmpErr: 15.77372  LowFreqErr: 728.25846  HighFreqErr: 10.19673
+       [Epoch 073] Loss: 0.015971  Time: 512.0s  LR: 3.46e-04
+              Test -> PSNR: 34.24  SSIM: 0.9355  SAM: 0.1660
+                     FreqAmpErr: 16.77325  LowFreqErr: 828.78319  HighFreqErr: 10.41723
+       [Epoch 074] Loss: 0.016101  Time: 511.1s  LR: 3.44e-04
+              Test -> PSNR: 34.35  SSIM: 0.9352  SAM: 0.1769
+                     FreqAmpErr: 15.54072  LowFreqErr: 727.71922  HighFreqErr: 9.96613
+       [Epoch 075] Loss: 0.015790  Time: 513.9s  LR: 3.43e-04
+              Test -> PSNR: 34.54  SSIM: 0.9374  SAM: 0.1548
+                     FreqAmpErr: 15.18297  LowFreqErr: 698.84562  HighFreqErr: 9.83159
+       * 新最优: PSNR=34.54  SSIM=0.9374  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 076] Loss: 0.015866  Time: 514.5s  LR: 3.42e-04
+              Test -> PSNR: 34.27  SSIM: 0.9354  SAM: 0.1491
+                     FreqAmpErr: 16.26786  LowFreqErr: 808.87485  HighFreqErr: 10.06371
+       [Epoch 077] Loss: 0.015702  Time: 512.2s  LR: 3.40e-04
+              Test -> PSNR: 34.30  SSIM: 0.9349  SAM: 0.1492
+                     FreqAmpErr: 15.83949  LowFreqErr: 748.55101  HighFreqErr: 10.10418
+       [Epoch 078] Loss: 0.015726  Time: 511.8s  LR: 3.39e-04
+              Test -> PSNR: 34.39  SSIM: 0.9388  SAM: 0.1466
+                     FreqAmpErr: 15.32386  LowFreqErr: 751.27790  HighFreqErr: 9.56317
+       [Epoch 079] Loss: 0.015667  Time: 510.8s  LR: 3.37e-04
+              Test -> PSNR: 34.37  SSIM: 0.9376  SAM: 0.1612
+                     FreqAmpErr: 16.17812  LowFreqErr: 832.42323  HighFreqErr: 9.78895
+       [Epoch 080] Loss: 0.015532  Time: 513.5s  LR: 3.36e-04
+              Test -> PSNR: 34.32  SSIM: 0.9351  SAM: 0.1633
+                     FreqAmpErr: 15.99904  LowFreqErr: 796.91968  HighFreqErr: 9.88637
+       [Epoch 081] Loss: 0.015582  Time: 512.3s  LR: 3.34e-04
+              Test -> PSNR: 34.11  SSIM: 0.9330  SAM: 0.1676
+                     FreqAmpErr: 16.61952  LowFreqErr: 841.55494  HighFreqErr: 10.16233
+       [Epoch 082] Loss: 0.015684  Time: 514.7s  LR: 3.32e-04
+              Test -> PSNR: 34.26  SSIM: 0.9350  SAM: 0.1501
+                     FreqAmpErr: 16.92631  LowFreqErr: 903.13418  HighFreqErr: 9.98950
+       [Epoch 083] Loss: 0.015538  Time: 513.0s  LR: 3.31e-04
+              Test -> PSNR: 34.49  SSIM: 0.9377  SAM: 0.1593
+                     FreqAmpErr: 15.63763  LowFreqErr: 767.10211  HighFreqErr: 9.75553
+       [Epoch 084] Loss: 0.015600  Time: 510.6s  LR: 3.29e-04
+              Test -> PSNR: 34.54  SSIM: 0.9400  SAM: 0.1452
+                     FreqAmpErr: 14.98896  LowFreqErr: 717.43744  HighFreqErr: 9.49054
+       * 新最优: PSNR=34.54  SSIM=0.9400  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 085] Loss: 0.015486  Time: 511.2s  LR: 3.28e-04
+              Test -> PSNR: 34.56  SSIM: 0.9388  SAM: 0.1485
+                     FreqAmpErr: 14.90595  LowFreqErr: 729.58744  HighFreqErr: 9.31177
+       * 新最优: PSNR=34.56  SSIM=0.9388  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 086] Loss: 0.015250  Time: 512.4s  LR: 3.26e-04
+              Test -> PSNR: 34.22  SSIM: 0.9324  SAM: 0.1826
+                     FreqAmpErr: 16.98901  LowFreqErr: 981.20216  HighFreqErr: 9.44161
+       [Epoch 087] Loss: 0.015041  Time: 513.5s  LR: 3.24e-04
+              Test -> PSNR: 34.49  SSIM: 0.9378  SAM: 0.1474
+                     FreqAmpErr: 16.38834  LowFreqErr: 754.96743  HighFreqErr: 10.60710
+       [Epoch 088] Loss: 0.015416  Time: 510.0s  LR: 3.23e-04
+              Test -> PSNR: 34.59  SSIM: 0.9383  SAM: 0.1580
+                     FreqAmpErr: 15.11992  LowFreqErr: 709.60251  HighFreqErr: 9.68385
+       * 新最优: PSNR=34.59  SSIM=0.9383  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 089] Loss: 0.015454  Time: 512.0s  LR: 3.21e-04
+              Test -> PSNR: 34.54  SSIM: 0.9396  SAM: 0.1474
+                     FreqAmpErr: 15.16418  LowFreqErr: 726.57263  HighFreqErr: 9.59562
+       [Epoch 090] Loss: 0.015209  Time: 510.9s  LR: 3.19e-04
+              Test -> PSNR: 34.48  SSIM: 0.9364  SAM: 0.1644
+                     FreqAmpErr: 15.18902  LowFreqErr: 740.57544  HighFreqErr: 9.51104
+       [Epoch 091] Loss: 0.015214  Time: 513.8s  LR: 3.18e-04
+              Test -> PSNR: 34.75  SSIM: 0.9419  SAM: 0.1444
+                     FreqAmpErr: 14.44239  LowFreqErr: 652.56528  HighFreqErr: 9.44747
+       * 新最优: PSNR=34.75  SSIM=0.9419  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 092] Loss: 0.015145  Time: 512.7s  LR: 3.16e-04
+              Test -> PSNR: 34.61  SSIM: 0.9400  SAM: 0.1589
+                     FreqAmpErr: 14.55790  LowFreqErr: 692.69085  HighFreqErr: 9.24981
+       [Epoch 093] Loss: 0.015301  Time: 511.8s  LR: 3.14e-04
+              Test -> PSNR: 34.71  SSIM: 0.9412  SAM: 0.1515
+                     FreqAmpErr: 14.64115  LowFreqErr: 691.11024  HighFreqErr: 9.34607
+       [Epoch 094] Loss: 0.014976  Time: 510.2s  LR: 3.13e-04
+              Test -> PSNR: 34.50  SSIM: 0.9365  SAM: 0.1678
+                     FreqAmpErr: 15.13206  LowFreqErr: 763.31827  HighFreqErr: 9.27562
+       [Epoch 095] Loss: 0.015169  Time: 507.7s  LR: 3.11e-04
+              Test -> PSNR: 34.77  SSIM: 0.9398  SAM: 0.1379
+                     FreqAmpErr: 14.55726  LowFreqErr: 692.04270  HighFreqErr: 9.25423
+       * 新最优: PSNR=34.77  SSIM=0.9398  -> result/model/2026_05_23_00_07_18_ml_wpo_e2e_wssa_alternating/best.pth
+       [Epoch 096] Loss: 0.015134  Time: 508.8s  LR: 3.09e-04
+              Test -> PSNR: 34.65  SSIM: 0.9403  SAM: 0.1419
+                     FreqAmpErr: 14.92935  LowFreqErr: 744.71878  HighFreqErr: 9.21691
+       [Epoch 097] Loss: 0.015091  Time: 507.2s  LR: 3.07e-04
+              Test -> PSNR: 34.68  SSIM: 0.9396  SAM: 0.1415
+                     FreqAmpErr: 14.43495  LowFreqErr: 674.35866  HighFreqErr: 9.26938
+       [Epoch 098] Loss: 0.015089  Time: 508.5s  LR: 3.06e-04
+              Test -> PSNR: 34.50  SSIM: 0.9405  SAM: 0.1404
+                     FreqAmpErr: 14.80386  LowFreqErr: 741.26076  HighFreqErr: 9.11750
+       [Epoch 099] Loss: 0.014800  Time: 519.0s  LR: 3.04e-04
+              Test -> PSNR: 34.63  SSIM: 0.9395  SAM: 0.1670
+                     FreqAmpErr: 14.90097  LowFreqErr: 745.87913  HighFreqErr: 9.17923
+       [Epoch 100] Loss: 0.015011  Time: 511.1s  LR: 3.02e-04
+              Test -> PSNR: 34.63  SSIM: 0.9400  SAM: 0.1629
+                     FreqAmpErr: 14.98246  LowFreqErr: 744.91595  HighFreqErr: 9.26889
+       [Epoch 100] 当前时间: 5.23.14:28  预计结束: 5.24.19:10
+       [Epoch 101] Loss: 0.014791  Time: 507.2s  LR: 3.00e-04
+              Test -> PSNR: 34.62  SSIM: 0.9425  SAM: 0.1356
+                     FreqAmpErr: 14.74109  LowFreqErr: 723.63465  HighFreqErr: 9.19222
 
 

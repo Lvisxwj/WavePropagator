@@ -1,0 +1,27 @@
+# config.yaml
+
+# GPU
+gpu_id: '1'
+batch_size: 8
+max_epoch: 300
+learning_rate: 4.0e-4
+scheduler: 'CosineAnnealingLR'
+epoch_sample: 5000
+save_thresh: 28.0
+use_amp: false
+
+# data
+crop_size: 256
+num_bands: 28
+input_setting: 'H'
+
+# data path
+data_root: '/data5/SCI/xieweijie/CASSI/dataset'
+train_path: '/data5/SCI/xieweijie/CASSI/dataset/CAVE_1024_npy'
+test_path: '/data5/SCI/xieweijie/CASSI/dataset/TSA_simu_data/Truth'
+mask_path: '/data5/SCI/xieweijie/CASSI/dataset/TSA_simu_data'
+
+# model
+dim: 28
+unet_stage: 3
+num_blocks: [2, 2, 2]
