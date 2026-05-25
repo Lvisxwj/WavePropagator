@@ -1,0 +1,27 @@
+digraph "LDE-DAG" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>LDE-DAG</B><BR/><FONT POINT-SIZE="10">Part II — formulas: (1.29)</FONT>>,
+           bgcolor="#fff7e6"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_Phi [label=<<B>Phi</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_Phi_star [label=<<B>Phi_star</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    concat [label=<<B>Concat (dim=1)</B><BR/><FONT POINT-SIZE="9">concat</FONT>>, fillcolor="#dc7633", shape=box];
+    conv1 [label=<<B>Conv1x1 (56→32)</B><BR/><FONT POINT-SIZE="9">conv1</FONT>>, fillcolor="#5dade2", shape=box];
+    lrelu [label=<<B>LeakyReLU</B><BR/><FONT POINT-SIZE="9">lrelu</FONT>>, fillcolor="#f8c471", shape=box];
+    conv2 [label=<<B>Conv1x1 (32→28)</B><BR/><FONT POINT-SIZE="9">conv2</FONT>>, fillcolor="#5dade2", shape=box];
+    sig [label=<<B>Sigmoid</B><BR/><FONT POINT-SIZE="9">sig</FONT>>, fillcolor="#ec7063", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_deg_weight [label=<<B>deg_weight</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_Phi -> concat [label="Phi"];
+    in_Phi_star -> concat [label="Phi_star"];
+    concat -> conv1 [label="x"];
+    conv1 -> lrelu [label="h"];
+    lrelu -> conv2 [label="ha"];
+    conv2 -> sig [label="z"];
+    sig -> out_deg_weight [label="deg_weight"];
+}

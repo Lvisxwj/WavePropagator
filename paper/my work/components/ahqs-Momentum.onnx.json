@@ -1,0 +1,18 @@
+{
+  "name": "A-HQS-Momentum",
+  "part": "Part III",
+  "background_color": "#e6f1ff",
+  "description": "Nesterov momentum extrapolation between stages; learnable β_k = sigmoid(θ_k).",
+  "formula_ref": ["(1.33)"],
+  "inputs":  [
+    {"name": "f",      "shape": ["B", 28, "H", "W"]},
+    {"name": "f_prev", "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [{"name": "f_hat", "shape": ["B", 28, "H", "W"]}],
+  "nodes": [
+    {"id": "sig",   "op_type": "Sigmoid(θ_k)",   "color": "#ec7063", "input": ["theta_k"], "output": ["beta_k"]},
+    {"id": "diff",  "op_type": "Sub (f - f_prev)","color": "#85929e", "input": ["f", "f_prev"], "output": ["d"]},
+    {"id": "scale", "op_type": "Mul (β·d)",       "color": "#85929e", "input": ["beta_k", "d"], "output": ["bd"]},
+    {"id": "add",   "op_type": "Add (f + β·d)",   "color": "#85929e", "input": ["f", "bd"], "output": ["f_hat"]}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "SWAP-AdaSpec",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Adaptive Spectral Filtering — SNR-guided frequency band weighting (zero parameter) or learnable per-band weights.",
+  "formula_ref": ["(1.16) Wiener-like sigmoid gate", "(1.18) learnable band lookup"],
+  "variants": [
+    {
+      "name": "snr_adaptive",
+      "inputs": [
+        {"name": "out_fft", "shape": ["B", "C_fft", "H_fft", "W_fft//2+1"], "dtype": "complex64"},
+        {"name": "u0_fft",  "shape": ["B", "C_fft", "H_fft", "W_fft//2+1"], "dtype": "complex64"},
+        {"name": "sigma",   "shape": ["B", 1, 1, 1]}
+      ],
+      "outputs": [
+        {"name": "out_fft_weighted", "shape": ["B", "C_fft", "H_fft", "W_fft//2+1"], "dtype": "complex64"}
+      ],
+      "nodes": [
+        {"id": "abs_sq",   "op_type": "Abs²",   "color": "#85929e", "input": ["u0_fft"],          "output": ["power"]},
+        {"id": "sigma_sq", "op_type": "Square", "color": "#85929e", "input": ["sigma"],           "output": ["sigsq"]},
+        {"id": "num",      "op_type": "Sub",    "color": "#85929e", "input": ["power", "sigsq"],  "output": ["num"]},
+        {"id": "den",      "op_type": "Add+ε",  "color": "#85929e", "input": ["power", "sigsq"],  "output": ["den"],  "constants": {"eps": 1e-6}},
+        {"id": "ratio",    "op_type": "Div",    "color": "#85929e", "input": ["num",  "den"],     "output": ["ratio"]},
+        {"id": "sigmoid",  "op_type": "Sigmoid","color": "#ec7063", "input": ["ratio"],           "output": ["W"]},
+        {"id": "apply",    "op_type": "Mul",    "color": "#85929e", "input": ["out_fft", "W"],    "output": ["out_fft_weighted"]}
+      ]
+    },
+    {
+      "name": "learnable_band",
+      "inputs": [
+        {"name": "out_fft", "shape": ["B", "C_fft", "H_fft", "W_fft//2+1"], "dtype": "complex64"}
+      ],
+      "outputs": [
+        {"name": "out_fft_weighted", "shape": ["B", "C_fft", "H_fft", "W_fft//2+1"], "dtype": "complex64"}
+      ],
+      "nodes": [
+        {"id": "freq_grid",  "op_type": "MakeFreqGrid (fc,fh,fw)", "color": "#3a155c", "input": [],          "output": ["freq"]},
+        {"id": "mag",        "op_type": "L2-norm",                  "color": "#85929e", "input": ["freq"],    "output": ["mag"]},
+        {"id": "quantize",   "op_type": "Quantize-to-K-bands",      "color": "#cd6155", "input": ["mag"],     "output": ["band_idx"]},
+        {"id": "weights",    "op_type": "Softplus(θ)",              "color": "#a569bd", "input": ["θ"],       "output": ["w_k"]},
+        {"id": "gather",     "op_type": "Gather",                   "color": "#85929e", "input": ["w_k", "band_idx"], "output": ["W"]},
+        {"id": "apply",      "op_type": "Mul",                      "color": "#85929e", "input": ["out_fft", "W"],    "output": ["out_fft_weighted"]}
+      ]
+    }
+  ]
+}

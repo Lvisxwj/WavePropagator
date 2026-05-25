@@ -1,0 +1,22 @@
+flowchart TD
+    %% LDE-SEC (Part II)
+    classDef partBox fill:#fff7e6,stroke:#3a155c,stroke-width:2px
+    subgraph LDE_SEC["LDE-SEC — Part II"]
+    direction TB
+    in_Phi(("Phi"))
+    style in_Phi fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_delta_Phi(("delta_Phi"))
+    style out_delta_Phi fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    conv1["<b>Conv1x1 (28→28)</b><br/>conv1"]
+    style conv1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    lrelu["<b>LeakyReLU</b><br/>lrelu"]
+    style lrelu fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    conv2["<b>Conv1x1 (28→28)</b><br/>conv2"]
+    style conv2 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    in_Phi --> conv1
+    conv1 --> lrelu
+    lrelu --> conv2
+    conv2 --> out_delta_Phi
+    end
+    class LDE_SEC partBox
+    %% formulas: (1.28)

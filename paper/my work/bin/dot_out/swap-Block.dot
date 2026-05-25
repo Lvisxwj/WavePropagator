@@ -1,0 +1,67 @@
+digraph "SWAP-Block" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-Block</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.9) wave modulation; (1.12) MI; (1.16) AdaSpec; (1.25) KGD; (1.36) α_eff; (1.39) U-Net composition</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×d×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_mask_spatial [label=<<B>mask_spatial</B><BR/><FONT POINT-SIZE='9'>B×d×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    norm1 [label=<<B>LayerNorm2d</B><BR/><FONT POINT-SIZE="9">norm1</FONT>>, fillcolor="#f5b041", shape=box];
+    alpha_eff [label=<<B>α + softplus(λσ)·σ</B><BR/><FONT POINT-SIZE="9">alpha_eff</FONT>>, fillcolor="#a569bd", shape=box];
+    MI [label=<<B>MI (swap-MI)</B><BR/><FONT POINT-SIZE="9">MI</FONT>>, fillcolor="#7a4dba", shape=box];
+    fft_u [label=<<B>FFT3D (rfftn)</B><BR/><FONT POINT-SIZE="9">fft_u</FONT>>, fillcolor="#3a155c", shape=box];
+    fft_v [label=<<B>FFT3D (rfftn)</B><BR/><FONT POINT-SIZE="9">fft_v</FONT>>, fillcolor="#3a155c", shape=box];
+    wave_mod [label=<<B>Wave-Modulate (Cs,Sn,decay)</B><BR/><FONT POINT-SIZE="9">wave_mod</FONT>>, fillcolor="#7a4dba", shape=box];
+    adaspec [label=<<B>AdaSpec (swap-AdaSpec)</B><BR/><FONT POINT-SIZE="9">adaspec</FONT>>, fillcolor="#7a4dba", shape=box];
+    ifft [label=<<B>iFFT3D (irfftn)</B><BR/><FONT POINT-SIZE="9">ifft</FONT>>, fillcolor="#3a155c", shape=box];
+    kgd_opt [label=<<B>KGD correction (swap-KGD, optional)</B><BR/><FONT POINT-SIZE="9">kgd_opt</FONT><BR/><FONT POINT-SIZE="8" COLOR="#9a9aa3"><I>if mask_mode=='D'</I></FONT>>, fillcolor="#7a4dba", shape=box];
+    out_ln [label=<<B>LayerNorm2d</B><BR/><FONT POINT-SIZE="9">out_ln</FONT>>, fillcolor="#f5b041", shape=box];
+    silu_gate [label=<<B>SiLU(x) × out</B><BR/><FONT POINT-SIZE="9">silu_gate</FONT>>, fillcolor="#85929e", shape=box];
+    out_lin [label=<<B>Conv1x1</B><BR/><FONT POINT-SIZE="9">out_lin</FONT>>, fillcolor="#5dade2", shape=box];
+    res1 [label=<<B>Add</B><BR/><FONT POINT-SIZE="9">res1</FONT>>, fillcolor="#85929e", shape=box];
+    norm2 [label=<<B>LayerNorm2d</B><BR/><FONT POINT-SIZE="9">norm2</FONT>>, fillcolor="#f5b041", shape=box];
+    ffn_in [label=<<B>Conv1x1(d→4d)</B><BR/><FONT POINT-SIZE="9">ffn_in</FONT>>, fillcolor="#5dade2", shape=box];
+    ffn_act1 [label=<<B>GELU</B><BR/><FONT POINT-SIZE="9">ffn_act1</FONT>>, fillcolor="#f8c471", shape=box];
+    ffn_dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">ffn_dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    ffn_act2 [label=<<B>GELU</B><BR/><FONT POINT-SIZE="9">ffn_act2</FONT>>, fillcolor="#f8c471", shape=box];
+    ffn_out [label=<<B>Conv1x1(4d→d)</B><BR/><FONT POINT-SIZE="9">ffn_out</FONT>>, fillcolor="#5dade2", shape=box];
+    res2 [label=<<B>Add</B><BR/><FONT POINT-SIZE="9">res2</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_y [label=<<B>y</B><BR/><FONT POINT-SIZE='9'>B×d×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> norm1 [label="x"];
+    in_sigma -> alpha_eff [label="sigma"];
+    norm1 -> MI [label="x_n"];
+    in_mask_spatial -> MI [label="mask_spatial"];
+    MI -> fft_u [label="u0"];
+    MI -> fft_v [label="v0"];
+    fft_u -> wave_mod [label="u0_fft"];
+    fft_v -> wave_mod [label="v0_fft"];
+    alpha_eff -> wave_mod [label="α_eff"];
+    wave_mod -> adaspec [label="out_fft"];
+    fft_u -> adaspec [label="u0_fft"];
+    in_sigma -> adaspec [label="sigma"];
+    adaspec -> ifft [label="out_fft_w"];
+    ifft -> kgd_opt [label="out_spatial"];
+    wave_mod -> kgd_opt [label="sinc"];
+    wave_mod -> kgd_opt [label="decay"];
+    kgd_opt -> out_ln [label="out_kg"];
+    out_ln -> silu_gate [label="out_ln"];
+    in_x -> silu_gate [label="x"];
+    silu_gate -> out_lin [label="gated"];
+    in_x -> res1 [label="x"];
+    out_lin -> res1 [label="wpo_out"];
+    res1 -> norm2 [label="x_mid"];
+    norm2 -> ffn_in [label="x_mid_n"];
+    ffn_in -> ffn_act1 [label="ffn_h0"];
+    ffn_act1 -> ffn_dw [label="ffn_h0a"];
+    ffn_dw -> ffn_act2 [label="ffn_h1"];
+    ffn_act2 -> ffn_out [label="ffn_h1a"];
+    res1 -> res2 [label="x_mid"];
+    ffn_out -> res2 [label="ffn_o"];
+    res2 -> out_y [label="y"];
+}

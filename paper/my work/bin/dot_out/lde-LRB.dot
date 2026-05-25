@@ -1,0 +1,25 @@
+digraph "LDE-LRB" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>LDE-LRB</B><BR/><FONT POINT-SIZE="10">Part II — formulas: (1.31)</FONT>>,
+           bgcolor="#fff7e6"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    conv_up [label=<<B>Conv1x1 (28→56)</B><BR/><FONT POINT-SIZE="9">conv_up</FONT>>, fillcolor="#5dade2", shape=box];
+    gelu1 [label=<<B>GELU</B><BR/><FONT POINT-SIZE="9">gelu1</FONT>>, fillcolor="#f8c471", shape=box];
+    dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    gelu2 [label=<<B>GELU</B><BR/><FONT POINT-SIZE="9">gelu2</FONT>>, fillcolor="#f8c471", shape=box];
+    conv_down [label=<<B>Conv1x1 (56→28)</B><BR/><FONT POINT-SIZE="9">conv_down</FONT>>, fillcolor="#5dade2", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_y [label=<<B>y</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> conv_up [label="x"];
+    conv_up -> gelu1 [label="h0"];
+    gelu1 -> dw [label="h0a"];
+    dw -> gelu2 [label="h1"];
+    gelu2 -> conv_down [label="h1a"];
+    conv_down -> out_y [label="y"];
+}

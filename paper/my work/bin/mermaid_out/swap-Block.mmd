@@ -1,0 +1,87 @@
+flowchart TD
+    %% SWAP-Block (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_Block["SWAP-Block — Part I"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_mask_spatial(("mask_spatial"))
+    style in_mask_spatial fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_sigma(("sigma"))
+    style in_sigma fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_y(("y"))
+    style out_y fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    norm1["<b>LayerNorm2d</b><br/>norm1"]
+    style norm1 fill:#f5b041,stroke:#1a1a1a,color:#1a1a1a
+    alpha_eff["<b>α + softplus(λσ)·σ</b><br/>alpha_eff"]
+    style alpha_eff fill:#a569bd,stroke:#1a1a1a,color:#1a1a1a
+    MI["<b>MI (swap-MI)</b><br/>MI"]
+    style MI fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    fft_u["<b>FFT3D (rfftn)</b><br/>fft_u"]
+    style fft_u fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    fft_v["<b>FFT3D (rfftn)</b><br/>fft_v"]
+    style fft_v fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    wave_mod["<b>Wave-Modulate (Cs,Sn,decay)</b><br/>wave_mod"]
+    style wave_mod fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    adaspec["<b>AdaSpec (swap-AdaSpec)</b><br/>adaspec"]
+    style adaspec fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    ifft["<b>iFFT3D (irfftn)</b><br/>ifft"]
+    style ifft fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    kgd_opt["<b>KGD correction (swap-KGD, optional)</b><br/>kgd_opt<br/><i>if mask_mode=='D'</i>"]
+    style kgd_opt fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    out_ln["<b>LayerNorm2d</b><br/>out_ln"]
+    style out_ln fill:#f5b041,stroke:#1a1a1a,color:#1a1a1a
+    silu_gate["<b>SiLU(x) × out</b><br/>silu_gate"]
+    style silu_gate fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    out_lin["<b>Conv1x1</b><br/>out_lin"]
+    style out_lin fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    res1["<b>Add</b><br/>res1"]
+    style res1 fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    norm2["<b>LayerNorm2d</b><br/>norm2"]
+    style norm2 fill:#f5b041,stroke:#1a1a1a,color:#1a1a1a
+    ffn_in["<b>Conv1x1(d→4d)</b><br/>ffn_in"]
+    style ffn_in fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    ffn_act1["<b>GELU</b><br/>ffn_act1"]
+    style ffn_act1 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    ffn_dw["<b>DWConv3x3</b><br/>ffn_dw"]
+    style ffn_dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    ffn_act2["<b>GELU</b><br/>ffn_act2"]
+    style ffn_act2 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    ffn_out["<b>Conv1x1(4d→d)</b><br/>ffn_out"]
+    style ffn_out fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    res2["<b>Add</b><br/>res2"]
+    style res2 fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> norm1
+    in_sigma --> alpha_eff
+    norm1 --> MI
+    in_mask_spatial --> MI
+    MI --> fft_u
+    MI --> fft_v
+    fft_u --> wave_mod
+    fft_v --> wave_mod
+    alpha_eff --> wave_mod
+    wave_mod --> adaspec
+    fft_u --> adaspec
+    in_sigma --> adaspec
+    adaspec --> ifft
+    ifft --> kgd_opt
+    wave_mod --> kgd_opt
+    wave_mod --> kgd_opt
+    kgd_opt --> out_ln
+    out_ln --> silu_gate
+    in_x --> silu_gate
+    silu_gate --> out_lin
+    in_x --> res1
+    out_lin --> res1
+    res1 --> norm2
+    norm2 --> ffn_in
+    ffn_in --> ffn_act1
+    ffn_act1 --> ffn_dw
+    ffn_dw --> ffn_act2
+    ffn_act2 --> ffn_out
+    res1 --> res2
+    ffn_out --> res2
+    res2 --> out_y
+    end
+    class SWAP_Block partBox
+    %% formulas: (1.9) wave modulation; (1.12) MI; (1.16) AdaSpec; (1.25) KGD; (1.36) α_eff; (1.39) U-Net composition

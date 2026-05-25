@@ -1,0 +1,34 @@
+digraph "SWAP-MI" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-MI</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.12) soft gate; (1.14) closed-form preservation</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_mask_spatial [label=<<B>mask_spatial</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    phi_dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">phi_dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    phi_1x1 [label=<<B>Conv1x1</B><BR/><FONT POINT-SIZE="9">phi_1x1</FONT>>, fillcolor="#5dade2", shape=box];
+    psi_dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">psi_dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    psi_1x1 [label=<<B>Conv1x1</B><BR/><FONT POINT-SIZE="9">psi_1x1</FONT>>, fillcolor="#5dade2", shape=box];
+    gate_aff [label=<<B>Affine: ε + (1-ε)·m</B><BR/><FONT POINT-SIZE="9">gate_aff</FONT>>, fillcolor="#85929e", shape=box];
+    u0_mul [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">u0_mul</FONT>>, fillcolor="#85929e", shape=box];
+    v0_mul [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">v0_mul</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_u0 [label=<<B>u0</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    out_v0 [label=<<B>v0</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> phi_dw [label="x"];
+    phi_dw -> phi_1x1 [label="phi_a"];
+    in_x -> psi_dw [label="x"];
+    psi_dw -> psi_1x1 [label="psi_a"];
+    in_mask_spatial -> gate_aff [label="mask_spatial"];
+    phi_1x1 -> u0_mul [label="phi_x"];
+    gate_aff -> u0_mul [label="gate"];
+    u0_mul -> out_u0 [label="u0"];
+    psi_1x1 -> v0_mul [label="psi_x"];
+    gate_aff -> v0_mul [label="gate"];
+    v0_mul -> out_v0 [label="v0"];
+}

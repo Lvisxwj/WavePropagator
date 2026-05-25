@@ -1,0 +1,29 @@
+digraph "A-HQS-MultiStageLoss" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>A-HQS-MultiStageLoss</B><BR/><FONT POINT-SIZE="10">Part III — formulas: (1.38)</FONT>>,
+           bgcolor="#e6f1ff"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_outputs [label=<<B>outputs</B><BR/><FONT POINT-SIZE='9'>K×B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_gt [label=<<B>gt</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    rmse_K [label=<<B>RMSE</B><BR/><FONT POINT-SIZE="9">rmse_K</FONT>>, fillcolor="#3a155c", shape=box];
+    rmse_K_1 [label=<<B>RMSE</B><BR/><FONT POINT-SIZE="9">rmse_K-1</FONT>>, fillcolor="#3a155c", shape=box];
+    rmse_K_2 [label=<<B>RMSE</B><BR/><FONT POINT-SIZE="9">rmse_K-2</FONT>>, fillcolor="#3a155c", shape=box];
+    rmse_K_3 [label=<<B>RMSE</B><BR/><FONT POINT-SIZE="9">rmse_K-3</FONT>>, fillcolor="#3a155c", shape=box];
+    sum [label=<<B>WeightedSum</B><BR/><FONT POINT-SIZE="9">sum</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_loss [label=<<B>loss</B><BR/><FONT POINT-SIZE='9'></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_gt -> rmse_K [label="gt"];
+    in_gt -> rmse_K_1 [label="gt"];
+    in_gt -> rmse_K_2 [label="gt"];
+    in_gt -> rmse_K_3 [label="gt"];
+    rmse_K -> sum [label="L_K"];
+    rmse_K_1 -> sum [label="L_K-1"];
+    rmse_K_2 -> sum [label="L_K-2"];
+    rmse_K_3 -> sum [label="L_K-3"];
+    sum -> out_loss [label="loss"];
+}

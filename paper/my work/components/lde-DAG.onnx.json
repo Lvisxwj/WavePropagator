@@ -1,0 +1,19 @@
+{
+  "name": "LDE-DAG",
+  "part": "Part II",
+  "background_color": "#fff7e6",
+  "description": "Degradation-Aware Gating — sigmoid weighting from concat(Φ, Φ*).",
+  "formula_ref": ["(1.29)"],
+  "inputs":  [
+    {"name": "Phi",      "shape": ["B", 28, "H", "W"]},
+    {"name": "Phi_star", "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [{"name": "deg_weight", "shape": ["B", 28, "H", "W"]}],
+  "nodes": [
+    {"id": "concat", "op_type": "Concat (dim=1)",   "color": "#dc7633", "input": ["Phi", "Phi_star"], "output": ["x"]},
+    {"id": "conv1",  "op_type": "Conv1x1 (56→32)",  "color": "#5dade2", "input": ["x"],   "output": ["h"]},
+    {"id": "lrelu",  "op_type": "LeakyReLU",        "color": "#f8c471", "input": ["h"],   "output": ["ha"]},
+    {"id": "conv2",  "op_type": "Conv1x1 (32→28)",  "color": "#5dade2", "input": ["ha"],  "output": ["z"]},
+    {"id": "sig",    "op_type": "Sigmoid",          "color": "#ec7063", "input": ["z"],   "output": ["deg_weight"]}
+  ]
+}

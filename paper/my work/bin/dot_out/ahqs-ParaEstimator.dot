@@ -1,0 +1,35 @@
+digraph "A-HQS-ParaEstimator" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>A-HQS-ParaEstimator</B><BR/><FONT POINT-SIZE="10">Part III — formulas: (1.35)</FONT>>,
+           bgcolor="#e6f1ff"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    fusion [label=<<B>Conv1x1 (28→32)</B><BR/><FONT POINT-SIZE="9">fusion</FONT>>, fillcolor="#5dade2", shape=box];
+    relu0 [label=<<B>ReLU</B><BR/><FONT POINT-SIZE="9">relu0</FONT>>, fillcolor="#f8c471", shape=box];
+    avpool [label=<<B>AdaptiveAvgPool2d</B><BR/><FONT POINT-SIZE="9">avpool</FONT>>, fillcolor="#cd6155", shape=box];
+    mlp_c1 [label=<<B>Conv1x1 (32→32)</B><BR/><FONT POINT-SIZE="9">mlp_c1</FONT>>, fillcolor="#5dade2", shape=box];
+    mlp_r1 [label=<<B>ReLU</B><BR/><FONT POINT-SIZE="9">mlp_r1</FONT>>, fillcolor="#f8c471", shape=box];
+    mlp_c2 [label=<<B>Conv1x1 (32→32)</B><BR/><FONT POINT-SIZE="9">mlp_c2</FONT>>, fillcolor="#5dade2", shape=box];
+    mlp_r2 [label=<<B>ReLU</B><BR/><FONT POINT-SIZE="9">mlp_r2</FONT>>, fillcolor="#f8c471", shape=box];
+    mlp_c3 [label=<<B>Conv1x1 (32→1)</B><BR/><FONT POINT-SIZE="9">mlp_c3</FONT>>, fillcolor="#5dade2", shape=box];
+    add_bias [label=<<B>Add bias</B><BR/><FONT POINT-SIZE="9">add_bias</FONT>>, fillcolor="#85929e", shape=box];
+    sp [label=<<B>Softplus</B><BR/><FONT POINT-SIZE="9">sp</FONT>>, fillcolor="#a569bd", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_rho [label=<<B>rho</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> fusion [label="x"];
+    fusion -> relu0 [label="f0"];
+    relu0 -> avpool [label="f0a"];
+    avpool -> mlp_c1 [label="p"];
+    mlp_c1 -> mlp_r1 [label="m1"];
+    mlp_r1 -> mlp_c2 [label="m1a"];
+    mlp_c2 -> mlp_r2 [label="m2"];
+    mlp_r2 -> mlp_c3 [label="m2a"];
+    mlp_c3 -> add_bias [label="m3"];
+    add_bias -> sp [label="m3b"];
+    sp -> out_rho [label="rho"];
+}

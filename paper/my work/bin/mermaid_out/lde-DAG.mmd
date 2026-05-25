@@ -1,0 +1,31 @@
+flowchart TD
+    %% LDE-DAG (Part II)
+    classDef partBox fill:#fff7e6,stroke:#3a155c,stroke-width:2px
+    subgraph LDE_DAG["LDE-DAG — Part II"]
+    direction TB
+    in_Phi(("Phi"))
+    style in_Phi fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_Phi_star(("Phi_star"))
+    style in_Phi_star fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_deg_weight(("deg_weight"))
+    style out_deg_weight fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    concat["<b>Concat (dim=1)</b><br/>concat"]
+    style concat fill:#dc7633,stroke:#1a1a1a,color:#1a1a1a
+    conv1["<b>Conv1x1 (56→32)</b><br/>conv1"]
+    style conv1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    lrelu["<b>LeakyReLU</b><br/>lrelu"]
+    style lrelu fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    conv2["<b>Conv1x1 (32→28)</b><br/>conv2"]
+    style conv2 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    sig["<b>Sigmoid</b><br/>sig"]
+    style sig fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    in_Phi --> concat
+    in_Phi_star --> concat
+    concat --> conv1
+    conv1 --> lrelu
+    lrelu --> conv2
+    conv2 --> sig
+    sig --> out_deg_weight
+    end
+    class LDE_DAG partBox
+    %% formulas: (1.29)

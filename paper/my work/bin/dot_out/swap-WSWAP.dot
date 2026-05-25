@@ -1,0 +1,31 @@
+digraph "SWAP-WSWAP" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-WSWAP</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.26) window decomposition; (1.27) complexity</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_mask_spatial [label=<<B>mask_spatial</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    shift_in [label=<<B>Roll(-ws/2,-ws/2)</B><BR/><FONT POINT-SIZE="9">shift_in</FONT><BR/><FONT POINT-SIZE="8" COLOR="#9a9aa3"><I>if shift==true</I></FONT>>, fillcolor="#85929e", shape=box];
+    partition [label=<<B>WindowPartition</B><BR/><FONT POINT-SIZE="9">partition</FONT>>, fillcolor="#85929e", shape=box];
+    swap_per_win [label=<<B>SWAP (global)</B><BR/><FONT POINT-SIZE="9">swap_per_win</FONT>>, fillcolor="#7a4dba", shape=box];
+    reassemble [label=<<B>WindowReverse</B><BR/><FONT POINT-SIZE="9">reassemble</FONT>>, fillcolor="#85929e", shape=box];
+    shift_out [label=<<B>Roll(+ws/2,+ws/2)</B><BR/><FONT POINT-SIZE="9">shift_out</FONT><BR/><FONT POINT-SIZE="8" COLOR="#9a9aa3"><I>if shift==true</I></FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_f_wave [label=<<B>f_wave</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> shift_in [label="x"];
+    in_mask_spatial -> shift_in [label="mask_spatial"];
+    shift_in -> partition [label="x_shift"];
+    shift_in -> partition [label="m_shift"];
+    partition -> swap_per_win [label="x_win"];
+    partition -> swap_per_win [label="m_win"];
+    in_sigma -> swap_per_win [label="sigma"];
+    swap_per_win -> reassemble [label="out_win"];
+    reassemble -> shift_out [label="out_shift"];
+    shift_out -> out_f_wave [label="f_wave"];
+}

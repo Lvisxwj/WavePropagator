@@ -1,0 +1,22 @@
+{
+  "name": "SWAP-WSWAP",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Windowed SWAP — partitions the tensor into MxM windows, runs SWAP per window, with optional shifted-window across layers.",
+  "formula_ref": ["(1.26) window decomposition", "(1.27) complexity"],
+  "inputs": [
+    {"name": "x",            "shape": ["B", 28, "H", "W"]},
+    {"name": "mask_spatial", "shape": ["B", 28, "H", "W"]},
+    {"name": "sigma",        "shape": ["B", 1, 1, 1]}
+  ],
+  "outputs": [
+    {"name": "f_wave",       "shape": ["B", 28, "H", "W"]}
+  ],
+  "nodes": [
+    {"id": "shift_in",     "op_type": "Roll(-ws/2,-ws/2)", "color": "#85929e", "input": ["x", "mask_spatial"], "output": ["x_shift", "m_shift"], "condition": "shift==true"},
+    {"id": "partition",    "op_type": "WindowPartition",    "color": "#85929e", "input": ["x_shift", "m_shift"], "output": ["x_win", "m_win"], "params": {"window_size": 64}},
+    {"id": "swap_per_win", "op_type": "SWAP (global)",       "color": "#7a4dba", "input": ["x_win", "m_win", "sigma"], "output": ["out_win"]},
+    {"id": "reassemble",   "op_type": "WindowReverse",       "color": "#85929e", "input": ["out_win"], "output": ["out_shift"]},
+    {"id": "shift_out",    "op_type": "Roll(+ws/2,+ws/2)",   "color": "#85929e", "input": ["out_shift"], "output": ["f_wave"], "condition": "shift==true"}
+  ]
+}

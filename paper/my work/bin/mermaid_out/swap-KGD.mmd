@@ -1,0 +1,78 @@
+flowchart TD
+    %% SWAP-KGD (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_KGD["SWAP-KGD — Part I"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_mask_spatial(("mask_spatial"))
+    style in_mask_spatial fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_u0_out(("u0_out"))
+    style in_u0_out fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_sinc_term(("sinc_term"))
+    style in_sinc_term fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_decay(("decay"))
+    style in_decay fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_u0(("u0"))
+    style out_u0 fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    out_v0(("v0"))
+    style out_v0 fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    out_out_corrected(("out_corrected"))
+    style out_out_corrected fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    gate_aff["<b>Affine: ε + (1-ε)·m</b><br/>gate_aff"]
+    style gate_aff fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    phi_dw["<b>DWConv3x3</b><br/>phi_dw"]
+    style phi_dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    phi_1x1["<b>Conv1x1</b><br/>phi_1x1"]
+    style phi_1x1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    u0_mul["<b>Mul</b><br/>u0_mul"]
+    style u0_mul fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    psi_dw["<b>DWConv3x3</b><br/>psi_dw"]
+    style psi_dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    psi_1x1["<b>Conv1x1</b><br/>psi_1x1"]
+    style psi_1x1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    v0_mul["<b>Mul</b><br/>v0_mul"]
+    style v0_mul fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    m0_clamp["<b>Clamp[0,0.5]</b><br/>m0_clamp"]
+    style m0_clamp fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    one_minus_m["<b>1-mask</b><br/>one_minus_m"]
+    style one_minus_m fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    m_sq_mul["<b>Mul</b><br/>m_sq_mul"]
+    style m_sq_mul fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    source["<b>Mul (-m²·u^(0))</b><br/>source"]
+    style source fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    src_fft["<b>FFT3D (rfftn)</b><br/>src_fft"]
+    style src_fft fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    green["<b>Mul (Sn·decay)</b><br/>green"]
+    style green fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    corr_ifft["<b>iFFT3D (irfftn)</b><br/>corr_ifft"]
+    style corr_ifft fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    kg_apply["<b>u + w_KG·corr</b><br/>kg_apply"]
+    style kg_apply fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_mask_spatial --> gate_aff
+    in_x --> phi_dw
+    phi_dw --> phi_1x1
+    phi_1x1 --> u0_mul
+    gate_aff --> u0_mul
+    u0_mul --> out_u0
+    in_x --> psi_dw
+    psi_dw --> psi_1x1
+    psi_1x1 --> v0_mul
+    gate_aff --> v0_mul
+    v0_mul --> out_v0
+    in_mask_spatial --> one_minus_m
+    m0_clamp --> m_sq_mul
+    one_minus_m --> m_sq_mul
+    m_sq_mul --> source
+    in_u0_out --> source
+    source --> src_fft
+    src_fft --> green
+    in_sinc_term --> green
+    in_decay --> green
+    green --> corr_ifft
+    in_u0_out --> kg_apply
+    corr_ifft --> kg_apply
+    kg_apply --> out_out_corrected
+    end
+    class SWAP_KGD partBox
+    %% formulas: (1.19)–(1.21) Klein-Gordon equation; (1.25) single-step Born correction

@@ -1,0 +1,88 @@
+digraph "SWAP" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.9) closed-form wave modulation; (1.39) U-Net composition; (1.36) α_eff = α + λσ</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>z_clean</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_mask_spatial [label=<<B>mask_spatial</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>Phi</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>NLE output (optional)</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    embedding [label=<<B>Conv</B><BR/><FONT POINT-SIZE="9">embedding</FONT>>, fillcolor="#48c9b0", shape=box];
+    act [label=<<B>LeakyReLU</B><BR/><FONT POINT-SIZE="9">act</FONT>>, fillcolor="#f8c471", shape=box];
+    enc_blocks_0 [label=<<B>SWAPBlock×N0</B><BR/><FONT POINT-SIZE="9">enc_blocks_0</FONT>>, fillcolor="#7a4dba", shape=box];
+    fea_down_0 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">fea_down_0</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_down_0 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">mask_down_0</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_sig_0 [label=<<B>Sigmoid</B><BR/><FONT POINT-SIZE="9">mask_sig_0</FONT>>, fillcolor="#ec7063", shape=box];
+    enc_blocks_1 [label=<<B>SWAPBlock×N1</B><BR/><FONT POINT-SIZE="9">enc_blocks_1</FONT>>, fillcolor="#7a4dba", shape=box];
+    fea_down_1 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">fea_down_1</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_down_1 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">mask_down_1</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_sig_1 [label=<<B>Sigmoid</B><BR/><FONT POINT-SIZE="9">mask_sig_1</FONT>>, fillcolor="#ec7063", shape=box];
+    enc_blocks_2 [label=<<B>SWAPBlock×N2</B><BR/><FONT POINT-SIZE="9">enc_blocks_2</FONT>>, fillcolor="#7a4dba", shape=box];
+    fea_down_2 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">fea_down_2</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_down_2 [label=<<B>Conv4x4 s2</B><BR/><FONT POINT-SIZE="9">mask_down_2</FONT>>, fillcolor="#1abc9c", shape=box];
+    mask_sig_2 [label=<<B>Sigmoid</B><BR/><FONT POINT-SIZE="9">mask_sig_2</FONT>>, fillcolor="#ec7063", shape=box];
+    bottleneck [label=<<B>SWAPBlock×Nb</B><BR/><FONT POINT-SIZE="9">bottleneck</FONT>>, fillcolor="#7a4dba", shape=box];
+    up_0 [label=<<B>ConvTranspose 2x2 s2</B><BR/><FONT POINT-SIZE="9">up_0</FONT>>, fillcolor="#1abc9c", shape=box];
+    fuse_0 [label=<<B>Concat+Conv1x1</B><BR/><FONT POINT-SIZE="9">fuse_0</FONT>>, fillcolor="#dc7633", shape=box];
+    dec_blocks_0 [label=<<B>SWAPBlock×N2</B><BR/><FONT POINT-SIZE="9">dec_blocks_0</FONT>>, fillcolor="#7a4dba", shape=box];
+    up_1 [label=<<B>ConvTranspose 2x2 s2</B><BR/><FONT POINT-SIZE="9">up_1</FONT>>, fillcolor="#1abc9c", shape=box];
+    fuse_1 [label=<<B>Concat+Conv1x1</B><BR/><FONT POINT-SIZE="9">fuse_1</FONT>>, fillcolor="#dc7633", shape=box];
+    dec_blocks_1 [label=<<B>SWAPBlock×N1</B><BR/><FONT POINT-SIZE="9">dec_blocks_1</FONT>>, fillcolor="#7a4dba", shape=box];
+    up_2 [label=<<B>ConvTranspose 2x2 s2</B><BR/><FONT POINT-SIZE="9">up_2</FONT>>, fillcolor="#1abc9c", shape=box];
+    fuse_2 [label=<<B>Concat+Conv1x1</B><BR/><FONT POINT-SIZE="9">fuse_2</FONT>>, fillcolor="#dc7633", shape=box];
+    dec_blocks_2 [label=<<B>SWAPBlock×N0</B><BR/><FONT POINT-SIZE="9">dec_blocks_2</FONT>>, fillcolor="#7a4dba", shape=box];
+    mapping [label=<<B>Conv3x3</B><BR/><FONT POINT-SIZE="9">mapping</FONT>>, fillcolor="#48c9b0", shape=box];
+    global_res [label=<<B>Add</B><BR/><FONT POINT-SIZE="9">global_res</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_f_wave [label=<<B>f_wave</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_x -> embedding [label="x"];
+    embedding -> act [label="fea0"];
+    act -> enc_blocks_0 [label="fea0a"];
+    in_mask_spatial -> enc_blocks_0 [label="mask_spatial"];
+    in_sigma -> enc_blocks_0 [label="sigma"];
+    enc_blocks_0 -> fea_down_0 [label="enc0"];
+    in_mask_spatial -> mask_down_0 [label="mask_spatial"];
+    mask_down_0 -> mask_sig_0 [label="mask1_raw"];
+    fea_down_0 -> enc_blocks_1 [label="fea1"];
+    mask_sig_0 -> enc_blocks_1 [label="mask1"];
+    in_sigma -> enc_blocks_1 [label="sigma"];
+    enc_blocks_1 -> fea_down_1 [label="enc1"];
+    mask_sig_0 -> mask_down_1 [label="mask1"];
+    mask_down_1 -> mask_sig_1 [label="mask2_raw"];
+    fea_down_1 -> enc_blocks_2 [label="fea2"];
+    mask_sig_1 -> enc_blocks_2 [label="mask2"];
+    in_sigma -> enc_blocks_2 [label="sigma"];
+    enc_blocks_2 -> fea_down_2 [label="enc2"];
+    mask_sig_1 -> mask_down_2 [label="mask2"];
+    mask_down_2 -> mask_sig_2 [label="mask3_raw"];
+    fea_down_2 -> bottleneck [label="fea3"];
+    mask_sig_2 -> bottleneck [label="mask3"];
+    in_sigma -> bottleneck [label="sigma"];
+    bottleneck -> up_0 [label="bn"];
+    up_0 -> fuse_0 [label="dec2_in"];
+    enc_blocks_2 -> fuse_0 [label="enc2"];
+    fuse_0 -> dec_blocks_0 [label="dec2"];
+    mask_sig_1 -> dec_blocks_0 [label="mask2"];
+    in_sigma -> dec_blocks_0 [label="sigma"];
+    dec_blocks_0 -> up_1 [label="dec2_out"];
+    up_1 -> fuse_1 [label="dec1_in"];
+    enc_blocks_1 -> fuse_1 [label="enc1"];
+    fuse_1 -> dec_blocks_1 [label="dec1"];
+    mask_sig_0 -> dec_blocks_1 [label="mask1"];
+    in_sigma -> dec_blocks_1 [label="sigma"];
+    dec_blocks_1 -> up_2 [label="dec1_out"];
+    up_2 -> fuse_2 [label="dec0_in"];
+    enc_blocks_0 -> fuse_2 [label="enc0"];
+    fuse_2 -> dec_blocks_2 [label="dec0"];
+    in_mask_spatial -> dec_blocks_2 [label="mask_spatial"];
+    in_sigma -> dec_blocks_2 [label="sigma"];
+    dec_blocks_2 -> mapping [label="dec0_out"];
+    mapping -> global_res [label="map_out"];
+    in_x -> global_res [label="x"];
+    global_res -> out_f_wave [label="f_wave"];
+    LDE_sigma -> SWAP_sigma [style=dashed, color="#a569bd", label=<<FONT POINT-SIZE="9"><I>noise-aware damping</I></FONT>>];
+}

@@ -1,0 +1,47 @@
+flowchart TD
+    %% A-HQS (single stage) (Part III)
+    classDef partBox fill:#e6f1ff,stroke:#3a155c,stroke-width:2px
+    subgraph A_HQS__single_stage_["A-HQS (single stage) — Part III"]
+    direction TB
+    in_f__k_1_(("f^{k-1}"))
+    style in_f__k_1_ fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_f__k_2___if_k__2_(("f^{k-2} (if k>=2)"))
+    style in_f__k_2___if_k__2_ fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_f_k(("f^k"))
+    style out_f_k fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    LDE["<b>lde</b><br/>LDE"]
+    style LDE fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    Momentum["<b>ahqs-Momentum</b><br/>Momentum<br/><i>if use_ahqs</i>"]
+    style Momentum fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    Phi_eff["<b>Add (Φ + ΔΦ)</b><br/>Phi_eff"]
+    style Phi_eff fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    ParaEst["<b>ahqs-ParaEstimator</b><br/>ParaEst"]
+    style ParaEst fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    GD["<b>Closed-form GD step</b><br/>GD"]
+    style GD fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    Purify["<b>z·(1+w)</b><br/>Purify"]
+    style Purify fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    SWAP["<b>swap (Part I)</b><br/>SWAP"]
+    style SWAP fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    LRB["<b>lde-LRB</b><br/>LRB"]
+    style LRB fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    out_res["<b>Add</b><br/>out_res"]
+    style out_res fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_f__k_1_ --> LDE
+    in_f__k_1_ --> Momentum
+    LDE --> Phi_eff
+    Momentum --> ParaEst
+    Momentum --> GD
+    Phi_eff --> GD
+    ParaEst --> GD
+    GD --> Purify
+    LDE --> Purify
+    Purify --> SWAP
+    LDE --> SWAP
+    SWAP --> LRB
+    SWAP --> out_res
+    LRB --> out_res
+    out_res --> out_f_k
+    end
+    class A_HQS__single_stage_ partBox
+    %% formulas: (1.32)–(1.37) single-stage flow; (1.38) multi-stage loss

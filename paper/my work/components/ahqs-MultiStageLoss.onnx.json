@@ -1,0 +1,21 @@
+{
+  "name": "A-HQS-MultiStageLoss",
+  "part": "Part III",
+  "background_color": "#e6f1ff",
+  "description": "DPU-style weighted RMSE loss across unfolding stages, giving the final stage the highest weight.",
+  "formula_ref": ["(1.38)"],
+  "inputs":  [
+    {"name": "outputs", "shape": ["K", "B", 28, "H", "W"]},
+    {"name": "gt",      "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [{"name": "loss", "shape": []}],
+  "weights": {"w_K": 1.0, "w_{K-1}": 0.7, "w_{K-2}": 0.5, "w_{K-3}": 0.3},
+  "nodes": [
+    {"id": "rmse_K",   "op_type": "RMSE",        "color": "#3a155c", "input": ["outputs[-1]", "gt"], "output": ["L_K"]},
+    {"id": "rmse_K-1", "op_type": "RMSE",        "color": "#3a155c", "input": ["outputs[-2]", "gt"], "output": ["L_K-1"]},
+    {"id": "rmse_K-2", "op_type": "RMSE",        "color": "#3a155c", "input": ["outputs[-3]", "gt"], "output": ["L_K-2"]},
+    {"id": "rmse_K-3", "op_type": "RMSE",        "color": "#3a155c", "input": ["outputs[-4]", "gt"], "output": ["L_K-3"]},
+    {"id": "sum",      "op_type": "WeightedSum", "color": "#85929e",
+     "input": ["L_K", "L_K-1", "L_K-2", "L_K-3"], "output": ["loss"], "constants": {"weights": [1.0, 0.7, 0.5, 0.3]}}
+  ]
+}

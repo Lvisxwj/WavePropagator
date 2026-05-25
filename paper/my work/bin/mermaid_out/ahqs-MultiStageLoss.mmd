@@ -1,0 +1,33 @@
+flowchart TD
+    %% A-HQS-MultiStageLoss (Part III)
+    classDef partBox fill:#e6f1ff,stroke:#3a155c,stroke-width:2px
+    subgraph A_HQS_MultiStageLoss["A-HQS-MultiStageLoss — Part III"]
+    direction TB
+    in_outputs(("outputs"))
+    style in_outputs fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_gt(("gt"))
+    style in_gt fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_loss(("loss"))
+    style out_loss fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    rmse_K["<b>RMSE</b><br/>rmse_K"]
+    style rmse_K fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    rmse_K_1["<b>RMSE</b><br/>rmse_K-1"]
+    style rmse_K_1 fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    rmse_K_2["<b>RMSE</b><br/>rmse_K-2"]
+    style rmse_K_2 fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    rmse_K_3["<b>RMSE</b><br/>rmse_K-3"]
+    style rmse_K_3 fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    sum["<b>WeightedSum</b><br/>sum"]
+    style sum fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_gt --> rmse_K
+    in_gt --> rmse_K_1
+    in_gt --> rmse_K_2
+    in_gt --> rmse_K_3
+    rmse_K --> sum
+    rmse_K_1 --> sum
+    rmse_K_2 --> sum
+    rmse_K_3 --> sum
+    sum --> out_loss
+    end
+    class A_HQS_MultiStageLoss partBox
+    %% formulas: (1.38)

@@ -1,0 +1,77 @@
+flowchart TD
+    %% SWAP-AdaSpec variants
+
+flowchart TD
+    %% SWAP-AdaSpec :: snr_adaptive (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_AdaSpec____snr_adaptive["SWAP-AdaSpec :: snr_adaptive — Part I"]
+    direction TB
+    in_out_fft(("out_fft"))
+    style in_out_fft fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_u0_fft(("u0_fft"))
+    style in_u0_fft fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_sigma(("sigma"))
+    style in_sigma fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_out_fft_weighted(("out_fft_weighted"))
+    style out_out_fft_weighted fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    abs_sq["<b>Abs²</b><br/>abs_sq"]
+    style abs_sq fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    sigma_sq["<b>Square</b><br/>sigma_sq"]
+    style sigma_sq fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    num["<b>Sub</b><br/>num"]
+    style num fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    den["<b>Add+ε</b><br/>den"]
+    style den fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    ratio["<b>Div</b><br/>ratio"]
+    style ratio fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    sigmoid["<b>Sigmoid</b><br/>sigmoid"]
+    style sigmoid fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    apply["<b>Mul</b><br/>apply"]
+    style apply fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_u0_fft --> abs_sq
+    in_sigma --> sigma_sq
+    abs_sq --> num
+    sigma_sq --> num
+    abs_sq --> den
+    sigma_sq --> den
+    num --> ratio
+    den --> ratio
+    ratio --> sigmoid
+    in_out_fft --> apply
+    sigmoid --> apply
+    apply --> out_out_fft_weighted
+    end
+    class SWAP_AdaSpec____snr_adaptive partBox
+    %% formulas: (1.16) Wiener-like sigmoid gate; (1.18) learnable band lookup
+
+flowchart TD
+    %% SWAP-AdaSpec :: learnable_band (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_AdaSpec____learnable_band["SWAP-AdaSpec :: learnable_band — Part I"]
+    direction TB
+    in_out_fft(("out_fft"))
+    style in_out_fft fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_out_fft_weighted(("out_fft_weighted"))
+    style out_out_fft_weighted fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    freq_grid["<b>MakeFreqGrid (fc,fh,fw)</b><br/>freq_grid"]
+    style freq_grid fill:#3a155c,stroke:#1a1a1a,color:#1a1a1a
+    mag["<b>L2-norm</b><br/>mag"]
+    style mag fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    quantize["<b>Quantize-to-K-bands</b><br/>quantize"]
+    style quantize fill:#cd6155,stroke:#1a1a1a,color:#1a1a1a
+    weights["<b>Softplus(θ)</b><br/>weights"]
+    style weights fill:#a569bd,stroke:#1a1a1a,color:#1a1a1a
+    gather["<b>Gather</b><br/>gather"]
+    style gather fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    apply["<b>Mul</b><br/>apply"]
+    style apply fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    freq_grid --> mag
+    mag --> quantize
+    weights --> gather
+    quantize --> gather
+    in_out_fft --> apply
+    gather --> apply
+    apply --> out_out_fft_weighted
+    end
+    class SWAP_AdaSpec____learnable_band partBox
+    %% formulas: (1.16) Wiener-like sigmoid gate; (1.18) learnable band lookup

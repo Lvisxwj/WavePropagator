@@ -1,0 +1,39 @@
+digraph "A-HQS (single stage)" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>A-HQS (single stage)</B><BR/><FONT POINT-SIZE="10">Part III — formulas: (1.32)–(1.37) single-stage flow; (1.38) multi-stage loss</FONT>>,
+           bgcolor="#e6f1ff"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_f__k_1_ [label=<<B>f^{k-1}</B><BR/><FONT POINT-SIZE='9'></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_f__k_2___if_k__2_ [label=<<B>f^{k-2} (if k>=2)</B><BR/><FONT POINT-SIZE='9'></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    LDE [label=<<B>lde</B><BR/><FONT POINT-SIZE="9">LDE</FONT>>, fillcolor="#7a4dba", shape=box];
+    Momentum [label=<<B>ahqs-Momentum</B><BR/><FONT POINT-SIZE="9">Momentum</FONT><BR/><FONT POINT-SIZE="8" COLOR="#9a9aa3"><I>if use_ahqs</I></FONT>>, fillcolor="#3a155c", shape=box];
+    Phi_eff [label=<<B>Add (Φ + ΔΦ)</B><BR/><FONT POINT-SIZE="9">Phi_eff</FONT>>, fillcolor="#85929e", shape=box];
+    ParaEst [label=<<B>ahqs-ParaEstimator</B><BR/><FONT POINT-SIZE="9">ParaEst</FONT>>, fillcolor="#7a4dba", shape=box];
+    GD [label=<<B>Closed-form GD step</B><BR/><FONT POINT-SIZE="9">GD</FONT>>, fillcolor="#3a155c", shape=box];
+    Purify [label=<<B>z·(1+w)</B><BR/><FONT POINT-SIZE="9">Purify</FONT>>, fillcolor="#85929e", shape=box];
+    SWAP [label=<<B>swap (Part I)</B><BR/><FONT POINT-SIZE="9">SWAP</FONT>>, fillcolor="#7a4dba", shape=box];
+    LRB [label=<<B>lde-LRB</B><BR/><FONT POINT-SIZE="9">LRB</FONT>>, fillcolor="#7a4dba", shape=box];
+    out_res [label=<<B>Add</B><BR/><FONT POINT-SIZE="9">out_res</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_f_k [label=<<B>f^k</B><BR/><FONT POINT-SIZE='9'></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_f^{k-1} -> LDE [label="f^{k-1}"];
+    in_f^{k-1} -> Momentum [label="f^{k-1}"];
+    LDE -> Phi_eff [label="delta_Phi"];
+    Momentum -> ParaEst [label="f_hat"];
+    Momentum -> GD [label="f_hat"];
+    Phi_eff -> GD [label="Phi_eff"];
+    ParaEst -> GD [label="rho_k"];
+    GD -> Purify [label="z"];
+    LDE -> Purify [label="w"];
+    Purify -> SWAP [label="z_clean"];
+    LDE -> SWAP [label="sigma"];
+    SWAP -> LRB [label="f_wave"];
+    SWAP -> out_res [label="f_wave"];
+    LRB -> out_res [label="f_local"];
+    out_res -> out_f_k [label="f^k"];
+}

@@ -1,0 +1,14 @@
+{
+  "name": "LDE-SEC",
+  "part": "Part II",
+  "background_color": "#fff7e6",
+  "description": "Sensing Error Correction — residual prediction of ΔΦ from Φ.",
+  "formula_ref": ["(1.28)"],
+  "inputs":  [{"name": "Phi",       "shape": ["B", 28, "H", "W"]}],
+  "outputs": [{"name": "delta_Phi", "shape": ["B", 28, "H", "W"]}],
+  "nodes": [
+    {"id": "conv1",  "op_type": "Conv1x1 (28→28)", "color": "#5dade2", "input": ["Phi"],   "output": ["h1"]},
+    {"id": "lrelu",  "op_type": "LeakyReLU",       "color": "#f8c471", "input": ["h1"],    "output": ["h1a"]},
+    {"id": "conv2",  "op_type": "Conv1x1 (28→28)", "color": "#5dade2", "input": ["h1a"],   "output": ["delta_Phi"]}
+  ]
+}

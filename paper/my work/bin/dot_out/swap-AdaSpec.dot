@@ -1,0 +1,63 @@
+digraph "SWAP-AdaSpec :: snr_adaptive" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-AdaSpec :: snr_adaptive</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.16) Wiener-like sigmoid gate; (1.18) learnable band lookup</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_out_fft [label=<<B>out_fft</B><BR/><FONT POINT-SIZE='9'>B×C_fft×H_fft×W_fft//2+1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_u0_fft [label=<<B>u0_fft</B><BR/><FONT POINT-SIZE='9'>B×C_fft×H_fft×W_fft//2+1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    abs_sq [label=<<B>Abs²</B><BR/><FONT POINT-SIZE="9">abs_sq</FONT>>, fillcolor="#85929e", shape=box];
+    sigma_sq [label=<<B>Square</B><BR/><FONT POINT-SIZE="9">sigma_sq</FONT>>, fillcolor="#85929e", shape=box];
+    num [label=<<B>Sub</B><BR/><FONT POINT-SIZE="9">num</FONT>>, fillcolor="#85929e", shape=box];
+    den [label=<<B>Add+ε</B><BR/><FONT POINT-SIZE="9">den</FONT>>, fillcolor="#85929e", shape=box];
+    ratio [label=<<B>Div</B><BR/><FONT POINT-SIZE="9">ratio</FONT>>, fillcolor="#85929e", shape=box];
+    sigmoid [label=<<B>Sigmoid</B><BR/><FONT POINT-SIZE="9">sigmoid</FONT>>, fillcolor="#ec7063", shape=box];
+    apply [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">apply</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_out_fft_weighted [label=<<B>out_fft_weighted</B><BR/><FONT POINT-SIZE='9'>B×C_fft×H_fft×W_fft//2+1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_u0_fft -> abs_sq [label="u0_fft"];
+    in_sigma -> sigma_sq [label="sigma"];
+    abs_sq -> num [label="power"];
+    sigma_sq -> num [label="sigsq"];
+    abs_sq -> den [label="power"];
+    sigma_sq -> den [label="sigsq"];
+    num -> ratio [label="num"];
+    den -> ratio [label="den"];
+    ratio -> sigmoid [label="ratio"];
+    in_out_fft -> apply [label="out_fft"];
+    sigmoid -> apply [label="W"];
+    apply -> out_out_fft_weighted [label="out_fft_weighted"];
+}
+
+digraph "SWAP-AdaSpec :: learnable_band" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-AdaSpec :: learnable_band</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.16) Wiener-like sigmoid gate; (1.18) learnable band lookup</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_out_fft [label=<<B>out_fft</B><BR/><FONT POINT-SIZE='9'>B×C_fft×H_fft×W_fft//2+1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    freq_grid [label=<<B>MakeFreqGrid (fc,fh,fw)</B><BR/><FONT POINT-SIZE="9">freq_grid</FONT>>, fillcolor="#3a155c", shape=box];
+    mag [label=<<B>L2-norm</B><BR/><FONT POINT-SIZE="9">mag</FONT>>, fillcolor="#85929e", shape=box];
+    quantize [label=<<B>Quantize-to-K-bands</B><BR/><FONT POINT-SIZE="9">quantize</FONT>>, fillcolor="#cd6155", shape=box];
+    weights [label=<<B>Softplus(θ)</B><BR/><FONT POINT-SIZE="9">weights</FONT>>, fillcolor="#a569bd", shape=box];
+    gather [label=<<B>Gather</B><BR/><FONT POINT-SIZE="9">gather</FONT>>, fillcolor="#85929e", shape=box];
+    apply [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">apply</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_out_fft_weighted [label=<<B>out_fft_weighted</B><BR/><FONT POINT-SIZE='9'>B×C_fft×H_fft×W_fft//2+1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    freq_grid -> mag [label="freq"];
+    mag -> quantize [label="mag"];
+    weights -> gather [label="w_k"];
+    quantize -> gather [label="band_idx"];
+    in_out_fft -> apply [label="out_fft"];
+    gather -> apply [label="W"];
+    apply -> out_out_fft_weighted [label="out_fft_weighted"];
+}

@@ -1,0 +1,27 @@
+{
+  "name": "LDE",
+  "part": "Part II",
+  "background_color": "#fff7e6",
+  "description": "Learned Degradation Estimator — top-level wrapper combining SEC, DAG and NLE.",
+  "formula_ref": ["(1.28) SEC", "(1.29) DAG", "(1.30) NLE", "(1.13.2) Phi* construction"],
+  "inputs": [
+    {"name": "f",        "shape": ["B", 28, "H", "W"]},
+    {"name": "Phi",      "shape": ["B", 28, "H", "W"]},
+    {"name": "Phi_star", "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [
+    {"name": "delta_Phi",  "shape": ["B", 28, "H", "W"]},
+    {"name": "deg_weight", "shape": ["B", 28, "H", "W"]},
+    {"name": "sigma",      "shape": ["B", 1, 1, 1]}
+  ],
+  "nodes": [
+    {"id": "SEC", "op_type": "lde-SEC", "color": "#7a4dba", "input": ["Phi"], "output": ["delta_Phi"]},
+    {"id": "DAG", "op_type": "lde-DAG", "color": "#7a4dba", "input": ["Phi", "Phi_star"], "output": ["deg_weight"]},
+    {"id": "NLE", "op_type": "lde-NLE", "color": "#7a4dba", "input": ["f"], "output": ["sigma"]}
+  ],
+  "edges_cross_part": [
+    {"from": "LDE.delta_Phi",  "to": "A-HQS.Phi_eff",  "style": "dashed", "color": "#a569bd", "meaning": "sensing-error correction"},
+    {"from": "LDE.deg_weight", "to": "A-HQS.z_clean",  "style": "dashed", "color": "#a569bd", "meaning": "degradation-aware gating"},
+    {"from": "LDE.sigma",      "to": "SWAP.α_eff",      "style": "dashed", "color": "#a569bd", "meaning": "noise-aware damping (Estimation-Evolution)"}
+  ]
+}

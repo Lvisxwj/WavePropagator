@@ -1,0 +1,26 @@
+{
+  "name": "SWAP-MI",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Modulated Initialization — gates two semantic fields u0, v0 by the CASSI mask.",
+  "formula_ref": ["(1.12) soft gate", "(1.14) closed-form preservation"],
+  "inputs": [
+    {"name": "x",            "shape": ["B", 28, "H", "W"]},
+    {"name": "mask_spatial", "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [
+    {"name": "u0", "shape": ["B", 28, "H", "W"]},
+    {"name": "v0", "shape": ["B", 28, "H", "W"]}
+  ],
+  "nodes": [
+    {"id": "phi_dw",   "op_type": "DWConv3x3", "color": "#48c9b0", "input": ["x"],     "output": ["phi_a"]},
+    {"id": "phi_1x1",  "op_type": "Conv1x1",   "color": "#5dade2", "input": ["phi_a"], "output": ["phi_x"]},
+    {"id": "psi_dw",   "op_type": "DWConv3x3", "color": "#48c9b0", "input": ["x"],     "output": ["psi_a"]},
+    {"id": "psi_1x1",  "op_type": "Conv1x1",   "color": "#5dade2", "input": ["psi_a"], "output": ["psi_x"]},
+
+    {"id": "gate_aff", "op_type": "Affine: ε + (1-ε)·m", "color": "#85929e", "input": ["mask_spatial"], "output": ["gate"], "constants": {"eps": 0.1}},
+
+    {"id": "u0_mul",   "op_type": "Mul", "color": "#85929e", "input": ["phi_x", "gate"], "output": ["u0"]},
+    {"id": "v0_mul",   "op_type": "Mul", "color": "#85929e", "input": ["psi_x", "gate"], "output": ["v0"]}
+  ]
+}

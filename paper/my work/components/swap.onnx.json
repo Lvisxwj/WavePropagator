@@ -1,0 +1,54 @@
+{
+  "name": "SWAP",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Spectral WAve Propagator — U-Net wrapper with WPO3D blocks; outputs f_wave.",
+  "formula_ref": ["(1.9) closed-form wave modulation", "(1.39) U-Net composition", "(1.36) α_eff = α + λσ"],
+  "inputs": [
+    {"name": "x",             "shape": ["B", 28, "H", "W"],   "role": "z_clean"},
+    {"name": "mask_spatial",  "shape": ["B", 28, "H", "W"],   "role": "Phi"},
+    {"name": "sigma",         "shape": ["B", 1, 1, 1],         "role": "NLE output (optional)"}
+  ],
+  "outputs": [
+    {"name": "f_wave",        "shape": ["B", 28, "H", "W"]}
+  ],
+  "nodes": [
+    {"id": "embedding", "op_type": "Conv",        "kernel": "3x3", "in_ch": 28, "out_ch": 28, "color": "#48c9b0", "input": ["x"], "output": ["fea0"]},
+    {"id": "act",       "op_type": "LeakyReLU",   "color": "#f8c471", "input": ["fea0"], "output": ["fea0a"]},
+
+    {"id": "enc_blocks_0", "op_type": "SWAPBlock×N0", "color": "#7a4dba", "input": ["fea0a", "mask_spatial", "sigma"], "output": ["enc0"]},
+    {"id": "fea_down_0",   "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["enc0"], "output": ["fea1"]},
+    {"id": "mask_down_0",  "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["mask_spatial"], "output": ["mask1_raw"]},
+    {"id": "mask_sig_0",   "op_type": "Sigmoid",       "color": "#ec7063", "input": ["mask1_raw"], "output": ["mask1"]},
+
+    {"id": "enc_blocks_1", "op_type": "SWAPBlock×N1", "color": "#7a4dba", "input": ["fea1", "mask1", "sigma"], "output": ["enc1"]},
+    {"id": "fea_down_1",   "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["enc1"], "output": ["fea2"]},
+    {"id": "mask_down_1",  "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["mask1"], "output": ["mask2_raw"]},
+    {"id": "mask_sig_1",   "op_type": "Sigmoid",       "color": "#ec7063", "input": ["mask2_raw"], "output": ["mask2"]},
+
+    {"id": "enc_blocks_2", "op_type": "SWAPBlock×N2", "color": "#7a4dba", "input": ["fea2", "mask2", "sigma"], "output": ["enc2"]},
+    {"id": "fea_down_2",   "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["enc2"], "output": ["fea3"]},
+    {"id": "mask_down_2",  "op_type": "Conv4x4 s2",   "color": "#1abc9c", "input": ["mask2"], "output": ["mask3_raw"]},
+    {"id": "mask_sig_2",   "op_type": "Sigmoid",       "color": "#ec7063", "input": ["mask3_raw"], "output": ["mask3"]},
+
+    {"id": "bottleneck",   "op_type": "SWAPBlock×Nb", "color": "#7a4dba", "input": ["fea3", "mask3", "sigma"], "output": ["bn"]},
+
+    {"id": "up_0",         "op_type": "ConvTranspose 2x2 s2", "color": "#1abc9c", "input": ["bn"], "output": ["dec2_in"]},
+    {"id": "fuse_0",       "op_type": "Concat+Conv1x1",       "color": "#dc7633", "input": ["dec2_in", "enc2"], "output": ["dec2"]},
+    {"id": "dec_blocks_0", "op_type": "SWAPBlock×N2",         "color": "#7a4dba", "input": ["dec2", "mask2", "sigma"], "output": ["dec2_out"]},
+
+    {"id": "up_1",         "op_type": "ConvTranspose 2x2 s2", "color": "#1abc9c", "input": ["dec2_out"], "output": ["dec1_in"]},
+    {"id": "fuse_1",       "op_type": "Concat+Conv1x1",       "color": "#dc7633", "input": ["dec1_in", "enc1"], "output": ["dec1"]},
+    {"id": "dec_blocks_1", "op_type": "SWAPBlock×N1",         "color": "#7a4dba", "input": ["dec1", "mask1", "sigma"], "output": ["dec1_out"]},
+
+    {"id": "up_2",         "op_type": "ConvTranspose 2x2 s2", "color": "#1abc9c", "input": ["dec1_out"], "output": ["dec0_in"]},
+    {"id": "fuse_2",       "op_type": "Concat+Conv1x1",       "color": "#dc7633", "input": ["dec0_in", "enc0"], "output": ["dec0"]},
+    {"id": "dec_blocks_2", "op_type": "SWAPBlock×N0",         "color": "#7a4dba", "input": ["dec0", "mask_spatial", "sigma"], "output": ["dec0_out"]},
+
+    {"id": "mapping",      "op_type": "Conv3x3", "color": "#48c9b0", "input": ["dec0_out"], "output": ["map_out"]},
+    {"id": "global_res",   "op_type": "Add",     "color": "#85929e", "input": ["map_out", "x"], "output": ["f_wave"]}
+  ],
+  "edges_cross_part": [
+    {"from": "LDE.sigma", "to": "SWAP.sigma", "style": "dashed", "color": "#a569bd", "meaning": "noise-aware damping"}
+  ]
+}

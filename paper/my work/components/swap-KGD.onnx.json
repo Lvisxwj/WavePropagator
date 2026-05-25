@@ -1,0 +1,38 @@
+{
+  "name": "SWAP-KGD",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Klein-Gordon Dispersion — adds a spatial mass field and Born 1st-order correction to SWAP.",
+  "formula_ref": ["(1.19)–(1.21) Klein-Gordon equation", "(1.25) single-step Born correction"],
+  "inputs": [
+    {"name": "x",            "shape": ["B", 28, "H", "W"]},
+    {"name": "mask_spatial", "shape": ["B", 28, "H", "W"]},
+    {"name": "u0_out",       "shape": ["B", 28, "H", "W"], "role": "zeroth-order SWAP output"},
+    {"name": "sinc_term",    "shape": [28, "H", "W//2+1"], "role": "Sn(η,t) from wave-modulate"},
+    {"name": "decay",        "shape": [], "role": "e^{-αt/2}"}
+  ],
+  "outputs": [
+    {"name": "u0",  "shape": ["B", 28, "H", "W"]},
+    {"name": "v0",  "shape": ["B", 28, "H", "W"]},
+    {"name": "out_corrected", "shape": ["B", 28, "H", "W"]}
+  ],
+  "nodes": [
+    {"id": "gate_aff",   "op_type": "Affine: ε + (1-ε)·m",   "color": "#85929e", "input": ["mask_spatial"], "output": ["gate"]},
+    {"id": "phi_dw",     "op_type": "DWConv3x3", "color": "#48c9b0", "input": ["x"], "output": ["phi_a"]},
+    {"id": "phi_1x1",    "op_type": "Conv1x1",   "color": "#5dade2", "input": ["phi_a"], "output": ["phi_x"]},
+    {"id": "u0_mul",     "op_type": "Mul",       "color": "#85929e", "input": ["phi_x", "gate"], "output": ["u0"]},
+    {"id": "psi_dw",     "op_type": "DWConv3x3", "color": "#48c9b0", "input": ["x"], "output": ["psi_a"]},
+    {"id": "psi_1x1",    "op_type": "Conv1x1",   "color": "#5dade2", "input": ["psi_a"], "output": ["psi_x"]},
+    {"id": "v0_mul",     "op_type": "Mul",       "color": "#85929e", "input": ["psi_x", "gate"], "output": ["v0"]},
+
+    {"id": "m0_clamp",   "op_type": "Clamp[0,0.5]", "color": "#85929e", "input": ["m0_sq"], "output": ["m0_clamped"]},
+    {"id": "one_minus_m","op_type": "1-mask",       "color": "#85929e", "input": ["mask_spatial"], "output": ["1m"]},
+    {"id": "m_sq_mul",   "op_type": "Mul",          "color": "#85929e", "input": ["m0_clamped", "1m"], "output": ["m_sq"]},
+
+    {"id": "source",     "op_type": "Mul (-m²·u^(0))", "color": "#85929e", "input": ["m_sq", "u0_out"], "output": ["source"]},
+    {"id": "src_fft",    "op_type": "FFT3D (rfftn)",   "color": "#3a155c", "input": ["source"],         "output": ["src_fft"]},
+    {"id": "green",      "op_type": "Mul (Sn·decay)",   "color": "#7a4dba", "input": ["src_fft", "sinc_term", "decay"], "output": ["corr_fft"]},
+    {"id": "corr_ifft",  "op_type": "iFFT3D (irfftn)", "color": "#3a155c", "input": ["corr_fft"], "output": ["correction"]},
+    {"id": "kg_apply",   "op_type": "u + w_KG·corr",   "color": "#85929e", "input": ["u0_out", "correction", "kg_weight"], "output": ["out_corrected"]}
+  ]
+}

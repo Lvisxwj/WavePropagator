@@ -1,0 +1,29 @@
+digraph "LDE-NLE" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>LDE-NLE</B><BR/><FONT POINT-SIZE="10">Part II — formulas: (1.30)</FONT>>,
+           bgcolor="#fff7e6"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_f [label=<<B>f</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    gap [label=<<B>GlobalAvgPool</B><BR/><FONT POINT-SIZE="9">gap</FONT>>, fillcolor="#cd6155", shape=box];
+    flatten [label=<<B>Flatten</B><BR/><FONT POINT-SIZE="9">flatten</FONT>>, fillcolor="#85929e", shape=box];
+    fc1 [label=<<B>Linear (28→32)</B><BR/><FONT POINT-SIZE="9">fc1</FONT>>, fillcolor="#5dade2", shape=box];
+    relu [label=<<B>ReLU</B><BR/><FONT POINT-SIZE="9">relu</FONT>>, fillcolor="#f8c471", shape=box];
+    fc2 [label=<<B>Linear (32→1)</B><BR/><FONT POINT-SIZE="9">fc2</FONT>>, fillcolor="#5dade2", shape=box];
+    sp [label=<<B>Softplus</B><BR/><FONT POINT-SIZE="9">sp</FONT>>, fillcolor="#a569bd", shape=box];
+    reshape [label=<<B>Reshape to [B,1,1,1]</B><BR/><FONT POINT-SIZE="9">reshape</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_f -> gap [label="f"];
+    gap -> flatten [label="g"];
+    flatten -> fc1 [label="gf"];
+    fc1 -> relu [label="h"];
+    relu -> fc2 [label="ha"];
+    fc2 -> sp [label="z"];
+    sp -> reshape [label="sigma_flat"];
+    reshape -> out_sigma [label="sigma"];
+}

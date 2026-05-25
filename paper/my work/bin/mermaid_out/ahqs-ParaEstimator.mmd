@@ -1,0 +1,43 @@
+flowchart TD
+    %% A-HQS-ParaEstimator (Part III)
+    classDef partBox fill:#e6f1ff,stroke:#3a155c,stroke-width:2px
+    subgraph A_HQS_ParaEstimator["A-HQS-ParaEstimator — Part III"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_rho(("rho"))
+    style out_rho fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    fusion["<b>Conv1x1 (28→32)</b><br/>fusion"]
+    style fusion fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    relu0["<b>ReLU</b><br/>relu0"]
+    style relu0 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    avpool["<b>AdaptiveAvgPool2d</b><br/>avpool"]
+    style avpool fill:#cd6155,stroke:#1a1a1a,color:#1a1a1a
+    mlp_c1["<b>Conv1x1 (32→32)</b><br/>mlp_c1"]
+    style mlp_c1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    mlp_r1["<b>ReLU</b><br/>mlp_r1"]
+    style mlp_r1 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    mlp_c2["<b>Conv1x1 (32→32)</b><br/>mlp_c2"]
+    style mlp_c2 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    mlp_r2["<b>ReLU</b><br/>mlp_r2"]
+    style mlp_r2 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    mlp_c3["<b>Conv1x1 (32→1)</b><br/>mlp_c3"]
+    style mlp_c3 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    add_bias["<b>Add bias</b><br/>add_bias"]
+    style add_bias fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    sp["<b>Softplus</b><br/>sp"]
+    style sp fill:#a569bd,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> fusion
+    fusion --> relu0
+    relu0 --> avpool
+    avpool --> mlp_c1
+    mlp_c1 --> mlp_r1
+    mlp_r1 --> mlp_c2
+    mlp_c2 --> mlp_r2
+    mlp_r2 --> mlp_c3
+    mlp_c3 --> add_bias
+    add_bias --> sp
+    sp --> out_rho
+    end
+    class A_HQS_ParaEstimator partBox
+    %% formulas: (1.35)

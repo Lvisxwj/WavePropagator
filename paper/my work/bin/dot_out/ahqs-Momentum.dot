@@ -1,0 +1,26 @@
+digraph "A-HQS-Momentum" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>A-HQS-Momentum</B><BR/><FONT POINT-SIZE="10">Part III — formulas: (1.33)</FONT>>,
+           bgcolor="#e6f1ff"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_f [label=<<B>f</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_f_prev [label=<<B>f_prev</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    sig [label=<<B>Sigmoid(θ_k)</B><BR/><FONT POINT-SIZE="9">sig</FONT>>, fillcolor="#ec7063", shape=box];
+    diff [label=<<B>Sub (f - f_prev)</B><BR/><FONT POINT-SIZE="9">diff</FONT>>, fillcolor="#85929e", shape=box];
+    scale [label=<<B>Mul (β·d)</B><BR/><FONT POINT-SIZE="9">scale</FONT>>, fillcolor="#85929e", shape=box];
+    add [label=<<B>Add (f + β·d)</B><BR/><FONT POINT-SIZE="9">add</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_f_hat [label=<<B>f_hat</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_f -> diff [label="f"];
+    in_f_prev -> diff [label="f_prev"];
+    sig -> scale [label="beta_k"];
+    diff -> scale [label="d"];
+    in_f -> add [label="f"];
+    scale -> add [label="bd"];
+    add -> out_f_hat [label="f_hat"];
+}

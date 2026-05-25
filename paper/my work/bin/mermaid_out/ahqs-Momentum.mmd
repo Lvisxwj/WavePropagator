@@ -1,0 +1,29 @@
+flowchart TD
+    %% A-HQS-Momentum (Part III)
+    classDef partBox fill:#e6f1ff,stroke:#3a155c,stroke-width:2px
+    subgraph A_HQS_Momentum["A-HQS-Momentum — Part III"]
+    direction TB
+    in_f(("f"))
+    style in_f fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_f_prev(("f_prev"))
+    style in_f_prev fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_f_hat(("f_hat"))
+    style out_f_hat fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    sig["<b>Sigmoid(θ_k)</b><br/>sig"]
+    style sig fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    diff["<b>Sub (f - f_prev)</b><br/>diff"]
+    style diff fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    scale["<b>Mul (β·d)</b><br/>scale"]
+    style scale fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    add["<b>Add (f + β·d)</b><br/>add"]
+    style add fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_f --> diff
+    in_f_prev --> diff
+    sig --> scale
+    diff --> scale
+    in_f --> add
+    scale --> add
+    add --> out_f_hat
+    end
+    class A_HQS_Momentum partBox
+    %% formulas: (1.33)

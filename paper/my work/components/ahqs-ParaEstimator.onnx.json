@@ -1,0 +1,21 @@
+{
+  "name": "A-HQS-ParaEstimator",
+  "part": "Part III",
+  "background_color": "#e6f1ff",
+  "description": "Predicts the per-stage GD step size ρ_k from the current iterate.",
+  "formula_ref": ["(1.35)"],
+  "inputs":  [{"name": "x",    "shape": ["B", 28, "H", "W"]}],
+  "outputs": [{"name": "rho",  "shape": ["B", 1, 1, 1]}],
+  "nodes": [
+    {"id": "fusion",   "op_type": "Conv1x1 (28→32)", "color": "#5dade2", "input": ["x"],     "output": ["f0"]},
+    {"id": "relu0",    "op_type": "ReLU",             "color": "#f8c471", "input": ["f0"],    "output": ["f0a"]},
+    {"id": "avpool",   "op_type": "AdaptiveAvgPool2d","color": "#cd6155", "input": ["f0a"],   "output": ["p"]},
+    {"id": "mlp_c1",   "op_type": "Conv1x1 (32→32)", "color": "#5dade2", "input": ["p"],     "output": ["m1"]},
+    {"id": "mlp_r1",   "op_type": "ReLU",             "color": "#f8c471", "input": ["m1"],    "output": ["m1a"]},
+    {"id": "mlp_c2",   "op_type": "Conv1x1 (32→32)", "color": "#5dade2", "input": ["m1a"],   "output": ["m2"]},
+    {"id": "mlp_r2",   "op_type": "ReLU",             "color": "#f8c471", "input": ["m2"],    "output": ["m2a"]},
+    {"id": "mlp_c3",   "op_type": "Conv1x1 (32→1)",  "color": "#5dade2", "input": ["m2a"],   "output": ["m3"]},
+    {"id": "add_bias", "op_type": "Add bias",          "color": "#85929e", "input": ["m3"],    "output": ["m3b"]},
+    {"id": "sp",       "op_type": "Softplus",          "color": "#a569bd", "input": ["m3b"],   "output": ["rho"]}
+  ]
+}

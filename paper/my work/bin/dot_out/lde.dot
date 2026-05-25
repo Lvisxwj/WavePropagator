@@ -1,0 +1,31 @@
+digraph "LDE" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>LDE</B><BR/><FONT POINT-SIZE="10">Part II — formulas: (1.28) SEC; (1.29) DAG; (1.30) NLE; (1.13.2) Phi* construction</FONT>>,
+           bgcolor="#fff7e6"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_f [label=<<B>f</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_Phi [label=<<B>Phi</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_Phi_star [label=<<B>Phi_star</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    SEC [label=<<B>lde-SEC</B><BR/><FONT POINT-SIZE="9">SEC</FONT>>, fillcolor="#7a4dba", shape=box];
+    DAG [label=<<B>lde-DAG</B><BR/><FONT POINT-SIZE="9">DAG</FONT>>, fillcolor="#7a4dba", shape=box];
+    NLE [label=<<B>lde-NLE</B><BR/><FONT POINT-SIZE="9">NLE</FONT>>, fillcolor="#7a4dba", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_delta_Phi [label=<<B>delta_Phi</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    out_deg_weight [label=<<B>deg_weight</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    out_sigma [label=<<B>sigma</B><BR/><FONT POINT-SIZE='9'>B×1×1×1</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_Phi -> SEC [label="Phi"];
+    SEC -> out_delta_Phi [label="delta_Phi"];
+    in_Phi -> DAG [label="Phi"];
+    in_Phi_star -> DAG [label="Phi_star"];
+    DAG -> out_deg_weight [label="deg_weight"];
+    in_f -> NLE [label="f"];
+    NLE -> out_sigma [label="sigma"];
+    LDE_delta_Phi -> A_HQS_Phi_eff [style=dashed, color="#a569bd", label=<<FONT POINT-SIZE="9"><I>sensing-error correction</I></FONT>>];
+    LDE_deg_weight -> A_HQS_z_clean [style=dashed, color="#a569bd", label=<<FONT POINT-SIZE="9"><I>degradation-aware gating</I></FONT>>];
+    LDE_sigma -> SWAP___eff [style=dashed, color="#a569bd", label=<<FONT POINT-SIZE="9"><I>noise-aware damping (Estimation-Evolution)</I></FONT>>];
+}

@@ -1,0 +1,50 @@
+{
+  "name": "SWAP-Block",
+  "part": "Part I",
+  "background_color": "#f3f2f7",
+  "description": "Repeatable block: LN + WPO3D (wave-modulate core) + Res + LN + FFN + Res. Composed S+1 times per U-Net stage.",
+  "formula_ref": ["(1.9) wave modulation", "(1.12) MI", "(1.16) AdaSpec", "(1.25) KGD", "(1.36) α_eff", "(1.39) U-Net composition"],
+  "inputs": [
+    {"name": "x",            "shape": ["B", "d", "H", "W"]},
+    {"name": "mask_spatial", "shape": ["B", "d", "H", "W"]},
+    {"name": "sigma",        "shape": ["B", 1, 1, 1]}
+  ],
+  "outputs": [
+    {"name": "y",            "shape": ["B", "d", "H", "W"]}
+  ],
+  "nodes": [
+    {"id": "norm1",      "op_type": "LayerNorm2d",         "color": "#f5b041", "input": ["x"], "output": ["x_n"]},
+
+    {"id": "alpha_eff",  "op_type": "α + softplus(λσ)·σ",  "color": "#a569bd", "input": ["α", "λσ", "sigma"], "output": ["α_eff"]},
+
+    {"id": "MI",         "op_type": "MI (swap-MI)",         "color": "#7a4dba", "input": ["x_n", "mask_spatial"], "output": ["u0", "v0"]},
+
+    {"id": "fft_u",      "op_type": "FFT3D (rfftn)",       "color": "#3a155c", "input": ["u0"], "output": ["u0_fft"]},
+    {"id": "fft_v",      "op_type": "FFT3D (rfftn)",       "color": "#3a155c", "input": ["v0"], "output": ["v0_fft"]},
+
+    {"id": "wave_mod",   "op_type": "Wave-Modulate (Cs,Sn,decay)", "color": "#7a4dba",
+     "input": ["u0_fft", "v0_fft", "α_eff", "vs", "vl", "t"], "output": ["out_fft", "sinc", "decay"]},
+
+    {"id": "adaspec",    "op_type": "AdaSpec (swap-AdaSpec)", "color": "#7a4dba",
+     "input": ["out_fft", "u0_fft", "sigma"], "output": ["out_fft_w"]},
+
+    {"id": "ifft",       "op_type": "iFFT3D (irfftn)",      "color": "#3a155c", "input": ["out_fft_w"], "output": ["out_spatial"]},
+
+    {"id": "kgd_opt",    "op_type": "KGD correction (swap-KGD, optional)", "color": "#7a4dba",
+     "input": ["out_spatial", "m_sq", "sinc", "decay"], "output": ["out_kg"], "condition": "mask_mode=='D'"},
+
+    {"id": "out_ln",     "op_type": "LayerNorm2d",         "color": "#f5b041", "input": ["out_kg"], "output": ["out_ln"]},
+    {"id": "silu_gate",  "op_type": "SiLU(x) × out",       "color": "#85929e", "input": ["out_ln", "x"], "output": ["gated"]},
+    {"id": "out_lin",    "op_type": "Conv1x1",             "color": "#5dade2", "input": ["gated"], "output": ["wpo_out"]},
+
+    {"id": "res1",       "op_type": "Add",                 "color": "#85929e", "input": ["x", "wpo_out"], "output": ["x_mid"]},
+    {"id": "norm2",      "op_type": "LayerNorm2d",         "color": "#f5b041", "input": ["x_mid"], "output": ["x_mid_n"]},
+
+    {"id": "ffn_in",     "op_type": "Conv1x1(d→4d)",       "color": "#5dade2", "input": ["x_mid_n"], "output": ["ffn_h0"]},
+    {"id": "ffn_act1",   "op_type": "GELU",                "color": "#f8c471", "input": ["ffn_h0"],  "output": ["ffn_h0a"]},
+    {"id": "ffn_dw",     "op_type": "DWConv3x3",           "color": "#48c9b0", "input": ["ffn_h0a"], "output": ["ffn_h1"]},
+    {"id": "ffn_act2",   "op_type": "GELU",                "color": "#f8c471", "input": ["ffn_h1"],  "output": ["ffn_h1a"]},
+    {"id": "ffn_out",    "op_type": "Conv1x1(4d→d)",       "color": "#5dade2", "input": ["ffn_h1a"], "output": ["ffn_o"]},
+    {"id": "res2",       "op_type": "Add",                 "color": "#85929e", "input": ["x_mid", "ffn_o"], "output": ["y"]}
+  ]
+}

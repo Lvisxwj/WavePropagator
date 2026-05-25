@@ -1,0 +1,36 @@
+flowchart TD
+    %% SWAP-WSWAP (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_WSWAP["SWAP-WSWAP — Part I"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_mask_spatial(("mask_spatial"))
+    style in_mask_spatial fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_sigma(("sigma"))
+    style in_sigma fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_f_wave(("f_wave"))
+    style out_f_wave fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    shift_in["<b>Roll(-ws/2,-ws/2)</b><br/>shift_in<br/><i>if shift==true</i>"]
+    style shift_in fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    partition["<b>WindowPartition</b><br/>partition"]
+    style partition fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    swap_per_win["<b>SWAP (global)</b><br/>swap_per_win"]
+    style swap_per_win fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    reassemble["<b>WindowReverse</b><br/>reassemble"]
+    style reassemble fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    shift_out["<b>Roll(+ws/2,+ws/2)</b><br/>shift_out<br/><i>if shift==true</i>"]
+    style shift_out fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> shift_in
+    in_mask_spatial --> shift_in
+    shift_in --> partition
+    shift_in --> partition
+    partition --> swap_per_win
+    partition --> swap_per_win
+    in_sigma --> swap_per_win
+    swap_per_win --> reassemble
+    reassemble --> shift_out
+    shift_out --> out_f_wave
+    end
+    class SWAP_WSWAP partBox
+    %% formulas: (1.26) window decomposition; (1.27) complexity

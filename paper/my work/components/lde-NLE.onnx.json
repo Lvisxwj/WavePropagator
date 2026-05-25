@@ -1,0 +1,18 @@
+{
+  "name": "LDE-NLE",
+  "part": "Part II",
+  "background_color": "#fff7e6",
+  "description": "Noise Level Estimator — predicts scalar σ that drives SWAP α_eff (Estimation-Evolution).",
+  "formula_ref": ["(1.30)"],
+  "inputs":  [{"name": "f",     "shape": ["B", 28, "H", "W"]}],
+  "outputs": [{"name": "sigma", "shape": ["B", 1, 1, 1]}],
+  "nodes": [
+    {"id": "gap",     "op_type": "GlobalAvgPool",      "color": "#cd6155", "input": ["f"],     "output": ["g"]},
+    {"id": "flatten", "op_type": "Flatten",            "color": "#85929e", "input": ["g"],     "output": ["gf"]},
+    {"id": "fc1",     "op_type": "Linear (28→32)",     "color": "#5dade2", "input": ["gf"],    "output": ["h"]},
+    {"id": "relu",    "op_type": "ReLU",                "color": "#f8c471", "input": ["h"],     "output": ["ha"]},
+    {"id": "fc2",     "op_type": "Linear (32→1)",      "color": "#5dade2", "input": ["ha"],    "output": ["z"]},
+    {"id": "sp",      "op_type": "Softplus",            "color": "#a569bd", "input": ["z"],     "output": ["sigma_flat"]},
+    {"id": "reshape", "op_type": "Reshape to [B,1,1,1]","color": "#85929e", "input": ["sigma_flat"], "output": ["sigma"]}
+  ]
+}

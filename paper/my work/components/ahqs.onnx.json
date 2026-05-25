@@ -1,0 +1,45 @@
+{
+  "name": "A-HQS",
+  "part": "Part III",
+  "background_color": "#e6f1ff",
+  "description": "Accelerated Half-Quadratic Splitting unfolding wrapper. K stages, each: LDE → Momentum → GD (Φ_eff) → Purify → SWAP → LRB.",
+  "formula_ref": ["(1.32)–(1.37) single-stage flow", "(1.38) multi-stage loss"],
+  "inputs": [
+    {"name": "g",        "shape": ["B", 1, "H", "W'"]},
+    {"name": "Phi",      "shape": ["B", 28, "H", "W"]},
+    {"name": "PhiPhiT",  "shape": ["B", 1, "H", "W'"]},
+    {"name": "Phi_star", "shape": ["B", 28, "H", "W"]}
+  ],
+  "outputs": [
+    {"name": "outputs", "shape": ["K", "B", 28, "H", "W"], "role": "f^1..f^K"}
+  ],
+  "stage_template": {
+    "inputs":  ["f^{k-1}", "f^{k-2} (if k>=2)"],
+    "outputs": ["f^k"],
+    "nodes": [
+      {"id": "LDE",        "op_type": "lde",                 "color": "#7a4dba",
+       "input": ["f^{k-1}", "Phi", "Phi_star"], "output": ["delta_Phi", "w", "sigma"]},
+      {"id": "Momentum",   "op_type": "ahqs-Momentum",        "color": "#3a155c",
+       "input": ["f^{k-1}", "f^{k-2}", "beta_k"], "output": ["f_hat"], "condition": "use_ahqs"},
+      {"id": "Phi_eff",    "op_type": "Add (Φ + ΔΦ)",        "color": "#85929e",
+       "input": ["Phi", "delta_Phi"], "output": ["Phi_eff"]},
+      {"id": "ParaEst",    "op_type": "ahqs-ParaEstimator",    "color": "#7a4dba",
+       "input": ["f_hat"], "output": ["rho_k"]},
+      {"id": "GD",         "op_type": "Closed-form GD step",  "color": "#3a155c",
+       "input": ["f_hat", "g", "Phi_eff", "PhiPhiT", "rho_k"], "output": ["z"]},
+      {"id": "Purify",     "op_type": "z·(1+w)",              "color": "#85929e",
+       "input": ["z", "w"], "output": ["z_clean"]},
+      {"id": "SWAP",       "op_type": "swap (Part I)",        "color": "#7a4dba",
+       "input": ["z_clean", "Phi", "sigma"], "output": ["f_wave"]},
+      {"id": "LRB",        "op_type": "lde-LRB",              "color": "#7a4dba",
+       "input": ["f_wave"], "output": ["f_local"]},
+      {"id": "out_res",    "op_type": "Add",                  "color": "#85929e",
+       "input": ["f_wave", "f_local"], "output": ["f^k"]}
+    ]
+  },
+  "loss": {
+    "op_type": "ahqs-MultiStageLoss",
+    "weights": [0.3, 0.5, 0.7, 1.0],
+    "color": "#1a1a1a"
+  }
+}

@@ -1,0 +1,36 @@
+flowchart TD
+    %% LDE (Part II)
+    classDef partBox fill:#fff7e6,stroke:#3a155c,stroke-width:2px
+    subgraph LDE["LDE — Part II"]
+    direction TB
+    in_f(("f"))
+    style in_f fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_Phi(("Phi"))
+    style in_Phi fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_Phi_star(("Phi_star"))
+    style in_Phi_star fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_delta_Phi(("delta_Phi"))
+    style out_delta_Phi fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    out_deg_weight(("deg_weight"))
+    style out_deg_weight fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    out_sigma(("sigma"))
+    style out_sigma fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    SEC["<b>lde-SEC</b><br/>SEC"]
+    style SEC fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    DAG["<b>lde-DAG</b><br/>DAG"]
+    style DAG fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    NLE["<b>lde-NLE</b><br/>NLE"]
+    style NLE fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    in_Phi --> SEC
+    SEC --> out_delta_Phi
+    in_Phi --> DAG
+    in_Phi_star --> DAG
+    DAG --> out_deg_weight
+    in_f --> NLE
+    NLE --> out_sigma
+    end
+    class LDE partBox
+    LDE_delta_Phi -.->|"sensing-error correction"| A_HQS_Phi_eff
+    LDE_deg_weight -.->|"degradation-aware gating"| A_HQS_z_clean
+    LDE_sigma -.->|"noise-aware damping (Estimation-Evolution)"| SWAP___eff
+    %% formulas: (1.28) SEC; (1.29) DAG; (1.30) NLE; (1.13.2) Phi* construction

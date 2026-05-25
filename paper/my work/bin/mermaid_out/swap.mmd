@@ -1,0 +1,114 @@
+flowchart TD
+    %% SWAP (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP["SWAP — Part I"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_mask_spatial(("mask_spatial"))
+    style in_mask_spatial fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_sigma(("sigma"))
+    style in_sigma fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_f_wave(("f_wave"))
+    style out_f_wave fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    embedding["<b>Conv</b><br/>embedding"]
+    style embedding fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    act["<b>LeakyReLU</b><br/>act"]
+    style act fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    enc_blocks_0["<b>SWAPBlock×N0</b><br/>enc_blocks_0"]
+    style enc_blocks_0 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    fea_down_0["<b>Conv4x4 s2</b><br/>fea_down_0"]
+    style fea_down_0 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_down_0["<b>Conv4x4 s2</b><br/>mask_down_0"]
+    style mask_down_0 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_sig_0["<b>Sigmoid</b><br/>mask_sig_0"]
+    style mask_sig_0 fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    enc_blocks_1["<b>SWAPBlock×N1</b><br/>enc_blocks_1"]
+    style enc_blocks_1 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    fea_down_1["<b>Conv4x4 s2</b><br/>fea_down_1"]
+    style fea_down_1 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_down_1["<b>Conv4x4 s2</b><br/>mask_down_1"]
+    style mask_down_1 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_sig_1["<b>Sigmoid</b><br/>mask_sig_1"]
+    style mask_sig_1 fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    enc_blocks_2["<b>SWAPBlock×N2</b><br/>enc_blocks_2"]
+    style enc_blocks_2 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    fea_down_2["<b>Conv4x4 s2</b><br/>fea_down_2"]
+    style fea_down_2 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_down_2["<b>Conv4x4 s2</b><br/>mask_down_2"]
+    style mask_down_2 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    mask_sig_2["<b>Sigmoid</b><br/>mask_sig_2"]
+    style mask_sig_2 fill:#ec7063,stroke:#1a1a1a,color:#1a1a1a
+    bottleneck["<b>SWAPBlock×Nb</b><br/>bottleneck"]
+    style bottleneck fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    up_0["<b>ConvTranspose 2x2 s2</b><br/>up_0"]
+    style up_0 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    fuse_0["<b>Concat+Conv1x1</b><br/>fuse_0"]
+    style fuse_0 fill:#dc7633,stroke:#1a1a1a,color:#1a1a1a
+    dec_blocks_0["<b>SWAPBlock×N2</b><br/>dec_blocks_0"]
+    style dec_blocks_0 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    up_1["<b>ConvTranspose 2x2 s2</b><br/>up_1"]
+    style up_1 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    fuse_1["<b>Concat+Conv1x1</b><br/>fuse_1"]
+    style fuse_1 fill:#dc7633,stroke:#1a1a1a,color:#1a1a1a
+    dec_blocks_1["<b>SWAPBlock×N1</b><br/>dec_blocks_1"]
+    style dec_blocks_1 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    up_2["<b>ConvTranspose 2x2 s2</b><br/>up_2"]
+    style up_2 fill:#1abc9c,stroke:#1a1a1a,color:#1a1a1a
+    fuse_2["<b>Concat+Conv1x1</b><br/>fuse_2"]
+    style fuse_2 fill:#dc7633,stroke:#1a1a1a,color:#1a1a1a
+    dec_blocks_2["<b>SWAPBlock×N0</b><br/>dec_blocks_2"]
+    style dec_blocks_2 fill:#7a4dba,stroke:#1a1a1a,color:#1a1a1a
+    mapping["<b>Conv3x3</b><br/>mapping"]
+    style mapping fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    global_res["<b>Add</b><br/>global_res"]
+    style global_res fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> embedding
+    embedding --> act
+    act --> enc_blocks_0
+    in_mask_spatial --> enc_blocks_0
+    in_sigma --> enc_blocks_0
+    enc_blocks_0 --> fea_down_0
+    in_mask_spatial --> mask_down_0
+    mask_down_0 --> mask_sig_0
+    fea_down_0 --> enc_blocks_1
+    mask_sig_0 --> enc_blocks_1
+    in_sigma --> enc_blocks_1
+    enc_blocks_1 --> fea_down_1
+    mask_sig_0 --> mask_down_1
+    mask_down_1 --> mask_sig_1
+    fea_down_1 --> enc_blocks_2
+    mask_sig_1 --> enc_blocks_2
+    in_sigma --> enc_blocks_2
+    enc_blocks_2 --> fea_down_2
+    mask_sig_1 --> mask_down_2
+    mask_down_2 --> mask_sig_2
+    fea_down_2 --> bottleneck
+    mask_sig_2 --> bottleneck
+    in_sigma --> bottleneck
+    bottleneck --> up_0
+    up_0 --> fuse_0
+    enc_blocks_2 --> fuse_0
+    fuse_0 --> dec_blocks_0
+    mask_sig_1 --> dec_blocks_0
+    in_sigma --> dec_blocks_0
+    dec_blocks_0 --> up_1
+    up_1 --> fuse_1
+    enc_blocks_1 --> fuse_1
+    fuse_1 --> dec_blocks_1
+    mask_sig_0 --> dec_blocks_1
+    in_sigma --> dec_blocks_1
+    dec_blocks_1 --> up_2
+    up_2 --> fuse_2
+    enc_blocks_0 --> fuse_2
+    fuse_2 --> dec_blocks_2
+    in_mask_spatial --> dec_blocks_2
+    in_sigma --> dec_blocks_2
+    dec_blocks_2 --> mapping
+    mapping --> global_res
+    in_x --> global_res
+    global_res --> out_f_wave
+    end
+    class SWAP partBox
+    LDE_sigma -.->|"noise-aware damping"| SWAP_sigma
+    %% formulas: (1.9) closed-form wave modulation; (1.39) U-Net composition; (1.36) α_eff = α + λσ

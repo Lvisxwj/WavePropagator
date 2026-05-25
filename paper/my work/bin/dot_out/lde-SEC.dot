@@ -1,0 +1,21 @@
+digraph "LDE-SEC" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>LDE-SEC</B><BR/><FONT POINT-SIZE="10">Part II — formulas: (1.28)</FONT>>,
+           bgcolor="#fff7e6"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_Phi [label=<<B>Phi</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    conv1 [label=<<B>Conv1x1 (28→28)</B><BR/><FONT POINT-SIZE="9">conv1</FONT>>, fillcolor="#5dade2", shape=box];
+    lrelu [label=<<B>LeakyReLU</B><BR/><FONT POINT-SIZE="9">lrelu</FONT>>, fillcolor="#f8c471", shape=box];
+    conv2 [label=<<B>Conv1x1 (28→28)</B><BR/><FONT POINT-SIZE="9">conv2</FONT>>, fillcolor="#5dade2", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_delta_Phi [label=<<B>delta_Phi</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_Phi -> conv1 [label="Phi"];
+    conv1 -> lrelu [label="h1"];
+    lrelu -> conv2 [label="h1a"];
+    conv2 -> out_delta_Phi [label="delta_Phi"];
+}

@@ -1,0 +1,59 @@
+digraph "SWAP-KGD" {
+    graph [rankdir=TB, splines=spline, fontname="Helvetica", labelloc="t",
+           label=<<B>SWAP-KGD</B><BR/><FONT POINT-SIZE="10">Part I — formulas: (1.19)–(1.21) Klein-Gordon equation; (1.25) single-step Born correction</FONT>>,
+           bgcolor="#f3f2f7"];
+    node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#1a1a1a"];
+    edge  [fontname="Helvetica", fontsize=9, color="#1a1a1a"];
+
+    subgraph cluster_inputs { label="Inputs"; rank=same; color="#7a4dba"; style="dashed";
+    in_x [label=<<B>x</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_mask_spatial [label=<<B>mask_spatial</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_u0_out [label=<<B>u0_out</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>zeroth-order SWAP output</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_sinc_term [label=<<B>sinc_term</B><BR/><FONT POINT-SIZE='9'>28×H×W//2+1</FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>Sn(η,t) from wave-modulate</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    in_decay [label=<<B>decay</B><BR/><FONT POINT-SIZE='9'></FONT><BR/><FONT POINT-SIZE="8" COLOR="#7a4dba"><I>e^{-αt/2}</I></FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    gate_aff [label=<<B>Affine: ε + (1-ε)·m</B><BR/><FONT POINT-SIZE="9">gate_aff</FONT>>, fillcolor="#85929e", shape=box];
+    phi_dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">phi_dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    phi_1x1 [label=<<B>Conv1x1</B><BR/><FONT POINT-SIZE="9">phi_1x1</FONT>>, fillcolor="#5dade2", shape=box];
+    u0_mul [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">u0_mul</FONT>>, fillcolor="#85929e", shape=box];
+    psi_dw [label=<<B>DWConv3x3</B><BR/><FONT POINT-SIZE="9">psi_dw</FONT>>, fillcolor="#48c9b0", shape=box];
+    psi_1x1 [label=<<B>Conv1x1</B><BR/><FONT POINT-SIZE="9">psi_1x1</FONT>>, fillcolor="#5dade2", shape=box];
+    v0_mul [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">v0_mul</FONT>>, fillcolor="#85929e", shape=box];
+    m0_clamp [label=<<B>Clamp[0,0.5]</B><BR/><FONT POINT-SIZE="9">m0_clamp</FONT>>, fillcolor="#85929e", shape=box];
+    one_minus_m [label=<<B>1-mask</B><BR/><FONT POINT-SIZE="9">one_minus_m</FONT>>, fillcolor="#85929e", shape=box];
+    m_sq_mul [label=<<B>Mul</B><BR/><FONT POINT-SIZE="9">m_sq_mul</FONT>>, fillcolor="#85929e", shape=box];
+    source [label=<<B>Mul (-m²·u^(0))</B><BR/><FONT POINT-SIZE="9">source</FONT>>, fillcolor="#85929e", shape=box];
+    src_fft [label=<<B>FFT3D (rfftn)</B><BR/><FONT POINT-SIZE="9">src_fft</FONT>>, fillcolor="#3a155c", shape=box];
+    green [label=<<B>Mul (Sn·decay)</B><BR/><FONT POINT-SIZE="9">green</FONT>>, fillcolor="#7a4dba", shape=box];
+    corr_ifft [label=<<B>iFFT3D (irfftn)</B><BR/><FONT POINT-SIZE="9">corr_ifft</FONT>>, fillcolor="#3a155c", shape=box];
+    kg_apply [label=<<B>u + w_KG·corr</B><BR/><FONT POINT-SIZE="9">kg_apply</FONT>>, fillcolor="#85929e", shape=box];
+    subgraph cluster_outputs { label="Outputs"; rank=same; color="#3a155c"; style="dashed";
+    out_u0 [label=<<B>u0</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    out_v0 [label=<<B>v0</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    out_out_corrected [label=<<B>out_corrected</B><BR/><FONT POINT-SIZE='9'>B×28×H×W</FONT>>, fillcolor="#ffffff", shape=ellipse];
+    }
+    in_mask_spatial -> gate_aff [label="mask_spatial"];
+    in_x -> phi_dw [label="x"];
+    phi_dw -> phi_1x1 [label="phi_a"];
+    phi_1x1 -> u0_mul [label="phi_x"];
+    gate_aff -> u0_mul [label="gate"];
+    u0_mul -> out_u0 [label="u0"];
+    in_x -> psi_dw [label="x"];
+    psi_dw -> psi_1x1 [label="psi_a"];
+    psi_1x1 -> v0_mul [label="psi_x"];
+    gate_aff -> v0_mul [label="gate"];
+    v0_mul -> out_v0 [label="v0"];
+    in_mask_spatial -> one_minus_m [label="mask_spatial"];
+    m0_clamp -> m_sq_mul [label="m0_clamped"];
+    one_minus_m -> m_sq_mul [label="1m"];
+    m_sq_mul -> source [label="m_sq"];
+    in_u0_out -> source [label="u0_out"];
+    source -> src_fft [label="source"];
+    src_fft -> green [label="src_fft"];
+    in_sinc_term -> green [label="sinc_term"];
+    in_decay -> green [label="decay"];
+    green -> corr_ifft [label="corr_fft"];
+    in_u0_out -> kg_apply [label="u0_out"];
+    corr_ifft -> kg_apply [label="correction"];
+    kg_apply -> out_out_corrected [label="out_corrected"];
+}

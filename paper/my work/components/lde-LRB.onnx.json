@@ -1,0 +1,16 @@
+{
+  "name": "LDE-LRB",
+  "part": "Part II",
+  "background_color": "#fff7e6",
+  "description": "Local Refinement Block — depth-wise FFN appended after SWAP. Adds local texture detail.",
+  "formula_ref": ["(1.31)"],
+  "inputs":  [{"name": "x", "shape": ["B", 28, "H", "W"]}],
+  "outputs": [{"name": "y", "shape": ["B", 28, "H", "W"]}],
+  "nodes": [
+    {"id": "conv_up",    "op_type": "Conv1x1 (28→56)", "color": "#5dade2", "input": ["x"],  "output": ["h0"]},
+    {"id": "gelu1",      "op_type": "GELU",              "color": "#f8c471", "input": ["h0"], "output": ["h0a"]},
+    {"id": "dw",         "op_type": "DWConv3x3",         "color": "#48c9b0", "input": ["h0a"], "output": ["h1"]},
+    {"id": "gelu2",      "op_type": "GELU",              "color": "#f8c471", "input": ["h1"], "output": ["h1a"]},
+    {"id": "conv_down",  "op_type": "Conv1x1 (56→28)", "color": "#5dade2", "input": ["h1a"], "output": ["y"]}
+  ]
+}

@@ -1,0 +1,41 @@
+flowchart TD
+    %% SWAP-MI (Part I)
+    classDef partBox fill:#f3f2f7,stroke:#3a155c,stroke-width:2px
+    subgraph SWAP_MI["SWAP-MI — Part I"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    in_mask_spatial(("mask_spatial"))
+    style in_mask_spatial fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_u0(("u0"))
+    style out_u0 fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    out_v0(("v0"))
+    style out_v0 fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    phi_dw["<b>DWConv3x3</b><br/>phi_dw"]
+    style phi_dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    phi_1x1["<b>Conv1x1</b><br/>phi_1x1"]
+    style phi_1x1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    psi_dw["<b>DWConv3x3</b><br/>psi_dw"]
+    style psi_dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    psi_1x1["<b>Conv1x1</b><br/>psi_1x1"]
+    style psi_1x1 fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    gate_aff["<b>Affine: ε + (1-ε)·m</b><br/>gate_aff"]
+    style gate_aff fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    u0_mul["<b>Mul</b><br/>u0_mul"]
+    style u0_mul fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    v0_mul["<b>Mul</b><br/>v0_mul"]
+    style v0_mul fill:#85929e,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> phi_dw
+    phi_dw --> phi_1x1
+    in_x --> psi_dw
+    psi_dw --> psi_1x1
+    in_mask_spatial --> gate_aff
+    phi_1x1 --> u0_mul
+    gate_aff --> u0_mul
+    u0_mul --> out_u0
+    psi_1x1 --> v0_mul
+    gate_aff --> v0_mul
+    v0_mul --> out_v0
+    end
+    class SWAP_MI partBox
+    %% formulas: (1.12) soft gate; (1.14) closed-form preservation

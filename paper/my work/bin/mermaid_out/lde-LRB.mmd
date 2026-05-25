@@ -1,0 +1,28 @@
+flowchart TD
+    %% LDE-LRB (Part II)
+    classDef partBox fill:#fff7e6,stroke:#3a155c,stroke-width:2px
+    subgraph LDE_LRB["LDE-LRB — Part II"]
+    direction TB
+    in_x(("x"))
+    style in_x fill:#ffffff,stroke:#7a4dba,stroke-width:1.5px
+    out_y(("y"))
+    style out_y fill:#ffffff,stroke:#3a155c,stroke-width:1.5px
+    conv_up["<b>Conv1x1 (28→56)</b><br/>conv_up"]
+    style conv_up fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    gelu1["<b>GELU</b><br/>gelu1"]
+    style gelu1 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    dw["<b>DWConv3x3</b><br/>dw"]
+    style dw fill:#48c9b0,stroke:#1a1a1a,color:#1a1a1a
+    gelu2["<b>GELU</b><br/>gelu2"]
+    style gelu2 fill:#f8c471,stroke:#1a1a1a,color:#1a1a1a
+    conv_down["<b>Conv1x1 (56→28)</b><br/>conv_down"]
+    style conv_down fill:#5dade2,stroke:#1a1a1a,color:#1a1a1a
+    in_x --> conv_up
+    conv_up --> gelu1
+    gelu1 --> dw
+    dw --> gelu2
+    gelu2 --> conv_down
+    conv_down --> out_y
+    end
+    class LDE_LRB partBox
+    %% formulas: (1.31)
