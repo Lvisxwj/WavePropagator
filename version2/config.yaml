@@ -1,8 +1,8 @@
 # config.yaml
 
 # GPU
-gpu_id: '1'
-batch_size: 8
+gpu_id: '2'
+batch_size: 1
 max_epoch: 300
 learning_rate: 4.0e-4
 scheduler: 'CosineAnnealingLR'

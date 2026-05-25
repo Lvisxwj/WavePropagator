@@ -25,6 +25,7 @@ sys.path.insert(0, str(_script_dir))
 from __init__ import (
     USE_KG, WPO_FBGW_MODE, USE_SWIN_WPO, SWIN_WINDOW_SIZE,
     USE_UNFOLDING, USE_AHQS, NUM_STAGES, SHARE_STAGE_WEIGHTS, BEST_CKPT,
+    DEBUG_FORWARD,
 )
 
 
@@ -47,6 +48,7 @@ def build_model():
             fbgw_mode=WPO_FBGW_MODE,
             size=cfg['crop_size'],
             use_ahqs=USE_AHQS,
+            debug=DEBUG_FORWARD,
         )
     else:
         from model.wpo3d import WaveMST_3D, WaveMST_KG

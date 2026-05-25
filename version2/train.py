@@ -24,6 +24,7 @@ sys.path.insert(0, str(_script_dir))
 from __init__ import (
     USE_KG, WPO_FBGW_MODE, USE_SWIN_WPO, SWIN_WINDOW_SIZE,
     USE_UNFOLDING, USE_AHQS, NUM_STAGES, SHARE_STAGE_WEIGHTS, MULTI_STAGE_LOSS,
+    DEBUG_FORWARD,
 )
 
 
@@ -46,6 +47,7 @@ def build_model():
             fbgw_mode=WPO_FBGW_MODE,
             size=cfg['crop_size'],
             use_ahqs=USE_AHQS,
+            debug=DEBUG_FORWARD,
         )
     else:
         from model.wpo3d import WaveMST_3D, WaveMST_KG
@@ -152,6 +154,8 @@ def train_epoch(epoch, model, optimizer, train_set,
                     else:
                         loss = rmse_loss(outputs[-1], gt)
                 scaler.scale(loss).backward()
+                scaler.unscale_(optimizer)
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 scaler.step(optimizer)
                 scaler.update()
             else:
@@ -161,6 +165,7 @@ def train_epoch(epoch, model, optimizer, train_set,
                 else:
                     loss = rmse_loss(outputs[-1], gt)
                 loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 optimizer.step()
         else:
             meas = gen_meas(gt, mask3d_batch, cfg.get('input_setting', 'H'))
@@ -171,12 +176,14 @@ def train_epoch(epoch, model, optimizer, train_set,
                     pred = model(meas, shift_mask_train)
                     loss = rmse_loss(pred, gt)
                 scaler.scale(loss).backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 scaler.step(optimizer)
                 scaler.update()
             else:
                 pred = model(meas, shift_mask_train)
                 loss = rmse_loss(pred, gt)
                 loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 optimizer.step()
 
         total_loss += loss.item()

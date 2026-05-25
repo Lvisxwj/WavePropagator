@@ -101,7 +101,7 @@ class WPO3D(nn.Module):
         self.t     = nn.Parameter(torch.tensor(1.0))
 
         # 噪声-阻尼耦合系数
-        self._lambda_sigma = nn.Parameter(torch.tensor(0.1))
+        self._lambda_sigma = nn.Parameter(torch.tensor(-2.0))
 
         # mask 机制
         self.mask_mode = mask_mode

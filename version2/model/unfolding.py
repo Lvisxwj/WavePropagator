@@ -5,15 +5,15 @@ unfolding.py — A-HQS deep unfolding wrapper
   1. 退化估计 -> delta_Phi, deg_weight, sigma
   2. Nesterov 动量外推
   3. 修正 GD step（Phi_eff = Phi + delta_Phi）
-  4. 初始场净化（deg_weight 加权）
+  4. 初始场净化（deg_weight 加权 + 残差）
   5. WPO 传播（sigma 控制阻尼）
   6. 局部精化（DWConv FFN）
-  7. 三路残差输出
+  7. 三路残差输出（z + f_wave + f_local）
 """
 
 import torch
 import torch.nn as nn
-from model.wpo3d import WaveMST_3D, WaveMST_KG
+from model.wpo3d import WaveMST_3D, WaveMST_KG#, LayerNorm2d
 from model.degradation import DegradationEstimation, construct_degraded_mask
 from model.refinement import LocalRefinement
 from model.utils import (
@@ -42,13 +42,20 @@ class WPO_Unfold(nn.Module):
                  use_swin_wpo=False, swin_window_size=64,
                  fbgw_mode='none',
                  size=256, len_shift=2,
-                 use_ahqs=False):
+                 use_ahqs=False,
+                 debug=False,
+                 debug_counter = 80):
         super().__init__()
         if num_blocks is None:
             num_blocks = [2, 2, 2]
         self.num_stages = num_stages
         self.share_weights = share_weights
         self.use_ahqs = use_ahqs
+
+        self.debug = debug
+        self.debug_counter = debug_counter
+        self.forward_counter = 0
+
         self.nC = dim
         self.size = size
         self.len_shift = len_shift
@@ -100,6 +107,9 @@ class WPO_Unfold(nn.Module):
                 LocalRefinement(dim) for _ in range(num_stages)
             ])
 
+        # z_clean 归一化（防止 deg_weight 累积放大）
+        # self.z_norm = LayerNorm2d(dim)
+
         # 初始化卷积
         self.initial_conv = nn.Conv2d(dim * 2, dim, 1, 1, 0)
 
@@ -122,6 +132,8 @@ class WPO_Unfold(nn.Module):
             return self.local_refines[k]
 
     def forward(self, g, input_mask):
+        self.forward_counter += 1
+        debug_flag = self.debug and (self.forward_counter % self.debug_counter == 0)
         """
         g:          [B, 1, H, W'] measurement
         input_mask: (Phi, PhiPhiT)
@@ -146,37 +158,24 @@ class WPO_Unfold(nn.Module):
             f_prev = f.clone()  # 动量用
         outputs = []
 
-        # 共享权重时，deg_weight 每 stage 相同，预算一次
-        if self.share_weights:
-            deg_est = self._get_deg_est(0)
-            delta_Phi_pre, deg_weight_pre, _ = deg_est(f, Phi, Phi_star)
-            if self.use_ahqs:
-                Phi_eff_shift_pre = shift_batch(Phi + delta_Phi_pre, self.len_shift)
-
         for k in range(self.num_stages):
             # 1. 退化估计
-            if self.share_weights:
-                sigma = self._get_deg_est(0).sigma_est(f).view(-1, 1, 1, 1)
-                deg_weight = deg_weight_pre
-                if self.use_ahqs:
-                    Phi_eff_shift = Phi_eff_shift_pre
-            else:
-                deg_est = self._get_deg_est(k)
-                delta_Phi, deg_weight, sigma = deg_est(f, Phi, Phi_star)
-                if self.use_ahqs:
-                    Phi_eff_shift = shift_batch(Phi + delta_Phi, self.len_shift)
+            delta_Phi, deg_weight, sigma = self._get_deg_est(
+                0 if self.share_weights else k
+            )(f, Phi, Phi_star)
 
+            # 2. GD step
             if self.use_ahqs:
                 # A-HQS: Nesterov 动量 + Phi_eff 修正
                 beta_k = torch.sigmoid(self.betas[k])
-                f_momentum = f + beta_k * (f - f_prev)
+                f_input = f + beta_k * (f - f_prev)
                 f_prev = f.detach().clone()
-
-                rho_k = self.rho_estimators[k](f_momentum)
-                Phi_f = mul_Phi_f(Phi_eff_shift, f_momentum, self.len_shift)
+                Phi_eff_shift = shift_batch(Phi + delta_Phi, self.len_shift)
+                rho_k = self.rho_estimators[k](f_input)
+                Phi_f = mul_Phi_f(Phi_eff_shift, f_input, self.len_shift)
                 residual = (g - Phi_f) / PhiPhiT.clamp(min=1e-6)
-                residual = residual.clamp(min=-10, max=10)
-                z = f_momentum + rho_k * mul_PhiT_residual(
+                residual = residual.clamp(-10, 10)
+                z = f_input + rho_k * mul_PhiT_residual(
                     Phi_eff_shift, residual, self.len_shift, self.size
                 )
             else:
@@ -184,24 +183,31 @@ class WPO_Unfold(nn.Module):
                 rho_k = self.rho_estimators[k](f)
                 Phi_f = mul_Phi_f(Phi_shift, f, self.len_shift)
                 residual = (g - Phi_f) / PhiPhiT.clamp(min=1e-6)
-                residual = residual.clamp(min=-10, max=10)
+                residual = residual.clamp(-10, 10)
                 z = f + rho_k * mul_PhiT_residual(
                     Phi_shift, residual, self.len_shift, self.size
                 )
 
-            # 4. 初始场净化（deg_weight ∈ [0,1] 做软门控，不放大）
-            z_clean = z * deg_weight
+            # 3. 退化加权 + LayerNorm（prior 输入预处理）
+            z_clean = z * (1.0 + deg_weight)
+            # z_clean = self.z_norm(z_clean)
 
-            # 5. WPO 传播
-            prior = self._get_prior(k)
-            f_wave = prior(z_clean, Phi, sigma=sigma)
+            # 4. WPO 传播（内部全局残差 mapping(fea)+x 负责保留 z_clean）
+            f = self._get_prior(k)(z_clean, Phi, sigma=sigma)
 
-            # 6. 局部精化
-            refine = self._get_refine(k)
-            f_local = refine(f_wave)
+            # 5. 局部精化（残差加在 WPO 输出上）
+            f = f + self._get_refine(k)(f)
 
-            # 7. 输出
-            f = f_wave + f_local
+            # Debug 打印
+            if debug_flag and k == 0 and len(outputs) == 0:
+                print(f"[DEBUG] z       : min={z.min():.4f} max={z.max():.4f} mean={z.mean():.4f}")
+                print(f"[DEBUG] deg_w   : min={deg_weight.min():.4f} max={deg_weight.max():.4f}")
+                print(f"[DEBUG] sigma   : {sigma.mean():.4f}")
+                print(f"[DEBUG] z_clean : min={z_clean.min():.4f} max={z_clean.max():.4f}")
+                print(f"[DEBUG] f       : min={f.min():.4f} max={f.max():.4f}")
+                print(f"[DEBUG] rho_k   : {rho_k.mean():.4f}")
+                if self.use_ahqs:
+                    print(f"[DEBUG] beta_k  : {torch.sigmoid(self.betas[k]).item():.4f}")
 
             outputs.append(f)
 

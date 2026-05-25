@@ -136,4 +136,5 @@ class ParaEstimator(nn.Module):
         x = self.relu(self.fusion(x))
         x = self.avpool(x)
         x = self.mlp(x) + self.bias
-        return x  # [B, 1, 1, 1]
+        return F.softplus(x)    # ★ 加这一行，保证 rho > 0
+        # return x  # [B, 1, 1, 1]

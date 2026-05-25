@@ -9,7 +9,7 @@ USE_KG = False                     # True → KG 方程（mask_mode='D'），Fal
 
 # ── WPO FBGW 频带引导加权 ──
 wpo_inside = ['none', 'snr_adaptive', 'learnable_band']
-WPO_FBGW_MODE = wpo_inside[0]            # 'none' / 'snr_adaptive' / 'learnable_band'
+WPO_FBGW_MODE = wpo_inside[1]            # 'none' / 'snr_adaptive' / 'learnable_band'
 
 # ── Swin-WPO 窗口传播 ──
 USE_SWIN_WPO = False               # True → 64×64 窗内传播 + shift window
@@ -21,6 +21,7 @@ USE_AHQS = False                   # True → A-HQS（动量 + Phi_eff 修正）
 NUM_STAGES = 5                     # unfolding stage 数
 SHARE_STAGE_WEIGHTS = True         # True → 所有 stage 共享 prior 权重
 MULTI_STAGE_LOSS = True            # True → DPU 风格多 stage 加权损失
+DEBUG_FORWARD = False              # True → forward 循环打印 z/deg_w/sigma 等中间值（训练几个 batch 后关闭）
 
 # ── Checkpoint（test.py 使用）──
 BEST_CKPT = ''                     # 训练完成后填入 best.pth 路径
