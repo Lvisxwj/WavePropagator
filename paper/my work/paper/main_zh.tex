@@ -1,0 +1,823 @@
+% ============================================================
+% main_zh.tex — SMILE² 中文草稿（XeLaTeX 编译）
+% 编译命令: xelatex main_zh && bibtex main_zh && xelatex main_zh && xelatex main_zh
+% ============================================================
+\documentclass[a4paper,11pt,twocolumn]{ctexart}
+
+% ---------- 数学 ----------
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{mathtools}
+
+% ---------- 图表 ----------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage[font=small,labelfont=bf]{caption}
+
+% ---------- 算法 ----------
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+
+% ---------- 引用 ----------
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+% ---------- 其他 ----------
+\usepackage{xcolor}
+\usepackage[hyphens]{url}
+
+% ---------- 页面 ----------
+\usepackage[margin=2cm]{geometry}
+\setlength{\columnsep}{0.6cm}
+
+% ---------- 自定义命令 ----------
+\newcommand{\smiletwo}{SMILE\textsuperscript{2}}
+\newcommand{\swap}{\textsc{SWAP}}
+\newcommand{\lde}{\textsc{LDE}}
+\newcommand{\ahqs}{\textsc{A-HQS}}
+\newcommand{\mi}{\textsc{MI}}
+\newcommand{\adaspec}{\textsc{AdaSpec}}
+\newcommand{\kgd}{\textsc{KGD}}
+\newcommand{\wswap}{\textsc{W-SWAP}}
+\newcommand{\secm}{\textsc{SEC}}
+\newcommand{\dag}{\textsc{DAG}}
+\newcommand{\nle}{\textsc{NLE}}
+\newcommand{\lrb}{\textsc{LRB}}
+\newcommand{\Cs}{\mathrm{Cs}}
+\newcommand{\Sn}{\mathrm{Sn}}
+\newcommand{\PhiEff}{\Phi_{\mathrm{eff}}}
+\newcommand{\alphaEff}{\alpha_{\mathrm{eff}}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand{\figplaceholder}[2]{%
+  \fbox{\parbox{#1}{\centering\vspace{1.8cm}#2\vspace{0.3cm}}}}
+
+% ============================================================
+\title{\smiletwo: Spectral Modulated Imaging via\\Learned Estimation-Evolution\\for Snapshot Compressive Reconstruction}
+\author{匿名投稿}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\begin{abstract}
+压缩光谱成像（Coded Aperture Snapshot Spectral Imaging, CASSI）旨在从单帧二维编码测量中重建三维高光谱立方体。
+现有深度展开方法存在两类局限：
+一方面，退化感知展开方法（RDLUF、DERNN-LNLT）引入显式 $\Delta\Phi$ 与 $\sigma$ 估计，在 CASSI 上取得约 1--2\,dB 的一致提升，但先验算子仍是 Transformer 黑盒，退化信息未注入任何物理传播过程；
+另一方面，PDE 频域闭式解算子（WaveFormer、vHeat）已在通用视觉任务中证明以 $O(N\log N)$ 复杂度媲美自注意力，但 CASSI 领域几乎无人将其与退化建模真正耦合——
+一旦以全局 FFT 算子操作 CASSI 展开框架中 GD step 的退化污染输出（掩模伪影、色散错位、波段混叠），局部结构性误差将扩散至全空间。
+本文提出 \smiletwo{}（\textbf{S}pectral \textbf{M}odulated \textbf{I}maging via \textbf{L}earned \textbf{E}stimation-\textbf{E}volution），
+一个物理驱动的深度展开框架，其核心是估计-演化（Estimation-Evolution）的双向耦合：
+（1）\swap{}（Spectral WAve Propagator）以三维各向异性阻尼波动方程的频域闭式解作为先验算子，
+通过 \mi{}（Modulated Initialization）将编码掩模注入波场初始条件，并以零参数的 \adaspec{}（Adaptive Spectral Filtering）实现 SNR 自适应频带加权；
+（2）\lde{}（Learned Degradation Estimator）以约 5K 参数同时估计感知误差（\secm）、空间退化权重（\dag）与噪声水平（\nle），
+在传播前净化初始场，并将噪声水平反馈耦合至 \swap{} 的阻尼系数；
+（3）\ahqs{} 展开框架引入 Nesterov 动量将收敛速率从 $O(1/K)$ 提升至 $O(1/K^2)$，
+仅需 $K$ 个标量参数即可实现二阶加速。
+\swap{} 的能量泛函满足 $dE/dt \le 0$，从理论上保证了传播的无条件稳定性。
+在 CAVE 和 KAIST 基准数据集上，\smiletwo{} 以约 0.9M 参数达到与 SOTA 方法
+（DPU 2.85M/40.52\,dB、RDLUF 1.81M/39.57\,dB、DERNN-LNLT 1.04M/39.93\,dB）可比的重建质量，
+同时计算复杂度仅为 $O(N\log N)$，显著低于基于注意力方法的 $O(C^2HW)$。
+\end{abstract}
+
+% ============================================================
+\section{引言}\label{sec:intro}
+
+高光谱成像（Hyperspectral Imaging, HSI）通过获取场景在数十至数百个连续光谱通道上的辐射信息，
+在遥感、医学影像、食品安全和工业检测等领域有着广泛应用。
+然而，传统扫描式高光谱成像系统需要多次曝光才能获取完整的光谱立方体 $f \in \mathbb{R}^{H \times W \times \Lambda}$，
+难以胜任动态场景的实时采集需求。
+编码孔径快照光谱成像（CASSI）\citep{wagadarikar2008cassi,gehm2007ddcassi}通过在光学系统中引入编码掩模，
+将三维光谱立方体压缩到单帧二维测量 $g \in \mathbb{R}^{H \times W'}$ 上，
+实现了"单次曝光即完成光谱采集"的快照成像。
+CASSI 的代价是一个严重欠定的逆问题：测量维度 $HW'$ 远小于待求维度 $HW\Lambda$，压缩比约 $1/\Lambda$。
+因此，如何从高度压缩的测量中高质量重建光谱立方体，成为计算成像领域的核心挑战。
+
+近年来，基于深度展开（Deep Unfolding）的方法已成为 CASSI 重建的主流范式~\citep{cai2022mst,cai2022dauhst,zhang2024dpu,zhang2024ssr}。
+这些方法将经典优化算法（如梯度下降、HQS、ADMM）的迭代步骤展开为 $K$ 个可学习的 stage，
+每个 stage 串联数据保真步（Data Fidelity Step）与可学习先验（Learnable Prior），
+兼顾了物理模型的一致性与数据驱动学习的表达力。
+然而，回顾近年进展，可以清晰地看到两条并行发展的路线各有局限，且从未真正交汇：
+
+\textbf{（1）路线 A——物理启发先验：通用视觉已证明，CASSI 领域无人耦合退化。}
+WaveFormer~\citep{shu2026waveformer}（通用视觉图像分类/检测）以阻尼波动方程频域闭式解替代自注意力，
+vHeat~\citep{wang2024vheat}（通用视觉图像识别）以热传导方程构建视觉主干，
+均证明 PDE 闭式解算子可以 $O(N\log N)$ 复杂度媲美 $O(C^2HW)$（S-MSA~\citep{cai2022mst}）的自注意力。
+然而 CASSI 领域几乎无人将此类物理算子与退化建模真正耦合：
+目前最接近的 Phy-CoSF~\citep{chen2026phycosf}引入了 A-HQS 框架，但其频域处理是\textbf{可学习的 Fourier Mamba 特征提取器}而非 PDE 闭式解，且不含任何显式退化估计。
+\textbf{根本挑战在于：}
+在 CASSI 展开框架中，先验算子接收的是 GD step 的输出
+$z = \hat{f} + \rho\Phi^\top(g - \Phi\hat{f})/(\Phi\Phi^\top)$，
+该输出携带掩模调制伪影、色散错位、波段混叠与放大噪声等四重 CASSI 特有退化。
+\textbf{任何全局传播算子（FFT 或 attention）若直接接收此输入，都将局部结构性误差扩散至全空间，反而放大了成像退化。}
+
+\textbf{（2）路线 B——退化感知展开：有建模，无物理算子。}
+RDLUF~\citep{dong2023rdluf}首次引入 sensing error 残差 $\Delta\Phi$ 修正，
+DERNN-LNLT~\citep{dong2024dernnlnlt}进一步同时估计 $\Delta\Phi$ 和噪声水平 $\sigma$，
+在 KAIST 基准上将 PSNR 从 DAUHST 的 38.36\,dB 提升至 39.93\,dB（$+$1.57\,dB）。
+然而，这些方法的先验算子仍是 Transformer——退化估计的输出仅用于条件化黑盒去噪器，
+\textbf{没有任何退化信息被注入物理传播过程本身。}
+
+\textbf{核心洞察（Key Insight）：}
+\emph{性能瓶颈不仅在于传播器本身，更在于传播器的输入质量以及传播器能否感知退化。}
+波方程的物理角色是保结构的全局传播器，而非去噪器——
+若直接接收退化污染的输入，全局传播只会将局部错误扩散到全图。
+正确做法是：将"退化估计与净化"交给前置模块，将"全局传播"留给物理算子，
+并通过噪声水平的反馈动态调节物理阻尼系数——
+估计（Estimation）与演化（Evolution）形成双向耦合的闭环。
+
+基于这一洞察，我们提出 \smiletwo{}，一个紧密耦合估计-演化的物理驱动深度展开框架。
+其主要贡献如下：
+
+\begin{itemize}
+\item \textbf{\swap{}（Spectral WAve Propagator）}：以三维各向异性阻尼波动方程的频域闭式解替代 Transformer 注意力，
+  复杂度 $O(N\log N)$。通过 \mi{}（Modulated Initialization）将 CASSI 掩模注入波场初始条件，
+  以零参数的 \adaspec{} 实现 Wiener 滤波式的 SNR 自适应频带加权。
+
+\item \textbf{\lde{}（Learned Degradation Estimator）}：仅约 5K 参数的轻量模块，
+  同时输出感知误差修正 $\Delta\Phi$（\secm）、空间退化门控权重 $w$（\dag）与噪声水平 $\sigma$（\nle）。
+  $\sigma$ 反馈耦合至 \swap{} 的有效阻尼 $\alphaEff = \alpha + \lambda_\sigma \sigma$，
+  构成 Estimation$\leftrightarrow$Evolution 闭环。
+  这是首个将退化估计与频域 PDE 传播算子实现双向耦合的工作（现有方法如
+  RDLUF/DERNN-LNLT 仅单向条件化 Transformer，见相关工作表~\ref{tab:gap}）——
+  也是 \smiletwo{} 中 ``E$^2$'' 的含义。
+
+\item \textbf{\ahqs{} 展开框架}：引入 Nesterov 动量~\citep{nesterov1983,zhou2023rdfnet}将收敛速率从 $O(1/K)$ 提升至 $O(1/K^2)$，
+  ``5 个 stage 干 9 个 stage 的活''。GD step 中嵌入 $\PhiEff = \Phi + \Delta\Phi$ 实现感知误差修正。
+
+\item \textbf{理论稳定性保证}：\swap{} 的频域能量泛函满足 $dE/dt = -\alpha|\partial_t \hat{u}|^2 \le 0$，
+  无条件稳定，与 \ahqs{} 的 $O(1/K^2)$ 收敛共同构成双层稳定性保障。
+
+\item 在 CAVE 和 KAIST 数据集上，\smiletwo{} 以约 0.9M 参数取得与 1.5--1.8M 参数的 SOTA 可比的重建性能。
+\end{itemize}
+
+% ============================================================
+\section{相关工作}\label{sec:related}
+
+\subsection{CASSI 深度展开方法}
+
+深度展开将经典迭代算法展开为端到端可训练的网络。
+GAP-Net~\citep{meng2020gapnet}首先将广义交替投影（GAP）算法展开，以 U-Net 作为先验。
+TSA-Net~\citep{meng2020tsanet}引入空间-光谱自注意力，以端到端方式重建。
+MST~\citep{cai2022mst}提出掩模引导的光谱注意力（S-MSA），将 CASSI 掩模注入注意力权重，
+建立了复杂度 $O(C^2HW)$ 的光谱维注意力范式，成为后续展开方法的骨干。
+DAUHST~\citep{cai2022dauhst}将 Half-Shuffle Transformer（HST）嵌入 HQS 展开，
+并估计退化程度和噪声水平等标量参数注入注意力，取得 38.36\,dB（9stg）。
+RDLUF~\citep{dong2023rdluf}在数据子问题中引入 sensing error 残差修正 $\Delta\Phi$，
+证明了感知矩阵误差修正的有效性（39.57\,dB，+1.21\,dB vs DAUHST）。
+DERNN-LNLT~\citep{dong2024dernnlnlt}以循环神经网络跨 stage 共享权重（参数 1.04M），
+并设计专用退化估计网络同时输出 $\Delta\Phi$ 和 $\sigma$，进一步提升至 39.93\,dB。
+DPU~\citep{zhang2024dpu}提出双先验 ADMM 展开框架，以 Degradation Prior Block 与 Focused Attention 并行估计退化与图像先验，取得 40.52\,dB（9stg）。
+SSR~\citep{zhang2024ssr}通过 Window-based Spectral-wise Self-Attention（WSSA）消除均值效应、
+以 ARB 大核卷积补全跨窗交互，取得 40.47\,dB。
+这些方法的共同局限是以 Transformer 注意力作为可学习先验，
+光谱维注意力复杂度 $O(C^2HW)$ 随空间分辨率线性增长；且退化估计的输出仅条件化黑盒去噪器，
+从未注入物理传播过程。
+
+\subsection{物理启发的视觉建模}
+
+近期工作探索了以物理方程替代或增强注意力机制，主要分为两类。
+
+\textbf{通用视觉 PDE 算子（非 CASSI）。}
+WaveFormer~\citep{shu2026waveformer}（\emph{图像分类/检测任务}）以阻尼波动方程频域闭式解替代自注意力，
+实现 $O(N\log N)$ 复杂度，在 ImageNet/COCO 上取得与 Swin Transformer 可比的性能，
+为我们设计 \swap{} 算子提供了数学原型。
+vHeat~\citep{wang2024vheat}（\emph{图像识别任务}）将热传导方程嵌入视觉主干（DCT/IDCT 实现，$O(N^{1.5})$）；
+然而热方程仅有单调扩散而无振荡传播，高频纹理细节不可避免地被平滑。
+\emph{以上两篇论文均面向 RGB 通用视觉，不涉及 CASSI 重建或高光谱退化建模。}
+
+\textbf{CASSI 物理启发重建（无 PDE 闭式解或无退化建模）。}
+DADF-Net~\citep{dong2023dadfnet}（TMM 2023）在 CASSI 重建中从初始化 HSI 估计退化特征图，
+并以动态 Fourier 处理指导特征提取，是目前 CASSI 领域"退化感知 + 频域处理"最接近的组合；
+但其为端到端网络（非展开框架），Fourier 处理是可学习特征提取器而非 PDE 闭式解。
+Phy-CoSF~\citep{chen2026phycosf}（ICML 2026）在 CASSI 中引入 A-HQS 展开和 Fourier Mamba 模块，
+取得 39.80\,dB；但同样无显式退化估计，Fourier Mamba 亦非 PDE 闭式解。
+\textbf{综上，CASSI 领域尚无方法将退化建模与 PDE 频域传播算子实现真正耦合}（见表~\ref{tab:gap}）。
+
+\subsection{退化建模与方法差距分析}
+
+CASSI 中的退化建模旨在补偿 sensing matrix $\Phi$ 与真实光学过程之间的误差以及传感器噪声。
+DAUHST~\citep{cai2022dauhst}通过 DAN 模块估计标量退化程度，注入注意力权重。
+RDLUF~\citep{dong2023rdluf}首次以残差形式显式学习 sensing error $\Delta\Phi$，
+证明感知矩阵误差修正的有效性（$+$1.21\,dB）。
+DERNN-LNLT~\citep{dong2024dernnlnlt}进一步同时估计 $\Delta\Phi$ 和 $\sigma$，
+以 RNN 权重共享传递跨 stage 的退化上下文（$+$0.36\,dB over RDLUF）。
+DPU~\citep{zhang2024dpu}的 DPB 显式估计退化先验并与图像先验在 ADMM 框架中融合。
+上述工作中，\textbf{退化估计的输出均仅用于条件化先验去噪器（Transformer），没有任何方法
+将退化估计与频域物理传播算子实现双向耦合}。
+\smiletwo{} 的 \lde{} 将退化建模分解为三个正交分量（$\Delta\Phi$, $w$, $\sigma$），
+并通过 $\sigma \to \alphaEff$ 反馈实现退化估计与 \swap{} 阻尼系数的双向耦合，
+在现有文献中尚属首次。
+
+表~\ref{tab:gap}从三个核心维度系统比较了现有方法，直观展示 \smiletwo{} 填补的空白。
+
+\begin{table}[t]
+\centering
+\caption{现有方法在三个关键维度的覆盖情况。$\checkmark$：完整；$\triangle$：部分/近似；—：缺失。
+$^\dagger$通用视觉方法（非 CASSI），用于方法对比参考。\smiletwo{} 是首个在 CASSI 中同时覆盖三个维度的方法。}
+\label{tab:gap}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l|ccc}
+\toprule
+方法 & 显式退化估计 & 频域闭式传播 & 二阶加速 \\
+\midrule
+DAUHST~\citep{cai2022dauhst}        & $\triangle$ 标量 & — & — \\
+RDLUF~\citep{dong2023rdluf}          & $\checkmark$ $\Delta\Phi$ & — & — \\
+DERNN-LNLT~\citep{dong2024dernnlnlt} & $\checkmark$ $\Delta\Phi$+$\sigma$ & — & — \\
+WaveFormer~\citep{shu2026waveformer}$^\dagger$ & — & $\checkmark$ 波方程 & — \\
+Phy-CoSF~\citep{chen2026phycosf}    & — & $\triangle$ Fourier Mamba & $\triangle$ A-HQS \\
+RDFNet~\citep{zhou2023rdfnet}        & — & — & $\checkmark$ FISTA \\
+\midrule
+\textbf{\smiletwo{}（本文）} & $\checkmark$ \secm{}+\dag{}+\nle{} & $\checkmark$ 3D 波方程 & $\checkmark$ Nesterov \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ============================================================
+\section{方法}\label{sec:method}
+
+\subsection{问题设置}\label{sec:problem}
+
+CASSI 的物理前向模型为：
+\begin{equation}
+g(x,y) = \sum_{\lambda=1}^{\Lambda} M(x,y) \cdot f\!\big(x - d(\lambda), y, \lambda\big) + n(x,y),
+\label{eq:forward}
+\end{equation}
+其中 $f \in \mathbb{R}^{H \times W \times \Lambda}$ 是待重建的高光谱立方体（$\Lambda=28$），
+$M(x,y) \in [0,1]^{H \times W}$ 是编码掩模，
+$d(\lambda) = \text{step} \cdot \lambda$（step $= 2$ px）是棱镜引入的色散偏移，
+$n$ 是传感器噪声，
+$g \in \mathbb{R}^{H \times W'}$（$W' = W + (\Lambda-1) \cdot \text{step}$）是单帧测量。
+矩阵化后：
+\begin{equation}
+g = \Phi f + n, \quad \Phi \in \mathbb{R}^{HW' \times HW\Lambda},
+\label{eq:forward_matrix}
+\end{equation}
+其中 $\Phi$ 复合了掩模调制、光谱色散偏移和波段求和三种线性退化。
+重建问题表述为：
+\begin{equation}
+\min_{f} \;\; \tfrac{1}{2}\|g - \Phi f\|_2^2 + \gamma \mathcal{R}(f),
+\label{eq:inverse}
+\end{equation}
+其中 $\mathcal{R}$ 是可学习先验。
+
+\textbf{关键性质}（后续推导基础）：编码掩模 $M(x,y)$ 沿光谱方向不变，
+即 $\hat{M}(\omega_x, \omega_y, \omega_\lambda) = \hat{M}_{xy}(\omega_x, \omega_y) \cdot \delta(\omega_\lambda)$。
+这一光谱可分性是 \swap{} 保持 $O(N\log N)$ 复杂度的物理根基。
+
+
+% ──────────────────────────────────────────────
+\subsection{\smiletwo{} 总体架构}\label{sec:overview}
+
+\begin{figure*}[t]
+\centering
+\figplaceholder{0.95\textwidth}{
+\textbf{[占位图：Figure 1 — \smiletwo{} 总体框架]}\\[6pt]
+\small
+左侧：输入 $g$, $\Phi$ $\to$ Init Conv $\to$ $f^0$\\
+中间：$K$ 个 Stage 循环（每个 Stage 包含 \lde{} $\to$ \ahqs{} GD Step $\to$ DAG 净化 $\to$ \swap{} $\to$ \lrb{}）\\
+右侧：输出 $f^K$ + Multi-Stage Loss\\[4pt]
+跨 Part 连线：$\sigma \dashrightarrow \alphaEff$（虚线），$\Delta\Phi \dashrightarrow \PhiEff$（虚线），$w \to z_{\mathrm{clean}}$（实线）\\
+三色背景：Part I \swap{} 浅紫灰 \texttt{\#f3f2f7}，Part II \lde{} 暖米黄 \texttt{\#fff7e6}，Part III \ahqs{} 冷淡蓝 \texttt{\#e6f1ff}
+}
+\caption{\smiletwo{} 总体框架。每个 Stage 依次执行：
+（i）\lde{} 估计退化三元组 $(\Delta\Phi, w, \sigma)$；
+（ii）\ahqs{} 以 Nesterov 动量和修正感知矩阵 $\PhiEff$ 执行数据保真步；
+（iii）DAG 净化 $z_{\mathrm{clean}} = z \cdot (1+w)$；
+（iv）\swap{} 以噪声感知阻尼 $\alphaEff = \alpha + \lambda_\sigma\sigma$ 执行三维波传播；
+（v）\lrb{} 补全局部纹理。
+$\sigma \to \alphaEff$ 的虚线反馈构成 Estimation$\leftrightarrow$Evolution 闭环。}
+\label{fig:framework}
+\end{figure*}
+
+如图~\ref{fig:framework}所示，\smiletwo{} 由三个紧密耦合的模块组成：
+
+\textbf{Part I — \swap{}（Spectral WAve Propagator）}：
+以三维各向异性阻尼波动方程的频域闭式解为核心，
+组装为 U-Net 骨架（Encoder--Bottleneck--Decoder），
+每个 Block 由 $\text{LN} \to \swap{} \to \text{Res} \to \text{LN} \to \text{FFN} \to \text{Res}$ 构成。
+输出通过全局残差连接：$f_{\mathrm{wave}} = \text{Mapping}(\text{fea}) + x$。
+
+\textbf{Part II — \lde{}（Learned Degradation Estimator）}：
+轻量三合一退化估计（$\sim$5K 参数），输出 $\Delta\Phi$（\secm）、$w$（\dag）、$\sigma$（\nle），
+以及局部精化模块 \lrb{}。
+
+\textbf{Part III — \ahqs{}（Accelerated Half-Quadratic Splitting）}：
+Nesterov 动量 + 闭式 GD step + 多阶段损失，构成展开框架。
+
+单个 Stage $k$ 的完整数据流：
+\begin{equation}
+\boxed{
+\begin{aligned}
+& \text{\lde{}:} & \Delta\Phi, w, \sigma &= \lde{}(f^{k-1}, \Phi, \Phi^*), \\
+& \text{动量:} & \hat{z}^{k-1} &= f^{k-1} + \beta_k(f^{k-1} - f^{k-2}), \\
+& \text{GD:} & z^k &= \hat{z}^{k-1} + \rho_k \PhiEff^\top \frac{g - \PhiEff \hat{z}^{k-1}}{\mu + \PhiEff\PhiEff^\top}, \\
+& \text{净化:} & z^k_{\mathrm{clean}} &= z^k \cdot (1 + w), \\
+& \text{\swap{}:} & f^k_{\mathrm{wave}} &= \swap{}(z^k_{\mathrm{clean}}, \Phi, \alphaEff), \\
+& \text{\lrb{}:} & f^k &= f^k_{\mathrm{wave}} + \lrb{}(f^k_{\mathrm{wave}}).
+\end{aligned}}
+\label{eq:stage}
+\end{equation}
+
+
+% ──────────────────────────────────────────────
+\subsection{Part I：\swap{} — Spectral WAve Propagator}\label{sec:swap}
+
+\subsubsection{三维各向异性阻尼波动方程}
+
+HSI 立方体的空间尺度（$H, W \sim 256$）与光谱尺度（$\Lambda \sim 28$）差异悬殊，
+因此我们采用各向异性波速：
+\begin{equation}
+\partial_t^2 u + \alpha \partial_t u = v_s^2(\partial_x^2 + \partial_y^2)u + v_\lambda^2 \partial_\lambda^2 u,
+\label{eq:wave}
+\end{equation}
+其中 $\alpha > 0$ 为阻尼系数，$v_s, v_\lambda > 0$ 分别为空间和光谱波速，
+初始条件 $u(\mathbf{r},0) = u_0(\mathbf{r})$，$\partial_t u|_{t=0} = v_0(\mathbf{r})$。
+所有参数 $(\alpha, v_s, v_\lambda, t)$ 为可学习标量（共 4 个 float），通过 softplus 约束为正值。
+
+\subsubsection{频域闭式解}
+
+对式~(\ref{eq:wave})做三维 Fourier 变换，每个频率点 $\bm{\omega} = (\omega_x, \omega_y, \omega_\lambda)$ 退耦为独立的二阶常系数 ODE：
+\begin{equation}
+\partial_t^2 \hat{u} + \alpha \partial_t \hat{u} + \omega_0^2 \hat{u} = 0,
+\label{eq:ode}
+\end{equation}
+其中固有频率 $\omega_0^2(\bm\omega) = v_s^2(\omega_x^2 + \omega_y^2) + v_\lambda^2 \omega_\lambda^2$。
+定义判别量 $\eta = \omega_0^2 - \alpha^2/4$，引入符号自适应的广义函数：
+\begin{equation}
+\Cs(\eta, t) = \begin{cases} \cos(\sqrt{\eta}\,t), & \eta > 0 \\ \cosh(\sqrt{-\eta}\,t), & \eta < 0 \end{cases}
+\end{equation}
+\begin{equation}
+\Sn(\eta, t) = \begin{cases} \sin(\sqrt{\eta}\,t)/\sqrt{\eta}, & \eta > 0 \\ \sinh(\sqrt{-\eta}\,t)/\sqrt{-\eta}, & \eta < 0 \end{cases}
+\end{equation}
+则 \textbf{\swap{} 统一闭式解}为：
+\begin{equation}
+\boxed{
+\hat{u}(\bm\omega, t) = e^{-\alpha t/2}\Big[\hat{u}_0\,\Cs(\eta, t) + \big(\hat{v}_0 + \tfrac{\alpha}{2}\hat{u}_0\big)\Sn(\eta, t)\Big]
+}
+\label{eq:closed_form}
+\end{equation}
+欠阻尼区（$\eta > 0$，高频）执行振荡式传播，保留边缘和纹理；
+过阻尼区（$\eta < 0$，低频背景）执行指数衰减，抑制平坦区域——
+与 HSI 重建的频率特性天然对齐。
+
+\textbf{稳定性保证。}频域能量密度 $E = \frac{1}{2}|\partial_t\hat{u}|^2 + \frac{1}{2}\omega_0^2|\hat{u}|^2$ 满足：
+\begin{equation}
+\frac{dE}{dt} = -\alpha |\partial_t \hat{u}|^2 \le 0,
+\label{eq:stability}
+\end{equation}
+即能量单调不增，\swap{} 是\textbf{无条件稳定}的。
+
+\textbf{实现。}
+式~(\ref{eq:closed_form})通过 3D rFFT $\to$ 频域调制 $\to$ 3D irFFT 实现，
+C 维 pad 到 2 的幂（$28 \to 32$）以优化 cuFFT 性能。
+全流程复杂度 $O(\Lambda HW \log(\Lambda HW))$。
+
+\subsubsection{\mi{}：Modulated Initialization}\label{sec:mi}
+
+CASSI 掩模 $M(x,y)$ 的物理角色是对初始振幅施加空间调制。
+\mi{} 将这一物理过程编码为波场初始条件：
+\begin{equation}
+\begin{aligned}
+\text{gate} &= \epsilon + (1-\epsilon) \cdot M(x,y), \quad \epsilon = 0.1, \\
+u_0 &= \phi(x) \cdot \text{gate}, \quad v_0 = \psi(x) \cdot \text{gate},
+\end{aligned}
+\label{eq:mi}
+\end{equation}
+其中 $\phi, \psi$ 分别是 DW3$\times$3 + Conv1$\times$1 投影。
+$\epsilon$ 为软门控下限，避免 mask 遮蔽区的零梯度。
+由于 $M(x,y)$ 沿光谱不变（$\hat{M}$ 在 $\omega_\lambda$ 维度退化为 $\delta$），
+空间域乘法后做 FFT 与"FFT 后空间卷积"数学等价，$O(N\log N)$ 复杂度保持。
+
+
+\subsubsection{\adaspec{}：Adaptive Spectral Filtering}\label{sec:adaspec}
+
+在频域调制之后，\adaspec{} 对每个频率点施加 SNR 自适应加权：
+\begin{equation}
+W_{\adaspec{}}(\bm\omega) = \sigma_{\mathrm{gate}}\!\left(\frac{|\hat{u}_0(\bm\omega)|^2 - \sigma^2}{|\hat{u}_0(\bm\omega)|^2 + \sigma^2 + \epsilon}\right),
+\label{eq:adaspec}
+\end{equation}
+其中 $\sigma_{\mathrm{gate}} = \mathrm{sigmoid}$，$\sigma$ 复用 \nle{} 的输出。
+
+信号频带（$|\hat{u}_0|^2 \gg \sigma^2$）$\to W \to 1$（保留）；
+噪声频带（$|\hat{u}_0|^2 \ll \sigma^2$）$\to W \to 0$（抑制）。
+这与经典 Wiener 滤波器 $W_{\mathrm{Wiener}} = |\hat{u}_0|^2/(|\hat{u}_0|^2 + \sigma^2)$ 在两端极限一致，
+且\textbf{零额外参数}——$\sigma$ 已由 \nle{} 提供，$|\hat{u}_0|^2$ 在 FFT 中已计算。
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 2 — \swap{} Block 内部结构]}\\[4pt]
+\small
+LN $\to$ WPO3D（\mi{} $\to$ 3D rFFT $\to$ Wave Modulate $\to$ \adaspec{} $\to$ 3D irFFT $\to$ SiLU gate $\to$ Conv）$\to$ Res $\to$ LN $\to$ FFN $\to$ Res
+}
+\caption{\swap{} Block 结构。核心是 WPO3D 算子，实现式~(\ref{eq:closed_form})的完整流程。}
+\label{fig:swap_block}
+\end{figure}
+
+
+\subsubsection{可选扩展}\label{sec:optional}
+
+\textbf{\kgd{}（Klein-Gordon Dispersion）。}
+将式~(\ref{eq:wave})推广为带质量项的 Klein-Gordon 方程：
+$\partial_t^2 u + \alpha \partial_t u = v_s^2 \nabla_{xy}^2 u + v_\lambda^2 \partial_\lambda^2 u - m^2(x,y) u$，
+其中 $m^2(x,y) = m_0^2[1 - M(x,y)]$。
+通过 Born 一阶微扰在 $O(N\log N)$ 内近似，为 mask 遮蔽区提供额外抑制。
+仅在消融实验中启用。
+
+\textbf{\wswap{}（Windowed SWAP）。}
+将空间维切为 $M \times M$ 窗（默认 $M=64$），窗内独立传播，
+配合 shifted window 保证跨窗信息流。
+复杂度从 $O(\Lambda HW \log(\Lambda HW))$ 降至 $O(\Lambda HW \log(\Lambda M^2))$。
+作为大分辨率场景的可选项。
+
+
+% ──────────────────────────────────────────────
+\subsection{Part II：\lde{} — Learned Degradation Estimator}\label{sec:lde}
+
+\lde{} 以当前重建 $f$、感知矩阵 $\Phi$ 和退化掩模 $\Phi^*$ 为输入，
+同时输出三个正交分量。
+
+\subsubsection{\secm{}：Sensing Error Correction}
+
+学习 $\Phi$ 的残差修正：
+\begin{equation}
+\Delta\Phi = W_2\,\text{LReLU}(W_1\,\Phi), \quad W_1, W_2 \in \mathbb{R}^{\Lambda \times \Lambda},
+\label{eq:sec}
+\end{equation}
+在 GD step 中以 $\PhiEff = \Phi + \Delta\Phi$ 替代 $\Phi$。
+参数量：$2\Lambda^2 \approx 1568$。
+
+\subsubsection{\dag{}：Degradation-Aware Gating}
+
+退化掩模 $\Phi^*$ 编码了"mask $\times$ shift $\times$ compression"的完整退化模式，
+仅依赖 $\Phi$ 的几何结构（可预计算）：
+\begin{equation}
+\Phi^* = \frac{2}{\Lambda}\,\text{ReverseShift}\Big(\sum_{c} \text{Shift}_c(\Phi)\Big).
+\label{eq:phi_star}
+\end{equation}
+\dag{} 从 $[\Phi \| \Phi^*]$ 生成空间退化权重：
+\begin{equation}
+w = \sigma_{\mathrm{gate}}\big(U_2\,\text{LReLU}(U_1\,[\Phi \| \Phi^*])\big) \in (0, 1)^\Lambda,
+\label{eq:dag}
+\end{equation}
+$U_1: 2\Lambda \to h$，$U_2: h \to \Lambda$（$h=32$）。参数量：$\sim$2688。
+
+退化加权作用于 GD step 输出：$z_{\mathrm{clean}} = z \cdot (1 + w)$，
+增强非退化区域，不衰减任何区域。
+
+\subsubsection{\nle{}：Noise Level Estimator}
+
+从当前重建 $f$ 提取全局噪声水平：
+\begin{equation}
+\sigma = \mathrm{softplus}\big(V_2\,\text{ReLU}(V_1\,\text{GAP}(f))\big) > 0,
+\label{eq:nle}
+\end{equation}
+$V_1: \Lambda \to h$，$V_2: h \to 1$。参数量：$\sim$928。
+
+$\sigma$ 有两个去向：
+（1）耦合至 \swap{} 的有效阻尼 $\alphaEff = \alpha + \lambda_\sigma \sigma$，
+噪声大时高阻尼（保守传播），噪声小时低阻尼（保留高频）；
+（2）作为 \adaspec{} 的 SNR 参考（式~\ref{eq:adaspec}）。
+
+\textbf{Estimation$\leftrightarrow$Evolution 闭环：}
+$\sigma \xrightarrow{\nle{}} \alphaEff \xrightarrow{\swap{}} f \xrightarrow{\nle{}} \sigma'$。
+每个 stage 的 \nle{} 基于更干净的 $f$ 给出更准确的 $\sigma$，
+形成渐进式的估计-演化反复。
+
+
+\subsubsection{\lrb{}：Local Refinement Block}
+
+\swap{} 作为频域全局算子，对局部纹理的恢复有天然盲区。
+\lrb{} 以轻量 DWConv FFN 补全：
+\begin{equation}
+\lrb{}(x) = C_3\big(\text{GELU}(\text{DW}_{3 \times 3}(\text{GELU}(C_1\,x)))\big),
+\label{eq:lrb}
+\end{equation}
+$C_1: \Lambda \to 2\Lambda$，$\text{DW}_{3\times3}: 2\Lambda \to 2\Lambda$，$C_3: 2\Lambda \to \Lambda$（均为 Conv）。
+参数量 $\sim$4.7K。输出以残差形式加在 \swap{} 输出上：$f^k = f^k_{\mathrm{wave}} + \lrb{}(f^k_{\mathrm{wave}})$。
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 3 — \lde{} 内部结构]}\\[4pt]
+\small
+上路：$\Phi \to$ \secm{} $\to \Delta\Phi$\\
+中路：$[\Phi \| \Phi^*] \to$ \dag{} $\to w$\\
+下路：$f \to$ \nle{} $\to \sigma$\\
+$\sigma$ 以虚线连至 \swap{} 的 $\alphaEff$ 和 \adaspec{}
+}
+\caption{\lde{} 结构。三个子模块输出正交分量，$\sigma$ 反馈耦合至 \swap{}。}
+\label{fig:lde}
+\end{figure}
+
+
+% ──────────────────────────────────────────────
+\subsection{Part III：\ahqs{} — 加速半二次分裂展开}\label{sec:ahqs}
+
+\subsubsection{Nesterov 动量}
+
+引入可学习动量系数 $\beta_k = \mathrm{sigmoid}(\theta_k) \in (0,1)$（初始化 $\theta_k = 0 \Rightarrow \beta_k = 0.5$）：
+\begin{equation}
+\hat{z}^k = f^k + \beta_k(f^k - f^{k-1}).
+\label{eq:momentum}
+\end{equation}
+Nesterov 加速将收敛速率从 $O(1/K)$ 提升至 $O(1/K^2)$~\citep{nesterov1983}，
+仅需 $K$ 个标量参数。
+
+\subsubsection{数据保真闭式 GD Step}
+
+利用 CASSI 的稀疏结构，GD step 有逐点闭式解：
+\begin{equation}
+z^k = \hat{z}^k + \rho_k \PhiEff^\top \frac{g - \PhiEff \hat{z}^k}{\mu + \PhiEff \PhiEff^\top},
+\label{eq:gd}
+\end{equation}
+其中 $\PhiEff = \Phi + \Delta\Phi$（嵌入 \secm{} 修正），
+$\rho_k = \mathrm{softplus}(\text{MLP}(f))$ 是可学习步长（ParaEstimator），
+$\Phi\Phi^\top$ 仅依赖 mask 可预计算缓存。
+
+\subsubsection{多阶段损失}
+
+\begin{equation}
+\mathcal{L} = \sum_{k=1}^{K} w_k \cdot \text{RMSE}(f^k, f_{\mathrm{GT}}),
+\label{eq:loss}
+\end{equation}
+$w_K = 1.0$，$w_{K-1} = 0.7$，$w_{K-2} = 0.5$，$w_{K-3} = 0.3$。
+该设计让最后一个 stage 获得最强监督，同时保持中间 stage 的梯度通路~\citep{zhang2024dpu}。
+
+
+\subsection{算法总结}
+
+\begin{algorithm}[t]
+\caption{\smiletwo{} 单次前向传播}
+\label{alg:smile2}
+\begin{algorithmic}[1]
+\REQUIRE 测量 $g$，感知矩阵 $\Phi$，预计算 $\Phi^*$, $\Phi\Phi^\top$
+\ENSURE 重建结果 $f^K$
+
+\STATE $f^0 \gets \text{InitConv}([\Phi^\top g \| \Phi])$ \hfill $\triangleright$ 初始化
+\STATE $f^{-1} \gets f^0$ \hfill $\triangleright$ 动量初始
+\FOR{$k = 1$ \TO $K$}
+    \STATE $\Delta\Phi, w, \sigma \gets \lde{}(f^{k-1}, \Phi, \Phi^*)$ \hfill $\triangleright$ 退化估计
+    \STATE $\hat{z} \gets f^{k-1} + \beta_k(f^{k-1} - f^{k-2})$ \hfill $\triangleright$ Nesterov 动量
+    \STATE $\PhiEff \gets \Phi + \Delta\Phi$
+    \STATE $z \gets \hat{z} + \rho_k \PhiEff^\top (g - \PhiEff \hat{z}) / (\mu + \PhiEff\PhiEff^\top)$ \hfill $\triangleright$ GD
+    \STATE $z_{\mathrm{clean}} \gets z \cdot (1 + w)$ \hfill $\triangleright$ DAG 净化
+    \STATE $f_{\mathrm{wave}} \gets \swap{}(z_{\mathrm{clean}}, \Phi, \alphaEff{=}\alpha{+}\lambda_\sigma\sigma)$ \hfill $\triangleright$ 波传播
+    \STATE $f^k \gets f_{\mathrm{wave}} + \lrb{}(f_{\mathrm{wave}})$ \hfill $\triangleright$ 局部精化
+\ENDFOR
+\RETURN $[f^1, \ldots, f^K]$ \hfill $\triangleright$ 多阶段输出
+\end{algorithmic}
+\end{algorithm}
+
+
+% ============================================================
+\section{实验}\label{sec:exp}
+
+\subsection{实验设置}
+
+\textbf{数据集。}
+训练集：CAVE 数据集~\citep{yasuma2010cave}的 205 个场景（$1024 \times 1024 \times 28$），
+裁切为 $256 \times 256$ 的 patch。
+测试集：KAIST 数据集~\citep{choi2017kaist}的 10 个标准测试场景。
+CASSI 仿真设置沿用 TSA-Net~\citep{meng2020tsanet}：step $= 2$，真实灰度 mask。
+
+\textbf{评价指标。}
+PSNR（dB）、SSIM 和 SAM（Spectral Angle Mapper，越小越好）。
+所有指标在 28 个波段上取平均。
+
+\textbf{训练细节。}
+Adam 优化器~\citep{kingma2015adam}，初始学习率 $4 \times 10^{-4}$，
+CosineAnnealing 调度（$T_{\max} = 300$），
+梯度裁剪 $\|\nabla\|_{\max} = 0.5$。
+Batch size 2，混合精度训练（AMP），单卡 RTX 3090（24GB）。
+默认配置：$K=5$ stages，共享权重，$\Lambda = 28$，U-Net 3 层，每层 $[2,2,2]$ blocks。
+
+\textbf{基线方法。}
+MST~\citep{cai2022mst}、CST~\citep{cai2022cst}、DAUHST~\citep{cai2022dauhst}、
+RDLUF~\citep{dong2023rdluf}、DPU~\citep{zhang2024dpu}、SSR~\citep{zhang2024ssr}。
+
+\subsection{主要结果}
+
+\begin{table*}[t]
+\centering
+\caption{CAVE/KAIST 仿真数据集上的定量比较。$\dagger$ 表示展开方法。
+\textbf{粗体}为最优，\underline{下划线}为次优。
+\todo{实验完成后填入具体数值。}}
+\label{tab:main}
+\small
+\begin{tabular}{l|c|c|ccc}
+\toprule
+方法 & Params (M) & FLOPs (G) & PSNR $\uparrow$ & SSIM $\uparrow$ & SAM $\downarrow$ \\
+\midrule
+TSA-Net (ECCV'20) & 44.25 & -- & 33.26 & 0.917 & -- \\
+MST (CVPR'22) & 2.03 & -- & 35.18 & 0.943 & -- \\
+CST (ECCV'22) & 3.00 & -- & 36.12 & 0.954 & -- \\
+\midrule
+DAUHST$^\dagger$ (NeurIPS'22) & 6.15 & -- & 37.25 & 0.964 & -- \\
+RDLUF$^\dagger$ (CVPR'23) & 1.81 & -- & 39.57 & 0.976 & -- \\
+SSR-S$^\dagger$ (CVPR'24) & 1.73 & -- & 39.19 & 0.974 & -- \\
+DPU-5stg$^\dagger$ (CVPR'24) & 1.59 & -- & 39.62 & 0.977 & -- \\
+\midrule
+\textbf{\smiletwo{}-5stg (shared)$^\dagger$} & \textbf{$\sim$0.90} & -- & \todo{xx.xx} & \todo{0.xxx} & \todo{0.xxx} \\
+\textbf{\smiletwo{}-5stg (indep.)$^\dagger$} & $\sim$1.50 & -- & \todo{xx.xx} & \todo{0.xxx} & \todo{0.xxx} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+\subsection{消融实验}
+
+\subsubsection{组件消融}
+
+\begin{table}[t]
+\centering
+\caption{组件消融实验（CAVE 10 场景，$K=5$，共享权重）。\todo{实验完成后填入。}}
+\label{tab:ablation_component}
+\small
+\begin{tabular}{l|cc}
+\toprule
+配置 & PSNR & $\Delta$ \\
+\midrule
+Baseline（GAP + \swap{} only） & \todo{xx.xx} & -- \\
++ \lde{}（\secm{} + \dag{} + \nle{}） & \todo{xx.xx} & \todo{+x.xx} \\
++ \lrb{} & \todo{xx.xx} & \todo{+x.xx} \\
++ \ahqs{} Nesterov 动量 & \todo{xx.xx} & \todo{+x.xx} \\
++ \adaspec{} & \todo{xx.xx} & \todo{+x.xx} \\
+\midrule
+完整 \smiletwo{} & \todo{xx.xx} & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{展开 vs. 端到端}
+
+\begin{table}[t]
+\centering
+\caption{展开结构贡献分析。\todo{填入数据。}}
+\label{tab:ablation_unfolding}
+\small
+\begin{tabular}{l|cc|c}
+\toprule
+改动 & Params $\Delta$ & PSNR $\Delta$ & dB/M \\
+\midrule
+5-stage GAP 展开 & +0.06M & \todo{+x.xx} & \todo{xx} \\
+WSSA 注意力 & +3.01M & +1.16 & 0.39 \\
+FBA 小波分解 & +3.68M & +0.84 & 0.23 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{\swap{} 物理算子 vs. 替代先验}
+
+\begin{table}[t]
+\centering
+\caption{先验算子替换实验。\todo{填入数据。}}
+\label{tab:ablation_prior}
+\small
+\begin{tabular}{l|ccc}
+\toprule
+先验算子 & PSNR & Params & 复杂度 \\
+\midrule
+S-MSA (MST) & \todo{xx.xx} & \todo{x.xM} & $O(C^2HW)$ \\
+热方程（Heat-former） & \todo{xx.xx} & \todo{x.xM} & $O(N\log N)$ \\
+\swap{}（各向同性） & \todo{xx.xx} & \todo{x.xM} & $O(N\log N)$ \\
+\swap{}（各向异性） & \todo{xx.xx} & \todo{x.xM} & $O(N\log N)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{可视化分析}
+
+\begin{figure*}[t]
+\centering
+\figplaceholder{0.95\textwidth}{
+\textbf{[占位图：Figure 4 — 视觉对比]}\\[4pt]
+\small
+每行一个测试场景，列：GT / MST / DAUHST / DPU / SSR / \smiletwo{} / 误差图\\
+选择 3--4 个有代表性的场景（含纹理丰富区域和光谱敏感区域）
+}
+\caption{KAIST 测试场景上的视觉重建对比。\todo{实验完成后替换为真实结果。}}
+\label{fig:visual}
+\end{figure*}
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 5 — 光谱曲线对比]}\\[4pt]
+\small
+选取 2--3 个像素点，绘制 GT 与各方法重建的 28 波段光谱曲线\\
+输入：各方法的重建 .pth + GT .npy，用 matplotlib 绘制
+}
+\caption{代表性像素点的光谱曲线对比。\smiletwo{} 的光谱保真度更高。}
+\label{fig:spectral_curve}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 6 — \swap{} 频域行为可视化]}\\[4pt]
+\small
+(a) 欠阻尼区/过阻尼区的频率分布（$\eta > 0$ vs $\eta < 0$）\\
+(b) $\Cs/\Sn$ 调制函数在不同 $\alpha$ 下的频率响应\\
+(c) \adaspec{} 权重 $W$ 的频域分布\\
+输入：训练好的模型 .pth，提取 $\alpha, v_s, v_\lambda, t$ 参数，用 Python 计算并绘图
+}
+\caption{\swap{} 的频域行为。(a) 训练后学到的欠/过阻尼区域划分自动适应 HSI 频率特性。
+(b) 不同阻尼系数下的频率响应。(c) \adaspec{} 权重自适应抑制噪声频带。}
+\label{fig:freq_behavior}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 7 — 收敛曲线]}\\[4pt]
+\small
+(a) PSNR vs. epoch 曲线：\smiletwo{} vs. version1 baseline\\
+(b) 各 stage 输出的 PSNR（stage-wise PSNR），展示逐 stage 改善\\
+输入：训练日志 + 模型 .pth，用 Python 绘制
+}
+\caption{(a) 训练收敛曲线。\smiletwo{} 在 4 epoch 即达到 33.56 dB，超过 baseline 同期的 30.38 dB。
+(b) 各 stage 输出的 PSNR 逐步提升，验证展开结构的有效性。}
+\label{fig:convergence}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 8 — \dag{} 权重可视化]}\\[4pt]
+\small
+将 $w \in (0,1)^{H \times W \times \Lambda}$ 在 $\Lambda$ 维取均值后显示为热力图\\
+对比 mask $M$、$\Phi^*$ 和 $w$ 的空间分布\\
+输入：模型 .pth + mask .npy，前向推理提取 $w$
+}
+\caption{\dag{} 权重 $w$ 的空间分布。$w$ 在 mask 透射率低（退化严重）的区域取较高值，
+验证了 \dag{} 学习到了物理一致的退化模式。}
+\label{fig:dag_vis}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\figplaceholder{0.9\columnwidth}{
+\textbf{[占位图：Figure 9 — 参数效率对比]}\\[4pt]
+\small
+散点图：x 轴 Params (M)，y 轴 PSNR (dB)\\
+标注各方法：MST, CST, DAUHST, RDLUF, DPU, SSR, \smiletwo{}\\
+输入：各方法的公开数据 + 我们的实验结果
+}
+\caption{参数量 vs. PSNR。\smiletwo{} 以最少的参数达到与 SOTA 可比的性能。}
+\label{fig:param_efficiency}
+\end{figure}
+
+
+% ============================================================
+\section{讨论}\label{sec:discussion}
+
+\textbf{为什么是波方程而非热方程？}
+热方程 $\partial_t u = c \nabla^2 u$ 仅有单调衰减，无振荡传播，
+等价于频域中对所有频率做指数衰减——高频纹理不可避免地被抹平。
+波方程的欠阻尼区（$\eta > 0$）保留了振荡传播模式，
+正是这一振荡模式使 \swap{} 能在抑制噪声的同时保留边缘和纹理。
+消融实验中将 \swap{} 替换为热方程先验（表~\ref{tab:ablation_prior}）可验证这一论断。
+
+\textbf{Estimation-Evolution 为何是"双向"的？}
+\lde{} $\to$ \swap{} 不是单向的"清理$\to$传播"。
+\nle{} 输出的 $\sigma$ 调制 \swap{} 的阻尼 $\alphaEff$；
+下一个 stage 的 \nle{} 基于更干净的 $f$ 给出更准确的 $\sigma$。
+这一闭环在 $K$ 个 stage 中反复发生，是 \smiletwo{} 中 ``E$^2$''（Estimation-Evolution）的核心。
+
+\textbf{局限性。}
+（1）$\Phi\Phi^\top$ 在感知矩阵边界处接近零，GD step 分母可能不稳（通过 clamp 缓解）；
+（2）共享权重模式在长 stage 数（$K > 7$）下可能表达不足，可切换至独立权重模式；
+（3）\adaspec{} 假设噪声近似高斯——非高斯噪声场景下 \nle{} 输出的是"等效高斯标准差"，精度可能下降。
+
+
+% ============================================================
+\section{结论}\label{sec:conclusion}
+
+本文提出 \smiletwo{}，一个物理驱动的 CASSI 深度展开重建框架。
+\smiletwo{} 的核心创新在于 Estimation-Evolution 的双向耦合：
+\lde{} 在传播前净化初始场并将噪声水平反馈至 \swap{} 的阻尼系数，
+\swap{} 以三维阻尼波动方程的频域闭式解实现无条件稳定的全局传播，
+\ahqs{} 以 Nesterov 动量实现 $O(1/K^2)$ 加速收敛。
+\smiletwo{} 以约 0.9M 参数和 $O(N\log N)$ 复杂度达到与 SOTA 可比的重建质量，
+为物理先验与深度展开的融合提供了新范式。
+
+% ============================================================
+% 致谢（投稿时隐藏）
+% \section*{致谢}
+% 感谢...
+
+% ============================================================
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,144 @@
+\relax 
+\bibstyle{plainnat}
+\citation{wagadarikar2008cassi,gehm2007ddcassi}
+\citation{cai2022mst,cai2022dauhst,zhang2024dpu,zhang2024ssr}
+\@writefile{toc}{\contentsline {section}{\numberline {1}引言}{1}{}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{}{section.1}{}}
+\citation{shu2026waveformer}
+\citation{wang2024vheat}
+\citation{cai2022mst}
+\citation{chen2026phycosf}
+\citation{dong2023rdluf}
+\citation{dong2024dernnlnlt}
+\citation{nesterov1983,zhou2023rdfnet}
+\citation{meng2020gapnet}
+\citation{meng2020tsanet}
+\citation{cai2022mst}
+\citation{cai2022dauhst}
+\citation{dong2023rdluf}
+\citation{dong2024dernnlnlt}
+\citation{zhang2024dpu}
+\citation{zhang2024ssr}
+\@writefile{toc}{\contentsline {section}{\numberline {2}相关工作}{2}{}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}CASSI 深度展开方法}{2}{}\protected@file@percent }
+\citation{shu2026waveformer}
+\citation{wang2024vheat}
+\citation{dong2023dadfnet}
+\citation{chen2026phycosf}
+\citation{cai2022dauhst}
+\citation{dong2023rdluf}
+\citation{dong2024dernnlnlt}
+\citation{zhang2024dpu}
+\citation{cai2022dauhst}
+\citation{dong2023rdluf}
+\citation{dong2024dernnlnlt}
+\citation{shu2026waveformer}
+\citation{chen2026phycosf}
+\citation{zhou2023rdfnet}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}物理启发的视觉建模}{3}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 现有方法在三个关键维度的覆盖情况。$\text  {$\mathsurround \z@ \mathchar "458$}$：完整；$\triangle $：部分/近似；—：缺失。 $^\dagger $通用视觉方法（非 CASSI），用于方法对比参考。SMILE\textsuperscript  {2}{} 是首个在 CASSI 中同时覆盖三个维度的方法。}}{3}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:gap}{{1}{3}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}退化建模与方法差距分析}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}方法}{4}{}\protected@file@percent }
+\newlabel{sec:method}{{3}{4}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}问题设置}{4}{}\protected@file@percent }
+\newlabel{sec:problem}{{3.1}{4}{}{subsection.3.1}{}}
+\newlabel{eq:forward}{{1}{4}{}{equation.1}{}}
+\newlabel{eq:forward_matrix}{{2}{4}{}{equation.2}{}}
+\newlabel{eq:inverse}{{3}{4}{}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}SMILE\textsuperscript  {2}{} 总体架构}{4}{}\protected@file@percent }
+\newlabel{sec:overview}{{3.2}{4}{}{subsection.3.2}{}}
+\newlabel{eq:stage}{{4}{4}{}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Part I：\textsc  {SWAP}{} — Spectral WAve Propagator}{4}{}\protected@file@percent }
+\newlabel{sec:swap}{{3.3}{4}{}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}三维各向异性阻尼波动方程}{4}{}\protected@file@percent }
+\newlabel{eq:wave}{{5}{4}{}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}频域闭式解}{4}{}\protected@file@percent }
+\newlabel{eq:ode}{{6}{4}{}{equation.6}{}}
+\newlabel{eq:closed_form}{{9}{4}{}{equation.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SMILE\textsuperscript  {2}{} 总体框架。每个 Stage 依次执行： （i）\textsc  {LDE}{} 估计退化三元组 $(\Delta \Phi , w, \sigma )$； （ii）\textsc  {A-HQS}{} 以 Nesterov 动量和修正感知矩阵 $\Phi _{\mathrm  {eff}}$ 执行数据保真步； （iii）DAG 净化 $z_{\mathrm  {clean}} = z \cdot (1+w)$； （iv）\textsc  {SWAP}{} 以噪声感知阻尼 $\alpha _{\mathrm  {eff}}= \alpha + \lambda _\sigma \sigma $ 执行三维波传播； （v）\textsc  {LRB}{} 补全局部纹理。 $\sigma \to \alpha _{\mathrm  {eff}}$ 的虚线反馈构成 Estimation$\leftrightarrow $Evolution 闭环。}}{5}{}\protected@file@percent }
+\newlabel{fig:framework}{{1}{5}{}{figure.1}{}}
+\newlabel{eq:stability}{{10}{5}{}{equation.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}\textsc  {MI}{}：Modulated Initialization}{5}{}\protected@file@percent }
+\newlabel{sec:mi}{{3.3.3}{5}{}{subsubsection.3.3.3}{}}
+\newlabel{eq:mi}{{11}{5}{}{equation.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textsc  {SWAP}{} Block 结构。核心是 WPO3D 算子，实现式~(\ref {eq:closed_form})的完整流程。}}{5}{}\protected@file@percent }
+\newlabel{fig:swap_block}{{2}{5}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.4}\textsc  {AdaSpec}{}：Adaptive Spectral Filtering}{5}{}\protected@file@percent }
+\newlabel{sec:adaspec}{{3.3.4}{5}{}{subsubsection.3.3.4}{}}
+\newlabel{eq:adaspec}{{12}{5}{}{equation.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.5}可选扩展}{6}{}\protected@file@percent }
+\newlabel{sec:optional}{{3.3.5}{6}{}{subsubsection.3.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Part II：\textsc  {LDE}{} — Learned Degradation Estimator}{6}{}\protected@file@percent }
+\newlabel{sec:lde}{{3.4}{6}{}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}\textsc  {SEC}{}：Sensing Error Correction}{6}{}\protected@file@percent }
+\newlabel{eq:sec}{{13}{6}{}{equation.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}\dag  {}：Degradation-Aware Gating}{6}{}\protected@file@percent }
+\newlabel{eq:phi_star}{{14}{6}{}{equation.14}{}}
+\newlabel{eq:dag}{{15}{6}{}{equation.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textsc  {LDE}{} 结构。三个子模块输出正交分量，$\sigma $ 反馈耦合至 \textsc  {SWAP}{}。}}{6}{}\protected@file@percent }
+\newlabel{fig:lde}{{3}{6}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}\textsc  {NLE}{}：Noise Level Estimator}{6}{}\protected@file@percent }
+\newlabel{eq:nle}{{16}{6}{}{equation.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}\textsc  {LRB}{}：Local Refinement Block}{6}{}\protected@file@percent }
+\newlabel{eq:lrb}{{17}{6}{}{equation.17}{}}
+\citation{nesterov1983}
+\citation{zhang2024dpu}
+\citation{yasuma2010cave}
+\citation{choi2017kaist}
+\citation{meng2020tsanet}
+\citation{kingma2015adam}
+\citation{cai2022mst}
+\citation{cai2022cst}
+\citation{cai2022dauhst}
+\citation{dong2023rdluf}
+\citation{zhang2024dpu}
+\citation{zhang2024ssr}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Part III：\textsc  {A-HQS}{} — 加速半二次分裂展开}{7}{}\protected@file@percent }
+\newlabel{sec:ahqs}{{3.5}{7}{}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Nesterov 动量}{7}{}\protected@file@percent }
+\newlabel{eq:momentum}{{18}{7}{}{equation.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}数据保真闭式 GD Step}{7}{}\protected@file@percent }
+\newlabel{eq:gd}{{19}{7}{}{equation.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.3}多阶段损失}{7}{}\protected@file@percent }
+\newlabel{eq:loss}{{20}{7}{}{equation.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}算法总结}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}实验}{7}{}\protected@file@percent }
+\newlabel{sec:exp}{{4}{7}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}实验设置}{7}{}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces SMILE\textsuperscript  {2}{} 单次前向传播}}{7}{}\protected@file@percent }
+\newlabel{alg:smile2}{{1}{7}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}主要结果}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}消融实验}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}组件消融}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}展开 vs. 端到端}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}\textsc  {SWAP}{} 物理算子 vs. 替代先验}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}可视化分析}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}讨论}{7}{}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{7}{}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces CAVE/KAIST 仿真数据集上的定量比较。$\dagger $ 表示展开方法。 \textbf  {粗体}为最优，\underline  {下划线}为次优。 \textcolor {red}{\textbf  {[TODO: 实验完成后填入具体数值。]}}}}{8}{}\protected@file@percent }
+\newlabel{tab:main}{{2}{8}{}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces KAIST 测试场景上的视觉重建对比。\textcolor {red}{\textbf  {[TODO: 实验完成后替换为真实结果。]}}}}{8}{}\protected@file@percent }
+\newlabel{fig:visual}{{4}{8}{}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces 组件消融实验（CAVE 10 场景，$K=5$，共享权重）。\textcolor {red}{\textbf  {[TODO: 实验完成后填入。]}}}}{8}{}\protected@file@percent }
+\newlabel{tab:ablation_component}{{3}{8}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces 展开结构贡献分析。\textcolor {red}{\textbf  {[TODO: 填入数据。]}}}}{8}{}\protected@file@percent }
+\newlabel{tab:ablation_unfolding}{{4}{8}{}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces 先验算子替换实验。\textcolor {red}{\textbf  {[TODO: 填入数据。]}}}}{8}{}\protected@file@percent }
+\newlabel{tab:ablation_prior}{{5}{8}{}{table.5}{}}
+\bibdata{references}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 代表性像素点的光谱曲线对比。SMILE\textsuperscript  {2}{} 的光谱保真度更高。}}{9}{}\protected@file@percent }
+\newlabel{fig:spectral_curve}{{5}{9}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textsc  {SWAP}{} 的频域行为。(a) 训练后学到的欠/过阻尼区域划分自动适应 HSI 频率特性。 (b) 不同阻尼系数下的频率响应。(c) \textsc  {AdaSpec}{} 权重自适应抑制噪声频带。}}{9}{}\protected@file@percent }
+\newlabel{fig:freq_behavior}{{6}{9}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}结论}{9}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{9}{}{section.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces (a) 训练收敛曲线。SMILE\textsuperscript  {2}{} 在 4 epoch 即达到 33.56 dB，超过 baseline 同期的 30.38 dB。 (b) 各 stage 输出的 PSNR 逐步提升，验证展开结构的有效性。}}{9}{}\protected@file@percent }
+\newlabel{fig:convergence}{{7}{9}{}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \dag  {} 权重 $w$ 的空间分布。$w$ 在 mask 透射率低（退化严重）的区域取较高值， 验证了 \dag  {} 学习到了物理一致的退化模式。}}{9}{}\protected@file@percent }
+\newlabel{fig:dag_vis}{{8}{9}{}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 参数量 vs. PSNR。SMILE\textsuperscript  {2}{} 以最少的参数达到与 SOTA 可比的性能。}}{10}{}\protected@file@percent }
+\newlabel{fig:param_efficiency}{{9}{10}{}{figure.9}{}}
+\gdef \@abspage@last{10}
