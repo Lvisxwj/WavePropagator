@@ -1,0 +1,596 @@
+﻿% ============================================================
+% references.bib — SMILE² 参考文献库
+% 最后更新：2026-05-26（文献搜索核实后更新，修正7条，新增3条）
+% ============================================================
+
+% ---- CASSI 原始硬件论文 ----
+
+@article{wagadarikar2008cassi,
+  title={Single disperser design for coded aperture snapshot spectral imaging},
+  author={Wagadarikar, Ashwin and John, Renu and Willett, Rebecca and Brady, David},
+  journal={Applied Optics},
+  volume={47},
+  number={10},
+  pages={B44--B51},
+  year={2008},
+  publisher={Optica Publishing Group}
+}
+
+@article{gehm2007ddcassi,
+  title={Single-shot compressive spectral imaging with a dual-disperser architecture},
+  author={Gehm, Michael E and John, Renu and Brady, David J and Willett, Rebecca M and Schulz, Timothy J},
+  journal={Optics Express},
+  volume={15},
+  number={21},
+  pages={14013--14027},
+  year={2007},
+  publisher={Optica Publishing Group}
+}
+
+% ---- 数据集 ----
+
+@article{yasuma2010cave,
+  title={Generalized Assorted Pixel Camera: Postcapture Control of Resolution, Dynamic Range, and Spectrum},
+  author={Yasuma, Fumihito and Mitsunaga, Tomoo and Iso, Daisuke and Nayar, Shree K},
+  journal={IEEE Transactions on Image Processing},
+  volume={19},
+  number={9},
+  pages={2241--2253},
+  year={2010},
+  publisher={IEEE}
+}
+
+@article{choi2017kaist,
+  title={High-Quality Hyperspectral Reconstruction Using a Spectral Prior},
+  author={Choi, Inchang and Kim, Daniel S and Gutierrez, Diego and Kim, Min H},
+  journal={ACM Transactions on Graphics (SIGGRAPH Asia)},
+  volume={36},
+  number={6},
+  pages={218:1--218:13},
+  year={2017},
+  publisher={ACM}
+}
+
+% ---- 早期展开方法 ----
+
+@article{meng2020gapnet,
+  title={{GAP-Net} for Snapshot Compressive Imaging},
+  author={Meng, Ziyi and Yu, Zhengjue and Xu, Kun and Yuan, Xin},
+  journal={arXiv preprint arXiv:2012.08364},
+  year={2020}
+}
+
+@inproceedings{meng2020tsanet,
+  title={End-to-End Low Cost Compressive Spectral Imaging with Spatial-Spectral Self-Attention},
+  author={Meng, Ziyi and Ma, Jiawei and Yuan, Xin},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={187--204},
+  year={2020}
+}
+
+% ---- Transformer-based 方法（MST 系列） ----
+
+@inproceedings{cai2022mst,
+  title={Mask-Guided Spectral-Wise Transformer for Efficient Hyperspectral Image Reconstruction},
+  author={Cai, Yuanhao and Lin, Jing and Hu, Xiaowan and Wang, Haoqian and Yuan, Xin and Zhang, Yulun and Timofte, Radu and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={17502--17511},
+  year={2022}
+}
+
+@inproceedings{cai2022cst,
+  title={Coarse-to-Fine Sparse Transformer for Hyperspectral Image Reconstruction},
+  author={Cai, Yuanhao and Lin, Jing and Hu, Xiaowan and Wang, Haoqian and Yuan, Xin and Zhang, Yulun and Timofte, Radu and Van Gool, Luc},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={686--704},
+  year={2022}
+}
+
+@inproceedings{cai2022mstpp,
+  title={{MST++}: Multi-Stage Spectral-Wise Transformer for Efficient Spectral Reconstruction},
+  author={Cai, Yuanhao and Lin, Jing and Lin, Zudi and Wang, Haoqian and Zhang, Yulun and Pfister, Hanspeter and Timofte, Radu and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
+  pages={745--755},
+  year={2022}
+}
+
+% ---- 退化感知展开方法 ----
+
+@inproceedings{cai2022dauhst,
+  title={Degradation-Aware Unfolding Half-Shuffle Transformer for Spectral Compressive Imaging},
+  author={Cai, Yuanhao and Lin, Jing and Wang, Haoqian and Yuan, Xin and Ding, Henghui and Zhang, Yulun and Timofte, Radu and Van Gool, Luc},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={35},
+  pages={37749--37761},
+  year={2022}
+}
+
+@inproceedings{dong2023rdluf,
+  title={Residual Degradation Learning Unfolding Framework with Mixing Priors across Spectral and Spatial for Compressive Spectral Imaging},
+  author={Dong, Yubo and Gao, Dahua and Qiu, Tian and Li, Yuyan and Yang, Minxi and Shi, Guangming},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={22262--22271},
+  year={2023}
+}
+
+% DERNN-LNLT：退化估计 RNN，同时估计 ΔΦ（sensing error）和 σ（噪声水平）
+% arXiv:2311.08808；AAAI 2024 状态待核实
+@article{dong2024dernnlnlt,
+  title={Degradation Estimation Recurrent Neural Network with Local and Non-Local Priors for Compressive Spectral Imaging},
+  author={Dong, Yubo and Gao, Dahua and Li, Yuyan and Shi, Guangming and Liu, Danhua},
+  journal={arXiv preprint arXiv:2311.08808},
+  year={2024}
+}
+
+% DPU CVPR 2024 — 双先验展开（Focused Attention + 退化先验块）
+% 作者更正：第一作者为 Jiancheng Zhang，非 Xu（GitHub: ZhangJC-2k/DPU）
+@inproceedings{zhang2024dpu,
+  title={Dual Prior Unfolding for Snapshot Compressive Imaging},
+  author={Zhang, Jiancheng and Zeng, Haijin and Cao, Jiezhang and Chen, Yongyong and Yu, Dengxiu and Zhao, Yin-Ping},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={25742--25752},
+  year={2024}
+}
+
+% SSR CVPR 2024 — 光谱-空间校正（WSSA + ARB，消除 mean effect）
+% 作者更正：第一作者为 Jiancheng Zhang（同 DPU 作者组）
+@inproceedings{zhang2024ssr,
+  title={Improving Spectral Snapshot Reconstruction with Spectral-Spatial Rectification},
+  author={Zhang, Jiancheng and Zeng, Haijin and Chen, Yongyong and Yu, Dengxiu and Zhao, Yin-Ping},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={25817--25826},
+  year={2024}
+}
+
+% ---- 物理启发、频域与科学机器学习 ----
+
+% WaveFormer：波动方程频域闭式解替代自注意力，O(N log N)复杂度
+% 更正：原 arXiv 号占位符错误，作者也有误（原写为 Zhuang，实为 Shu 等）
+@article{shu2026waveformer,
+  title={WaveFormer: Frequency-Time Decoupled Vision Modeling with Wave Equation},
+  author={Shu, Zishan and Wu, Juntong and Yan, Wei and Liu, Xudong and Zhang, Hongyu and Liu, Chang and Mao, Youdong and Chen, Jie},
+  journal={arXiv preprint arXiv:2601.08602},
+  year={2026}
+}
+
+@article{wang2024vheat,
+  title={Building Vision Models upon Heat Conduction},
+  author={Wang, Zhaozhi and Liu, Yue and Tian, Yunjie and Liu, Yunfan and Wang, Yaowei and Ye, Qixiang},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={9707--9717},
+  year={2025}
+}
+
+@inproceedings{li2021fno,
+  title={Fourier Neural Operator for Parametric Partial Differential Equations},
+  author={Li, Zongyi and Kovachki, Nikola and Azizzadenesheli, Kamyar and Liu, Burigede and Bhattacharya, Kaushik and Stuart, Andrew and Anandkumar, Anima},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2021},
+  note={arXiv:2010.08895}
+}
+
+@inproceedings{leethorp2022fnet,
+  title={{FNet}: Mixing Tokens with Fourier Transforms},
+  author={Lee-Thorp, James and Ainslie, Joshua and Eckstein, Ilya and Ontanon, Santiago},
+  booktitle={Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)},
+  year={2022},
+  note={arXiv:2105.03824}
+}
+
+@inproceedings{guibas2022afno,
+  title={Adaptive Fourier Neural Operators: Efficient Token Mixers for Transformers},
+  author={Guibas, John and Mardani, Morteza and Li, Zongyi and Tao, Andrew and Anandkumar, Anima and Catanzaro, Bryan},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2022},
+  note={arXiv:2111.13587}
+}
+
+@inproceedings{rao2021gfnet,
+  title={Global Filter Networks for Image Classification},
+  author={Rao, Yongming and Zhao, Wenliang and Zhu, Zheng and Lu, Jiwen and Zhou, Jie},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2021},
+  note={arXiv:2107.00645}
+}
+
+@inproceedings{wang2022antioversmoothing,
+  title={Anti-Oversmoothing in Deep Vision Transformers via the Fourier Domain Analysis: From Theory to Practice},
+  author={Wang, Peihao and Zheng, Wenqing and Chen, Tianlong and Wang, Zhangyang},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2022},
+  note={arXiv:2203.05962}
+}
+
+@inproceedings{kong2023fftformer,
+  title={Efficient Frequency Domain-Based Transformers for High-Quality Image Deblurring},
+  author={Kong, Lingshun and Dong, Jiangxin and Ge, Jianjun and Li, Mingqiang and Pan, Jinshan},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2023},
+  note={arXiv:2211.12250}
+}
+
+% DADF-Net：退化感知动态Fourier网络（退化特征图 + 动态Fourier处理）
+% 当前最接近"退化估计+频域处理"组合的现有工作（但非展开、非PDE闭式解）
+@article{dong2023dadfnet,
+  title={Degradation-Aware Dynamic {Fourier}-Based Network for Spectral Compressive Imaging},
+  author={Dong, Yubo and Gao, Dahua and Shi, Guangming and Liu, Danhua},
+  journal={IEEE Transactions on Multimedia},
+  year={2023},
+  doi={10.1109/TMM.2023.3304450},
+  publisher={IEEE}
+}
+
+% Phy-CoSF：物理引导连续光谱场重建（A-HQS展开 + Fourier Mamba + INR）
+% 更正：年份更正为 2026，作者更正，发表于 ICML 2026
+@article{chen2026phycosf,
+  title={{Phy-CoSF}: Physics-Guided Continuous Spectral Fields Reconstruction and Super-Resolution for Snapshot Compressive Imaging},
+  author={Chen, Wudi and Zha, Zhiyuan and Yuan, Xin and Wang, Shigang and Wen, Bihan and Zhou, Jiantao and Yan, Gang and Fan, Zipei and Zhu, Ce},
+  journal={arXiv preprint arXiv:2605.13583},
+  note={Accepted at ICML 2026},
+  year={2026}
+}
+
+% ---- 加速展开方法 ----
+
+% CA²UN：协同注意力加速展开（A-HQS + Nesterov动量 + 退化感知动态网络）
+% 更正：标题从"Content-Aware"更正为"Collaborative Attention"，作者更正
+@article{qin2025ca2un,
+  title={Lightweight Accelerated Unfolding Network With Collaborative Attention for Snapshot Spectral Compressive Imaging},
+  author={Qin, Mengjie and Feng, Yuchao},
+  journal={IET Image Processing},
+  volume={19},
+  number={1},
+  year={2025},
+  doi={10.1049/ipr2.70024},
+  publisher={IET}
+}
+
+% RDFNet：展开FISTA（Nesterov加速近端梯度）用于CASSI，O(1/k²)收敛率
+% 新增：支撑"Nesterov动量O(1/k²)"这一claim
+@article{zhou2023rdfnet,
+  title={Regional Dynamic {FISTA-Net} for Spectral Snapshot Compressive Imaging},
+  author={Zhou, Shiyun and Xu, Tingfa and Dong, Shaocong and Li, Jianan},
+  journal={IEEE Transactions on Computational Imaging},
+  year={2023},
+  doi={10.1109/TCI.2023.3237175},
+  publisher={IEEE}
+}
+
+% ---- 经典优化算法 ----
+
+@article{geman1995hqs,
+  title={Nonlinear image recovery with half-quadratic regularization},
+  author={Geman, Donald and Yang, Chengda},
+  journal={IEEE Transactions on Image Processing},
+  volume={4},
+  number={7},
+  pages={932--946},
+  year={1995},
+  publisher={IEEE}
+}
+
+@article{yang2020admm,
+  title={{ADMM-CSNet}: A Deep Learning Approach for Image Compressive Sensing},
+  author={Yang, Yan and Sun, Jian and Li, Huibin and Xu, Zongben},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={42},
+  number={3},
+  pages={521--538},
+  year={2020},
+  publisher={IEEE}
+}
+
+@article{nesterov1983,
+  title={A method for solving the convex programming problem with convergence rate {$O(1/k^2)$}},
+  author={Nesterov, Yurii},
+  journal={Doklady Akademii Nauk SSSR},
+  volume={269},
+  number={3},
+  pages={543--547},
+  year={1983}
+}
+
+% ---- 视觉Transformer基础 ----
+
+@inproceedings{liu2021swin,
+  title={Swin Transformer: Hierarchical Vision Transformer using Shifted Windows},
+  author={Liu, Ze and Lin, Yutong and Cao, Yue and Hu, Han and Wei, Yixuan and Zhang, Zheng and Lin, Stephen and Guo, Baining},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={10012--10022},
+  year={2021}
+}
+
+% ---- 训练相关 ----
+
+@inproceedings{kingma2015adam,
+  title={Adam: A Method for Stochastic Optimization},
+  author={Kingma, Diederik P and Ba, Jimmy},
+  booktitle={Proceedings of the International Conference on Learning Representations (ICLR)},
+  year={2015}
+}
+
+% ---- 其他CASSI相关方法 ----
+
+@inproceedings{miao2019lambdanet,
+  title={{$\lambda$}-Net: Reconstruct Hyperspectral Images from a Snapshot Measurement},
+  author={Miao, Xin and Yuan, Xin and Pu, Yunchen and Athitsos, Vassilis},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={4059--4069},
+  year={2019}
+}
+
+@inproceedings{huang2021dgsmp,
+  title={Deep Gaussian Scale Mixture Prior for Spectral Compressive Imaging},
+  author={Huang, Tao and Dong, Weisheng and Yuan, Xin and Wu, Jinjian and Shi, Guangming},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={16216--16225},
+  year={2021}
+}
+
+@inproceedings{qin2025mijun,
+  title={Detail Matters: Mamba-Inspired Joint Unfolding Network for Snapshot Spectral Compressive Imaging},
+  author={Qin, Mengjie and Feng, Yuchao and Wu, Zongliang and Zhang, Yulun and Yuan, Xin},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={39},
+  pages={6594--6602},
+  year={2025}
+}
+
+@article{cheng2022recurrent,
+  title={Recurrent Neural Networks for Snapshot Compressive Imaging},
+  author={Cheng, Ziheng and Chen, Bo and Lu, Ruiying and Wang, Zhengjue and Zhang, Hao and Meng, Ziyi and Yuan, Xin},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={45},
+  number={2},
+  pages={2264--2281},
+  year={2022},
+  doi={10.1109/TPAMI.2022.3161934},
+  publisher={IEEE}
+}
+
+@article{kruse1993sam,
+  title={The Spectral Image Processing System ({SIPS})---Interactive Visualization and Analysis of Imaging Spectrometer Data},
+  author={Kruse, F. A. and Lefkoff, A. B. and Boardman, J. W. and Heidebrecht, K. B. and Shapiro, A. T. and Barloon, P. J. and Goetz, A. F. H.},
+  journal={Remote Sensing of Environment},
+  volume={44},
+  number={2--3},
+  pages={145--163},
+  year={1993},
+  doi={10.1016/0034-4257(93)90013-N}
+}
+
+
+% ---- 必须加入 ----
+@misc{simon2026scientifictheorydeeplearning,
+      title={There Will Be a Scientific Theory of Deep Learning}, 
+      author={Jamie Simon and Daniel Kunin and Alexander Atanasov and Enric Boix-Adserà and Blake Bordelon and Jeremy Cohen and Nikhil Ghosh and Florentin Guth and Arthur Jacot and Mason Kamb and Dhruva Karkada and Eric J. Michaud and Berkan Ottlik and Joseph Turnbull},
+      year={2026},
+      eprint={2604.21691},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/2604.21691}, 
+}
+
+@article{bioucasdias2007twist,
+  title={A New {TwIST}: Two-Step Iterative Shrinkage/Thresholding Algorithms for Image Restoration},
+  author={Bioucas-Dias, Jos{\'e} M. and Figueiredo, M{\'a}rio A. T.},
+  journal={IEEE Transactions on Image Processing},
+  volume={16},
+  number={12},
+  pages={2992--3004},
+  year={2007},
+  doi={10.1109/TIP.2007.909319}
+}
+
+@inproceedings{yuan2016gaptv,
+  title={Generalized Alternating Projection Based Total Variation Minimization for Compressive Sensing},
+  author={Yuan, Xin},
+  booktitle={IEEE International Conference on Image Processing (ICIP)},
+  pages={2539--2543},
+  year={2016},
+  doi={10.1109/ICIP.2016.7532817}
+}
+
+@article{liu2018rank,
+  title={Rank Minimization for Snapshot Compressive Imaging},
+  author={Liu, Yang and Yuan, Xin and Suo, Jinli and Brady, David J. and Dai, Qionghai},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={41},
+  number={12},
+  pages={2990--3006},
+  doi={10.1109/TPAMI.2018.2873587},
+  year={2018},
+  publisher={IEEE}
+}
+
+@article{wang2025s2transformer,
+  title={{S2}-Transformer for Mask-Aware Hyperspectral Image Reconstruction},
+  author={Wang, Jiamian and Li, Kunpeng and Zhang, Yulun and Yuan, Xin and Tao, Zhiqiang},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={47},
+  number={6},
+  pages={4299--4316},
+  year={2025}
+}
+
+@article{luo2025dsmt,
+  title={{DSMT}: Dual-Stage Multiscale Transformer for Hyperspectral Snapshot Compressive Imaging},
+  author={Luo, Fulin and Chen, Xi and Guo, Tan and Gong, Xiuwen and Zhang, Lefei and Zhu, Ce},
+  journal={IEEE Transactions on Image Processing},
+  volume={34},
+  pages={2473--2486},
+  year={2025},
+  doi={10.1109/TIP.2025.3556520}
+}
+
+% ============================================================
+% Citation candidates for stronger narrative support
+% Added as candidate pool only; cite in正文 after section-level decision.
+% ============================================================
+
+% Suitable for: Introduction / Related Work -- standard attention and token-mixing baseline.
+@inproceedings{vaswani2017attention,
+  title={Attention Is All You Need},
+  author={Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  pages={5998--6008},
+  year={2017}
+}
+
+% Suitable for: Related Work -- generic vision Transformer background before CASSI-specific Transformer methods.
+@inproceedings{dosovitskiy2021vit,
+  title={An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+  author={Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and Uszkoreit, Jakob and Houlsby, Neil},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2021}
+}
+
+% Suitable for: Introduction / Related Work -- learning models as dynamical systems; supports estimation-evolution framing cautiously.
+@article{weinan2017dynamicalsystems,
+  title={A Proposal on Machine Learning via Dynamical Systems},
+  author={E, Weinan},
+  journal={Communications in Mathematics and Statistics},
+  volume={5},
+  number={1},
+  pages={1--11},
+  year={2017},
+  doi={10.1007/s40304-017-0103-z}
+}
+
+% Suitable for: Related Work -- continuous-depth neural dynamics; background only, not a claim that SMILE2 is a Neural ODE.
+@inproceedings{chen2018neuralode,
+  title={Neural Ordinary Differential Equations},
+  author={Chen, Ricky T. Q. and Rubanova, Yulia and Bettencourt, Jesse and Duvenaud, David K.},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  pages={6571--6583},
+  year={2018}
+}
+
+% Suitable for: Related Work -- physics-informed deep learning foundation; use to motivate physics-structured priors, not to claim PINN training.
+@article{raissi2019pinn,
+  title={Physics-Informed Neural Networks: A Deep Learning Framework for Solving Forward and Inverse Problems Involving Nonlinear Partial Differential Equations},
+  author={Raissi, Maziar and Perdikaris, Paris and Karniadakis, George Em},
+  journal={Journal of Computational Physics},
+  volume={378},
+  pages={686--707},
+  year={2019},
+  doi={10.1016/j.jcp.2018.10.045}
+}
+
+% Suitable for: Introduction / Related Work -- high-quality survey-level support for physics-informed machine learning.
+@article{karniadakis2021piml,
+  title={Physics-Informed Machine Learning},
+  author={Karniadakis, George Em and Kevrekidis, Ioannis G. and Lu, Lu and Perdikaris, Paris and Wang, Sifan and Yang, Liu},
+  journal={Nature Reviews Physics},
+  volume={3},
+  pages={422--440},
+  year={2021},
+  doi={10.1038/s42254-021-00314-5}
+}
+
+% Suitable for: Related Work -- scientific knowledge plus ML; supports cautious wording around physics-guided priors.
+@article{willard2022scientificknowledge,
+  title={Integrating Scientific Knowledge with Machine Learning for Engineering and Environmental Systems},
+  author={Willard, Jared and Jia, Xiaowei and Xu, Shaoming and Steinbach, Michael and Kumar, Vipin},
+  journal={ACM Computing Surveys},
+  volume={55},
+  number={4},
+  pages={1--37},
+  year={2022},
+  doi={10.1145/3514228}
+}
+
+% Suitable for: Related Work -- neural operator family; complements FNO for operator-learning context.
+@article{lu2021deeponet,
+  title={Learning Nonlinear Operators via {DeepONet} Based on the Universal Approximation Theorem of Operators},
+  author={Lu, Lu and Jin, Pengzhan and Pang, Guofei and Zhang, Zhongqiang and Karniadakis, George Em},
+  journal={Nature Machine Intelligence},
+  volume={3},
+  pages={218--229},
+  year={2021},
+  doi={10.1038/s42256-021-00302-5}
+}
+
+% Suitable for: Related Work -- learning PDE-like structures from data; use as neighboring evidence, not direct CASSI precedent.
+@inproceedings{long2018pdenet,
+  title={{PDE-Net}: Learning {PDEs} from Data},
+  author={Long, Zichao and Lu, Yiping and Ma, Xianzhong and Dong, Bin},
+  booktitle={Proceedings of the 35th International Conference on Machine Learning (ICML)},
+  pages={3208--3216},
+  year={2018}
+}
+
+% Suitable for: Related Work -- E2E/CNN CASSI coverage; include if related work needs more non-Transformer E2E baselines.
+@inproceedings{hu2022hdnet,
+  title={{HDNet}: High-Resolution Dual-Domain Learning for Spectral Compressive Imaging},
+  author={Hu, Xiaowan and Cai, Yuanhao and Lin, Jing and Wang, Haoqian and Yuan, Xin and Zhang, Yulun and Timofte, Radu and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month={June},
+  year={2022},
+  pages={17542--17551}
+}
+
+% Suitable for: Related Work -- efficient/binary E2E CASSI; cite as neighboring efficient SCI work if not crowding the main table.
+@inproceedings{cai2023bisci,
+  title={Binarized Spectral Compressive Imaging},
+  author={Cai, Yuanhao and Zheng, Yuxin and Lin, Jing and Yuan, Xin and Zhang, Yulun and Wang, Haoqian},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2023}
+}
+
+% Suitable for: Introduction / Related Work -- HSI spectral redundancy and low-dimensional spectral mixture background.
+@article{bioucasdias2012unmixing,
+  title={Hyperspectral Unmixing Overview: Geometrical, Statistical, and Sparse Regression-Based Approaches},
+  author={Bioucas-Dias, Jos{\'e} M. and Plaza, Antonio and Dobigeon, Nicolas and Parente, Mario and Du, Qian and Gader, Paul and Chanussot, Jocelyn},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  volume={5},
+  number={2},
+  pages={354--379},
+  year={2012},
+  doi={10.1109/JSTARS.2012.2194696}
+}
+
+% Suitable for: Introduction / Experiments -- spectral fidelity matters for downstream HSI recognition; optional support for SAM narrative.
+@article{guo2020unmixingclassification,
+  title={Improving Deep Hyperspectral Image Classification Performance with Spectral Unmixing},
+  author={Guo, Alan J. X. and Zhu, Fei},
+  journal={arXiv preprint arXiv:2004.00583},
+  year={2020},
+  url={https://arxiv.org/abs/2004.00583}
+}
+
+% Suitable for: Related Work -- ECCV 2024 CASSI generalization/adaptation; useful modern E2E-adjacent context without pulling DU into main story.
+@inproceedings{zeng2024sahsci,
+  title={{SAH-SCI}: Self-Supervised Adapter for Efficient Hyperspectral Snapshot Compressive Imaging},
+  author={Zeng, Haijin and Liu, Yuxi and Chen, Yongyong and Liu, Youfa and Peng, Chong and Su, Jingyong},
+  booktitle={Computer Vision -- ECCV 2024},
+  series={Lecture Notes in Computer Science},
+  volume={15122},
+  pages={311--328},
+  year={2024},
+  doi={10.1007/978-3-031-73039-9_18}
+}
+
+% Suitable for: Related Work -- recent E2E CASSI with explicit frequency-domain learning; directly supports modern frequency/CASSI context.
+@article{liu2025ssfan,
+  title={Spatial/Spectral-Frequency Adaptive Network for Hyperspectral Image Reconstruction in {CASSI}},
+  author={Liu, Hejian and Yuan, Yan and Yin, Xiaorui and Su, Lijuan},
+  journal={Remote Sensing},
+  volume={17},
+  number={19},
+  pages={3382},
+  year={2025},
+  doi={10.3390/rs17193382}
+}
+
+% Suitable for: Related Work -- recent frequency-modulation image restoration; optional support for frequency-domain restoration trend.
+@inproceedings{cui2024csnet,
+  title={Hybrid Frequency Modulation Network for Image Restoration},
+  author={Cui, Yuning and Liu, Mingyu and Ren, Wenqi and Knoll, Alois},
+  booktitle={Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, {IJCAI-24}},
+  pages={722--730},
+  year={2024},
+  doi={10.24963/ijcai.2024/80}
+}
+
+

@@ -1,0 +1,32 @@
+﻿# Build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.out
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Large checkpoints and generated arrays
+*.pth
+*.pt
+*.ckpt
+*.npy
+*.npz
+*.mat
+
+# Temporary folders
+_tmp/
+tmp/
+.cache/
+
+# Optional archives are kept locally but not tracked by default
+archive/external_repos/
+archive/old_versions/
+archive/du/checkpoints/
+

@@ -1,0 +1,46 @@
+﻿experiment_name: progressive_222_step3_share
+gpu_id: '3'
+seed: 2026
+batch_size: 2
+max_epoch: 300
+learning_rate: 4.0e-4
+scheduler: CosineAnnealingLR
+epoch_sample: 5000
+crop_size: 256
+num_bands: 28
+use_amp: false
+grad_clip: 0.5
+log_interval: 100
+test_batch_size: 1
+test_all_outputs: true
+save_every: 25
+save_thresh: 28.0
+resume: ''
+
+train_path: ./datasets/CAVE_1024_npy
+test_path: ./datasets/TSA_simu_data/Truth
+mask_path: ./datasets/TSA_simu_data/mask.mat
+
+dim: 28
+unet_stage: 2
+num_blocks: [2, 2, 2]
+use_sicmb: true
+use_perchannel: true
+use_spectral_wave: true
+post_block: ffn
+ffn_mult: 4
+wpo_variant: full
+gradient_checkpointing: false
+input_mode: H
+input_adapter: none
+output_dc: false
+dc_gamma_init: 0.30
+wave_param_mode: free
+wave_basis_count: 3
+
+progressive_steps: 3
+progressive_share: true
+return_intermediates: true
+progressive_loss_weights: [0.1, 0.2, 1.0]
+
+
