@@ -96,4 +96,3 @@ class MaskKleinGordonD(nn.Module):
         correction = torch.fft.irfftn(corr_fft, s=(C, H, W), dim=(-3, -2, -1))
         return u0_out + self.kg_weight * correction
 
-

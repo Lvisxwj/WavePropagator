@@ -94,4 +94,3 @@ class WavelengthAxisReconstruction(nn.Module):
     def diagnostic_stats(self):
         return dict(self._last_stats)
 
-

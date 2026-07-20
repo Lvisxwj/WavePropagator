@@ -59,4 +59,3 @@ print(
 if not finite:
     raise SystemExit(2)
 
-

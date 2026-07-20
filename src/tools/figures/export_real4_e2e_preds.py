@@ -9,8 +9,8 @@ import scipy.io as sio
 OUT = Path('/tmp/smile2_real4_e2e_preds')
 OUT.mkdir(parents=True, exist_ok=True)
 SAM = Path('/tmp/sam_e2e_eval')
-E2E = Path(os.environ.get("SMILE_E2E_ROOT", "./src/repo")).resolve()
-REAL = Path(os.environ.get("SMILE_REAL_DATA", "./datasets/TSA_real_data")).resolve()
+E2E = Path('.')
+REAL = Path('./datasets/TSA_real_data')
 
 def load_module(name, path):
     spec = importlib.util.spec_from_file_location(name, str(path))
@@ -135,6 +135,5 @@ except Exception as e:
 with open(OUT / 'meta.json', 'w', encoding='utf-8') as f:
     json.dump(meta, f, ensure_ascii=False, indent=2)
 print('[real-export] done', OUT, meta, flush=True)
-
 
 

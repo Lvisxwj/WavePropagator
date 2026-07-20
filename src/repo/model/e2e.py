@@ -337,4 +337,3 @@ class E2ESMILE(nn.Module):
             return None
         return torch.exp(self.estimate_step_log_beta)
 
-

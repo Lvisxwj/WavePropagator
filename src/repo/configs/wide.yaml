@@ -18,7 +18,7 @@ resume: ''
 
 train_path: ./datasets/CAVE_1024_npy
 test_path: ./datasets/TSA_simu_data/Truth
-mask_path: ./datasets/TSA_simu_data/mask.mat
+mask_path: ./datasets/TSA_simu_data
 
 dim: 28
 unet_stage: 2
@@ -30,5 +30,4 @@ ffn_mult: 4
 input_mode: H
 output_dc: false
 dc_gamma_init: 0.30
-
 

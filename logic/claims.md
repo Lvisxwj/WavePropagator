@@ -99,4 +99,3 @@ Do not dilute the story with historical branches. They are archived in `legacy.m
 
 SMILE² treats CASSI reconstruction as learned spectral-field estimation followed by physical evolution. From the measurement and mask, CASSI Prep constructs a dirty shift-back field and a residual-adjoint cue. SFE estimates a cleaner spectral field, while SFEvolver propagates it through SWP, a mask-gated Fourier-domain damped-wave operator. This gives the network an interpretable spatial-spectral evolution bias while preserving a single-pass E2E reconstruction pipeline.
 
-

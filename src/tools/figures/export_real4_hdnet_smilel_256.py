@@ -19,8 +19,8 @@ OUT = Path("/tmp/smile2_real4_hdnet_smilel_256")
 OUT.mkdir(parents=True, exist_ok=True)
 
 SAM = Path("/tmp/sam_e2e_eval")
-E2E = Path(os.environ.get("SMILE_E2E_ROOT", "./src/repo")).resolve()
-REAL = Path(os.environ.get("SMILE_REAL_DATA", "./datasets/TSA_real_data")).resolve()
+E2E = Path(".")
+REAL = Path("./datasets/TSA_real_data")
 
 SMILE_L_CFG = E2E / "configs/runtime_friend/progressive_244_step2_noshare_sfe.yaml"
 SMILE_L_CKPT = E2E / "result/model/2026_07_14_19_31_08_progressive_244_step2_noshare_sfe/best_psnr.pth"
@@ -147,6 +147,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 

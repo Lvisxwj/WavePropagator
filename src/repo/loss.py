@@ -145,4 +145,3 @@ def count_flops(model, input_shape=(1, 28, 256, 256), device='cuda'):
 
     return None
 
-

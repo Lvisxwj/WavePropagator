@@ -19,7 +19,7 @@ resume: ''
 
 train_path: ./datasets/CAVE_1024_npy
 test_path: ./datasets/TSA_simu_data/Truth
-mask_path: ./datasets/TSA_simu_data/mask.mat
+mask_path: ./datasets/TSA_simu_data
 
 dim: 28
 unet_stage: 2
@@ -42,5 +42,4 @@ progressive_steps: 2
 progressive_share: true
 return_intermediates: true
 progressive_loss_weights: [0.2, 1.0]
-
 

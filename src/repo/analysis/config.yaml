@@ -2,11 +2,11 @@
 gpu_id: '1'
 seed: 2026
 
-checkpoint: ./checkpoints/smile_m_best_psnr.pth
+checkpoint: ./result/model/2026_06_28_18_58_00_e2e_capacity/best.pth
 train_path: ./datasets/CAVE_1024_npy
 test_path: ./datasets/TSA_simu_data/Truth
-mask_path: ./datasets/TSA_simu_data/mask.mat
-output_root: ./outputs/analysis
+mask_path: ./datasets/TSA_simu_data
+output_root: ./analysis/results
 
 num_bands: 28
 shift_step: 2
@@ -47,5 +47,4 @@ style:
   color_missing: '#C00000'
   color_near: '#70AD47'
   color_far: '#ED7D31'
-
 

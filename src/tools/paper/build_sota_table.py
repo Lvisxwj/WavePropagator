@@ -61,7 +61,7 @@ def load_smile_variant(perscene_path, summary_path):
                     "sam": float(r["sam_rad"]),
                 }
             )
-    # GPU server TSA_simu_data/Truth contains both .mat and .npy copies; load_test reads
+    # A800 TSA_simu_data/Truth contains both .mat and .npy copies; load_test reads
     # 20 entries with exact pairs. Collapse paired duplicates to the real 10 scenes.
     if len(raw) == 20:
         raw = raw[0::2]
@@ -185,7 +185,7 @@ for kind, key in order:
                     for i in range(1, 11)
                 ],
                 "avg": scene_cell(s["psnr"], s["ssim"], s["sam"]),
-                "source": "GPU server eval CSV",
+                "source": "A800 eval CSV",
             }
         )
     else:
@@ -197,7 +197,7 @@ for kind, key in order:
                 scene_cell(smile_m_scenes[i]["psnr"], smile_m_scenes[i]["ssim"], smile_m_scenes[i]["sam"])
                 for i in range(1, 11)
             ] if len(smile_m_scenes) >= 10 else [scene_cell() for _ in range(10)]
-            note = "GPU server eval CSV; best_psnr E284"
+            note = "A800 eval CSV; best_psnr E284"
         elif key == "SMILE-S":
             sm = smile_s_summary or {"params": 1.0179, "gflops": 28.281, "psnr": 35.9378, "ssim": 0.955705, "sam": 0.111643}
             params, gflops = sm["params"], sm["gflops"]
@@ -206,7 +206,7 @@ for kind, key in order:
                 scene_cell(smile_s_scenes[i]["psnr"], smile_s_scenes[i]["ssim"], smile_s_scenes[i]["sam"])
                 for i in range(1, 11)
             ] if len(smile_s_scenes) >= 10 else [scene_cell() for _ in range(10)]
-            note = "GPU server eval CSV; best_psnr E278"
+            note = "A800 eval CSV; best_psnr E278"
         else:
             sm = smile_l_summary or {"params": 3.1909, "gflops": 38.601, "psnr": 36.8438, "ssim": 0.963403, "sam": 0.098169}
             params, gflops = sm["params"], sm["gflops"]
@@ -215,7 +215,7 @@ for kind, key in order:
                 scene_cell(smile_l_scenes[i]["psnr"], smile_l_scenes[i]["ssim"], smile_l_scenes[i]["sam"])
                 for i in range(1, 11)
             ] if len(smile_l_scenes) >= 10 else [scene_cell() for _ in range(10)]
-            note = "GPU server eval CSV; best_psnr E216"
+            note = "A800 eval CSV; best_psnr E216"
         rows.append(
             {
                 "alg": f"{key} (ours)",
@@ -232,7 +232,7 @@ headers = ["Algorithms", "Reference", "Params (M)", "FLOPs (G)"] + [f"S{i}" for 
 md = [
     "# SOTA comparison table for SMILE² E2E paper",
     "",
-    "Source CSVs generated on GPU server from `/tmp/sam_e2e_eval/run_e2e_sota.py` using TSA simulation test data (`10` npy scenes only). Missing paper-only rows are filled from the user-provided SOTA tables; only missing values were filled, and GPU server-measured rows were not overwritten.",
+    "Source CSVs generated on A800 from `/tmp/sam_e2e_eval/run_e2e_sota.py` using TSA simulation test data (`10` npy scenes only). Missing paper-only rows are filled from the user-provided SOTA tables; only missing values were filled, and A800-measured rows were not overwritten.",
     "",
     "- Per-scene CSV: `sota_csv/sota_perscene_20260716_053748.csv`",
     "- Summary CSV: `sota_csv/sota_summary_20260716_053748.csv`",
@@ -240,7 +240,7 @@ md = [
     "- SMILE-S/M/L per-scene CSVs: `sota_csv/smile_s_perscene_best_psnr_10scene.csv`, `sota_csv/smile_m_perscene_best_psnr_10scene.csv`, `sota_csv/smile_l_perscene_best_psnr_10scene.csv`.",
     "- Cell format follows the paper-table style: `PSNR` / `SSIM` / `SAM(rad)` in each scene cell.",
     "- Paper-table-only rows do not report SAM, so SAM is shown as `—` rather than guessed.",
-    "- `GAP-TV / GAP-Net` keeps the current GPU server local-pth evaluation row; it was not replaced by the paper-table GAP-TV values.",
+    "- `GAP-TV / GAP-Net` keeps the current A800 local-pth evaluation row; it was not replaced by the paper-table GAP-TV values.",
     "",
     "## Main table",
     "",
@@ -277,5 +277,4 @@ md.extend(
 
 out.write_text("\n".join(md), encoding="utf-8")
 print(f"wrote {out}")
-
 

@@ -4,13 +4,12 @@ import re
 import shutil
 import subprocess
 from pathlib import Path
-import tempfile
 
 
 ROOT = Path(r"C:\Users\xwj\Desktop\study\Machine Learning\cassi重构\src")
 FIG_DIR = ROOT / "paper" / "my work" / "paper" / "figures" / "final"
 CHROME = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
-TMP_DIR = Path(tempfile.gettempdir()) / "smile_svg_export"
+TMP_DIR = Path(r"C:\Users\xwj\.codex\visualizations\2026\06\27\019f083c-0ec0-7ba0-a5ac-191cc55bb1d1\smile_svg_export")
 
 
 def svg_size(svg_path: Path) -> tuple[int, int]:
@@ -85,7 +84,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-
 

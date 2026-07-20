@@ -8,7 +8,7 @@ OUT = Path('/tmp/smile2_scene5_e2e_preds')
 OUT.mkdir(parents=True, exist_ok=True)
 SAM_CANDIDATES = [Path('/tmp/sam_e2e_eval_runtime'), Path('/tmp/sam_e2e_eval')]
 SAM = next(p for p in SAM_CANDIDATES if (p / 'test_sota.py').exists())
-E2E = Path(os.environ.get("SMILE_E2E_ROOT", "./src/repo")).resolve()
+E2E = Path('.')
 
 def load_module(name, path):
     spec = importlib.util.spec_from_file_location(name, str(path))
@@ -109,6 +109,4 @@ except Exception as e:
 with open(OUT / 'meta.json', 'w', encoding='utf-8') as f:
     json.dump(meta, f, ensure_ascii=False, indent=2)
 print('[export] done', OUT, meta, flush=True)
-
-
 

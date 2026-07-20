@@ -20,7 +20,7 @@ import torch
 ROOT_OUT = Path("/tmp/smile2_fig4_hdnet_smilel")
 SAM_CANDIDATES = [Path("/tmp/sam_e2e_eval_runtime"), Path("/tmp/sam_e2e_eval")]
 SAM = next(p for p in SAM_CANDIDATES if (p / "test_sota.py").exists())
-E2E = Path(os.environ.get("SMILE_E2E_ROOT", "./src/repo")).resolve()
+E2E = Path(".")
 SMILE_L_CFG = E2E / "configs/runtime_friend/progressive_244_step2_noshare_sfe.yaml"
 SMILE_L_CKPT = E2E / "result/model/2026_07_14_19_31_08_progressive_244_step2_noshare_sfe/best_psnr.pth"
 
@@ -128,6 +128,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
