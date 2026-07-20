@@ -78,4 +78,3 @@ All historical routes that are not part of the active paper method are collected
 
 SMILE² first converts a CASSI measurement \(Y\) and mask \(M\) into a dirty shift-back field \(H_0\) and a residual-adjoint cue \(Q_0\). A Spectral Field Estimator uses \([H_0,Q_0,M,H_0\odot M]\) to form a cleaner initial spectral field and produces \(U_1\). A Spectral Field Evolver then applies SWP-based spatial-spectral physical evolution to obtain \(\hat X=U_2\). Inside SWP, Mask A gates the wave field with \(\Phi_s\), then a damped-wave closed-form kernel propagates it in the Fourier domain.
 
-

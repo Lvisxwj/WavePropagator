@@ -311,4 +311,3 @@ def shuffle_crop(train_data, batch_size, crop_size=256, augment=True, device='cu
 
     return torch.stack(gt_batch, dim=0).to(device).float()
 
-

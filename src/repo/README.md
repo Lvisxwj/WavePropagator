@@ -1,6 +1,6 @@
 ﻿# SMILE2 E2E Code
 
-Current single-pass CASSI reconstruction implementation restored from the GPU server
+Current single-pass CASSI reconstruction implementation restored from the A800
 `e2e.v1` project.
 
 ## Main entry points
@@ -16,7 +16,7 @@ Current single-pass CASSI reconstruction implementation restored from the GPU se
 
 - `model/`: SMILE2 model, SWP/SFEstimator/SFEvolver code, mask operations.
 - `configs/`: experiment configs.
-- `configs/runtime_friend/`: current GPU server/friend-server runtime configs,
+- `configs/runtime_friend/`: current A800/friend-server runtime configs,
   including SMILE-S/M/L and ablation variants.
 - `dataset.py`, `loss.py`: data loading, RMSE loss, PSNR/SSIM/SAM metrics.
 
@@ -36,5 +36,4 @@ Friend-server dataset/config helper scripts remain under `scripts/`.
   committed here.
 - Local SMILE-S/M/L checkpoint backups are stored outside the code tree at
   `../../evidence/checkpoints/`.
-
 

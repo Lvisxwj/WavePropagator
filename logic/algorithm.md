@@ -11,7 +11,7 @@ $$
 Y=\Phi X=\sum_{\lambda=1}^{L}\mathrm{Shift}_{\lambda}(M_\lambda\odot X_\lambda).
 $$
 
-The shifted sensing mask is denoted by \(\Phi_s\). The normalization map is
+The shifted mask stack induced by CASSI shifts is denoted by \(\Phi_s\). Its measurement-domain energy gives the normalization map
 
 $$
 P=\Phi\Phi^\top=\sum_{\lambda=1}^{L}\Phi_{s,\lambda}^{2}.
@@ -23,15 +23,17 @@ $$
 P\in\mathbb{R}^{H\times W'} ,
 $$
 
-where \(W'\) is the dispersed measurement width. Each element of \(P\) sums the shifted-mask energy of all spectral bands that land on the same measurement pixel. Thus \(P\) is not a scalar. It normalizes the adjoint/shift-back operation and compensates for nonuniform mask coverage across the measurement plane. We use \(P_\epsilon=P+\epsilon\) in divisions for numerical safety.
+where \(W'\) is the dispersed measurement width. Each element of \(P\) sums the shifted-mask energy of all spectral bands that land on the same measurement pixel. Thus \(P\) is not a scalar. It normalizes the residual-adjoint cue and compensates for nonuniform mask coverage across the measurement plane. We use \(P_\epsilon=P+\epsilon\) in divisions for numerical safety.
 
 ## 2. CASSI Field Preparation
 
 The dirty shift-back field is
 
 $$
-H_0=\Phi^\top(Y/P_\epsilon).
+H_0=\mathcal{B}(Y).
 $$
+
+Here \(\mathcal{B}\) is the dirty shift-back operation: it copies each shifted measurement slice back to its spectral-channel coordinates with the same fixed scale normalization used in the implementation. It is intentionally not written as \(\Phi^\top(Y/P_\epsilon)\), because \(P\) is reserved for the residual-adjoint normalization below.
 
 The measurement residual and residual-adjoint cue are
 
@@ -152,9 +154,9 @@ The parameters \(\alpha(f_\lambda)\) and \(v_s(f_\lambda)\) are described as **s
 
 The FFT along \(\lambda\) uses a discrete periodic spectral-mode basis for the finite 28-band sampled field. This is a learnable prior on the sampled spectral field, not a claim that real spectral reflectance is physically periodic along wavelength.
 
-## 6. Internal feature gate in the Evolver
+## 6. Feature gate in the Evolver
 
-Some SWP blocks contain an internal feature gate implemented by a lightweight branch:
+Some SWP blocks contain a feature gate implemented by a lightweight branch:
 
 $$
 g(x)=\mathrm{DWConv}_{11\times11}(\mathrm{Conv}_{1\times1}(x)),
@@ -164,42 +166,29 @@ $$
 
 In the figure, this is simply an element-wise multiplication branch inside SFE/SFEvolver. It is not named as a separate paper module.
 
-## 7. Shared and non-shared variants
+## 7. Model-family variants
 
-For shared two-step evolution:
+The current paper family keeps the same CASSI preparation, SFE, SFEvolver, and SWP signal flow, and changes only the computational budget:
 
-$$
-\theta_E=\theta_V.
-$$
+- **SMILE-S**: compact \([2,2,2]\) backbone with partially tied estimator/evolver parameters.
+- **SMILE-M**: compact \([2,2,2]\) backbone with decoupled estimator and evolver parameters.
+- **SMILE-L**: wider \([2,4,4]\) backbone for higher capacity.
 
-For non-shared two-step evolution:
-
-$$
-\theta_E\ne\theta_V.
-$$
-
-The current paper family uses this distinction to define small and medium variants, not to claim deep unfolding.
+This is a single-pass E2E model family, not a deep-unfolding iteration schedule.
 
 ## 8. Training objective
 
-The main training objective is reconstruction RMSE. For a single final output,
+The main training objective is weighted RMSE reconstruction supervision over the SFE output and the final SFEvolver output:
 
 $$
-\mathcal{L}_{\mathrm{rec}}
+\mathcal{L}_{\mathrm{train}}
 =
-\sqrt{\frac{1}{HWL}\|\hat X-X\|_2^2+\epsilon_l}.
+\sum_{k=1}^{2}\beta_k\,\mathrm{RMSE}(U_k,X),
+\qquad
+\boldsymbol{\beta}=[0.2,1.0].
 $$
 
-For the current two-step progressive estimation-evolution model, both intermediate and final fields are supervised:
-
-$$
-\mathcal{L}_{\mathrm{prog}}
-=
-\sum_{k=1}^{K}\beta_k
-\sqrt{\frac{1}{HWL}\|U_k-X\|_2^2+\epsilon_l}.
-$$
-
-The two-step setting uses \(\beta=[0.2,1.0]\). There is no SAM loss, SSIM loss, spectral-angle loss, or spectral-derivative loss in the main training objective. SAM is used only for evaluation.
+There is no SAM loss, SSIM loss, spectral-angle loss, spectral-derivative loss, or explicit data-fidelity loss in the main training objective. SAM is used only for evaluation.
 
 ## 9. Complexity statement
 
@@ -230,5 +219,6 @@ flowchart LR
     Phis --> Evolver
     Evolver --> Xhat["Xhat=U2"]
 ```
+
 
 

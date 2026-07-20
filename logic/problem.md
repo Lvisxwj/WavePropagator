@@ -81,4 +81,3 @@ If PSNR is not absolute SOTA, the paper should emphasize:
 - Do not claim historical negative explorations are part of the method.
 - Do not claim model size alone proves the paradigm.
 
-

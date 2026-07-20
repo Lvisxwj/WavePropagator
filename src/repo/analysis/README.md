@@ -19,7 +19,7 @@ counterpart. Interpretation limitations are recorded in `manifest.json`.
 Run immediately:
 
 ```bash
-cd src/repo
+cd .
 SMILE_CONFIG=analysis/config.yaml python analysis/analyze_spectral.py --config analysis/config.yaml
 ```
 
@@ -29,6 +29,4 @@ Queue after K1 on GPU1:
 screen -dmS spectral_analysis -L -Logfile analysis/logs/spectral_analysis.log \
   bash analysis/run_after_k1.sh
 ```
-
-
 

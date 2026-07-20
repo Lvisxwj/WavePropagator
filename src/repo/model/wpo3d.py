@@ -573,4 +573,3 @@ class WaveMST_KG(WaveMST_3D):
                          wpo_variant=wpo_variant,
                          gradient_checkpointing=gradient_checkpointing)
 
-

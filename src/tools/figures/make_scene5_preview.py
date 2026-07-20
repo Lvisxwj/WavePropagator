@@ -21,5 +21,3 @@ ax.set_xlim(0,256); ax.set_ylim(256,0)
 fig.savefig(OUT / 'scene05_rgb_coord_preview.png', bbox_inches='tight')
 plt.close(fig)
 
-
-

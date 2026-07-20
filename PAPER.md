@@ -14,4 +14,3 @@ method: spectral-field estimation and physical evolution
 - `trace/`: decisions and historical rationale.
 - `archive/`: optional legacy material not intended for main Git tracking.
 
-
