@@ -1,4 +1,4 @@
-﻿# SMILE² Algorithm and Signal Flow
+# SMILE² Algorithm and Signal Flow
 
 > Current authority: 2026-07-16  
 > This file fixes the notation, formulas, and signal flow for the current E2E paper. Historical routes are in `legacy.md`.

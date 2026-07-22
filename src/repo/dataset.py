@@ -78,8 +78,8 @@ def gen_meas(gt, mask3d, input_setting='H'):
     return H_out
 
 
-def gen_meas_unfolding(gt, mask3d, step=2):
-    """生成 unfolding 模型的原始测量值 g。"""
+def gen_cassi_measurement(gt, mask3d, step=2):
+    """Generate the raw CASSI measurement from an HSI cube and coded mask."""
     nC, H, W = gt.shape
     masked = mask3d * gt
     shifted = shift_3d(masked, step)
@@ -310,4 +310,5 @@ def shuffle_crop(train_data, batch_size, crop_size=256, augment=True, device='cu
         gt_batch.append(t)
 
     return torch.stack(gt_batch, dim=0).to(device).float()
+
 

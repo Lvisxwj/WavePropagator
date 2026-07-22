@@ -6,9 +6,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 NAMES = (
-    "candidate_mask_init_244",
-    "candidate_wavelength_rec_244",
-    "candidate_ms_mode_swap_244",
+    "mask_initialized_field",
+    "wavelength_axis_reconstruction",
+    "symmetric_multiscale_modes",
 )
 
 
@@ -36,4 +36,5 @@ for name in NAMES:
             ("%.6f" % status["best_sam"]) if "best_sam" in status else "-",
         )
     )
+
 

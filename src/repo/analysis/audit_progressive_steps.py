@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 """Audit progressive E2E intermediate steps.
 
 This script is inference-only. It is intended for checking whether a trained
@@ -104,17 +104,17 @@ def main() -> int:
 
     from dataset import load_mask, load_test  # noqa: WPS433
     from loss import torch_psnr, torch_sam, torch_ssim  # noqa: WPS433
-    from model.e2e import E2ESMILE, cassi_measure, phi_phi_t, shift_back, shift_cube  # noqa: WPS433
+    from model.smile import SMILE2, cassi_measure, phi_phi_t, shift_back, shift_cube  # noqa: WPS433
 
     with config_path.open("r", encoding="utf-8") as handle:
         cfg = yaml.safe_load(handle)
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
-    model = E2ESMILE(
+    model = SMILE2(
         dim=cfg["dim"],
         unet_stage=cfg["unet_stage"],
         num_blocks=cfg["num_blocks"],
-        use_sicmb=cfg["use_sicmb"],
+        use_spatial_content_modulation=cfg["use_spatial_content_modulation"],
         use_perchannel=cfg["use_perchannel"],
         use_spectral_wave=cfg.get("use_spectral_wave", True),
         post_block=cfg["post_block"],
@@ -122,16 +122,16 @@ def main() -> int:
         input_mode=cfg["input_mode"],
         output_dc=cfg["output_dc"],
         dc_gamma_init=cfg.get("dc_gamma_init", 0.30),
-        wpo_variant=cfg.get("wpo_variant", "full"),
+        swp_variant=cfg.get("swp_variant", "full"),
         gradient_checkpointing=False,
         bands=cfg["num_bands"],
         input_adapter=cfg.get("input_adapter", "none"),
         wavelength_cutoff_init=cfg.get("wavelength_cutoff_init", 0.28),
         wave_param_mode=cfg.get("wave_param_mode", "free"),
         wave_basis_count=cfg.get("wave_basis_count", 3),
-        progressive_steps=cfg.get("progressive_steps", 1),
-        progressive_share=cfg.get("progressive_share", True),
-        return_intermediates=True,
+        num_field_outputs=cfg.get("num_field_outputs", 1),
+        share_estimator_evolver_weights=cfg.get("share_estimator_evolver_weights", True),
+        return_intermediate_fields=True,
     ).to(device)
     model.eval()
     ckpt = load_state(model, ckpt_path, device)
@@ -337,4 +337,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 

@@ -1,4 +1,4 @@
-﻿# Citation Audit for SMILE² AAAI Draft
+# Citation Audit for SMILE² AAAI Draft
 
 Last updated: 2026-07-20
 

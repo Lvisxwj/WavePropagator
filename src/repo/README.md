@@ -1,39 +1,42 @@
-﻿# SMILE2 E2E Code
+﻿# SMILE² E2E Code
 
-Current single-pass CASSI reconstruction implementation restored from the A800
-`e2e.v1` project.
+This directory contains the current end-to-end CASSI reconstruction implementation used by SMILE².
 
 ## Main entry points
 
-- `train.py`: YAML-driven single-GPU training.
-- `test_real.py`: TSA-real evaluation/visualization.
-- `train_distill.py`: historical distillation/curriculum entry; kept for
-  reproducibility, not the main paper route.
-- `batch_scan.py`: batch-size throughput/OOM scan.
-- `smoke_test.py`: quick forward/backward check.
+- `train.py` — YAML-driven training.
+- `smoke_test.py` — quick forward/backward check.
+- `test_real.py` — real-data inference entry.
+- `batch_scan.py` — batch-size throughput/OOM scan.
 
 ## Core code
 
-- `model/`: SMILE2 model, SWP/SFEstimator/SFEvolver code, mask operations.
-- `configs/`: experiment configs.
-- `configs/runtime_friend/`: current A800/friend-server runtime configs,
-  including SMILE-S/M/L and ablation variants.
-- `dataset.py`, `loss.py`: data loading, RMSE loss, PSNR/SSIM/SAM metrics.
+- `model/smile.py` — SMILE² wrapper and CASSI Prep.
+- `model/spectral_wave_propagator.py` — Spectral Wave Propagator (SWP) and SWP block.
+- `model/spectral_field_components.py` — SFEstimator/SFEvolver building blocks.
+- `model/spatial_content_modulation.py` — spatial-content modulation block.
+- `model/cassi_operators.py` — mask-conditioned CASSI utilities.
+- `dataset.py`, `loss.py` — data loading, RMSE loss, PSNR/SSIM/SAM metrics.
 
-## Supporting scripts
+## Configs
 
-To keep the root readable, launch/eval/status helper scripts live under:
+- `configs/smile_s.yaml`
+- `configs/smile_m.yaml`
+- `configs/smile_l.yaml`
+- `configs/ablations/`
+- `configs/experimental/`
+
+## Scripts
+
+Launch/evaluation/status helpers live under:
 
 - `scripts/launch/`
 - `scripts/eval/`
 - `scripts/status/`
 
-Friend-server dataset/config helper scripts remain under `scripts/`.
-
 ## Notes
 
-- Checkpoints, logs, datasets, and generated arrays are intentionally not
-  committed here.
-- Local SMILE-S/M/L checkpoint backups are stored outside the code tree at
-  `../../evidence/checkpoints/`.
+- Datasets, logs, generated arrays, and most checkpoints are intentionally not committed.
+- The released SMILE²-M checkpoint backup is stored at `../../evidence/checkpoints/SMILE-M/`.
+
 

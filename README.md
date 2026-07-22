@@ -1,67 +1,64 @@
-﻿# SMILE2
+﻿# SMILE² / SpectralWavePropagator
 
-Clean project package for the SMILE2 CASSI reconstruction paper and code.
+Clean release package for **SMILE²: Spectral Modulated Imaging via Learned Estimation-Evolution**.
 
-This is the active Git-tracked project root. Legacy DU code, external SOTA
-repositories, old experiments, and bulky figure drafts are kept outside this
-directory under `../_legacy/` unless they are explicitly needed by the current
-paper/code workflow.
+SMILE² is an end-to-end CASSI hyperspectral reconstruction framework built around a Spectral Wave Propagator (SWP), which models spatial-spectral feature propagation through a Fourier-domain closed-form damped wave operator.
 
 ## Layout
 
 ```text
-SMILE2/
-├── AGENTS.md              # project operating rules and A800 runbook memory
-├── PAPER.md               # short project manifest
-├── logic/                 # paper-facing concepts, claims, problem, algorithm
-├── paper/
-│   ├── aaai2027/          # AAAI LaTeX source, bibliography, compiled draft
-│   ├── feedback/          # professor feedback and Chinese working draft refs
-│   └── figures/           # source/final figure assets used by the paper
-├── evidence/
-│   ├── checkpoints/       # local backups of SMILE-S/M/L checkpoints
-│   ├── figures/           # generated mechanism/visual comparison assets
-│   └── results/           # SOTA/ablation CSVs and markdown tables
+release/
+├── README.md                 # this overview
+├── PAPER.md                  # short paper manifest
+├── INDEX.md                  # detailed file map
+├── WORKFLOWS.md              # reproducibility and maintenance notes
+├── logic/                    # paper-facing notation, claims, concepts, algorithm
+├── paper/aaai2027/           # AAAI manuscript source, bibliography, figures, PDF
+├── evidence/                 # selected metrics, figures, and checkpoint backup
 └── src/
-    ├── repo/              # current E2E implementation restored from A800
-    ├── tools/             # reusable local/A800/eval/figure helper scripts
-    └── environment.md     # reproducibility notes
+    ├── environment.md        # dependency and runtime notes
+    ├── repo/                 # SMILE² training/evaluation implementation
+    └── tools/                # public helper notes; private/local one-off tools excluded
 ```
 
-## Current code entry
+## Code entry points
 
-Current training/evaluation code is in `src/repo/`.
+Current implementation is under `src/repo/`.
 
-Important entry points:
+- `train.py` — YAML-driven training.
+- `smoke_test.py` — quick forward/backward check.
+- `test_real.py` — TSA-real inference entry.
+- `batch_scan.py` — batch-size throughput/OOM probe.
+- `model/smile.py` — SMILE² wrapper and CASSI preprocessing.
+- `model/spectral_wave_propagator.py` — SWP and SWP block implementation.
+- `model/spectral_field_components.py` — SFEstimator/SFEvolver components.
+- `model/cassi_operators.py` — mask and CASSI operator utilities.
 
-- `train.py`
-- `test_real.py`
-- `train_distill.py`
-- `batch_scan.py`
-- `smoke_test.py`
-- `configs/runtime_friend/`
-- `model/`
+## Main configs
 
-Root-level launch/status/eval helper scripts are intentionally moved under
-`src/repo/scripts/` so that the code root stays readable.
+- `src/repo/configs/smile_s.yaml`
+- `src/repo/configs/smile_m.yaml`
+- `src/repo/configs/smile_l.yaml`
 
-## A800 helpers
+Ablations are under `src/repo/configs/ablations/`; exploratory historical configs are under `src/repo/configs/experimental/`.
 
-A800 connection/status/export scripts are centralized in `src/tools/remote/`.
+## Checkpoint
 
-The pinned Paramiko dependency used for A800 helper scripts is stored in
-`.codex_deps/paramiko_a800/`. Use this folder via `PYTHONPATH` when the system
-Paramiko is too old.
+A local backup of the released SMILE²-M checkpoint is stored at:
 
-## Additional local research notes
+```text
+evidence/checkpoints/SMILE-M/SMILE-M_best_psnr.pth
+```
 
-- 	race/: development history, side analyses, old drafts, and experiment-audit notes. These are useful context but not the canonical method description.
+Private server paths and credentials are intentionally excluded.
 
-## Start here
+## Paper
 
-- INDEX.md — detailed directory/file map for the active repo.
-- WORKFLOWS.md — fixed workflows for LaTeX, A800, SOTA tables, figures, and checkpoints.
-- AGENTS.md — long internal run-state and historical-project reference.
+The active English manuscript is:
 
+```text
+paper/aaai2027/smile2_aaai2026.tex
+paper/aaai2027/smile2_aaai2026.pdf
+```
 
 

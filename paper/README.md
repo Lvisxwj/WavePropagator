@@ -1,4 +1,4 @@
-﻿# Paper layer index
+# Paper layer index
 
 This folder contains manuscript-facing materials.
 

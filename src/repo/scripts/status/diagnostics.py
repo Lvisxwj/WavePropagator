@@ -1,4 +1,4 @@
-﻿"""Low-overhead structured diagnostics for E2E training."""
+"""Low-overhead structured diagnostics for E2E training."""
 
 import csv
 import hashlib
@@ -92,7 +92,7 @@ def final_output(output):
 def collect_model_stats(model):
     stats = {"wpo": {}, "candidate": {}}
     for name, module in model.named_modules():
-        if module.__class__.__name__ == "WPO3D":
+        if module.__class__.__name__ == "SpectralWavePropagator":
             alpha, vs, vl, t = module._get_effective_params()
             stats["wpo"][name] = {
                 "wave_param_mode": getattr(module, "wave_param_mode", "free"),
@@ -133,7 +133,7 @@ def probe_forward(model, y, mask, shifted_mask, ppt):
         return hook
 
     for name, module in model.named_modules():
-        if module.__class__.__name__ == "WPO3D":
+        if module.__class__.__name__ == "SpectralWavePropagator":
             handles.append(module.register_forward_hook(make_hook(name)))
     try:
         pred = final_output(model(y, mask, shifted_mask, ppt))
@@ -141,4 +141,6 @@ def probe_forward(model, y, mask, shifted_mask, ppt):
         for handle in handles:
             handle.remove()
     return pred, {"activations": activations, **collect_model_stats(model)}
+
+
 

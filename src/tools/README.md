@@ -1,11 +1,6 @@
 ﻿# SMILE² tools
 
-Utility scripts that support the clean SMILE² repo but are not part of the model package itself.
+This public release keeps only reusable, non-private helper notes at this level.
 
-- `remote/` — A800/remote status, log collection, and transfer helpers.
-- `eval/` — evaluation and SOTA/per-scene table helpers.
-- `figures/` — scripts for paper visualizations and generated diagnostic assets.
-- `paper/` — paper/table conversion or LaTeX-adjacent helpers.
-
-Core train/test/model code remains in `../repo/`; experiment configs remain in `../repo/configs/`.
-
+Model training, evaluation, and status scripts that are part of the code package live in `../repo/scripts/`.
+Local-only figure-export scripts, private remote helpers, temporary server paths, and one-off draft utilities are intentionally excluded from this sanitized release.

@@ -1,10 +1,10 @@
-﻿# SMILE² Logic Link
+# SMILE² Logic Link
 
 > Current authority: 2026-07-16  
 > This file is the paper narrative chain. Historical branches are moved to `legacy.md`.
 
 
-# 这个其实更像为什么设计sfe 和sfevolver的逻辑
+# Rationale for SFEstimator and SFEvolver
 
 ## 1. Observation: CASSI starts from a dirty spectral field
 

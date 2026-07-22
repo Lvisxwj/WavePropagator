@@ -32,19 +32,19 @@ def main() -> None:
     parser.add_argument("--gpu-id", default="0")
     parser.add_argument(
         "--templates",
-        default="progressive_222_step2_share.yaml,progressive_222_step2_noshare.yaml,progressive_222_step3_share.yaml",
+        default="smile_s.yaml,smile_m.yaml,smile_l.yaml",
     )
     parser.add_argument(
         "--batches",
         default="",
-        help="optional per-experiment override, e.g. progressive_222_step2_share=16,progressive_222_step2_noshare=12",
+        help="optional per-experiment override, e.g. smile_s=16,smile_m=12",
     )
     parser.add_argument("--max-epoch", type=int, default=None)
     parser.add_argument("--epoch-sample", type=int, default=None)
     args = parser.parse_args()
 
     project_dir = args.project_dir.resolve()
-    out_dir = args.out_dir or (project_dir / "configs" / "runtime_friend")
+    out_dir = args.out_dir or (project_dir / "configs" / "generated")
     out_dir.mkdir(parents=True, exist_ok=True)
     batch_overrides = parse_batch(args.batches)
 
@@ -74,4 +74,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 

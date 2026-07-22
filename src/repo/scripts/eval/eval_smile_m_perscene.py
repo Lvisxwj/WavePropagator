@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 import csv
 import os
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 os.environ.setdefault("CUDA_VISIBLE_DEVICES", "7")
 os.environ.setdefault(
     "SMILE_CONFIG",
-    "configs/runtime_friend/progressive_222_step2_estimate_evolve_v2.yaml",
+    "configs/smile_m.yaml",
 )
 
 import torch
@@ -16,8 +16,9 @@ from train import build_model, cfg, count_params, test_epoch
 
 
 def main():
-    root = Path(__file__).resolve().parent
-    ckpt_path = root / "result/model/2026_07_13_17_46_16_progressive_222_step2_estimate_evolve_v2/best_psnr.pth"
+    root = Path(__file__).resolve().parents[2]
+    default_ckpt = root / "../../evidence/checkpoints/SMILE-M/SMILE-M_best_psnr.pth"
+    ckpt_path = Path(os.environ.get("SMILE_CKPT", str(default_ckpt))).resolve()
     out_dir = root / "result/eval_smile_m"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_csv = out_dir / "smile_m_perscene_best_psnr.csv"
@@ -74,4 +75,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

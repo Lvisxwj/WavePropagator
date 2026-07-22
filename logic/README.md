@@ -1,4 +1,4 @@
-﻿# Logic layer index
+# Logic layer index
 
 This folder is the source of truth for paper reasoning and notation.
 

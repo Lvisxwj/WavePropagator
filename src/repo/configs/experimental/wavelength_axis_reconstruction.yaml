@@ -1,0 +1,43 @@
+﻿experiment_name: wavelength_axis_reconstruction
+gpu_id: '2'
+seed: 2026
+batch_size: 8
+max_epoch: 300
+learning_rate: 4.0e-4
+scheduler: CosineAnnealingLR
+epoch_sample: 5000
+crop_size: 256
+num_bands: 28
+use_amp: false
+grad_clip: 0.5
+log_interval: 100
+test_batch_size: 1
+save_every: 25
+save_thresh: 28.0
+resume: ''
+probe_epochs: [0, 1, 5, 10, 20, 40, 60, 100, 120, 150, 200, 250, 300]
+probe_array_epochs: [0, 20, 60, 120, 200, 300]
+
+train_path: ./datasets/CAVE_1024_npy
+test_path: ./datasets/TSA_simu_data/Truth
+mask_path: ./datasets/TSA_simu_data
+
+dim: 28
+unet_stage: 2
+num_blocks: [2, 4, 4]
+use_spatial_content_modulation: true
+use_perchannel: true
+use_spectral_wave: true
+post_block: ffn
+ffn_mult: 4
+swp_variant: full
+gradient_checkpointing: false
+input_mode: H
+input_adapter: wavelength
+wavelength_cutoff_init: 0.28
+wave_param_mode: free
+wave_basis_count: 3
+output_dc: false
+dc_gamma_init: 0.30
+
+

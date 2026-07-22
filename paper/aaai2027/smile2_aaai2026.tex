@@ -45,15 +45,18 @@
 \maketitle
 
 \begin{abstract}
-Coded aperture snapshot spectral imaging (CASSI) aims to recover a three-dimensional hyperspectral image from a single two-dimensional coded measurement, resulting in a severely under-determined spatial--spectral inverse problem.
-Recent end-to-end CNN and Transformer models have greatly improved reconstruction quality by learning spatial--spectral mappings, but their central interaction mechanisms are still largely implemented as generic convolutional transformations or implicit token mixing.
-Consequently, how information should propagate over the hyperspectral \((x,y,\lambda)\) field remains weakly structured and difficult to interpret.
-In this paper, we propose \smiletwo{}, a single-pass spectral-field estimation--evolution framework for end-to-end CASSI reconstruction.
-Instead of directly mapping an aliased shift-back field to the output cube, \smiletwo{} first estimates an initial spectral field from measurement-consistent cues and then evolves it with a unified spatial--spectral physical operator.
-The core component is the Spectral Wave Propagator (\swp{}), which adapts a three-dimensional damped wave equation to the discretely sampled HSI field and performs global propagation through a Fourier-domain closed-form solution with \(O(N\log N)\) operator-level complexity.
-Together with CASSI preparation, \sfestimator{}, and \sfevolver{}, \swp{} forms a compact estimation--evolution reconstructor.
-On the TSA simulation benchmark and real CASSI measurements, \smiletwo{} achieves state-of-the-art end-to-end reconstruction quality under compact computation.
-In particular, \smiletwo-L reaches 37.07 dB PSNR and 0.965 SSIM with 3.19M parameters and 38.60G FLOPs, while obtaining favorable spectral angle mapper (SAM) fidelity among reproducible end-to-end baselines.
+Coded aperture snapshot spectral imaging (CASSI) reconstructs a three-dimensional hyperspectral image from a single two-dimensional coded measurement, resulting in a severely underdetermined spatial--spectral inverse problem.
+Recent Transformer-based methods have achieved remarkable progress in end-to-end CASSI reconstruction.
+However, attention can learn which spectral bands and spatial regions should interact, but offers little explicit account of how information should propagate to disentangle coded spectral overlap and recover a coherent hyperspectral field.
+Moreover, global pairwise interaction incurs quadratic computational complexity.
+To address these limitations, we propose \smiletwo{}, a single-pass framework for Spectrally Modeled CASSI Reconstruction via Learned Estimation--Evolution.
+Specifically, a CASSI preparation stage constructs a dirty shift-back field, a normalized residual-adjoint field, and shifted-mask information from the forward imaging model.
+A \sfestimator{} first uses this information to estimate a cleaner initial spectral field, after which a \sfevolver{} propagates the estimated field into the final hyperspectral reconstruction.
+At the core of both components, the Spectral Wave Propagator (\swp{}) adapts a learnable anisotropic three-dimensional damped-wave model to the sampled spatial--spectral field and performs mask-conditioned global interaction through a closed-form Fourier-domain solution.
+Unlike implicit pairwise token mixing, \swp{} introduces explicit propagation and damping structures while retaining $O(N\log N)$ operator-level complexity.
+Experiments on simulated and real CASSI measurements demonstrate that \smiletwo{} achieves state-of-the-art end-to-end reconstruction quality with compact computation.
+Ablations and cross-band analyses further validate the complementary roles of field estimation, structured evolution, and spectral propagation.
+Code is to be released upon publication.
 \end{abstract}
 
 \section{Introduction}
@@ -579,6 +582,9 @@ Figure~\ref{fig:swp_kernel_appendix} further derives 3D damped-wave kernel visua
 \bibliography{smile2_aaai2026}
 
 \end{document}
+
+
+
 
 
 

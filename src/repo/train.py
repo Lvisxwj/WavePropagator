@@ -6,7 +6,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent
-CONFIG_PATH = Path(os.environ.get("SMILE_CONFIG", ROOT / "configs/compact.yaml"))
+CONFIG_PATH = Path(os.environ.get("SMILE_CONFIG", ROOT / "configs/smile_m.yaml"))
 if not CONFIG_PATH.is_absolute():
     CONFIG_PATH = ROOT / CONFIG_PATH
 with open(CONFIG_PATH, "r", encoding="utf-8") as fp:
@@ -37,8 +37,8 @@ import torch
 
 from dataset import load_mask, load_test, load_training, shuffle_crop
 from loss import rmse_loss, torch_psnr, torch_sam, torch_ssim
-from model.e2e import E2ESMILE, cassi_measure, phi_phi_t, shift_cube
-from model.wpo3d import WPO3D
+from model.smile import SMILE2, cassi_measure, phi_phi_t, shift_cube
+from model.spectral_wave_propagator import SpectralWavePropagator
 from diagnostics import (
     append_csv, atomic_write_json, collect_model_stats, probe_forward,
     rng_state, source_manifest,
@@ -59,11 +59,11 @@ def seed_everything(seed):
 
 
 def build_model():
-    return E2ESMILE(
+    return SMILE2(
         dim=cfg["dim"],
         unet_stage=cfg["unet_stage"],
         num_blocks=cfg["num_blocks"],
-        use_sicmb=cfg["use_sicmb"],
+        use_spatial_content_modulation=cfg["use_spatial_content_modulation"],
         use_perchannel=cfg["use_perchannel"],
         use_spectral_wave=cfg.get("use_spectral_wave", True),
         post_block=cfg["post_block"],
@@ -71,7 +71,7 @@ def build_model():
         input_mode=cfg["input_mode"],
         output_dc=cfg["output_dc"],
         dc_gamma_init=cfg.get("dc_gamma_init", 0.30),
-        wpo_variant=cfg.get("wpo_variant", "full"),
+        swp_variant=cfg.get("swp_variant", "full"),
         gradient_checkpointing=cfg.get("gradient_checkpointing", False),
         bands=cfg["num_bands"],
         input_adapter=cfg.get("input_adapter", "none"),
@@ -79,11 +79,11 @@ def build_model():
         wave_param_mode=cfg.get("wave_param_mode", "free"),
         wave_basis_count=cfg.get("wave_basis_count", 3),
         use_mask_gate=cfg.get("use_mask_gate", True),
-        progressive_steps=cfg.get("progressive_steps", 1),
-        progressive_share=cfg.get("progressive_share", True),
-        return_intermediates=cfg.get("return_intermediates", False),
-        progressive_role_mode=cfg.get("progressive_role_mode", "plain"),
-        disable_sfevolver=cfg.get("disable_sfevolver", False),
+        num_field_outputs=cfg.get("num_field_outputs", 1),
+        share_estimator_evolver_weights=cfg.get("share_estimator_evolver_weights", True),
+        return_intermediate_fields=cfg.get("return_intermediate_fields", False),
+        field_process_mode=cfg.get("field_process_mode", "plain"),
+        disable_evolver=cfg.get("disable_spectral_field_evolver", False),
     )
 
 
@@ -99,15 +99,15 @@ def print_config(model):
     print("=" * 68, flush=True)
     print(f"Experiment:      {cfg['experiment_name']}", flush=True)
     print(f"GPU:             physical {cfg['gpu_id']} (local cuda:0)", flush=True)
-    print(f"E2E:             single pass, no unfolding/LDE/rho/delta-Phi", flush=True)
+    print(f"E2E:             single-pass spectral-field estimation and evolution", flush=True)
     print(f"Backbone:        2-level dim={cfg['dim']} blocks={cfg['num_blocks']}", flush=True)
     print(
-        f"SWAP:            SiCMB={cfg['use_sicmb']} PerCh={cfg['use_perchannel']} "
+        f"SWAP:            spatial-content modulation={cfg['use_spatial_content_modulation']} PerCh={cfg['use_perchannel']} "
         f"SpectralWave={cfg.get('use_spectral_wave', True)} "
-        f"MaskGateA={cfg.get('use_mask_gate', True)}",
+        f"MaskConditionedGate={cfg.get('use_mask_gate', True)}",
         flush=True,
     )
-    print(f"WPO variant:     {cfg.get('wpo_variant', 'full')}", flush=True)
+    print(f"SWP variant:     {cfg.get('swp_variant', 'full')}", flush=True)
     print(
         f"Wave parameters: {cfg.get('wave_param_mode', 'free')} "
         f"basis={cfg.get('wave_basis_count', 3)}",
@@ -115,11 +115,11 @@ def print_config(model):
     )
     print(f"Input adapter:   {cfg.get('input_adapter', 'none')}", flush=True)
     print(
-        f"Progressive:     steps={cfg.get('progressive_steps', 1)} "
-        f"share={cfg.get('progressive_share', True)} "
-        f"role={cfg.get('progressive_role_mode', 'plain')} "
-        f"disable_sfevolver={cfg.get('disable_sfevolver', False)} "
-        f"loss_weights={cfg.get('progressive_loss_weights', [])}",
+        f"Field outputs:   count={cfg.get('num_field_outputs', 1)} "
+        f"share={cfg.get('share_estimator_evolver_weights', True)} "
+        f"process={cfg.get('field_process_mode', 'plain')} "
+        f"disable_evolver={cfg.get('disable_spectral_field_evolver', False)} "
+        f"loss_weights={cfg.get('field_loss_weights', [])}",
         flush=True,
     )
     print(f"Grad checkpoint: {cfg.get('gradient_checkpointing', False)}", flush=True)
@@ -151,16 +151,16 @@ def final_output(output):
     return output
 
 
-def progressive_loss(outputs, gt):
+def multi_output_reconstruction_loss(outputs, gt):
     if not isinstance(outputs, (list, tuple)):
         return rmse_loss(outputs, gt)
-    weights = cfg.get("progressive_loss_weights", None)
+    weights = cfg.get("field_loss_weights", None)
     if weights is None or len(weights) == 0:
         weights = [0.0] * (len(outputs) - 1) + [1.0]
     weights = [float(w) for w in weights]
     if len(weights) != len(outputs):
         raise ValueError(
-            f"progressive_loss_weights length {len(weights)} != outputs length {len(outputs)}"
+            f"field_loss_weights length {len(weights)} != outputs length {len(outputs)}"
         )
     loss = outputs[-1].new_tensor(0.0)
     for weight, output in zip(weights, outputs):
@@ -172,7 +172,7 @@ def progressive_loss(outputs, gt):
 def print_physics_stats(model):
     rows = []
     for name, module in model.named_modules():
-        if isinstance(module, WPO3D):
+        if isinstance(module, SpectralWavePropagator):
             alpha, vs, _, _ = module._get_effective_params()
             rows.append((name, module, alpha.detach().reshape(-1).cpu(), vs.detach().reshape(-1).cpu()))
     if rows:
@@ -222,7 +222,7 @@ def train_epoch(epoch, model, optimizer, scaler, train_set, mask, device, save_d
             with torch.cuda.amp.autocast():
                 outputs = model(y, mask_b, shifted_mask, ppt)
                 pred = final_output(outputs)
-                loss = progressive_loss(outputs, gt)
+                loss = multi_output_reconstruction_loss(outputs, gt)
             if not torch.isfinite(pred).all() or not torch.isfinite(loss):
                 raise NumericalTrainingError(
                     f"non-finite AMP output/loss at epoch={epoch} batch={batch_idx}",
@@ -256,7 +256,7 @@ def train_epoch(epoch, model, optimizer, scaler, train_set, mask, device, save_d
                         "pred": pred[:2].detach().half().cpu(),
                     },
                 )
-            loss = progressive_loss(outputs, gt)
+            loss = multi_output_reconstruction_loss(outputs, gt)
             if not torch.isfinite(loss):
                 raise NumericalTrainingError(
                     f"non-finite loss at epoch={epoch} batch={batch_idx}",
@@ -425,8 +425,8 @@ def main():
             "parameters_m": count_params(model),
             "resolved_config": cfg,
             "source": source_manifest(ROOT, [
-                "train.py", "diagnostics.py", "model/e2e.py",
-                "model/wpo3d.py", "model/candidates.py", "dataset.py", "loss.py",
+                "train.py", "diagnostics.py", "model/smile.py",
+                "model/spectral_wave_propagator.py", "model/spectral_field_components.py", "dataset.py", "loss.py",
             ]),
         }, fp, indent=2, ensure_ascii=False)
 
@@ -556,4 +556,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
 

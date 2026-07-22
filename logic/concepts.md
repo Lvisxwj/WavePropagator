@@ -1,4 +1,4 @@
-﻿# SMILE² E2E Name Mapping
+# SMILE² E2E Name Mapping
 
 > Current authority: 2026-07-16  
 > This file only defines the **active E2E paper vocabulary**. Historical explorations are moved to `legacy.md`.
@@ -7,12 +7,12 @@
 
 | Paper term | Short name | Meaning | Code-level anchor |
 |---|---|---|---|
-| **SMILE²** | — | Single-pass CASSI reconstruction via learned estimation and physical evolution | `E2ESMILE` |
+| **SMILE²** | — | Single-pass CASSI reconstruction via learned estimation and physical evolution | `SMILE2` |
 | **CASSI Field Preparation** | **CASSI Prep** | Construct the dirty initial field and residual-adjoint cue from CASSI measurement and mask | shift-back, forward/adjoint operators |
-| **Spectral Field Estimator** | **SFE** | Estimate a cleaner spectral field from the dirty CASSI initialization; logically includes the SFE stem and the first SWP-based U-Net | `MeasurementAwareInitialStateStem` + first `WaveMST_3D` |
-| **Spectral Field Evolver** | **SFEvolver** | Continue physical spatial-spectral evolution from the estimated field | second/subsequent `WaveMST_3D` |
-| **Spectral Wave Propagator** | **SWP** | The damped-wave closed-form propagation unit used inside SFE/SFEvolver blocks | `WPO3D` / `WPO3DBlock` |
-| **Mask A** | — | CASSI mask-gated wave-field initialization inside SWP | `MaskGateA` |
+| **Spectral Field Estimator** | **SFE** | Estimate a cleaner spectral field from the dirty CASSI initialization; logically includes the SFE stem and the first SWP-based U-Net | `MeasurementAwareInitialStateStem` + first `SpectralFieldBackbone` |
+| **Spectral Field Evolver** | **SFEvolver** | Continue physical spatial-spectral evolution from the estimated field | second/subsequent `SpectralFieldBackbone` |
+| **Spectral Wave Propagator** | **SWP** | The damped-wave closed-form propagation unit used inside SFE/SFEvolver blocks | `SpectralWavePropagator` / `SWPBlock` |
+| **Mask A** | — | CASSI mask-gated wave-field initialization inside SWP | `MaskConditionedGate` |
 
 The current paper structure is:
 
@@ -77,4 +77,6 @@ All historical routes that are not part of the active paper method are collected
 ## 6. One-paragraph canonical description
 
 SMILE² first converts a CASSI measurement \(Y\) and mask \(M\) into a dirty shift-back field \(H_0\) and a residual-adjoint cue \(Q_0\). A Spectral Field Estimator uses \([H_0,Q_0,M,H_0\odot M]\) to form a cleaner initial spectral field and produces \(U_1\). A Spectral Field Evolver then applies SWP-based spatial-spectral physical evolution to obtain \(\hat X=U_2\). Inside SWP, Mask A gates the wave field with \(\Phi_s\), then a damped-wave closed-form kernel propagates it in the Fourier domain.
+
+
 

@@ -1,4 +1,4 @@
-﻿---
+---
 project: SMILE2
 paper: AAAI 2027
 main_track: end-to-end CASSI reconstruction

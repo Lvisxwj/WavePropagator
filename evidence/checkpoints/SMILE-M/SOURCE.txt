@@ -1,0 +1,5 @@
+SMILE-M checkpoint provenance
+model=SMILE²-M
+config=src/repo/configs/smile_m.yaml
+checkpoint=SMILE-M_best_psnr.pth
+note=Best-PSNR checkpoint from the authors' controlled SMILE²-M training run. Private server paths were intentionally omitted.

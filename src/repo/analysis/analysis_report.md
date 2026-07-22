@@ -1,4 +1,4 @@
-﻿# E207 Capacity 光谱机制分析（阶段性报告）
+# E207 Capacity 光谱机制分析（阶段性报告）
 
 分析对象：`[2,4,4] + full WPO + FFN` 的 E207 best checkpoint。所有实验均为
 post-hoc 诊断，不更新模型参数。

@@ -1,4 +1,4 @@
-﻿# SMILE² Problem Definition
+# SMILE² Problem Definition
 
 > Current authority: 2026-07-16  
 > This file defines the current paper problem. Historical explorations are in `legacy.md`.

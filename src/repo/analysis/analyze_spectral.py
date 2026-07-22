@@ -1,4 +1,4 @@
-﻿"""Post-hoc spectral mechanism analysis for the E207 E2E Capacity checkpoint.
+"""Post-hoc spectral mechanism analysis for the E207 E2E Capacity checkpoint.
 
 Outputs three complementary diagnostics:
 1) analytical PDE frequency response for every learned WPO layer;
@@ -55,8 +55,8 @@ os.environ["SMILE_CONFIG"] = str(Path(ARGS.config).resolve())
 
 from dataset import load_mask, load_test
 from loss import torch_psnr, torch_sam, torch_ssim
-from model.e2e import E2ESMILE, cassi_measure, phi_phi_t, shift_back, shift_cube
-from model.wpo3d import WPO3D
+from model.smile import SMILE2, cassi_measure, phi_phi_t, shift_back, shift_cube
+from model.spectral_wave_propagator import SpectralWavePropagator
 
 
 def seed_everything(seed):
@@ -82,13 +82,13 @@ def configure_style():
 
 
 def build_model(device):
-    model = E2ESMILE(
+    model = SMILE2(
         dim=CFG["dim"], unet_stage=CFG["unet_stage"], num_blocks=CFG["num_blocks"],
-        use_sicmb=CFG["use_sicmb"], use_perchannel=CFG["use_perchannel"],
+        use_spatial_content_modulation=CFG["use_spatial_content_modulation"], use_perchannel=CFG["use_perchannel"],
         post_block=CFG["post_block"], ffn_mult=CFG["ffn_mult"],
         input_mode=CFG["input_mode"], output_dc=CFG["output_dc"],
         dc_gamma_init=CFG.get("dc_gamma_init", 0.30),
-        wpo_variant=CFG.get("wpo_variant", "full"), gradient_checkpointing=False,
+        swp_variant=CFG.get("swp_variant", "full"), gradient_checkpointing=False,
         step=CFG.get("shift_step", 2), bands=CFG["num_bands"],
     ).to(device)
     checkpoint = torch.load(CFG["checkpoint"], map_location=device)
@@ -141,7 +141,7 @@ def layer_frequency_transfer(module, device):
 
 def analytical_frequency_response(model, out_dir, device):
     """Initial-displacement transfer with zero initial velocity at fx=fy=0."""
-    layers = [(name, module) for name, module in model.named_modules() if isinstance(module, WPO3D)]
+    layers = [(name, module) for name, module in model.named_modules() if isinstance(module, SpectralWavePropagator)]
     bands = int(CFG["num_bands"])
     rows, spectral_responses, spectral_kernels, arrays = [], [], [], {}
     with torch.no_grad():
@@ -524,7 +524,7 @@ def complete_frequency_evidence(model, test, mask, out_dir, device):
 
     # Recompute with each layer's true width. Only 28-channel layers are
     # compared with the physical HSI spectrum; 56/112-channel layers are latent.
-    layers = [(name, module) for name, module in model.named_modules() if isinstance(module, WPO3D)]
+    layers = [(name, module) for name, module in model.named_modules() if isinstance(module, SpectralWavePropagator)]
     layer_records, spectral_responses = [], []
     with torch.no_grad():
         for idx, (name, module) in enumerate(layers):
@@ -686,4 +686,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 

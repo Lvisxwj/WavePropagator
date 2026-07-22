@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Convert CASSI/HSI .mat datasets to the .npy layout used by e2e.v1.
 
 The trainer can read .mat directly, but pre-converting to .npy avoids repeated

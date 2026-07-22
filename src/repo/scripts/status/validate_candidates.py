@@ -1,18 +1,18 @@
-﻿"""Small CPU validation for candidate construction and zero-init behavior."""
+"""Small CPU validation for candidate construction and zero-init behavior."""
 
 import torch
 
-from model.e2e import E2ESMILE, cassi_measure, phi_phi_t, shift_cube
+from model.smile import SMILE2, cassi_measure, phi_phi_t, shift_cube
 
 
 def main():
     torch.manual_seed(7)
     common = dict(
-        dim=28, unet_stage=2, num_blocks=[1, 1, 1], use_sicmb=True,
+        dim=28, unet_stage=2, num_blocks=[1, 1, 1], use_spatial_content_modulation=True,
         use_perchannel=True, use_spectral_wave=True, post_block="ffn", ffn_mult=2,
-        input_mode="H", output_dc=False, wpo_variant="full", bands=28,
+        input_mode="H", output_dc=False, swp_variant="full", bands=28,
     )
-    base = E2ESMILE(**common)
+    base = SMILE2(**common)
     state = base.state_dict()
     batch, height, width = 1, 16, 16
     mask = torch.rand(batch, 28, height, width)
@@ -24,7 +24,7 @@ def main():
         reference = base(y, mask, shifted, ppt)
 
     for adapter in ("mask", "wavelength"):
-        model = E2ESMILE(**common, input_adapter=adapter)
+        model = SMILE2(**common, input_adapter=adapter)
         missing, unexpected = model.load_state_dict(state, strict=False)
         with torch.no_grad():
             output = model(y, mask, shifted, ppt)
@@ -36,7 +36,7 @@ def main():
         if difference != 0.0 or unexpected:
             raise SystemExit("zero-init equivalence failed for %s" % adapter)
 
-    model = E2ESMILE(**common, wave_param_mode="symmetric_basis", wave_basis_count=3)
+    model = SMILE2(**common, wave_param_mode="symmetric_basis", wave_basis_count=3)
     output = model(y, mask, shifted, ppt)
     loss = (output - gt).square().mean()
     loss.backward()
@@ -50,7 +50,7 @@ def main():
     if not finite_grad:
         raise SystemExit("symmetric basis produced non-finite gradients")
     for name, module in model.named_modules():
-        if module.__class__.__name__ == "WPO3D":
+        if module.__class__.__name__ == "SpectralWavePropagator":
             alpha, vs, _, _ = module._get_effective_params()
             indices = (-torch.arange(alpha.numel())) % alpha.numel()
             alpha_error = float((alpha.flatten() - alpha.flatten()[indices]).abs().max())
@@ -63,4 +63,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 

@@ -1,8 +1,8 @@
-﻿experiment_name: capacity_e207_spectral_analysis
+experiment_name: smile_m_spectral_analysis
 gpu_id: '1'
 seed: 2026
 
-checkpoint: ./result/model/2026_06_28_18_58_00_e2e_capacity/best.pth
+checkpoint: ../../evidence/checkpoints/SMILE-M/SMILE-M_best_psnr.pth
 train_path: ./datasets/CAVE_1024_npy
 test_path: ./datasets/TSA_simu_data/Truth
 mask_path: ./datasets/TSA_simu_data
@@ -26,14 +26,14 @@ equal_count_far_trials: 8
 dim: 28
 unet_stage: 2
 num_blocks: [2, 4, 4]
-use_sicmb: true
+use_spatial_content_modulation: true
 use_perchannel: true
 post_block: ffn
 ffn_mult: 4
 input_mode: H
 output_dc: false
 dc_gamma_init: 0.30
-wpo_variant: full
+swp_variant: full
 gradient_checkpointing: false
 
 style:
@@ -47,4 +47,5 @@ style:
   color_missing: '#C00000'
   color_near: '#70AD47'
   color_far: '#ED7D31'
+
 

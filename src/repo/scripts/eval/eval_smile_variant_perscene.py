@@ -10,7 +10,7 @@ from train import build_model, cfg, count_params, test_epoch
 
 
 def _collapse_tsa_duplicates(rows):
-    # A800 TSA_simu_data/Truth may contain both .mat and .npy copies, producing
+    # Some TSA_simu_data/Truth mirrors may contain both .mat and .npy copies, producing
     # 20 rows for the 10 benchmark scenes. Prior verified convention: use 0::2.
     if len(rows) == 20:
         return rows[0::2]
@@ -95,4 +95,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

@@ -1,4 +1,4 @@
-﻿# AAAI 2027 manuscript index
+# AAAI 2027 manuscript index
 
 Active paper files:
 

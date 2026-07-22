@@ -1,4 +1,4 @@
-﻿# Evidence layer index
+# Evidence layer index
 
 This folder stores result-bearing artifacts used to support the paper.
 

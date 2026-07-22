@@ -1,4 +1,4 @@
-﻿# E207 Capacity spectral mechanism analysis
+# E207 Capacity spectral mechanism analysis
 
 This directory contains post-hoc diagnostics only. It does not modify or train
 the model.

@@ -1,5 +1,5 @@
-﻿#!/usr/bin/env python
-"""Measure SMILE-S/M/L runtime and peak CUDA memory on A800."""
+#!/usr/bin/env python
+"""Measure SMILE-S/M/L runtime and peak CUDA memory on a CUDA GPU."""
 
 import csv
 import os
@@ -16,20 +16,23 @@ OUT.parent.mkdir(parents=True, exist_ok=True)
 VARIANTS = [
     {
         "model": "SMILE-S",
-        "config": "configs/runtime_friend/progressive_222_step2_share_sfe.yaml",
-        "ckpt": "result/model/2026_07_14_19_23_08_progressive_222_step2_share_sfe/best_psnr.pth",
+        "config": "configs/smile_s.yaml",
+        "ckpt": os.environ.get("SMILE_S_CKPT"),
         "gflops": 28.281,
     },
     {
         "model": "SMILE-M",
-        "config": "configs/runtime_friend/progressive_222_step2_estimate_evolve_v2.yaml",
-        "ckpt": "result/model/2026_07_13_17_46_16_progressive_222_step2_estimate_evolve_v2/best_psnr.pth",
+        "config": "configs/smile_m.yaml",
+        "ckpt": os.environ.get(
+            "SMILE_M_CKPT",
+            str((ROOT / "../../evidence/checkpoints/SMILE-M/SMILE-M_best_psnr.pth").resolve()),
+        ),
         "gflops": 28.281,
     },
     {
         "model": "SMILE-L",
-        "config": "configs/runtime_friend/progressive_244_step2_noshare_sfe.yaml",
-        "ckpt": "result/model/2026_07_14_19_31_08_progressive_244_step2_noshare_sfe/best_psnr.pth",
+        "config": "configs/smile_l.yaml",
+        "ckpt": os.environ.get("SMILE_L_CKPT"),
         "gflops": 38.601,
     },
 ]
@@ -58,10 +61,14 @@ def main():
     rows = []
     for spec in VARIANTS:
         print(f"[measure] {spec['model']}", flush=True)
+        ckpt_path = Path(spec["ckpt"]).resolve() if spec.get("ckpt") else None
+        if ckpt_path is None or not ckpt_path.exists():
+            print(f"[skip] {spec['model']} checkpoint not provided or not found", flush=True)
+            continue
         tr = load_train_module(spec["config"])
         device = torch.device("cuda:0")
         model = tr.build_model().to(device)
-        ckpt = torch.load(str(ROOT / spec["ckpt"]), map_location=device, weights_only=False)
+        ckpt = torch.load(str(ckpt_path), map_location=device, weights_only=False)
         state = ckpt.get("model", ckpt.get("state_dict", ckpt))
         model.load_state_dict(state, strict=True)
         model.eval()
@@ -113,6 +120,8 @@ def main():
         torch.cuda.empty_cache()
 
     with open(OUT, "w", newline="", encoding="utf-8") as fp:
+        if not rows:
+            raise RuntimeError("No runtime rows were measured; provide SMILE_*_CKPT paths.")
         writer = csv.DictWriter(fp, fieldnames=list(rows[0].keys()))
         writer.writeheader()
         writer.writerows(rows)
@@ -121,5 +130,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
