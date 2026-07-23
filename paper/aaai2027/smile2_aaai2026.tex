@@ -37,7 +37,7 @@
 \definecolor{oursgreen}{RGB}{229,246,232}
 \definecolor{costgray}{RGB}{250,250,250}
 
-\title{SMILE\textsuperscript{2}: Spectral Modulated Imaging via Learned Estimation--Evolution for Snapshot Compressive Hyperspectral Reconstruction}
+\title{SMILE\textsuperscript{2}: Estimation--Evolution via Spectral Wave Propagation for Snapshot Compressive Imaging}
 \author{Anonymous Submission}
 \affiliations{Paper ID: Anonymous}
 
@@ -45,73 +45,72 @@
 \maketitle
 
 \begin{abstract}
-Coded aperture snapshot spectral imaging (CASSI) reconstructs a three-dimensional hyperspectral image from a single two-dimensional coded measurement, resulting in a severely underdetermined spatial--spectral inverse problem.
-Recent Transformer-based methods have achieved remarkable progress in end-to-end CASSI reconstruction.
-However, attention can learn which spectral bands and spatial regions should interact, but offers little explicit account of how information should propagate to disentangle coded spectral overlap and recover a coherent hyperspectral field.
+Coded aperture snapshot spectral imaging (CASSI) reconstructs three-dimensional hyperspectral images from a single two-dimensional coded measurement, resulting in a severely ill-posed spatial--spectral inverse problem.
+While existing Transformer-based deep networks have achieved impressive performance, their core spatial--spectral interactions rely on implicit token mixing or generic transformations, lacking an explicit account of how information propagates across the hyperspectral field.
 Moreover, global pairwise interaction incurs quadratic computational complexity.
-To address these limitations, we propose \smiletwo{}, a single-pass framework for Spectrally Modeled CASSI Reconstruction via Learned Estimation--Evolution.
-Specifically, a CASSI preparation stage constructs a dirty shift-back field, a normalized residual-adjoint field, and shifted-mask information from the forward imaging model.
-A \sfestimator{} first uses this information to estimate a cleaner initial spectral field, after which a \sfevolver{} propagates the estimated field into the final hyperspectral reconstruction.
-At the core of both components, the Spectral Wave Propagator (\swp{}) adapts a learnable anisotropic three-dimensional damped-wave model to the sampled spatial--spectral field and performs mask-conditioned global interaction through a closed-form Fourier-domain solution.
-Unlike implicit pairwise token mixing, \swp{} introduces explicit propagation and damping structures while retaining $O(N\log N)$ operator-level complexity.
-Experiments on simulated and real CASSI measurements demonstrate that \smiletwo{} achieves state-of-the-art end-to-end reconstruction quality with compact computation.
+To address these limitations, we propose \smiletwo{} (Spectral Modulated Imaging via Learned Estimation--Evolution), a novel framework that explicitly formulates CASSI reconstruction as a two-stage process: spectral-field estimation and structured field evolution.
+The estimation stage constructs a dirty shift-back field, a normalized residual-adjoint cue, and shifted-mask sensing information from the forward model to produce a cleaner initial spectral field.
+The evolution stage then propagates this estimated field into the final hyperspectral reconstruction.
+At the core of both stages lies the Spectral Wave Propagator (\swp{}), which adapts a learnable anisotropic three-dimensional damped-wave model to the sampled spatial--spectral field and performs mask-conditioned global interaction through a closed-form Fourier-domain solution with $O(N\log N)$ operator-level complexity.
+Extensive experiments on both simulated and real datasets demonstrate that \smiletwo{} achieves state-of-the-art reconstruction quality with compact computation.
 Ablations and cross-band analyses further validate the complementary roles of field estimation, structured evolution, and spectral propagation.
+
 Code is to be released upon publication.
 \end{abstract}
 
 \section{Introduction}
 
-Hyperspectral images (HSIs) record spectral responses over a dense wavelength axis in addition to two spatial dimensions.
-They therefore provide material and scene information that is unavailable in ordinary RGB imaging.
-Conventional spectral imaging systems usually scan either spatial positions or wavelengths, which limits acquisition speed.
-Coded aperture snapshot spectral imaging (CASSI) uses a coded aperture and a dispersive element to compress a three-dimensional HSI cube into a single two-dimensional measurement, enabling efficient snapshot spectral acquisition \cite{wagadarikar2008cassi,gehm2007ddcassi}.
-This optical efficiency comes with a difficult inverse problem: a single measurement \(Y\) must recover a spatial--spectral field \(X\in\mathbb{R}^{H\times W\times L}\).
+Coded aperture snapshot spectral imaging (CASSI) aims to recover a three-dimensional hyperspectral image (HSI) from a single two-dimensional coded measurement.
+By using a coded aperture and a dispersive element, CASSI enables efficient snapshot spectral acquisition and avoids slow spatial or spectral scanning \cite{wagadarikar2008cassi,gehm2007ddcassi}.
+This optical efficiency, however, comes with a severely underdetermined inverse problem: spatial structures and spectral signatures are modulated, shifted, overlapped, and finally integrated into one compressed measurement.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{final/0CASSI_tight.pdf}
-  \caption{CASSI forward imaging. A spectral cube \(X\) is modulated by the coded aperture \(M\), dispersed into shifted spectral measurements, and compressed into a single measurement \(Y=\Phi X\).}
+  \caption{CASSI forward imaging. A spectral cube \(X\) is modulated by the coded aperture \(M_0\), dispersed into shifted spectral measurements, and compressed into a single measurement \(Y=\Phi X\).}
   \label{fig:cassi_forward}
 \end{figure}
 
-Unlike RGB image restoration, CASSI reconstruction must recover both intensity and spectral direction.
-We view the HSI as a sampled spatial--spectral field over the discrete \((x,y,\lambda)\) grid, rather than as independent two-dimensional bands.
-This field view does not assume arbitrary continuous-coordinate querying; instead, it provides a mathematical interface for jointly describing second-order spatial and spectral structures.
-Existing CASSI networks have empirically exploited such spatial--spectral redundancy through convolution, recurrent modeling, and spectral attention \cite{miao2019lambdanet,meng2020tsanet,cai2022mst,cai2022cst,cai2022mstpp}.
-The same observation is also consistent with classical hyperspectral unmixing, where spectra of natural materials often lie in a low-dimensional and correlated subspace \cite{bioucasdias2012unmixing}.
-More broadly, recent discussions on a scientific theory of deep learning suggest that mathematical structures and dynamical descriptions can provide useful ways to understand deep models \cite{simon2026scientifictheorydeeplearning}, while physics-guided machine learning demonstrates the value of embedding scientific structure into neural operators \cite{karniadakis2021piml,willard2022scientificknowledge,weinan2017dynamicalsystems}.
-This work explores such a direction for CASSI reconstruction.
+The CASSI formation process itself suggests that reconstruction should not be treated as a plain image-to-image regression problem.
+Because coded modulation, wavelength-dependent shift, and spectral integration are entangled in the measurement, a simple shift-back operation can expose coarse scene structures but still leaves a dirty spectral field affected by mask modulation, overlap, uneven sensing coverage, and residual inconsistency.
+Meanwhile, HSIs are not merely stacks of independent bands: natural spectra often exhibit strong cross-band correlation and low-dimensional material structure \cite{bioucasdias2012unmixing}, while spatial edges and textures should remain coherent across wavelengths.
+These observations point to a field-oriented reconstruction view: estimating a cleaner initial spectral field from the multiplexed measurement, and then propagating information across the sampled spatial--spectral field.
 
-Most end-to-end CASSI methods directly learn the mapping from \(Y\) to \(X\), relying on convolutions, recurrent modules, or attention to enlarge the spatial--spectral receptive field.
-Attention is a powerful universal interaction mechanism, but its all-to-all token mixing does not explicitly state how spectral information propagates over the \(x,y,\lambda\) field, and global pairwise interactions are expensive at large resolutions \cite{vaswani2017attention,liu2021swin}.
-Meanwhile, the CASSI forward model itself provides valuable physical cues.
-The mask, dispersion, shift-back operation, and normalization map reveal how the 2D measurement is multiplexed from the 3D spectral cube.
-Model-driven and hybrid end-to-end methods have shown that using \(\Phi\), \(\Phi^\top\), and mask coverage can help reduce aliasing and ambiguity \cite{meng2020gapnet,huang2021dgsmp}.
-However, these cues are often used as initialization or correction features before the subsequent network again relies on generic learned mixing.
+Most end-to-end CASSI methods learn a direct mapping from the compressed measurement to the reconstructed HSI.
+Early neural models use convolutional or recurrent architectures to aggregate local spatial and spectral information \cite{miao2019lambdanet,meng2020tsanet,cheng2022recurrent}, while recent Transformer-based methods further improve reconstruction quality by learning long-range spatial--spectral dependencies \cite{cai2022mst,cai2022cst,cai2022mstpp,luo2025dsmt}.
+Attention is powerful because it can learn which spatial regions and spectral bands should communicate.
+However, this communication is usually expressed as implicit token mixing rather than an explicit propagation rule for disentangling coded spectral overlap and evolving a coherent HSI field.
+The scaling pressure is also visible in recent end-to-end Transformer models: moving from MST-L to DSMT improves the average PSNR from 35.24 dB to 36.92 dB, i.e., a 1.68 dB gain, but increases the parameter count from 2.02M to 12.40M, about 6.1 times larger.
+Together with the quadratic core complexity of global pairwise interaction, this motivates a more structured and compact alternative for global spatial--spectral modeling.
 
-This observation is important because the shift-back field \(H_0\) is not a clean HSI estimate.
-It preserves coarse scene structures, but each location is still affected by coded-mask modulation, overlapped shifted spectra, nonuniform sensing coverage, and residual measurement inconsistency.
-Directly feeding this dirty spectral field into a generic token mixer leaves the roles of correction and propagation entangled.
-A more structured single-pass alternative is to first estimate a cleaner initial spectral field from measurement-consistent cues, and then evolve this field through a spatial--spectral operator whose propagation behavior is explicitly parameterized.
-This motivates the central question:
+Recent vision models suggest a complementary route: organizing feature interaction through structured dynamics instead of generic pairwise mixing.
+vHeat builds vision models upon heat conduction, and WaveFormer introduces wave-equation-based frequency-time visual modeling \cite{wang2024vheat,shu2026waveformer}.
+Frequency-domain neural operators and token mixers also show that Fourier parameterizations can support efficient global modeling \cite{li2021fno,guibas2022afno,rao2021gfnet,leethorp2022fnet}.
+For CASSI, a purely diffusion-like bias may oversmooth fine spatial textures and spectral variations, whereas a damped wave equation contains propagation, oscillation, and damping.
+In the Fourier domain, this dynamics admits a closed-form mode-wise evolution rule, making it a natural physics-inspired candidate for evolving a sampled spectral field, without claiming that the reconstructed HSI literally follows the optical propagation inside the CASSI hardware.
+This leads to the central question:
 
 \begin{quote}
 \centering
 \textit{Can CASSI reconstruction be formulated as initial spectral-field estimation followed by evolution through a unified spatial--spectral physical operator?}
 \end{quote}
 
+This question is also aligned with a broader movement toward understanding and designing deep models through mathematical structures and dynamical systems.
+More broadly, recent discussions on a scientific theory of deep learning suggest that mathematical structures and dynamical descriptions can provide useful ways to understand deep models \cite{simon2026scientifictheorydeeplearning}, while physics-guided machine learning demonstrates the value of embedding scientific structure into neural operators \cite{karniadakis2021piml,willard2022scientificknowledge,weinan2017dynamicalsystems}.
+This work explores such a direction for CASSI reconstruction.
+
 We answer this question with \smiletwo{}, a single-pass estimation--evolution framework.
-First, \swp{} adapts a 3D damped wave equation to the CASSI spatial--spectral field, uses Fourier-domain closed-form evolution over \(f_x,f_y,f_\lambda\), and gates the wave field by the shifted sensing mask \(\Phi_s\).
-Second, CASSI preparation constructs the shift-back field \(H_0\), normalization map \(P\), and residual-adjoint cue \(Q_0\) from the forward model.
-Third, \sfestimator{} estimates an initial spectral field \(U_1\) from \([H_0,Q_0,M,H_0\odot M]\), while \sfevolver{} further propagates it to obtain the final reconstruction \(\hat X\).
-Compared with the \(O(N^2)\) pairwise token mixing of self-attention, \swp{} provides global interaction through an \(O(N\log N)\) Fourier-domain operator.
+At its core, the Spectral Wave Propagator (\swp{}) adapts a learnable three-dimensional damped-wave model to the sampled HSI field and performs structured global spatial--spectral interaction through a Fourier-domain closed-form solution.
+CASSI preparation then derives a dirty shift-back field, a measurement-coverage normalization map, a residual back-projection, and shifted-mask information from the forward imaging model.
+Based on these measurement-consistent quantities, \sfestimator{} estimates a cleaner initial spectral field, and \sfevolver{} further propagates it into the final HSI reconstruction.
+Compared with the \(O(N^2)\) pairwise token mixing of self-attention, \swp{} provides global interaction through an \(O(N\log N)\) operator-level Fourier-domain computation.
 
 Our contributions are summarized as follows.
 \begin{itemize}
-  \item We propose a single-pass spectral-field estimation--evolution framework for CASSI, explicitly formulating end-to-end reconstruction as initial spectral-field estimation followed by Fourier-domain physical evolution.
-  \item We design \swp{}, a mask-gated damped-wave propagation operator that performs structured global spatial--spectral mixing through a closed-form wave kernel.
-  \item We build compact SMILE-S/M/L variants and obtain state-of-the-art end-to-end reconstruction quality on the TSA simulation benchmark, with favorable SAM and visual fidelity.
-  \item We provide non-black-box evidence, including cross-band mixing and equal-count occlusion analysis, to explain how \smiletwo{} exploits spectral context.
+  \item We formulate end-to-end CASSI reconstruction as spectral-field estimation followed by physical evolution, providing a single-pass alternative to implicit token mixing.
+  \item We design \swp{}, a mask-conditioned damped-wave propagation operator that performs structured global spatial--spectral interaction through a Fourier-domain closed-form wave kernel.
+  \item We connect the CASSI forward model with spectral-field propagation through CASSI preparation, \sfestimator{}, and \sfevolver{}, enabling dirty-field correction before structured evolution.
+  \item We build compact SMILE-S/M/L variants and obtain state-of-the-art end-to-end reconstruction quality on the TSA simulation benchmark, with favorable SAM, visual fidelity, and mechanism analyses.
 \end{itemize}
 
 \section{Related Work}
@@ -162,10 +161,11 @@ However, these frequency- and PDE-inspired works do not directly address CASSI-s
 
 \subsection{Spectral-Field Formulation and Notation}
 
-Let \(X\in\mathbb{R}^{H\times W\times L}\) denote the target HSI, where the axes correspond to \(x\), \(y\), and wavelength \(\lambda\).
-Let \(Y\in\mathbb{R}^{H\times W'}\) denote the 2D CASSI measurement and \(M\in\mathbb{R}^{H\times W\times L}\) the unshifted coded mask.
-The complete sensing operator is denoted by \(\Phi\), which includes mask modulation, spectral shift, and spectral summation.
-The shifted mask stack induced by CASSI shifts is denoted by \(\Phi_s\); its measurement-domain energy gives the normalization map \(P=\Phi\Phi^\top\), and its field-aligned slices are used as \swp{} gates.
+Let \(X\in\mathbb{R}^{H\times W\times L}\) denote the target HSI sampled on a fixed spatial--spectral grid, where the axes correspond to \(x\), \(y\), and wavelength \(\lambda\).
+Let \(Y\in\mathbb{R}^{H\times W'}\) denote the 2D CASSI measurement, where \(W'=W+d(L-1)\) when adjacent spectral channels are shifted by \(d\) pixels.
+We denote the physical coded aperture by \(M_0\in\mathbb{R}^{H\times W}\), and its replicated spectral stack by \(M\in\mathbb{R}^{H\times W\times L}\).
+The complete sensing operator is denoted by \(\Phi\), which includes mask modulation, wavelength-dependent spatial shift, and spectral summation.
+The shifted mask stack in the measurement plane is denoted by \(\Phi_s^Y\in\mathbb{R}^{H\times W'\times L}\), while its field-width crop used by \swp{} is denoted by \(G_s\in\mathbb{R}^{H\times W\times L}\).
 The shift-back field, residual-adjoint cue, estimated spectral field, and final reconstruction are denoted by \(H_0\), \(Q_0\), \(U_1\), and \(U_2=\hat X\), respectively.
 We use \(\epsilon\) as a small positive constant for numerical stability and gate lower bounds.
 
@@ -178,7 +178,7 @@ Y=\Phi X=\sum_{\lambda=1}^{L}\mathrm{Shift}_{\lambda}(M_\lambda\odot X_\lambda).
 \end{equation}
 The normalization map is
 \begin{equation}
-P=\Phi\Phi^\top=\sum_{\lambda=1}^{L}\Phi_{s,\lambda}^{2}.
+P=\Phi\Phi^\top=\sum_{\lambda=1}^{L}(\Phi_{s,\lambda}^{Y})^{2},
 \label{eq:normalization}
 \end{equation}
 In vectorized notation, \(\Phi\) maps a 3D spectral field to the 2D measurement plane; hence \(\Phi\Phi^\top\) corresponds to a diagonal normalization operator in the measurement domain.
@@ -186,13 +186,24 @@ In implementation, the full matrix is not stored.
 Instead, \(P\in\mathbb{R}^{H\times W'}\) is represented by its diagonal map, which summarizes the shifted mask energy contributing to each measurement pixel.
 For a binary mask, \(P\) can be interpreted as the effective coding coverage at each measurement location.
 It is therefore not a global scalar but a pixel-wise measurement-domain weight map.
+The shifted-mask cue used by \swp{} is obtained from the measurement-domain shifted mask stack and cropped to the field width:
+\begin{equation}
+\begin{aligned}
+\Phi_s^Y&=\mathrm{Shift}(M)\in\mathbb{R}^{H\times W'\times L},\\
+G_s&=\mathrm{Crop}_{W}(\Phi_s^Y)\in\mathbb{R}^{H\times W\times L}.
+\end{aligned}
+\label{eq:gs}
+\end{equation}
 
 We first construct a dirty shift-back field:
 \begin{equation}
-H_0=\mathcal{B}(Y),
+\begin{aligned}
+H_{0,\lambda}&=\mathrm{Back}_{\lambda}(Y),\\
+H_0&=\mathrm{Back}(Y)\in\mathbb{R}^{H\times W\times L},
+\end{aligned}
 \label{eq:h0}
 \end{equation}
-where \(\mathcal{B}\) copies each shifted measurement slice back to its spectral-channel coordinates with a fixed scale normalization.
+where \(\mathrm{Back}_{\lambda}\) crops and shifts a measurement-domain image back to the spatial coordinates of the \(\lambda\)-th spectral channel, and \(\mathrm{Back}\) stacks all \(L\) channel-wise results.
 \(H_0\) contains major scene structures but remains an aliased spectral field affected by mask modulation, dispersion overlap, and spectral ambiguity.
 We further compute a residual-adjoint cue:
 \begin{equation}
@@ -202,7 +213,7 @@ Q_0=\Phi^\top(R_0/(P+\epsilon)).
 \end{equation}
 The input to \sfestimator{} is
 \begin{equation}
-C_0=[H_0,Q_0,M,H_0\odot M].
+C_0=[H_0,Q_0,M,H_0\odot M]\in\mathbb{R}^{H\times W\times 4L}.
 \label{eq:c0}
 \end{equation}
 Here \(Q_0\) exposes the measurement residual left by the initial shift-back field, while \(H_0\odot M\) explicitly couples image content with the coded aperture.
@@ -214,9 +225,9 @@ Given a spectral field \(z\in\mathbb{R}^{H\times W\times L}\), \swp{} regards it
 The evolution time \(t\) denotes feature-field propagation depth, rather than exposure time or physical travel time in the CASSI optical path.
 Thus, \swp{} is a physics-inspired regularized propagation operator for reconstruction, not a direct simulation of the optical hardware.
 
-To condition propagation on the sensing process, \swp{} first gates the input field with the shifted sensing mask:
+To condition propagation on the sensing process, \swp{} first gates the input field with the field-aligned shifted mask cue:
 \begin{equation}
-\tilde z=(\epsilon+(1-\epsilon)\Phi_s)\odot z.
+\tilde z=(\epsilon+(1-\epsilon)G_s)\odot z.
 \label{eq:mask_gate}
 \end{equation}
 Two lightweight learnable mappings then generate the initial displacement and velocity of the wave equation:
@@ -231,6 +242,7 @@ Applying a real-valued 3D Fourier transform over \(x,y,\lambda\) gives
 \hat v_0=\mathcal{F}_{x,y,\lambda}(v_0).
 \label{eq:uv0}
 \end{equation}
+The Fourier transform along the spectral axis is used as a discrete spectral-mode basis over the sampled HSI bands, not as an assumption that real spectral reflectance is physically periodic.
 
 The physical backbone of \swp{} is the anisotropic 3D damped wave equation:
 \begin{equation}
@@ -278,12 +290,10 @@ u(t)=\mathcal{F}^{-1}_{x,y,\lambda}(\hat u(\boldsymbol f,t)).
 The parameters \(\alpha(f_\lambda)\) and \(v_s(f_\lambda)\) are spectral-mode-dependent damping and propagation speed, while \(v_\lambda\) controls the strength of the spectral second derivative.
 In the implemented \swp{} layers, \(\alpha\) and \(v_s\) are layer-specific learnable vectors indexed by the spectral-mode dimension, initialized as constant damping and speed values and mapped through a softplus function to keep them positive.
 The scalar \(v_\lambda\) and the evolution depth \(t\) are also learned with the same positivity constraint.
-The FFT along the \(\lambda\) axis uses a periodic discrete spectral-mode basis to expand the finite 28-band sequence.
-This basis is used to parameterize spectral modes over the sampled HSI grid, without assuming that real spectral reflectance is physically periodic along wavelength.
 Consequently, \(\alpha(f_\lambda)\) and \(v_s(f_\lambda)\) are treated as learnable parameters over the discrete spectral-mode basis.
 The output of \swp{} is written as a residual update:
 \begin{equation}
-\mathcal{W}_\theta(z,\Phi_s)=z+\Pi_o(u(t)).
+\mathcal{W}_\theta(z,G_s)=z+\Pi_o(u(t)).
 \label{eq:swp_residual}
 \end{equation}
 Self-attention explicitly computes pairwise token relations with \(O(N^2)\) core complexity.
@@ -292,7 +302,7 @@ Self-attention explicitly computes pairwise token relations with \(O(N^2)\) core
 \begin{figure*}[!t]
   \centering
   \includegraphics[width=\textwidth]{final/2swap_tight.pdf}
-  \caption{Overall architecture of \smiletwo{}. CASSI preparation constructs \(H_0\), \(Q_0\), and \(\Phi_s\) from the measurement and mask. \sfestimator{} estimates the initial spectral field \(U_1\), and \sfevolver{} evolves it into the final reconstruction \(U_2=\hat X\).}
+  \caption{Overall architecture of \smiletwo{}. CASSI preparation constructs \(H_0\), \(Q_0\), and the field-aligned shifted-mask cue \(G_s\) from the measurement and mask. \sfestimator{} estimates the initial spectral field \(U_1\), and \sfevolver{} evolves it into the final reconstruction \(U_2=\hat X\).}
   \label{fig:swapunet}
 \end{figure*}
 
@@ -317,7 +327,7 @@ Z_0=H_0+\Delta_\psi(C_0)=H_0,
 so the network does not destroy the shift-back initialization.
 The first SWP-based U-Net estimates a cleaner spectral field:
 \begin{equation}
-U_1=\mathcal{E}_{\theta_E}^{\mathrm{SWP}}(Z_0,\Phi_s).
+U_1=\mathcal{E}_{\theta_E}^{\mathrm{SWP}}(Z_0,G_s).
 \label{eq:u1}
 \end{equation}
 In the architecture, the SFE stem and the first SWP-based U-Net together constitute \sfestimator{}.
@@ -327,13 +337,13 @@ In the architecture, the SFE stem and the first SWP-based U-Net together constit
 \sfevolver{} does not recompute \(R_0\) or \(Q_0\).
 Instead, it further evolves the estimated spectral field \(U_1\):
 \begin{equation}
-U_2=\mathcal{E}_{\theta_V}^{\mathrm{SWP}}(U_1,\Phi_s),\qquad
+U_2=\mathcal{E}_{\theta_V}^{\mathrm{SWP}}(U_1,G_s),\qquad
 \hat X=U_2.
 \label{eq:u2}
 \end{equation}
 The main signal flow is
 \begin{equation}
-Y,M \rightarrow H_0,Q_0,M,\Phi_s \rightarrow U_1 \rightarrow \hat X.
+Y,M_0 \rightarrow H_0,Q_0,M,G_s \rightarrow U_1 \rightarrow \hat X.
 \label{eq:pipeline}
 \end{equation}
 We instantiate three compact variants to evaluate the same estimation--evolution design under different computational budgets: SMILE-S uses the compact \([2,2,2]\) backbone with partially tied estimator/evolver parameters, SMILE-M decouples the estimator and evolver parameters at the same width, and SMILE-L increases the U-Net width to \([2,4,4]\) for higher capacity.
@@ -582,6 +592,13 @@ Figure~\ref{fig:swp_kernel_appendix} further derives 3D damped-wave kernel visua
 \bibliography{smile2_aaai2026}
 
 \end{document}
+
+
+
+
+
+
+
 
 
 

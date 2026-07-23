@@ -1,4 +1,4 @@
-# Paper layer index
+﻿# Paper layer index
 
 This folder contains manuscript-facing materials.
 
@@ -7,4 +7,3 @@ This folder contains manuscript-facing materials.
 - `feedback/` — professor/peer feedback snapshots.
 
 For LaTeX and figure workflow details, see `../WORKFLOWS.md`.
-
