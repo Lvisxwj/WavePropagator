@@ -1,4 +1,4 @@
-# AAAI 2027 manuscript index
+﻿# AAAI 2027 manuscript index
 
 Active paper files:
 
@@ -13,4 +13,3 @@ Build hygiene:
 - If citations become `[??]`, rerun LaTeX/BibTeX in sequence and verify keys in the `.bib` file.
 - Keep final figures as PDFs when possible.
 - Avoid internal notes in the TeX. Draft caveats belong in `../evidence/` or `../trace/`, not the submitted paper.
-

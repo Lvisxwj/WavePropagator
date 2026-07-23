@@ -1,4 +1,4 @@
-# Citation Audit for SMILE² AAAI Draft
+﻿# Citation Audit for SMILE² AAAI Draft
 
 Last updated: 2026-07-20
 
@@ -77,7 +77,6 @@ No active cited key is currently waiting for first-pass strict audit. Provisiona
 
 1. Re-check provisional entries before camera-ready if official publisher metadata changes.
 2. When adding any new comparison method, audit the paper and checkpoint/source together before putting it into a table.
-
 
 
 
