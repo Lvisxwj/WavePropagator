@@ -117,14 +117,17 @@ Our contributions are summarized as follows.
 
 \subsection{End-to-End CASSI Reconstruction}
 
-Early CASSI reconstruction methods rely on optimization and hand-crafted priors, such as GAP-TV, TwIST, and DeSCI \cite{yuan2016gaptv,bioucasdias2007twist,liu2018rank}.
-These methods are interpretable but limited in reconstruction quality and efficiency.
-Deep networks transform CASSI reconstruction into a data-driven mapping.
-\(\lambda\)-Net, TSA-Net, GAP-Net, and HDNet improve reconstruction through end-to-end regression, spatial--spectral self-attention, physical operator embedding, and dual-domain learning, respectively \cite{miao2019lambdanet,meng2020tsanet,meng2020gapnet,hu2022hdnet}.
-Transformer-based models further strengthen long-range spectral modeling.
-MST introduces spectral-wise self-attention, while CST and MST++ improve the efficiency of spectral interaction through sparse and multi-stage designs \cite{cai2022mst,cai2022cst,cai2022mstpp}.
-Recent end-to-end models also explore lightweight sensing, self-supervised adaptation, and spatial/spectral frequency modeling \cite{cai2023bisci,zeng2024sahsci,liu2025ssfan}.
-Overall, end-to-end CASSI models are efficient and effective, but their global spatial--spectral interaction is usually expressed by generic learned mixing rather than by an explicit propagation process.
+Early CASSI reconstruction relies on model-based optimization with hand-crafted priors, which provides an interpretable inverse formulation but requires iterative inference and careful parameter tuning \cite{bioucasdias2007twist,yuan2016gaptv,liu2018rank}.
+Learning-based reconstruction subsequently develops along direct end-to-end and model-driven unfolding lines.
+End-to-end methods learn a single-pass mapping from the coded measurement to the HSI, enabling substantially faster inference.
+Representative designs include convolutional regression in \(\lambda\)-Net, spatial--spectral attention in TSA-Net, bidirectional recurrence in BIRNAT, and high-resolution dual-domain learning in HDNet \cite{miao2019lambdanet,meng2020tsanet,cheng2022recurrent,hu2022hdnet}.
+
+Transformer-based end-to-end methods further improve reconstruction by modeling long-range spectral correlations.
+MST performs mask-guided spectral-wise attention, whereas CST and MST++ improve spectral interaction through sparse and multi-stage designs \cite{cai2022mst,cai2022cst,cai2022mstpp}.
+SPECAT \cite{yao2024specat} progressively accumulates spatial and spectral attention, while S2-Transformer \cite{wang2025s2transformer} strengthens mask-aware spatial--spectral interaction.
+DSMT \cite{luo2025dsmt} adopts coarse-to-fine reconstruction with dual-window multiscale attention, and LSST \cite{li2026lsst} separates lightweight spectral and spatial processing.
+Despite these advances, spatial--spectral communication is still implemented through learned convolutional or attention-based mixing, without an explicit rule describing how information propagates over the sampled HSI field.
+\smiletwo{} addresses this gap by coupling the \(x\), \(y\), and \(\lambda\) axes through mask-gated damped-wave evolution in the Fourier domain.
 
 \subsection{Forward-Model Cues in End-to-End Reconstruction}
 
