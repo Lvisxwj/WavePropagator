@@ -436,13 +436,13 @@ Algorithm & Method & Params & GFLOPs & S1 & S2 & S3 & S4 & S5 & S6 & S7 & S8 & S
 \rowcolor{costgray}
 Optimization & TwIST~\cite{bioucasdias2007twist} & -- & -- & \makecell{25.16\\0.700\\--} & \makecell{23.02\\0.604\\--} & \makecell{21.40\\0.711\\--} & \makecell{30.19\\0.851\\--} & \makecell{21.41\\0.635\\--} & \makecell{20.95\\0.644\\--} & \makecell{22.20\\0.643\\--} & \makecell{21.82\\0.650\\--} & \makecell{22.42\\0.690\\--} & \makecell{22.67\\0.569\\--} & \makecell{23.12\\0.669\\--} \\
 \rowcolor{costgray}
-Optimization & GAP-TV~\cite{yuan2016gaptv} & 4.27 & 75.63 & \makecell{21.26\\0.490\\0.553} & \makecell{21.90\\0.578\\0.618} & \makecell{18.97\\0.506\\0.561} & \makecell{27.97\\0.794\\0.455} & \makecell{17.43\\0.429\\0.504} & \makecell{21.88\\0.688\\0.548} & \makecell{20.65\\0.442\\0.530} & \makecell{22.19\\0.700\\0.580} & \makecell{22.27\\0.609\\0.366} & \makecell{19.94\\0.615\\0.594} & \makecell{21.44\\0.585\\0.531} \\
-\rowcolor{costgray}
 Optimization & DeSCI~\cite{liu2018rank} & -- & -- & \makecell{27.13\\0.748\\--} & \makecell{23.04\\0.620\\--} & \makecell{26.62\\0.818\\--} & \makecell{34.96\\0.897\\--} & \makecell{23.94\\0.706\\--} & \makecell{22.38\\0.683\\--} & \makecell{24.45\\0.743\\--} & \makecell{22.03\\0.673\\--} & \makecell{24.56\\0.732\\--} & \makecell{23.59\\0.587\\--} & \makecell{25.27\\0.721\\--} \\
 \rowcolor{costgray}
 CNN & $\lambda$-Net~\cite{miao2019lambdanet} & 32.73 & 28.40 & \makecell{29.71\\0.832\\0.244} & \makecell{27.70\\0.746\\0.295} & \makecell{29.55\\0.852\\0.260} & \makecell{37.58\\0.919\\0.392} & \makecell{26.61\\0.804\\0.260} & \makecell{27.28\\0.809\\0.403} & \makecell{26.62\\0.783\\0.244} & \makecell{26.23\\0.807\\0.416} & \makecell{28.56\\0.805\\0.265} & \makecell{26.16\\0.723\\0.391} & \makecell{28.60\\0.808\\0.317} \\
 \rowcolor{costgray}
-CNN & TSA-Net~\cite{meng2020tsanet} & 44.25 & 73.83 & \makecell{24.42\\0.714\\0.256} & \makecell{23.38\\0.660\\0.315} & \makecell{17.30\\0.614\\0.445} & \makecell{26.34\\0.795\\0.415} & \makecell{20.51\\0.600\\0.275} & \makecell{22.29\\0.742\\0.368} & \makecell{21.35\\0.636\\0.374} & \makecell{22.25\\0.762\\0.395} & \makecell{20.27\\0.672\\0.446} & \makecell{21.29\\0.694\\0.442} & \makecell{21.94\\0.689\\0.373} \\
+CNN & GAP-Net (Meng et al.~\citeyear{meng2020gapnet}) & 4.27 & 75.63 & \makecell{33.70\\0.917\\0.159} & \makecell{33.23\\0.902\\0.228} & \makecell{34.27\\0.933\\0.150} & \makecell{41.13\\0.973\\0.167} & \makecell{31.41\\0.924\\0.137} & \makecell{32.39\\0.930\\0.220} & \makecell{32.23\\0.906\\0.147} & \makecell{30.41\\0.912\\0.281} & \makecell{33.47\\0.920\\0.153} & \makecell{30.20\\0.904\\0.231} & \makecell{33.24\\0.922\\0.187} \\
+\rowcolor{costgray}
+CNN & TSA-Net (Meng et al.~\citeyear{meng2020tsanet}) & 44.25 & 73.83 & \makecell{32.31\\0.898\\0.152} & \makecell{31.07\\0.863\\0.181} & \makecell{32.30\\0.918\\0.129} & \makecell{39.53\\0.959\\0.146} & \makecell{29.44\\0.887\\0.117} & \makecell{31.06\\0.905\\0.169} & \makecell{30.26\\0.883\\0.134} & \makecell{29.31\\0.893\\0.199} & \makecell{31.62\\0.912\\0.134} & \makecell{29.20\\0.867\\0.167} & \makecell{31.61\\0.898\\0.153} \\
 \rowcolor{costgray}
 MAP+CNN & DGSMP~\cite{huang2021dgsmp} & 3.76 & 646.36 & \makecell{33.35\\0.920\\0.161} & \makecell{31.66\\0.892\\0.208} & \makecell{32.92\\0.925\\0.135} & \makecell{40.39\\0.970\\0.135} & \makecell{29.46\\0.894\\0.172} & \makecell{32.74\\0.938\\0.144} & \makecell{31.14\\0.898\\0.141} & \makecell{31.33\\0.932\\0.190} & \makecell{31.53\\0.925\\0.145} & \makecell{31.51\\0.934\\0.129} & \makecell{32.60\\0.923\\0.156} \\
 \rowcolor{costgray}
@@ -451,8 +451,6 @@ CNN & HDNet~\cite{hu2022hdnet} & 2.37 & 154.73 & \makecell{35.11\\0.940\\0.129} 
 Transformer & MST-L~\cite{cai2022mst} & 2.02 & 25.67 & \makecell{35.44\\0.946\\0.123} & \makecell{36.12\\0.949\\0.142} & \makecell{36.39\\0.955\\0.106} & \makecell{42.05\\0.977\\0.128} & \makecell{32.94\\0.950\\0.101} & \makecell{34.71\\0.957\\0.137} & \makecell{34.08\\0.932\\0.110} & \makecell{32.90\\0.953\\0.179} & \makecell{35.04\\0.947\\0.128} & \makecell{32.74\\0.946\\0.146} & \makecell{35.24\\0.951\\0.130} \\
 \rowcolor{compareorange}
 Transformer & CST-L~\cite{cai2022cst} & 3.00 & 20.34 & \makecell{35.82\\0.951\\0.116} & \makecell{36.52\\0.955\\0.118} & \makecell{37.45\\0.963\\0.082} & \makecell{42.46\\0.979\\0.100} & \makecell{33.34\\0.956\\0.078} & \makecell{35.48\\0.966\\0.104} & \makecell{34.40\\0.940\\0.098} & \makecell{33.80\\0.965\\0.119} & \makecell{35.88\\0.957\\0.100} & \makecell{33.35\\0.955\\0.103} & \makecell{35.85\\0.959\\0.102} \\
-\rowcolor{compareorange}
-Transformer & S2Transformer~\cite{wang2025s2transformer} & 1.80 & 27.21 & \makecell{36.17\\0.949\\--} & \makecell{37.57\\0.958\\--} & \makecell{37.29\\0.957\\--} & \makecell{42.96\\0.975\\--} & \makecell{34.40\\0.960\\--} & \makecell{36.44\\0.965\\--} & \makecell{35.41\\0.946\\--} & \makecell{34.50\\0.962\\--} & \makecell{36.54\\0.959\\--} & \makecell{33.57\\0.952\\--} & \makecell{36.48\\0.958\\--} \\
 \rowcolor{compareorange}
 Transformer & DSMT~\cite{luo2025dsmt} & 12.40 & 44.94 & \makecell{36.38\\0.958\\0.103} & \makecell{37.86\\0.965\\0.104} & \makecell{39.18\\0.968\\0.064} & \makecell{43.89\\0.985\\0.090} & \makecell{34.03\\0.965\\0.071} & \makecell{36.48\\0.972\\0.094} & \makecell{35.48\\0.952\\0.088} & \makecell{34.54\\0.969\\0.108} & \makecell{37.67\\0.966\\0.083} & \makecell{33.71\\0.959\\0.090} & \makecell{36.92\\0.966\\0.090} \\
 \rowcolor{oursgreen}
@@ -469,14 +467,14 @@ Wave equation & \smiletwo-L & 3.19 & 38.60 & \makecell{36.60\\0.957\\0.091} & \m
 
 \begin{figure*}[!t]
   \centering
-  \includegraphics[width=\textwidth]{final/scene05_unified_layout.pdf}
+  \includegraphics[width=\textwidth]{final/scene05_task123_layout.png}
   \caption{Simulation Scene 5. The figure compares red-green-blue (RGB) reference and measurement inputs, representative spectral bands, zoomed local regions, and spectral density curves.}
   \label{fig:sota_simu_scene5}
 \end{figure*}
 
 \begin{figure*}[!t]
   \centering
-  \includegraphics[width=\textwidth]{final/scene07_unified_layout.pdf}
+  \includegraphics[width=\textwidth]{final/scene07_task123_layout.png}
   \caption{Simulation Scene 7. The same set of end-to-end comparison methods and curve styles are used as in Scene 5.}
   \label{fig:sota_simu_scene7}
 \end{figure*}
